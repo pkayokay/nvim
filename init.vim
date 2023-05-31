@@ -16,7 +16,7 @@ nnoremap <leader>k :NERDTreeFocus<CR>
 nnoremap <C-r> :NERDTreeFind<CR>
 
 " Darcula
-colorscheme habamax
+colorscheme darcula
 " set termguicolors
 
 
