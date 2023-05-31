@@ -5,6 +5,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'junegunn/fzf.vim'
 call plug#end()
 
+set shiftwidth=2 
 let mapleader = "\<Space>"
 
 " Ways to start NERDTree https://github.com/preservim/nerdtree#how-do-i-open-nerdtree-automatically-when-vim-starts
