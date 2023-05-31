@@ -15,3 +15,5 @@ nnoremap <C-r> :NERDTreeFind<CR>
 " Darcula
 colorscheme darcula
 set termguicolors
+
+set number
