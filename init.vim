@@ -7,7 +7,7 @@ let mapleader = "\<Space>"
 
 " Ways to start NERDTree https://github.com/preservim/nerdtree#how-do-i-open-nerdtree-automatically-when-vim-starts
 " Start NERDTree and put the cursor back in the other window.
-autocmd VimEnter * NERDTree | wincmd p
+autocmd VimEnter * NERDTree 
 nnoremap <leader>b :NERDTreeToggle<CR>
 nnoremap <leader>k :NERDTreeFocus<CR>
 nnoremap <C-r> :NERDTreeFind<CR>
