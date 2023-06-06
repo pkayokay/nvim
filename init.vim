@@ -33,3 +33,4 @@ nnoremap <leader>sf :Rg<cr>
 nnoremap <leader>ef :Windows<cr>
 
 
+inoremap jj <ESC>
