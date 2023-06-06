@@ -5,7 +5,8 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'junegunn/fzf.vim'
 call plug#end()
 
-set shiftwidth=2 
+set shiftwidth=2
+set nowrap 
 let mapleader = "\<Space>"
 
 " Ways to start NERDTree https://github.com/preservim/nerdtree#how-do-i-open-nerdtree-automatically-when-vim-starts
@@ -26,5 +27,9 @@ set number
 
 
 " Fzf
+" :Commands for help 
 nnoremap <leader>ff :GFiles<cr>
 nnoremap <leader>sf :Rg<cr>
+nnoremap <leader>ef :Windows<cr>
+
+
