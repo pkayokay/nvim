@@ -6,7 +6,7 @@ call plug#begin('~/.config/nvim/plugged')
 call plug#end()
 
 set shiftwidth=2
-set nowrap 
+set nowrap " :set wrap! :set wrap 
 let mapleader = "\<Space>"
 
 " Ways to start NERDTree https://github.com/preservim/nerdtree#how-do-i-open-nerdtree-automatically-when-vim-starts
