@@ -12,8 +12,11 @@ let mapleader = "\<Space>"
 
 " For vim-devicons
 set encoding=UTF-8
-set guifont=JetBrains\ Mono\ 12
 
+
+" S replace
+nnoremap <leader>sr :%s/search/replace/g 
+" bind inputs?
 
 " Ways to start NERDTree https://github.com/preservim/nerdtree#how-do-i-open-nerdtree-automatically-when-vim-starts
 " Start NERDTree and put the cursor back in the other window.
@@ -45,7 +48,7 @@ nnoremap <leader>ef :Windows<cr>
 
 inoremap jj <ESC>
 nnoremap <leader>rst :vertical resize 25<cr>
-nnoremap <leader><S><Bslash> :split vnew<cr>
-nnoremap <leader><Bslash> :split new<cr>
+nnoremap <leader>d<Bslash> :new<cr>
+nnoremap <leader><Bslash> :vnew<cr>
 " can do commands above without <cr> to type but not execute, what is cr?
 
