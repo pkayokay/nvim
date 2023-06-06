@@ -12,9 +12,13 @@ let mapleader = "\<Space>"
 " Ways to start NERDTree https://github.com/preservim/nerdtree#how-do-i-open-nerdtree-automatically-when-vim-starts
 " Start NERDTree and put the cursor back in the other window.
 autocmd VimEnter * NERDTree | wincmd p
-nnoremap <leader>b :NERDTreeToggle<CR>
-nnoremap <leader>k :NERDTreeFocus<CR>
-nnoremap <C-r> :NERDTreeFind<CR>
+nnoremap <leader>nt :NERDTreeToggle<CR>
+nnoremap <leader>ntf :NERDTreeFocus<CR>
+nnoremap <leader>nts :NERDTreeFind<CR>
+
+
+"C is control
+" S is shift
 
 " Darcula
 colorscheme darcula
@@ -34,3 +38,4 @@ nnoremap <leader>ef :Windows<cr>
 
 
 inoremap jj <ESC>
+nnoremap <leader>rst :vertical resize 25<cr>
