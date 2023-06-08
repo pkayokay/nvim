@@ -3,7 +3,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'preservim/nerdtree'
   Plug 'junegunn/fzf'
   Plug 'junegunn/fzf.vim'
-  Plug 'ryanoasis/vim-devicons' " need nerdfont compatible font
+  Plug 'ryanoasis/vim-devicons' " need nerdfont compatible font https://www.nerdfonts.com/font-downloads
 call plug#end()
 
 " Notes
