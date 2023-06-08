@@ -3,7 +3,8 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'preservim/nerdtree'
   Plug 'junegunn/fzf'
   Plug 'junegunn/fzf.vim'
-  Plug 'ryanoasis/vim-devicons' " need nerdfont compatible font https://www.nerdfonts.com/font-downloads
+  Plug 'vwxyutarooo/nerdtree-devicons-syntax'
+  Plug 'ryanoasis/vim-devicons' "must be last plugin, need nerdfont compatible font https://www.nerdfonts.com/font-downloads
 call plug#end()
 
 " Notes
@@ -14,6 +15,7 @@ call plug#end()
 
 " Theme
 colorscheme darcula
+set termguicolors
 
 " General
 inoremap jj <ESC>
@@ -29,7 +31,9 @@ autocmd VimEnter * NERDTree | wincmd p
 nnoremap <leader>nt :NERDTreeToggle<CR>
 nnoremap <leader>ntf :NERDTreeFocus<CR>
 nnoremap <leader>nts :NERDTreeFind<CR>
-nnoremap <leader>nts :vertical resize 25<cr>
+nnoremap <leader>ntrs :vertical resize 25<cr>
+let NERDTreeQuitOnOpen = 1
+
 
 " Fzf
 nnoremap <leader>ff :GFiles<cr>
@@ -42,6 +46,13 @@ set splitbelow
 set splitright
 nnoremap <leader>d<Bslash> :split<cr>
 nnoremap <leader><Bslash> :vsplit<cr>| ":vnew or :new for empty windows
+
+" Tab
+nnoremap <leader><S-t> :tabnew<cr>
+nnoremap <leader>1 :tabn 1<cr>
+nnoremap <leader>2 :tabn 2<cr>
+nnoremap <leader>3 :tabn 3<cr>
+nnoremap <leader>4 :tabn 4<cr>
 
 " Search and replace, bind inputs?
 nnoremap <leader>sr :%s/search/replace/g 
