@@ -33,6 +33,7 @@ nnoremap <leader>ntf :NERDTreeFocus<CR>
 nnoremap <leader>nts :NERDTreeFind<CR>
 nnoremap <leader>ntrs :vertical resize 25<cr>
 let NERDTreeQuitOnOpen = 1
+let g:NERDTreeIgnore = ['^node_modules$','^tmp$']
 
 
 " Fzf
