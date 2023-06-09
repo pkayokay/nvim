@@ -12,6 +12,8 @@ call plug#end()
 " C is control
 " S is shift
 " can do commands above without <cr> to type but not execute, what is cr?
+" Types of mapping and key binding definitions
+" Feature I use in RubyMine/VSCode: auto-lint, go to reference, what else?
 
 
 " Theme
