@@ -18,6 +18,10 @@ call plug#end()
 colorscheme darcula
 set termguicolors
 
+" Bind insert mode escape to terminal
+tnoremap <Esc> <C-\><C-n>
+
+
 " General
 inoremap jj <ESC>
 set tabstop=2               " number of columns occupied by a tab character
