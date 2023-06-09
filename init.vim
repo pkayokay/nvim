@@ -6,12 +6,13 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'vwxyutarooo/nerdtree-devicons-syntax'
   Plug 'ryanoasis/vim-devicons' "must be last plugin, need nerdfont compatible font https://www.nerdfonts.com/font-downloads
 call plug#end()
-
+  
 " Notes
 " :Commands for help 
 " C is control
 " S is shift
 " can do commands above without <cr> to type but not execute, what is cr?
+
 
 " Theme
 colorscheme darcula
@@ -19,7 +20,12 @@ set termguicolors
 
 " General
 inoremap jj <ESC>
-set shiftwidth=2
+set tabstop=2               " number of columns occupied by a tab character
+set expandtab               " convert tabs to white space
+set shiftwidth=2            " width for autoindents
+set softtabstop=2           " see multiple spaces as tabstops so <BS> does the right thing
+
+
 set nowrap " :set wrap! :set wrap 
 let mapleader = "\<Space>"
 set number 
