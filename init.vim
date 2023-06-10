@@ -4,6 +4,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'preservim/nerdtree'
   Plug 'junegunn/fzf'
   Plug 'junegunn/fzf.vim'
+  Plug 'jlanzarotta/bufexplorer'
   Plug 'vwxyutarooo/nerdtree-devicons-syntax'
   Plug 'ryanoasis/vim-devicons' "must be last plugin, need nerdfont compatible font https://www.nerdfonts.com/font-downloads
 call plug#end()
@@ -75,3 +76,9 @@ let test#strategy = "neovim"
 nnoremap <silent> <leader>tn :TestNearest<CR>
 nnoremap <silent> <leader>ta :TestFile<CR>
 
+
+" buffer
+" "\<Leader\>be normal open
+"\<Leader\>bt toggle open / close
+"\<Leader\>bs force horizontal split open
+"\<Leader\>bv force vertical split open
