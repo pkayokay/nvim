@@ -43,9 +43,8 @@ set number
 " Start NERDTree and put the cursor back in the other window.
 autocmd VimEnter * NERDTree | wincmd p
 nnoremap <leader>nt :NERDTreeToggle<CR>
-nnoremap <leader>ntf :NERDTreeFocus<CR>
-nnoremap <leader>nts :NERDTreeFind<CR>
-nnoremap <leader>ntrs :vertical resize 25<cr>
+nnoremap <leader>nf :NERDTreeFind<CR>
+nnoremap <leader>nrs :vertical resize 25<cr>
 let NERDTreeQuitOnOpen = 1
 let g:NERDTreeIgnore = ['^node_modules$','^tmp$']
 
@@ -56,7 +55,7 @@ nnoremap <leader>sf :Rg<cr>
 nnoremap <leader>ef :Buffer<cr>
 nnoremap <leader>et :Windows<cr>
 nnoremap <leader>sl :BLines<cr>
-nnoremap <leader>slb :Lines<cr>
+nnoremap <leader>sbl :Lines<cr>
 let g:fzf_buffers_jump = 1 
 
 " Window management
