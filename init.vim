@@ -53,8 +53,11 @@ let g:NERDTreeIgnore = ['^node_modules$','^tmp$']
 " Fzf
 noremap <leader>ff :GFiles<cr>
 nnoremap <leader>sf :Rg<cr>
-nnoremap <leader>ef :Windows<cr>
-
+nnoremap <leader>ef :Buffer<cr>
+nnoremap <leader>et :Windows<cr>
+nnoremap <leader>sl :BLines<cr>
+nnoremap <leader>slb :Lines<cr>
+let g:fzf_buffers_jump = 1 
 
 " Window management
 set splitbelow splitright
