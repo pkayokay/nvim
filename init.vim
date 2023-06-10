@@ -1,4 +1,5 @@
 call plug#begin('~/.config/nvim/plugged')
+  Plug 'vim-test/vim-test'
   Plug 'doums/darcula'
   Plug 'preservim/nerdtree'
   Plug 'junegunn/fzf'
@@ -6,7 +7,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'vwxyutarooo/nerdtree-devicons-syntax'
   Plug 'ryanoasis/vim-devicons' "must be last plugin, need nerdfont compatible font https://www.nerdfonts.com/font-downloads
 call plug#end()
-  
+ 
 " Notes
 " :Commands for help 
 " C is control
@@ -19,6 +20,7 @@ call plug#end()
 " Theme
 colorscheme darcula
 set termguicolors
+set encoding=UTF-8 " for vim-devicons
 
 " Bind insert mode escape to terminal
 tnoremap <Esc> <C-\><C-n>
@@ -35,7 +37,6 @@ set softtabstop=2           " see multiple spaces as tabstops so <BS> does the r
 set nowrap " :set wrap! :set wrap 
 let mapleader = "\<Space>"
 set number 
-set encoding=UTF-8 " for vim-devicons
 
 " NERDTree
 " Start NERDTree and put the cursor back in the other window.
@@ -49,14 +50,13 @@ let g:NERDTreeIgnore = ['^node_modules$','^tmp$']
 
 
 " Fzf
-nnoremap <leader>ff :GFiles<cr>
+noremap <leader>ff :GFiles<cr>
 nnoremap <leader>sf :Rg<cr>
 nnoremap <leader>ef :Windows<cr>
 
 
 " Window management
-set splitbelow
-set splitright
+set splitbelow splitright
 nnoremap <leader>d<Bslash> :split<cr>
 nnoremap <leader><Bslash> :vsplit<cr>| ":vnew or :new for empty windows
 
@@ -68,4 +68,10 @@ nnoremap <leader>3 :tabn 3<cr>
 nnoremap <leader>4 :tabn 4<cr>
 
 " Search and replace, bind inputs?
-nnoremap <leader>sr :%s/search/replace/g 
+nnoremap <leader>sr :%s/search/replace/g
+
+
+let test#strategy = "neovim"
+nnoremap <silent> <leader>tn :TestNearest<CR>
+nnoremap <silent> <leader>ta :TestFile<CR>
+
