@@ -5,6 +5,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'junegunn/fzf'
   Plug 'junegunn/fzf.vim'
   Plug 'chaoren/vim-wordmotion'
+  Plug 'majutsushi/tagbar'
   Plug 'vwxyutarooo/nerdtree-devicons-syntax'
   Plug 'ryanoasis/vim-devicons' " Ensure it's the last plugin and install Nerd Font https://www.nerdfonts.com/font-downloads
 call plug#end()
@@ -15,7 +16,7 @@ call plug#end()
 " S is shift
 " CR is equivalent to pressing enter 
 
-# General
+" General
 let mapleader = "\<Space>"
 colorscheme darcula
 set termguicolors
@@ -35,8 +36,8 @@ nnoremap <silent><leader>it :terminal<cr>i
 nnoremap <leader>d<Bslash> :split<cr>
 nnoremap <leader><Bslash> :vsplit<cr>| ":vnew or :new for empty windows
 
-# NERDTree
-# Start NERDTree and put the cursor back in the other window (autocmd VimEnter * NERDTree | wincmd p)
+" NERDTree
+" Start NERDTree and put the cursor back in the other window (autocmd VimEnter * NERDTree | wincmd p)
 nnoremap <leader>nt :NERDTreeToggle<CR>
 nnoremap <leader>nf :NERDTreeFind<CR>
 nnoremap <leader>nrs :vertical resize 25<cr>
@@ -44,7 +45,7 @@ let NERDTreeQuitOnOpen = 1
 let g:NERDTreeIgnore = ['^node_modules$','^tmp$']
 
 " Fzf
-let g:fzf_buffers_jump = 1 # Always open buffer in existing tab
+let g:fzf_buffers_jump = 1 " Always open buffer in existing tab
 noremap <leader>ff :GFiles<cr>
 nnoremap <leader>sf :Rg<cr>
 nnoremap <leader>ef :Buffer<cr>
