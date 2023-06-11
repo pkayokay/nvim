@@ -25,7 +25,7 @@ call plug#end()
 let g:airline_theme='wombat'
 let mapleader = "\<Space>"
 colorscheme darcula
-" set termguicolors
+set termguicolors
 set encoding=UTF-8 " for vim-devicons
 set tabstop=2               " number of columns occupied by a tab character
 set expandtab               " convert tabs to white space
