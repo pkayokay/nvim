@@ -53,14 +53,14 @@ let g:ale_lint_on_filetype_changed = 1
 let g:ale_linters = { 'ruby': ['ruby','standardrb'], 'eruby': ['erblint']}
 let g:ale_fixers = { 'javascript': ['prettier'], 'ruby': ['standardrb'], 'eruby': ['erblint']}
 let g:ale_fix_on_save = 1
-let g:ale_sign_error = '❌'
-let g:ale_sign_warning = '⚠️'
+let g:ale_sign_error = 'E'
+let g:ale_sign_warning = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
 
 
 " NERDTree
-" Start NERDTree and put the cursor back in the other window (autocmd VimEnter * NERDTree | wincmd p)
+autocmd VimEnter * NERDTree | wincmd p "Start NERDTree and put the cursor back in the other window
 nnoremap <leader>nt :NERDTreeToggle<CR>
 nnoremap <leader>nf :NERDTreeFind<CR>
 nnoremap <leader>nrs :vertical resize 25<cr>
@@ -77,9 +77,12 @@ nnoremap <leader>sl :BLines<cr>
 nnoremap <leader>sbl :Lines<cr>
 
 let $BAT_THEME="" " brew install bat, used for Fzf previews
-let g:fzf_layout = { 'window': { 'width': 0.7, 'height': 0.4, 'relative': v:false, 'yoffset': 0 } } " relative false opens the existing window, otherwise it opens in the split window
+let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 1, 'relative': v:true, 'yoffset': 0 } }
 let $FZF_DEFAULT_OPTS = '--layout=reverse --info=inline --margin=1 --padding=1' " show on top, make smaller and center?
-autocmd VimEnter * command! -bang -nargs=? GFiles call fzf#vim#gitfiles(<q-args>, {'options': ['--no-preview']}, <bang>0)
+
+let g:fzf_preview_window = ['down,70%', 'ctrl-/']
+
+
 
 " Tabs
 nnoremap <leader><S-t> :tabnew<cr>
