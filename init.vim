@@ -7,9 +7,15 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'chaoren/vim-wordmotion'
   Plug 'pangloss/vim-javascript'
   Plug 'tomtom/tcomment_vim'
+  Plug 'tpope/vim-endwise'
   Plug 'vwxyutarooo/nerdtree-devicons-syntax'
+  Plug 'tpope/vim-fugitive'
   Plug 'ryanoasis/vim-devicons' " Ensure it's the last plugin and install Nerd Font https://www.nerdfonts.com/font-downloads
 call plug#end()
+
+
+
+
 " Notes
 " :Commands for help 
 " C is control
@@ -29,7 +35,7 @@ set nowrap " :set wrap! :set wrap
 let mapleader = "\<Space>"
 set number
 set splitbelow splitright
-nnoremap <C-p> :PlugInstall<cr> :qall!<cr>
+nnoremap <C-p> :PlugInstall<cr> :qall!
 tnoremap <Esc> <C-\><C-n>
 tnoremap jj  <C-\><C-n>
 inoremap jj <ESC> 
