@@ -7,6 +7,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'chaoren/vim-wordmotion'
   Plug 'pangloss/vim-javascript'
   Plug 'tomtom/tcomment_vim'
+  Plug 'jlanzarotta/bufexplorer'
   Plug 'tpope/vim-endwise'
   Plug 'vwxyutarooo/nerdtree-devicons-syntax'
   Plug 'tpope/vim-fugitive'
@@ -16,16 +17,10 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'ryanoasis/vim-devicons' " Ensure it's the last plugin and install Nerd Font https://www.nerdfonts.com/font-downloads
 call plug#end()
 
-let g:airline_theme='wombat'
-
-" https://gist.github.com/millermedeiros/1262085/6a29ba7c24f5385f26f72a538bca6e781ac496fd
-" Notes
 " :Commands for help 
-" C is control
-" S is shift
-" CR is equivalent to pressing enter 
 
 " General
+let g:airline_theme='wombat'
 let mapleader = "\<Space>"
 colorscheme darcula
 " set termguicolors
@@ -38,7 +33,7 @@ set nowrap " :set wrap! :set wrap
 let mapleader = "\<Space>"
 set number
 set splitbelow splitright
-set cursorline cursorcolumn
+set cursorline
 set scrolloff=10 sidescrolloff=20
 set ignorecase smartcase " make searches case-insensitive, unless they contain upper-case letters
 
@@ -51,7 +46,6 @@ nnoremap <leader>d<Bslash> :split<cr>
 nnoremap <leader><Bslash> :vsplit<cr>| ":vnew or :new for empty windows
 
 " NERDTree
-" Start NERDTree and put the cursor back in the other window (autocmd VimEnter * NERDTree | wincmd p)
 nnoremap <leader>nt :NERDTreeToggle<CR>
 nnoremap <leader>nf :NERDTreeFind<CR>
 nnoremap <leader>nrs :vertical resize 25<cr>
