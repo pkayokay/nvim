@@ -15,11 +15,12 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'dense-analysis/ale'
+  Plug 'jlcrochet/vim-ruby'
   Plug 'ryanoasis/vim-devicons' " Ensure it's the last plugin and install Nerd Font https://www.nerdfonts.com/font-downloads
 call plug#end()
 
 " :Commands for help 
-
+" TODO: fix fzf preview theme, cursorline with terguicolors on 
 " General
 let g:airline_theme='wombat'
 let mapleader = "\<Space>"
@@ -34,7 +35,7 @@ set nowrap " :set wrap! :set wrap
 let mapleader = "\<Space>"
 set number
 set splitbelow splitright
-set cursorline
+" set cursorline
 set scrolloff=10 sidescrolloff=20
 set ignorecase smartcase " make searches case-insensitive, unless they contain upper-case letters
 nnoremap <C-p> :PlugInstall<cr> :qall!
