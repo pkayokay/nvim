@@ -22,7 +22,7 @@ call plug#end()
 " :Commands for help 
 " TODO: fix fzf preview theme
 " General
-let g:fzf_preview_window = []
+let $BAT_THEME="" " brew install bat, used for Fzf previews
 let $FZF_DEFAULT_OPTS = '--layout=reverse --info=inline --margin=1 --padding=1' " show on top, make smaller and center?
 let g:airline_theme='wombat'
 let mapleader = "\<Space>"
