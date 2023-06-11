@@ -20,7 +20,7 @@ call plug#begin('~/.config/nvim/plugged')
 call plug#end()
 
 " :Commands for help 
-" TODO: fix fzf preview theme, cursorline with terguicolors on 
+" TODO: fix fzf preview theme, cursorline with terguicolors on results below 
 " General
 let g:airline_theme='wombat'
 let mapleader = "\<Space>"
