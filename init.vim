@@ -22,7 +22,18 @@ call plug#end()
 " :Commands for help 
 " TODO: fix fzf preview theme
 " General
-adadasdaset mapleader = "\<Space>"
+let $FZF_DEFAULT_OPTS = '-layout=reverse'
+let g:airline_theme='wombat'
+let mapleader = "\<Space>"
+colorscheme darcula
+set termguicolors
+set encoding=UTF-8 " for vim-devicons
+set tabstop=2               " number of columns occupied by a tab character
+set expandtab               " convert tabs to white space
+set shiftwidth=2            " width for autoindents
+set softtabstop=2           " see multiple spaces as tabstops so <BS> does the right thing
+set nowrap " :set wrap! :set wrap 
+let mapleader = "\<Space>"
 set number
 set splitbelow splitright
 set scrolloff=10 sidescrolloff=20
