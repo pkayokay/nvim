@@ -6,6 +6,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'junegunn/fzf.vim'
   Plug 'chaoren/vim-wordmotion'
   Plug 'pangloss/vim-javascript'
+  Plug 'tomtom/tcomment_vim'
   Plug 'vwxyutarooo/nerdtree-devicons-syntax'
   Plug 'ryanoasis/vim-devicons' " Ensure it's the last plugin and install Nerd Font https://www.nerdfonts.com/font-downloads
 call plug#end()
