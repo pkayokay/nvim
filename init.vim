@@ -14,6 +14,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'tpope/vim-surround'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
+  Plug 'dense-analysis/ale'
   Plug 'ryanoasis/vim-devicons' " Ensure it's the last plugin and install Nerd Font https://www.nerdfonts.com/font-downloads
 call plug#end()
 
@@ -36,7 +37,6 @@ set splitbelow splitright
 set cursorline
 set scrolloff=10 sidescrolloff=20
 set ignorecase smartcase " make searches case-insensitive, unless they contain upper-case letters
-
 nnoremap <C-p> :PlugInstall<cr> :qall!
 tnoremap <Esc> <C-\><C-n>
 tnoremap jj  <C-\><C-n>
@@ -44,6 +44,20 @@ inoremap jj <ESC>
 nnoremap <silent><leader>it :terminal<cr>i
 nnoremap <leader>d<Bslash> :split<cr>
 nnoremap <leader><Bslash> :vsplit<cr>| ":vnew or :new for empty windows
+
+" ALE 
+let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_enter = 1
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_filetype_changed = 1
+let g:ale_linters = { 'ruby': ['ruby','standardrb'], 'eruby': ['erblint']}
+let g:ale_fixers = { 'javascript': ['prettier'], 'ruby': ['standardrb'], 'eruby': ['erblint']}
+let g:ale_fix_on_save = 1
+let g:ale_sign_error = '❌'
+let g:ale_sign_warning = '⚠️'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
+
 
 " NERDTree
 " Start NERDTree and put the cursor back in the other window (autocmd VimEnter * NERDTree | wincmd p)
