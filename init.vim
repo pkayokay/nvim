@@ -46,6 +46,7 @@ nnoremap <leader>d<Bslash> :split<cr>
 nnoremap <leader><Bslash> :vsplit<cr>| ":vnew or :new for empty windows
 
 " NERDTree
+" Start NERDTree and put the cursor back in the other window (autocmd VimEnter * NERDTree | wincmd p)
 nnoremap <leader>nt :NERDTreeToggle<CR>
 nnoremap <leader>nf :NERDTreeFind<CR>
 nnoremap <leader>nrs :vertical resize 25<cr>
