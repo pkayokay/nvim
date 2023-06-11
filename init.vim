@@ -20,22 +20,11 @@ call plug#begin('~/.config/nvim/plugged')
 call plug#end()
 
 " :Commands for help 
-" TODO: fix fzf preview theme, cursorline with terguicolors on results below 
+" TODO: fix fzf preview theme
 " General
-let g:airline_theme='wombat'
-let mapleader = "\<Space>"
-colorscheme darcula
-set termguicolors
-set encoding=UTF-8 " for vim-devicons
-set tabstop=2               " number of columns occupied by a tab character
-set expandtab               " convert tabs to white space
-set shiftwidth=2            " width for autoindents
-set softtabstop=2           " see multiple spaces as tabstops so <BS> does the right thing
-set nowrap " :set wrap! :set wrap 
-let mapleader = "\<Space>"
+adadasdaset mapleader = "\<Space>"
 set number
 set splitbelow splitright
-" set cursorline
 set scrolloff=10 sidescrolloff=20
 set ignorecase smartcase " make searches case-insensitive, unless they contain upper-case letters
 nnoremap <C-p> :PlugInstall<cr> :qall!
