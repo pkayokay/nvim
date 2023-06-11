@@ -11,14 +11,14 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'vwxyutarooo/nerdtree-devicons-syntax'
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-surround'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
   Plug 'ryanoasis/vim-devicons' " Ensure it's the last plugin and install Nerd Font https://www.nerdfonts.com/font-downloads
 call plug#end()
 
+let g:airline_theme='wombat'
 
 " https://gist.github.com/millermedeiros/1262085/6a29ba7c24f5385f26f72a538bca6e781ac496fd
-set cursorline
-set scrolloff=10
-set sidescrolloff=20
 " Notes
 " :Commands for help 
 " C is control
@@ -28,7 +28,7 @@ set sidescrolloff=20
 " General
 let mapleader = "\<Space>"
 colorscheme darcula
-set termguicolors
+" set termguicolors
 set encoding=UTF-8 " for vim-devicons
 set tabstop=2               " number of columns occupied by a tab character
 set expandtab               " convert tabs to white space
@@ -38,6 +38,10 @@ set nowrap " :set wrap! :set wrap
 let mapleader = "\<Space>"
 set number
 set splitbelow splitright
+set cursorline cursorcolumn
+set scrolloff=10 sidescrolloff=20
+set ignorecase smartcase " make searches case-insensitive, unless they contain upper-case letters
+
 nnoremap <C-p> :PlugInstall<cr> :qall!
 tnoremap <Esc> <C-\><C-n>
 tnoremap jj  <C-\><C-n>
