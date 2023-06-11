@@ -24,7 +24,7 @@ set encoding=UTF-8 " for vim-devicons
 
 " Bind insert mode escape to terminal
 tnoremap <Esc> <C-\><C-n>
-
+tnoremap jj  <C-\><C-n>
 
 " General
 inoremap jj <ESC>
@@ -36,7 +36,10 @@ set softtabstop=2           " see multiple spaces as tabstops so <BS> does the r
 
 set nowrap " :set wrap! :set wrap 
 let mapleader = "\<Space>"
-set number 
+set number
+
+" Terminal
+nnoremap <silent><leader>it :terminal<cr>i
 
 " NERDTree
 " Start NERDTree and put the cursor back in the other window.
