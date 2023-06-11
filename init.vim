@@ -15,7 +15,9 @@ call plug#end()
 
 
 " https://gist.github.com/millermedeiros/1262085/6a29ba7c24f5385f26f72a538bca6e781ac496fd
-
+set cursorline
+set scrolloff=10
+set sidescrolloff=20
 " Notes
 " :Commands for help 
 " C is control
