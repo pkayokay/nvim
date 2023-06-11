@@ -20,10 +20,8 @@ call plug#begin('~/.config/nvim/plugged')
 call plug#end()
 
 " :Commands for help 
-" TODO: fix fzf preview theme
 " General
-let $BAT_THEME="" " brew install bat, used for Fzf previews
-let $FZF_DEFAULT_OPTS = '--layout=reverse --info=inline --margin=1 --padding=1' " show on top, make smaller and center?
+
 let g:airline_theme='wombat'
 let mapleader = "\<Space>"
 colorscheme darcula
@@ -77,6 +75,10 @@ nnoremap <leader>ef :Buffer<cr>
 nnoremap <leader>et :Windows<cr>
 nnoremap <leader>sl :BLines<cr>
 nnoremap <leader>sbl :Lines<cr>
+autocmd VimEnter * command! -bang -nargs=? GFiles call fzf#vim#gitfiles(<q-args>, {'options': '--no-preview'}, <bang>0)
+let $BAT_THEME="" " brew install bat, used for Fzf previews
+let g:fzf_layout = { 'window': { 'width': 0.7, 'height': 0.4, 'relative': v:false, 'yoffset': 0 } } " relative false opens the existing window, otherwise it opens in the split window
+let $FZF_DEFAULT_OPTS = '--layout=reverse --info=inline --margin=1 --padding=1' " show on top, make smaller and center?
 
 " Tabs
 nnoremap <leader><S-t> :tabnew<cr>
