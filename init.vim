@@ -22,7 +22,8 @@ call plug#end()
 " :Commands for help 
 " TODO: fix fzf preview theme
 " General
-let $FZF_DEFAULT_OPTS = '-layout=reverse'
+let g:fzf_preview_window = []
+let $FZF_DEFAULT_OPTS = '--layout=reverse --info=inline --margin=1 --padding=1' " show on top, make smaller and center?
 let g:airline_theme='wombat'
 let mapleader = "\<Space>"
 colorscheme darcula
