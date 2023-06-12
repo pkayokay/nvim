@@ -21,6 +21,8 @@ call plug#end()
 
 " :Commands for help 
 " General
+"
+" TODO: copy out of vim
 
 let g:airline_theme='wombat'
 let mapleader = "\<Space>"
@@ -77,7 +79,7 @@ nnoremap <leader>sl :BLines<cr>
 nnoremap <leader>sbl :Lines<cr>
 
 let $BAT_THEME="" " brew install bat, used for Fzf previews
-let g:fzf_layout = { 'window': { 'width':0.8, 'height': 1, 'relative': v:false} }
+let g:fzf_layout = { 'window': { 'width':0.7, 'height': 0.9, 'relative': v:false} }
 let $FZF_DEFAULT_OPTS = '--layout=reverse --info=inline --margin=0 --padding=0 --border=rounded'
 let g:fzf_preview_window = ['down,70%', 'ctrl-/']
 autocmd VimEnter * command! -bang -nargs=? GFiles call fzf#vim#gitfiles(<q-args>, {'options': '--no-preview'}, <bang>0)
