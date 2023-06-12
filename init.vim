@@ -81,7 +81,7 @@ nnoremap <leader>sbl :Lines<cr>
 
 let $BAT_THEME="" " brew install bat, used for Fzf previews
 let $FZF_DEFAULT_OPTS = '--layout=reverse --info=inline --margin=0 --padding=0 --border=rounded'
-let g:original_fzf_layout_values = { 'window': { 'width': 0.6 'height': 0.9, 'relative': v:false, 'yoffset': 0} }
+let g:original_fzf_layout_values = { 'window': { 'width': 0.6, 'height': 0.9, 'relative': v:false, 'yoffset': 0} }
 let g:fzf_preview_window_values = ['down,70%', 'ctrl-/']
 let g:fzf_layout = g:original_fzf_layout_values
 let g:fzf_preview_window = g:fzf_preview_window_values
