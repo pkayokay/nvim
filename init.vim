@@ -70,9 +70,9 @@ let NERDTreeQuitOnOpen = 1
 let g:NERDTreeWinSize=24
 let g:NERDTreeIgnore = ['^node_modules$','^tmp$']
 
-" Fzf
+" FZF
 let g:fzf_buffers_jump = 1 " Always open buffer in existing tab
-noremap <leader>ff :GFiles<cr>
+noremap <leader>ff :GFilesCustom<cr>
 nnoremap <leader>sf :Rg<cr>
 nnoremap <leader>ef :Buffer<cr>
 nnoremap <leader>et :Windows<cr>
@@ -80,10 +80,26 @@ nnoremap <leader>sl :BLines<cr>
 nnoremap <leader>sbl :Lines<cr>
 
 let $BAT_THEME="" " brew install bat, used for Fzf previews
-let g:fzf_layout = { 'window': { 'width':0.7, 'height': 0.9, 'relative': v:false} }
+let g:original_fzf_layout = { 'window': { 'width':0.7, 'height': 0.9, 'relative': v:false, 'yoffset': 0} }
+let g:fzf_layout = g:original_fzf_layout
 let $FZF_DEFAULT_OPTS = '--layout=reverse --info=inline --margin=0 --padding=0 --border=rounded'
 let g:fzf_preview_window = ['down,70%', 'ctrl-/']
+
+" Hide preview for GFiles
 autocmd VimEnter * command! -bang -nargs=? GFiles call fzf#vim#gitfiles(<q-args>, {'options': '--no-preview'}, <bang>0)
+" Bind custom command so fzf_layout window is smaller for GFiles
+autocmd VimEnter * command! -bang -nargs=? GFilesCustom call CustomFzfLayout(<q-args>, <bang>0)
+function! CustomFzfLayout(args, bang)
+  let g:fzf_layout = { 'window': { 'width': 0.4, 'height': 0.4, 'relative': v:false, 'yoffset': 0} }
+
+  if expand('<cword>') ==# 'GFilesCustom'
+    let g:fzf_layout = g:original_fzf_layout
+  endif
+
+  execute 'silent! GFiles ' . a:args . (a:bang ? '!' : '')
+  let g:fzf_layout = g:original_fzf_layout
+endfunction
+" end of FZF
 
 " Tabs
 nnoremap <leader><S-t> :tabnew<cr>
