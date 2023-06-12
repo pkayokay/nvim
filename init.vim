@@ -66,9 +66,9 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 autocmd VimEnter * NERDTree | wincmd p "Start NERDTree and put the cursor back in the other window
 nnoremap <leader>nt :NERDTreeToggle<CR>
 nnoremap <leader>nf :NERDTreeFind<CR>
-nnoremap <leader>nrs :vertical resize 24<cr>
+nnoremap <leader>nrs :vertical resize 30<cr>
 let NERDTreeQuitOnOpen = 0
-let g:NERDTreeWinSize=24
+let g:NERDTreeWinSize=30
 let g:NERDTreeIgnore = ['^node_modules$','^tmp$']
 
 " FZF
