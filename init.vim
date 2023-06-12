@@ -15,11 +15,12 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'dense-analysis/ale'
+  Plug 'jlanzarotta/bufexplorer'
   Plug 'jlcrochet/vim-ruby'
   Plug 'ryanoasis/vim-devicons' " Ensure it's the last plugin and install Nerd Font https://www.nerdfonts.com/font-downloads
 call plug#end()
 
-" :Commands for help 
+" :Commands for help
 " General
 "
 " TODO: copy out of vim
@@ -33,7 +34,7 @@ set tabstop=2               " number of columns occupied by a tab character
 set expandtab               " convert tabs to white space
 set shiftwidth=2            " width for autoindents
 set softtabstop=2           " see multiple spaces as tabstops so <BS> does the right thing
-set nowrap " :set wrap! :set wrap 
+set nowrap " :set wrap! :set wrap
 let mapleader = "\<Space>"
 set number
 set splitbelow splitright
@@ -42,12 +43,12 @@ set ignorecase smartcase " make searches case-insensitive, unless they contain u
 nnoremap <C-p> :PlugInstall<cr> :qall!
 tnoremap <Esc> <C-\><C-n>
 tnoremap jj  <C-\><C-n>
-inoremap jj <ESC> 
+inoremap jj <ESC>
 nnoremap <silent><leader>it :terminal<cr>i
 nnoremap <leader>d<Bslash> :split<cr>
 nnoremap <leader><Bslash> :vsplit<cr>| ":vnew or :new for empty windows
 
-" ALE 
+" ALE
 let g:ale_lint_on_text_changed = 0
 let g:ale_lint_on_enter = 1
 let g:ale_lint_on_save = 1
@@ -84,6 +85,18 @@ let $FZF_DEFAULT_OPTS = '--layout=reverse --info=inline --margin=0 --padding=0 -
 let g:fzf_preview_window = ['down,70%', 'ctrl-/']
 autocmd VimEnter * command! -bang -nargs=? GFiles call fzf#vim#gitfiles(<q-args>, {'options': '--no-preview'}, <bang>0)
 
+autocmd VimEnter * command! -bang -nargs=? GFilesCustom call CustomFzfLayout(<q-args>, <bang>0)
+
+function! CustomFzfLayout(args, bang)
+  let g:fzf_layout = { 'window': { 'width': 0.5, 'height': 0.4, 'relative': v:false} }
+
+  if expand('<cword>') ==# 'GFilesCustom'
+    let g:fzf_layout = { 'window': { 'width':0.7, 'height': 0.9, 'relative': v:false} }}
+  endif
+
+  execute 'silent! GFiles ' . a:args . (a:bang ? '!' : '')
+  let g:fzf_layout = { 'window': { 'width':0.5, 'height': 0.4, 'relative': v:false} }
+endfunction
 
 " Tabs
 nnoremap <leader><S-t> :tabnew<cr>
