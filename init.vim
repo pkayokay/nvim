@@ -58,14 +58,13 @@ let g:ale_sign_warning = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
 
-
 " NERDTree
 autocmd VimEnter * NERDTree | wincmd p "Start NERDTree and put the cursor back in the other window
 nnoremap <leader>nt :NERDTreeToggle<CR>
 nnoremap <leader>nf :NERDTreeFind<CR>
-nnoremap <leader>nrs :vertical resize 22<cr>
+nnoremap <leader>nrs :vertical resize 24<cr>
 let NERDTreeQuitOnOpen = 1
-let g:NERDTreeWinSize=22
+let g:NERDTreeWinSize=24
 let g:NERDTreeIgnore = ['^node_modules$','^tmp$']
 
 " Fzf
@@ -78,12 +77,10 @@ nnoremap <leader>sl :BLines<cr>
 nnoremap <leader>sbl :Lines<cr>
 
 let $BAT_THEME="" " brew install bat, used for Fzf previews
- let g:fzf_layout = { 'window': { 'width':0.8, 'height': 0.8, 'relative': v:false} }
- let $FZF_DEFAULT_OPTS = '--layout=reverse --info=inline --margin=0 --padding=1 --border=rounded'
-
-
+let g:fzf_layout = { 'window': { 'width':0.8, 'height': 1, 'relative': v:false} }
+let $FZF_DEFAULT_OPTS = '--layout=reverse --info=inline --margin=0 --padding=0 --border=rounded'
 let g:fzf_preview_window = ['down,70%', 'ctrl-/']
-
+autocmd VimEnter * command! -bang -nargs=? GFiles call fzf#vim#gitfiles(<q-args>, {'options': '--no-preview'}, <bang>0)
 
 
 " Tabs
