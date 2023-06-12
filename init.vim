@@ -81,7 +81,7 @@ nnoremap <leader>sbl :Lines<cr>
 
 let $BAT_THEME="" " brew install bat, used for Fzf previews
 let $FZF_DEFAULT_OPTS = '--layout=reverse --info=inline --margin=0 --padding=0 --border=rounded'
-let g:original_fzf_layout_values = { 'window': { 'width':0.7, 'height': 0.9, 'relative': v:false, 'yoffset': 0.1} }
+let g:original_fzf_layout_values = { 'window': { 'width':0.7, 'height': 0.9, 'relative': v:false, 'yoffset': 0} }
 let g:fzf_preview_window_values = ['down,70%', 'ctrl-/']
 let g:fzf_layout = g:original_fzf_layout_values
 let g:fzf_preview_window = g:fzf_preview_window_values
@@ -93,7 +93,7 @@ let g:fzf_preview_window = g:fzf_preview_window_values
 autocmd VimEnter * command! -bang -nargs=? GFilesCustom call CustomFzfLayout(<q-args>, <bang>0)
 function! CustomFzfLayout(args, bang)
   let g:fzf_preview_window = []
-  let g:fzf_layout = { 'window': { 'width': 0.4, 'height': 0.4, 'relative': v:false, 'yoffset': 0.1} }
+  let g:fzf_layout = { 'window': { 'width': 0.4, 'height': 0.4, 'relative': v:false, 'yoffset': 0} }
 
   execute 'silent! GFiles ' . a:args . (a:bang ? '!' : '')
   let g:fzf_layout = g:original_fzf_layout_values
