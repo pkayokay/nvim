@@ -86,15 +86,11 @@ let $FZF_DEFAULT_OPTS = '--layout=reverse --info=inline --margin=0 --padding=0 -
 let g:fzf_preview_window = ['down,70%', 'ctrl-/']
 
 " Hide preview for GFiles
-autocmd VimEnter * command! -bang -nargs=? GFiles call fzf#vim#gitfiles(<q-args>, {'options': '--no-preview'}, <bang>0)
+" autocmd VimEnter * command! -bang -nargs=? GFiles call fzf#vim#gitfiles(<q-args>, {'options': '--no-preview'}, <bang>0)
 " Bind custom command so fzf_layout window is smaller for GFiles
 autocmd VimEnter * command! -bang -nargs=? GFilesCustom call CustomFzfLayout(<q-args>, <bang>0)
 function! CustomFzfLayout(args, bang)
   let g:fzf_layout = { 'window': { 'width': 0.4, 'height': 0.4, 'relative': v:false, 'yoffset': 0} }
-
-  if expand('<cword>') ==# 'GFilesCustom'
-    let g:fzf_layout = g:original_fzf_layout
-  endif
 
   execute 'silent! GFiles ' . a:args . (a:bang ? '!' : '')
   let g:fzf_layout = g:original_fzf_layout
