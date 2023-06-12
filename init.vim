@@ -85,19 +85,6 @@ let $FZF_DEFAULT_OPTS = '--layout=reverse --info=inline --margin=0 --padding=0 -
 let g:fzf_preview_window = ['down,70%', 'ctrl-/']
 autocmd VimEnter * command! -bang -nargs=? GFiles call fzf#vim#gitfiles(<q-args>, {'options': '--no-preview'}, <bang>0)
 
-autocmd VimEnter * command! -bang -nargs=? GFilesCustom call CustomFzfLayout(<q-args>, <bang>0)
-
-function! CustomFzfLayout(args, bang)
-  let g:fzf_layout = { 'window': { 'width': 0.5, 'height': 0.4, 'relative': v:false} }
-
-  if expand('<cword>') ==# 'GFilesCustom'
-    let g:fzf_layout = { 'window': { 'width':0.7, 'height': 0.9, 'relative': v:false} }}
-  endif
-
-  execute 'silent! GFiles ' . a:args . (a:bang ? '!' : '')
-  let g:fzf_layout = { 'window': { 'width':0.5, 'height': 0.4, 'relative': v:false} }
-endfunction
-
 " Tabs
 nnoremap <leader><S-t> :tabnew<cr>
 nnoremap <leader>1 :tabn 1<cr>
