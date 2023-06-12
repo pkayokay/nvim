@@ -1,6 +1,7 @@
 call plug#begin('~/.config/nvim/plugged')
   Plug 'ctrlpvim/ctrlp.vim' 
   Plug 'vim-test/vim-test'
+  Plug 'voldikss/vim-floaterm'
   Plug 'doums/darcula'
   Plug 'preservim/nerdtree'
   Plug 'junegunn/fzf'
@@ -109,6 +110,6 @@ nnoremap <leader>3 :tabn 3<cr>
 nnoremap <leader>4 :tabn 4<cr>
 
 " vim-test
-let test#strategy = "neovim"
 nnoremap <silent> <leader>tn :TestNearest<CR>
 nnoremap <silent> <leader>ta :TestFile<CR>
+let test#strategy = "floaterm"
