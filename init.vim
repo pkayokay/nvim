@@ -9,7 +9,6 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'tomtom/tcomment_vim'
   Plug 'jlanzarotta/bufexplorer'
   Plug 'tpope/vim-endwise'
-  Plug 'vwxyutarooo/nerdtree-devicons-syntax'
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-surround'
   Plug 'vim-airline/vim-airline'
@@ -17,6 +16,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'dense-analysis/ale'
   Plug 'jlanzarotta/bufexplorer'
   Plug 'jlcrochet/vim-ruby'
+  Plug 'vwxyutarooo/nerdtree-devicons-syntax'
   Plug 'ryanoasis/vim-devicons' " Ensure it's the last plugin and install Nerd Font https://www.nerdfonts.com/font-downloads
 call plug#end()
 
@@ -66,7 +66,7 @@ autocmd VimEnter * NERDTree | wincmd p "Start NERDTree and put the cursor back i
 nnoremap <leader>nt :NERDTreeToggle<CR>
 nnoremap <leader>nf :NERDTreeFind<CR>
 nnoremap <leader>nrs :vertical resize 24<cr>
-let NERDTreeQuitOnOpen = 1
+let NERDTreeQuitOnOpen = 0
 let g:NERDTreeWinSize=24
 let g:NERDTreeIgnore = ['^node_modules$','^tmp$']
 
