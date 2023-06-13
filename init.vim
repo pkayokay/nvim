@@ -1,4 +1,5 @@
 call plug#begin('~/.config/nvim/plugged')
+  Plug 'ctrlpvim/ctrlp.vim' 
   Plug 'vim-test/vim-test'
   Plug 'doums/darcula'
   Plug 'preservim/nerdtree'
