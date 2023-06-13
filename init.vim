@@ -67,7 +67,7 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
 
 " NERDTree
-" autocmd VimEnter * NERDTree | wincmd p "Start NERDTree and put the cursor back in the other window
+autocmd VimEnter * NERDTree | wincmd p "Start NERDTree and put the cursor back in the other window
 nnoremap <leader>nt :NERDTreeToggle<CR>
 nnoremap <leader>nf :NERDTreeFind<CR>
 nnoremap <leader>nrs :vertical resize 30<cr>
