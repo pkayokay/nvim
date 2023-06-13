@@ -1,5 +1,6 @@
 call plug#begin('~/.config/nvim/plugged')
   Plug 'dyng/ctrlsf.vim'
+  Plug 'tomasiser/vim-code-dark'
   " Plug 'ctrlpvim/ctrlp.vim' 
   Plug 'vim-test/vim-test'
   Plug 'voldikss/vim-floaterm'
@@ -30,7 +31,8 @@ call plug#end()
 set clipboard=unnamed
 let g:airline_theme='wombat'
 let mapleader = "\<Space>"
-colorscheme darcula
+" colorscheme darcula
+colorscheme codedark
 set termguicolors
 set encoding=UTF-8 " for vim-devicons
 set tabstop=2               " number of columns occupied by a tab character
@@ -91,11 +93,11 @@ nnoremap <leader>ef :BufferCustom<cr>
 nnoremap <leader>et :WindowsCustom<cr>
 nnoremap <leader>sl :BLinesCustom<cr>
 
-let $BAT_THEME="" " brew install bat, used for Fzf previews
+let $BAT_THEME="Visual Studio Dark+" " brew install bat, used for Fzf previews
 let $FZF_DEFAULT_OPTS = '--layout=reverse --no-info --margin=0 --padding=0 --border=rounded'
-let g:original_fzf_layout_values = { 'window': { 'width': 0.6, 'height': 0.9, 'relative': v:false, 'yoffset': 0} }
+let g:original_fzf_layout_values = { 'window': { 'width': 0.6, 'height': 0.8, 'relative': v:false,} }
 " let g:original_fzf_layout_values = { 'window': 'keepalt enew' }
-let g:fzf_preview_window_values = ['down,70%', 'ctrl-/']
+let g:fzf_preview_window_values = ['down,50%', 'ctrl-/']
 let g:fzf_layout = g:original_fzf_layout_values
 let g:fzf_preview_window = g:fzf_preview_window_values
 
