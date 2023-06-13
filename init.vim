@@ -24,8 +24,7 @@ call plug#end()
 " :Commands for help
 " General
 "
-" TODO: copy out of vim, delete word backwards, find in files and select
-" multiple?
+" TODO: copy out of vim, delete word backwards, find in files and multi select (ctrlp?), buf explorer?
 let g:airline_theme='wombat'
 let mapleader = "\<Space>"
 colorscheme darcula
