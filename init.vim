@@ -1,6 +1,6 @@
 call plug#begin('~/.config/nvim/plugged')
   Plug 'dyng/ctrlsf.vim'
-  Plug 'ctrlpvim/ctrlp.vim' 
+  " Plug 'ctrlpvim/ctrlp.vim' 
   Plug 'vim-test/vim-test'
   Plug 'voldikss/vim-floaterm'
   Plug 'doums/darcula'
@@ -28,7 +28,6 @@ call plug#end()
 "
 " TODO: copy out of vim, delete word backwards, find in files and multi select (ctrlp?), buf explorer?
 set clipboard=unnamed
-
 let g:airline_theme='wombat'
 let mapleader = "\<Space>"
 colorscheme darcula
@@ -74,10 +73,16 @@ let NERDTreeQuitOnOpen = 0
 let g:NERDTreeWinSize=30
 let g:NERDTreeIgnore = ['^node_modules$','^tmp$']
 
+
+" CtrlSF
+let g:ctrlsf_auto_focus = { "at": "start" }
+let g:ctrlsf_default_view_mode = 'compact' 
+nnoremap <leader>sf :CtrlSF 
+
 " FZF
 let g:fzf_buffers_jump = 1 " Always open buffer in existing tab
 noremap <leader>ff :GFilesCustom<cr>
-nnoremap <leader>sf :Rg<cr>
+" nnoremap <leader>sf :Rg<cr>
 nnoremap <leader>ef :Buffer<cr>
 nnoremap <leader>et :Windows<cr>
 nnoremap <leader>sl :BLines<cr>
