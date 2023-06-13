@@ -1,4 +1,5 @@
 call plug#begin('~/.config/nvim/plugged')
+  Plug 'dyng/ctrlsf.vim'
   Plug 'ctrlpvim/ctrlp.vim' 
   Plug 'vim-test/vim-test'
   Plug 'voldikss/vim-floaterm'
@@ -26,6 +27,12 @@ call plug#end()
 " General
 "
 " TODO: copy out of vim, delete word backwards, find in files and multi select (ctrlp?), buf explorer?
+noremap <Leader>y "*y
+noremap <Leader>p "*p
+noremap <Leader>Y "+y
+noremap <Leader>P "+p
+set clipboard=unnamedplus
+
 let g:airline_theme='wombat'
 let mapleader = "\<Space>"
 colorscheme darcula
