@@ -78,11 +78,14 @@ let g:NERDTreeIgnore = ['^node_modules$','^tmp$']
 let g:ctrlsf_auto_focus = { "at": "start" }
 let g:ctrlsf_default_view_mode = 'compact' 
 nnoremap <leader>sf :CtrlSF 
+nnoremap <leader>st :CtrlSFToggle<cr>
+let g:ctrlsf_compact_winsize = '30%'
+let g:ctrlsf_regex_pattern = 1
 
 " FZF
 let g:fzf_buffers_jump = 1 " Always open buffer in existing tab
 noremap <leader>ff :GFilesCustom<cr>
-" nnoremap <leader>sf :Rg<cr>
+nnoremap <leader>qf :Rg<cr>
 nnoremap <leader>ef :Buffer<cr>
 nnoremap <leader>et :Windows<cr>
 nnoremap <leader>sl :BLines<cr>
