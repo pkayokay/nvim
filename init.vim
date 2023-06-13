@@ -23,8 +23,8 @@ call plug#end()
 " :Commands for help
 " General
 "
-" TODO: copy out of vim
-
+" TODO: copy out of vim, delete word backwards, find in files and select
+" multiple?
 let g:airline_theme='wombat'
 let mapleader = "\<Space>"
 colorscheme darcula
