@@ -27,7 +27,7 @@ call plug#end()
 " :Commands for help
 " General
 "
-" TODO: copy out of vim, delete word backwards, find in files and multi select (ctrlp?), buf explorer?
+" TODO: delete word backwards, find in files and multi select, buf explorer?, quick list for telescope?
 set clipboard=unnamed
 let g:airline_theme='wombat'
 let mapleader = "\<Space>"
@@ -118,7 +118,7 @@ EOF
 " nnoremap <leader>ff :Telescope find_files<cr>
 " ex. override defaults
 nnoremap <leader>ff :lua require('telescope.builtin').find_files({previewer=false, layout_config={mirror=false,height=0.3,width=0.5}})<cr>
-nnoremap <leader>ef :Telescope buffers<cr>
+nnoremap <leader>ef :lua require('telescope.builtin').buffers({previewer=false, layout_config={mirror=false,height=0.3,width=0.5}})<cr>
 nnoremap <leader>sf :Telescope live_grep<cr>
 
 
