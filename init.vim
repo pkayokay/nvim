@@ -21,7 +21,6 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'vim-airline/vim-airline-themes'
   Plug 'dense-analysis/ale'
   Plug 'jlanzarotta/bufexplorer'
-  Plug  'AndrewRadev/writable_search.vim'
   Plug 'jlcrochet/vim-ruby'
   Plug 'vwxyutarooo/nerdtree-devicons-syntax'
   Plug 'ryanoasis/vim-devicons' " Ensure it's the last plugin and install Nerd Font https://www.nerdfonts.com/font-downloads
@@ -29,7 +28,7 @@ call plug#end()
 
 
 " :Commands for help
-" TODO: delete word backwards, find in files and multi select, buf explorer?, quick list for telescope?, grep, vim grep?
+" TODO: delete word backwards, find in file with reg exp, find in files and multi select, buf explorer?, quick list for telescope?, grep, vim grep?
 " https://github.com/wincent/ferret
 " https://github.com/lfv89/vim-interestingwords
 " https://github.com/AndrewRadev/writable_search.vim
