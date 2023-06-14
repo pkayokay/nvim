@@ -25,14 +25,12 @@ call plug#begin('~/.config/nvim/plugged')
 call plug#end()
 
 " :Commands for help
-" General
-"
 " TODO: delete word backwards, find in files and multi select, buf explorer?, quick list for telescope?
+
 set clipboard=unnamed
 let g:airline_theme='wombat'
 let mapleader = "\<Space>"
 colorscheme darcula
-" colorscheme codedark
 set termguicolors
 set encoding=UTF-8 " for vim-devicons
 set tabstop=2               " number of columns occupied by a tab character
@@ -83,7 +81,7 @@ let g:floaterm_wintype = 'split'
 " CtrlSF
 let g:ctrlsf_regex_pattern = 1
 let g:ctrlsf_auto_focus = { 'at': 'start' }
-nnoremap <leader>sr :CtrlSF 
+nnoremap <leader>sr :CtrlSF
 nnoremap <leader>st :CtrlSFToggle<cr>'
 let g:ctrlsf_compact_winsize = '30%'
 let g:ctrlsf_auto_close = {'normal' : 0, 'compact': 0}
@@ -99,30 +97,6 @@ nnoremap <leader>sf :Rg<cr>
 nnoremap <leader>et :WindowsCustom<cr>
 nnoremap <leader>sl :BLinesCustom<cr>
 
-lua << EOF
- require('telescope').setup {
-    defaults = {
-      sorting_strategy = 'ascending',
-      layout_strategy = 'vertical',
-      layout_config = {
-        prompt_position = 'top',
-        mirror = true,
-        height = 0.8,
-        width = 0.6,
-      }
-    }
-  }
-EOF
-
-" Telescope
-" nnoremap <leader>ff :Telescope find_files<cr>
-" ex. override defaults
-nnoremap <leader>ff :lua require('telescope.builtin').find_files({previewer=false, layout_config={mirror=false,height=0.3,width=0.5}})<cr>
-nnoremap <leader>ef :lua require('telescope.builtin').buffers({previewer=false, layout_config={mirror=false,height=0.3,width=0.5}})<cr>
-nnoremap <leader>sf :Telescope live_grep<cr>
-
-
-" let $BAT_THEME="Visual Studio Dark+" " brew install bat, used for Fzf previews
 let $FZF_DEFAULT_OPTS = '--layout=reverse --no-info --margin=0 --padding=0 --border=rounded --pointer=👉'
 let g:original_fzf_layout_values = { 'window': { 'width': 0.6, 'height': 0.8, 'relative': v:false,} }
 let g:fzf_preview_window_values = ['down,60%', 'ctrl-/']
@@ -144,7 +118,29 @@ function! CustomFzfLayout(args, bang, command)
   let g:fzf_layout = g:original_fzf_layout_values
   let g:fzf_preview_window = g:fzf_preview_window_values
 endfunction
-" end of FZF
+
+" Telescope
+lua << EOF
+ require('telescope').setup {
+    defaults = {
+      sorting_strategy = 'ascending',
+      layout_strategy = 'vertical',
+      layout_config = {
+        prompt_position = 'top',
+        mirror = true,
+        height = 0.8,
+        width = 0.6,
+      }
+    }
+  }
+EOF
+
+" nnoremap <leader>ff :Telescope find_files<cr>
+" ex. override defaults
+nnoremap <leader>ff :lua require('telescope.builtin').find_files({previewer=false, layout_config={mirror=false,height=0.3,width=0.5}})<cr>
+nnoremap <leader>ef :lua require('telescope.builtin').buffers({previewer=false, layout_config={mirror=false,height=0.3,width=0.5}})<cr>
+nnoremap <leader>sf :Telescope live_grep<cr>
+
 
 " Tabs
 nnoremap <leader><S-t> :tabnew<cr>
