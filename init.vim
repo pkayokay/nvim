@@ -7,6 +7,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'voldikss/vim-floaterm'
   Plug 'doums/darcula'
   Plug 'preservim/nerdtree'
+  Plug 'andrewRadev/tagalong.vim' " Change an HTML(ish) opening tag and take the closing one along as well
   Plug 'junegunn/fzf'
   Plug 'junegunn/fzf.vim'
   Plug 'chaoren/vim-wordmotion'
@@ -25,13 +26,13 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'ryanoasis/vim-devicons' " Ensure it's the last plugin and install Nerd Font https://www.nerdfonts.com/font-downloads
 call plug#end()
 
+
 " :Commands for help
-" TODO: delete word backwards, find in files and multi select, buf explorer?, quick list for telescope?
+" TODO: delete word backwards, find in files and multi select, buf explorer?, quick list for telescope?, grep, vim grep?
 " https://github.com/lfv89/vim-interestingwords
 " https://github.com/AndrewRadev/writable_search.vim
 " https://github.com/AndrewRadev/undoquit.vim
 " https://github.com/t9md/vim-textmanip
-" https://github.com/AndrewRadev/tagalong.vim
 " https://github.com/tpope/vim-repeat
 " https://github.com/akinsho/bufferline.nvim
 " https://github.com/rhysd/clever-f.vim
