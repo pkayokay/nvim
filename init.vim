@@ -1,7 +1,5 @@
 call plug#begin('~/.config/nvim/plugged')
   Plug 'dyng/ctrlsf.vim'
-  Plug 'tomasiser/vim-code-dark'
-  " Plug 'ctrlpvim/ctrlp.vim' 
   Plug 'vim-test/vim-test'
   Plug 'voldikss/vim-floaterm'
   Plug 'doums/darcula'
@@ -31,8 +29,8 @@ call plug#end()
 set clipboard=unnamed
 let g:airline_theme='wombat'
 let mapleader = "\<Space>"
-" colorscheme darcula
-colorscheme codedark
+colorscheme darcula
+" colorscheme codedark
 set termguicolors
 set encoding=UTF-8 " for vim-devicons
 set tabstop=2               " number of columns occupied by a tab character
@@ -49,7 +47,6 @@ nnoremap <C-p> :PlugInstall<cr> :qall!
 tnoremap <Esc> <C-\><C-n>
 tnoremap jj  <C-\><C-n>
 inoremap jj <ESC>
-nnoremap <silent><leader>it :terminal<cr>i
 nnoremap <leader>d<Bslash> :split<cr>
 nnoremap <leader><Bslash> :vsplit<cr>| ":vnew or :new for empty windows
 
@@ -76,27 +73,33 @@ let g:NERDTreeWinSize=30
 let g:NERDTreeIgnore = ['^node_modules$','^tmp$']
 
 
+" Float term
+nnoremap <silent><leader>it :FloatermToggle<cr>
+let g:floaterm_height = 0.3
+let g:floaterm_wintype = 'split'
+
 " CtrlSF
 let g:ctrlsf_regex_pattern = 1
 let g:ctrlsf_auto_focus = { "at": "start" }
-let g:ctrlsf_default_view_mode = 'compact' 
-nnoremap <leader>sf :CtrlSF 
-nnoremap <leader>st :CtrlSFToggle<cr>
+nnoremap <leader>sr :CtrlSF 
+nnoremap <leader>st :CtrlSFToggle<cr>'
 let g:ctrlsf_compact_winsize = '30%'
-let g:ctrlsf_regex_pattern = 1
+let g:ctrlsf_auto_close = {"normal" : 0, "compact": 0}
+
+let g:ctrlsf_default_view_mode = 'normal'
+let g:ctrlsf_position = 'bottom'
 
 " FZF
 let g:fzf_buffers_jump = 1 " Always open buffer in existing tab
 noremap <leader>ff :GFilesCustom<cr>
-nnoremap <leader>qf :Rg<cr>
+nnoremap <leader>sf :Rg<cr>
 nnoremap <leader>ef :BufferCustom<cr>
 nnoremap <leader>et :WindowsCustom<cr>
 nnoremap <leader>sl :BLinesCustom<cr>
 
-let $BAT_THEME="Visual Studio Dark+" " brew install bat, used for Fzf previews
+" let $BAT_THEME="Visual Studio Dark+" " brew install bat, used for Fzf previews
 let $FZF_DEFAULT_OPTS = '--layout=reverse --no-info --margin=0 --padding=0 --border=rounded'
 let g:original_fzf_layout_values = { 'window': { 'width': 0.6, 'height': 0.8, 'relative': v:false,} }
-" let g:original_fzf_layout_values = { 'window': 'keepalt enew' }
 let g:fzf_preview_window_values = ['down,50%', 'ctrl-/']
 let g:fzf_layout = g:original_fzf_layout_values
 let g:fzf_preview_window = g:fzf_preview_window_values
