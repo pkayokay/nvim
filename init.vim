@@ -98,9 +98,9 @@ nnoremap <leader>et :WindowsCustom<cr>
 nnoremap <leader>sl :BLinesCustom<cr>
 
 " let $BAT_THEME="Visual Studio Dark+" " brew install bat, used for Fzf previews
-let $FZF_DEFAULT_OPTS = '--layout=reverse --no-info --margin=0 --padding=0 --border=rounded'
+let $FZF_DEFAULT_OPTS = '--layout=reverse --no-info --margin=0 --padding=0 --border=rounded --pointer=👉'
 let g:original_fzf_layout_values = { 'window': { 'width': 0.6, 'height': 0.8, 'relative': v:false,} }
-let g:fzf_preview_window_values = ['down,50%', 'ctrl-/']
+let g:fzf_preview_window_values = ['down,60%', 'ctrl-/']
 let g:fzf_layout = g:original_fzf_layout_values
 let g:fzf_preview_window = g:fzf_preview_window_values
 
