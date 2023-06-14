@@ -27,6 +27,15 @@ call plug#end()
 
 " :Commands for help
 " TODO: delete word backwards, find in files and multi select, buf explorer?, quick list for telescope?
+" https://github.com/lfv89/vim-interestingwords
+" https://github.com/AndrewRadev/writable_search.vim
+" https://github.com/AndrewRadev/undoquit.vim
+" https://github.com/t9md/vim-textmanip
+" https://github.com/AndrewRadev/tagalong.vim
+" https://github.com/tpope/vim-repeat
+" https://github.com/akinsho/bufferline.nvim
+" https://github.com/rhysd/clever-f.vim
+" https://github.com/nvim-telescope/telescope-fzf-native.nvim
 
 set clipboard=unnamed
 let g:airline_theme='wombat'
