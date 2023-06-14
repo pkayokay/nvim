@@ -21,6 +21,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'vim-airline/vim-airline-themes'
   Plug 'dense-analysis/ale'
   Plug 'jlanzarotta/bufexplorer'
+  Plug  'AndrewRadev/writable_search.vim'
   Plug 'jlcrochet/vim-ruby'
   Plug 'vwxyutarooo/nerdtree-devicons-syntax'
   Plug 'ryanoasis/vim-devicons' " Ensure it's the last plugin and install Nerd Font https://www.nerdfonts.com/font-downloads
@@ -35,7 +36,6 @@ call plug#end()
 " https://github.com/AndrewRadev/undoquit.vim
 " https://github.com/t9md/vim-textmanip
 " https://github.com/tpope/vim-repeat
-" https://github.com/akinsho/bufferline.nvim
 " https://github.com/rhysd/clever-f.vim
 " https://github.com/nvim-telescope/telescope-fzf-native.nvim
 
@@ -93,18 +93,20 @@ let g:floaterm_wintype = 'split'
 " CtrlSF
 let g:ctrlsf_regex_pattern = 1
 let g:ctrlsf_auto_focus = { 'at': 'start' }
-nnoremap <leader>sr :CtrlSF
+nnoremap <leader>se :CtrlSF
 nnoremap <leader>st :CtrlSFToggle<cr>'
 let g:ctrlsf_compact_winsize = '30%'
 let g:ctrlsf_auto_close = {'normal' : 0, 'compact': 0}
 
 let g:ctrlsf_default_view_mode = 'normal'
 let g:ctrlsf_position = 'bottom'
+nnoremap <leader>sr :%s/
+
 
 " FZF
 let g:fzf_buffers_jump = 1 " Always open buffer in existing tab
 " noremap <leader>ff :GFilesCustom<cr>
-nnoremap <leader>sf :Rg<cr>
+" nnoremap <leader>sf :Rg<cr>
 " nnoremap <leader>ef :BufferCustom<cr>
 nnoremap <leader>et :WindowsCustom<cr>
 nnoremap <leader>sl :BLinesCustom<cr>
