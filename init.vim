@@ -1,4 +1,5 @@
 call plug#begin('~/.config/nvim/plugged')
+  Plug 'Raimondi/delimitMate' " provides insert mode auto-completion for quotes, parens, brackets, etc.
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
   Plug 'dyng/ctrlsf.vim'
