@@ -13,7 +13,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'pangloss/vim-javascript'
   Plug 'tomtom/tcomment_vim'
   Plug 'jlanzarotta/bufexplorer'
-  Plug 'tpope/vim-endwise'
+  Plug 'tpope/vim-endwise' "helps to end certain structures automatically. In Ruby, this means adding end after if, do, def and several other keywords.
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-surround'
   Plug 'vim-airline/vim-airline'
