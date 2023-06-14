@@ -29,6 +29,7 @@ call plug#end()
 
 " :Commands for help
 " TODO: delete word backwards, find in files and multi select, buf explorer?, quick list for telescope?, grep, vim grep?
+" https://github.com/wincent/ferret
 " https://github.com/lfv89/vim-interestingwords
 " https://github.com/AndrewRadev/writable_search.vim
 " https://github.com/AndrewRadev/undoquit.vim
