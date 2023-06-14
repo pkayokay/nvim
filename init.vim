@@ -82,11 +82,11 @@ let g:floaterm_wintype = 'split'
 
 " CtrlSF
 let g:ctrlsf_regex_pattern = 1
-let g:ctrlsf_auto_focus = { "at": "start" }
+let g:ctrlsf_auto_focus = { 'at': 'start' }
 nnoremap <leader>sr :CtrlSF 
 nnoremap <leader>st :CtrlSFToggle<cr>'
 let g:ctrlsf_compact_winsize = '30%'
-let g:ctrlsf_auto_close = {"normal" : 0, "compact": 0}
+let g:ctrlsf_auto_close = {'normal' : 0, 'compact': 0}
 
 let g:ctrlsf_default_view_mode = 'normal'
 let g:ctrlsf_position = 'bottom'
@@ -95,11 +95,32 @@ let g:ctrlsf_position = 'bottom'
 let g:fzf_buffers_jump = 1 " Always open buffer in existing tab
 " noremap <leader>ff :GFilesCustom<cr>
 nnoremap <leader>sf :Rg<cr>
-nnoremap <leader>ef :BufferCustom<cr>
+" nnoremap <leader>ef :BufferCustom<cr>
 nnoremap <leader>et :WindowsCustom<cr>
 nnoremap <leader>sl :BLinesCustom<cr>
+
+lua << EOF
+ require('telescope').setup {
+    defaults = {
+      sorting_strategy = 'ascending',
+      layout_strategy = 'vertical',
+      layout_config = {
+        prompt_position = 'top',
+        mirror = true,
+        height = 0.8,
+        width = 0.6,
+      }
+    }
+  }
+EOF
+
 " Telescope
-nnoremap <leader>ff :Telescope find_files theme=dropdown<cr>
+" nnoremap <leader>ff :Telescope find_files<cr>
+" ex. override defaults
+nnoremap <leader>ff :lua require('telescope.builtin').find_files({previewer=false, layout_config={mirror=false,height=0.3,width=0.5}})<cr>
+nnoremap <leader>ef :Telescope buffers<cr>
+nnoremap <leader>sf :Telescope live_grep<cr>
+
 
 " let $BAT_THEME="Visual Studio Dark+" " brew install bat, used for Fzf previews
 let $FZF_DEFAULT_OPTS = '--layout=reverse --no-info --margin=0 --padding=0 --border=rounded --pointer=👉'
