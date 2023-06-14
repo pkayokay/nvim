@@ -1,4 +1,6 @@
 call plug#begin('~/.config/nvim/plugged')
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
   Plug 'dyng/ctrlsf.vim'
   Plug 'vim-test/vim-test'
   Plug 'voldikss/vim-floaterm'
@@ -91,11 +93,13 @@ let g:ctrlsf_position = 'bottom'
 
 " FZF
 let g:fzf_buffers_jump = 1 " Always open buffer in existing tab
-noremap <leader>ff :GFilesCustom<cr>
+" noremap <leader>ff :GFilesCustom<cr>
 nnoremap <leader>sf :Rg<cr>
 nnoremap <leader>ef :BufferCustom<cr>
 nnoremap <leader>et :WindowsCustom<cr>
 nnoremap <leader>sl :BLinesCustom<cr>
+" Telescope
+nnoremap <leader>ff :Telescope find_files theme=dropdown<cr>
 
 " let $BAT_THEME="Visual Studio Dark+" " brew install bat, used for Fzf previews
 let $FZF_DEFAULT_OPTS = '--layout=reverse --no-info --margin=0 --padding=0 --border=rounded --pointer=👉'
