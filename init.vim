@@ -101,13 +101,11 @@ let g:ctrlsf_auto_close = {'normal' : 0, 'compact': 0}
 let g:ctrlsf_default_view_mode = 'normal'
 let g:ctrlsf_position = 'bottom'
 " nnoremap <leader>sr :%s/
-
 nnoremap <leader>sr :call PromptSubstitution()<CR>
-
 function! PromptSubstitution()
     let find = input('Find: ')
     let replace = input('Replace with: ')
-    execute '%s/' . find . '/' . replace . '/g'
+    execute '%s/' . find . '/' . replace . '/gc'
     redraw!
 endfunction
 
