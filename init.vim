@@ -1,27 +1,41 @@
 call plug#begin('~/.config/nvim/plugged')
-  Plug 'Raimondi/delimitMate' " provides insert mode auto-completion for quotes, parens, brackets, etc.
-  Plug 'nvim-lua/plenary.nvim'
+  " New Plugins here...
+
+
+
+  # Search
+  Plug 'nvim-lua/plenary.nvim' " co-dependent to telescope
   Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
-  Plug 'dyng/ctrlsf.vim'
-  Plug 'vim-test/vim-test'
-  Plug 'voldikss/vim-floaterm'
-  Plug 'doums/darcula'
-  Plug 'preservim/nerdtree'
-  Plug 'andrewRadev/tagalong.vim' " Change an HTML(ish) opening tag and take the closing one along as well
+  Plug 'dyng/ctrlsf.vim' " search/replace like sublime text
   Plug 'junegunn/fzf'
   Plug 'junegunn/fzf.vim'
-  Plug 'chaoren/vim-wordmotion'
-  Plug 'pangloss/vim-javascript'
-  Plug 'tomtom/tcomment_vim'
   Plug 'jlanzarotta/bufexplorer'
+
+
+  " Efficiency
+  Plug 'andrewRadev/tagalong.vim' " Change an HTML(ish) opening tag and take the closing one along as well
+  Plug 'tpope/vim-surround' " delete/change/add parentheses/quotes/XML-tags/much more with ease
+  Plug 'tomtom/tcomment_vim' " An extensible & universal comment vim-plugin 
   Plug 'tpope/vim-endwise' "helps to end certain structures automatically. In Ruby, this means adding end after if, do, def and several other keywords.
-  Plug 'tpope/vim-fugitive'
-  Plug 'tpope/vim-surround'
+  Plug 'chaoren/vim-wordmotion' " More useful word motions for Vim
+  Plug 'Raimondi/delimitMate' " provides insert mode auto-completion for quotes, parens, brackets, etc.
+
+
+  " Misc 
+  Plug 'tpope/vim-fugitive' " Git wrapper
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
+  Plug 'voldikss/vim-floaterm'
+  Plug 'preservim/nerdtree'
+
+  " Languages
+  Plug 'vim-test/vim-test'
   Plug 'dense-analysis/ale'
-  Plug 'jlanzarotta/bufexplorer'
   Plug 'jlcrochet/vim-ruby'
+  Plug 'pangloss/vim-javascript'
+
+  " Make it pretty
+  Plug 'doums/darcula'
   Plug 'vwxyutarooo/nerdtree-devicons-syntax'
   Plug 'ryanoasis/vim-devicons' " Ensure it's the last plugin and install Nerd Font https://www.nerdfonts.com/font-downloads
 call plug#end()
