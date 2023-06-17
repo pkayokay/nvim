@@ -3,7 +3,7 @@ call plug#begin('~/.config/nvim/plugged')
 
 
 
-  # Search
+  " Search
   Plug 'nvim-lua/plenary.nvim' " co-dependent to telescope
   Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
   Plug 'dyng/ctrlsf.vim' " search/replace like sublime text
