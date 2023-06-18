@@ -75,7 +75,7 @@ set number
 set splitbelow splitright
 set scrolloff=10 sidescrolloff=20
 set ignorecase smartcase " make searches case-insensitive, unless they contain upper-case letters
-nnoremap <C-p> :PlugInstall<cr> :qall!
+nnoremap <C-i> :PlugInstall<cr> :qall!
 tnoremap <Esc> <C-\><C-n>
 tnoremap jj  <C-\><C-n>
 inoremap jj <ESC>
