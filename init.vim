@@ -2,15 +2,11 @@ call plug#begin('~/.config/nvim/plugged')
   " New Plugins here...
   Plug 'ctrlpvim/ctrlp.vim' 
 
-
   " Search
   Plug 'nvim-lua/plenary.nvim' " co-dependent to telescope
   Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
   Plug 'dyng/ctrlsf.vim' " search/replace like sublime text
-  Plug 'junegunn/fzf'
-  Plug 'junegunn/fzf.vim'
   Plug 'jlanzarotta/bufexplorer'
-
 
   " Efficiency
   Plug 'andrewRadev/tagalong.vim' " Change an HTML(ish) opening tag and take the closing one along as well
@@ -19,7 +15,6 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'tpope/vim-endwise' "helps to end certain structures automatically. In Ruby, this means adding end after if, do, def and several other keywords.
   Plug 'chaoren/vim-wordmotion' " More useful word motions for Vim
   Plug 'Raimondi/delimitMate' " provides insert mode auto-completion for quotes, parens, brackets, etc.
-
 
   " Misc 
   Plug 'tpope/vim-fugitive' " Git wrapper
@@ -40,16 +35,17 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'ryanoasis/vim-devicons' " Ensure it's the last plugin and install Nerd Font https://www.nerdfonts.com/font-downloads
 call plug#end()
 
-" Use rg (ripgrep) for ctrlp indexing
+
+" CtrlP (Use rg (ripgrep) for ctrlp indexing
 if executable('rg')
   let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
 endif
 
+" Navigation through windows
 map <C-h> <C-W>h
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-l> <C-W>l
-
 
 " :Commands for help
 " TODO: delete word backwards, find in file with reg exp, find in files and multi select, buf explorer?, quick list for telescope?, grep, vim grep?
@@ -62,7 +58,6 @@ map <C-l> <C-W>l
 " https://github.com/t9md/vim-textmanip
 " https://github.com/tpope/vim-repeat
 " https://github.com/rhysd/clever-f.vim
-" https://github.com/nvim-telescope/telescope-fzf-native.nvim
 
 set clipboard=unnamed
 let g:airline_theme='wombat'
@@ -86,6 +81,12 @@ tnoremap jj  <C-\><C-n>
 inoremap jj <ESC>
 nnoremap <leader>d<Bslash> :split<cr>
 nnoremap <leader><Bslash> :vsplit<cr>| ":vnew or :new for empty windows
+nnoremap <leader><S-t> :tabnew<cr>
+nnoremap <leader>1 :tabn 1<cr>
+nnoremap <leader>2 :tabn 2<cr>
+nnoremap <leader>3 :tabn 3<cr>
+nnoremap <leader>4 :tabn 4<cr>
+
 
 " ALE
 let g:ale_lint_on_text_changed = 0
@@ -109,6 +110,10 @@ let NERDTreeQuitOnOpen = 0
 let g:NERDTreeWinSize=30
 let g:NERDTreeIgnore = ['^node_modules$','^tmp$']
 
+" vim-test
+nnoremap <silent> <leader>tn :TestNearest<CR>
+nnoremap <silent> <leader>ta :TestFile<CR>
+let test#strategy = "floaterm"
 
 " Float term
 nnoremap <silent><leader>it :FloatermToggle<cr>
@@ -118,50 +123,19 @@ let g:floaterm_wintype = 'split'
 " CtrlSF
 let g:ctrlsf_regex_pattern = 1
 let g:ctrlsf_auto_focus = { 'at': 'start' }
-nnoremap <leader>se :CtrlSF
+nnoremap <leader>se :CtrlSF 
 nnoremap <leader>st :CtrlSFToggle<cr>'
 let g:ctrlsf_compact_winsize = '30%'
 let g:ctrlsf_auto_close = {'normal' : 0, 'compact': 0}
 
 let g:ctrlsf_default_view_mode = 'normal'
 let g:ctrlsf_position = 'bottom'
-" nnoremap <leader>sr :%s/
 nnoremap <leader>sr :call PromptSubstitution()<CR>
 function! PromptSubstitution()
     let find = input('Find: ')
     let replace = input('Replace with: ')
     execute '%s/' . find . '/' . replace . '/gc'
     redraw!
-endfunction
-
-" FZF
-let g:fzf_buffers_jump = 1 " Always open buffer in existing tab
-" noremap <leader>ff :GFilesCustom<cr>
-" nnoremap <leader>sf :Rg<cr>
-" nnoremap <leader>ef :BufferCustom<cr>
-nnoremap <leader>et :WindowsCustom<cr>
-nnoremap <leader>sl :BLinesCustom<cr>
-
-let $FZF_DEFAULT_OPTS = '--layout=reverse --no-info --margin=0 --padding=0 --border=rounded --pointer=👉'
-let g:original_fzf_layout_values = { 'window': { 'width': 0.6, 'height': 0.8, 'relative': v:false,} }
-let g:fzf_preview_window_values = ['down,60%', 'ctrl-/']
-let g:fzf_layout = g:original_fzf_layout_values
-let g:fzf_preview_window = g:fzf_preview_window_values
-
-
-" Bind custom command so fzf_layout window is smaller for GFiles
-autocmd VimEnter * command! -bang -nargs=? GFilesCustom call CustomFzfLayout(<q-args>, <bang>0, 'GFiles')
-autocmd VimEnter * command! -bang -nargs=? BufferCustom call CustomFzfLayout(<q-args>, <bang>0, 'Buffers')
-autocmd VimEnter * command! -bang -nargs=? WindowsCustom call CustomFzfLayout(<q-args>, <bang>0, 'Windows')
-autocmd VimEnter * command! -bang -nargs=? BLinesCustom call CustomFzfLayout(<q-args>, <bang>0, 'BLines')
-
-function! CustomFzfLayout(args, bang, command)
-  let g:fzf_preview_window = []
-  let g:fzf_layout = { 'window': { 'width': 0.6, 'height': 0.4, 'relative': v:false } }
-
-  execute 'silent! ' a:command . ' '. a:args . (a:bang ? '!' : '')
-  let g:fzf_layout = g:original_fzf_layout_values
-  let g:fzf_preview_window = g:fzf_preview_window_values
 endfunction
 
 " Telescope
@@ -180,21 +154,7 @@ lua << EOF
   }
 EOF
 
-" nnoremap <leader>ff :Telescope find_files<cr>
-" ex. override defaults
 nnoremap <leader>ff :lua require('telescope.builtin').find_files({previewer=false, layout_config={mirror=false,height=0.3,width=0.5}})<cr>
 nnoremap <leader>ef :lua require('telescope.builtin').buffers({previewer=false, layout_config={mirror=false,height=0.3,width=0.5}})<cr>
 nnoremap <leader>sf :Telescope live_grep<cr>
 
-
-" Tabs
-nnoremap <leader><S-t> :tabnew<cr>
-nnoremap <leader>1 :tabn 1<cr>
-nnoremap <leader>2 :tabn 2<cr>
-nnoremap <leader>3 :tabn 3<cr>
-nnoremap <leader>4 :tabn 4<cr>
-
-" vim-test
-nnoremap <silent> <leader>tn :TestNearest<CR>
-nnoremap <silent> <leader>ta :TestFile<CR>
-let test#strategy = "floaterm"
