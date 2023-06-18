@@ -1,12 +1,13 @@
 call plug#begin('~/.config/nvim/plugged')
   " New Plugins here...
-  Plug 'ctrlpvim/ctrlp.vim' 
+
 
   " Search
   Plug 'nvim-lua/plenary.nvim' " co-dependent to telescope
   Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
   Plug 'dyng/ctrlsf.vim' " search/replace like sublime text
-  Plug 'jlanzarotta/bufexplorer'
+  Plug 'jlanzarotta/bufexplorer' " allows quicky deletion of buffers
+  Plug 'ctrlpvim/ctrlp.vim' " file finder, multi select open 
 
   " Efficiency
   Plug 'andrewRadev/tagalong.vim' " Change an HTML(ish) opening tag and take the closing one along as well
