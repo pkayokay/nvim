@@ -127,11 +127,12 @@ nnoremap <leader>se :CtrlSF
 nnoremap <leader>st :CtrlSFToggle<cr>'
 let g:ctrlsf_compact_winsize = '30%'
 let g:ctrlsf_auto_close = {'normal' : 0, 'compact': 0}
-
 let g:ctrlsf_default_view_mode = 'normal'
 let g:ctrlsf_position = 'bottom'
-nnoremap <leader>sr :call PromptSubstitution()<CR>
-function! PromptSubstitution()
+
+" Custom command to find and replace in file
+nnoremap <leader>fr :call FindAndReplace()<CR>
+function! FindAndReplace()
     let find = input('Find: ')
     let replace = input('Replace with: ')
     execute '%s/' . find . '/' . replace . '/gc'
