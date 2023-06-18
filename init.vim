@@ -1,6 +1,8 @@
 call plug#begin('~/.config/nvim/plugged')
   " New Plugins here...
 
+ 
+  Plug 'ctrlpvim/ctrlp.vim' 
 
 
   " Search
@@ -39,10 +41,18 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'vwxyutarooo/nerdtree-devicons-syntax'
   Plug 'ryanoasis/vim-devicons' " Ensure it's the last plugin and install Nerd Font https://www.nerdfonts.com/font-downloads
 call plug#end()
+let g:ctrlp_max_files = 10
+
+map <C-h> <C-W>h
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-l> <C-W>l
 
 
 " :Commands for help
 " TODO: delete word backwards, find in file with reg exp, find in files and multi select, buf explorer?, quick list for telescope?, grep, vim grep?
+" https://github.com/carlhuda/janus
+" https://github.com/excid3/dotfiles/blob/master/vim/vimrc
 " https://github.com/wincent/ferret
 " https://github.com/lfv89/vim-interestingwords
 " https://github.com/AndrewRadev/writable_search.vim
