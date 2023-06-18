@@ -1,7 +1,5 @@
 call plug#begin('~/.config/nvim/plugged')
   " New Plugins here...
-
- 
   Plug 'ctrlpvim/ctrlp.vim' 
 
 
@@ -41,7 +39,11 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'vwxyutarooo/nerdtree-devicons-syntax'
   Plug 'ryanoasis/vim-devicons' " Ensure it's the last plugin and install Nerd Font https://www.nerdfonts.com/font-downloads
 call plug#end()
-let g:ctrlp_max_files = 10
+
+" Use rg (ripgrep) for ctrlp indexing
+if executable('rg')
+  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+endif
 
 map <C-h> <C-W>h
 map <C-j> <C-W>j
