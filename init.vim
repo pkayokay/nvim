@@ -154,8 +154,10 @@ lua << EOF
     }
   }
 EOF
+nnoremap <leader>ff :lua require('telescope.builtin').find_files(require('telescope.themes').get_ivy({}))<cr>
+" nnoremap <leader>ff :lua require('telescope.builtin').find_files(require('telescope.themes').get_ivy({previewer=false, layout_config={mirror=false,height=0.3,width=0.5}}))<cr>
 
-nnoremap <leader>ff :lua require('telescope.builtin').find_files({previewer=false, layout_config={mirror=false,height=0.3,width=0.5}})<cr>
+" nnoremap <leader>ff :lua require('telescope.builtin').find_files({previewer=false, layout_config={mirror=false,height=0.3,width=0.5}})<cr>
 nnoremap <leader>ef :lua require('telescope.builtin').buffers({previewer=false, layout_config={mirror=false,height=0.3,width=0.5}})<cr>
 nnoremap <leader>sf :Telescope live_grep<cr>
 
