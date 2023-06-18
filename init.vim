@@ -35,7 +35,6 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'ryanoasis/vim-devicons' " Ensure it's the last plugin and install Nerd Font https://www.nerdfonts.com/font-downloads
 call plug#end()
 
-
 " CtrlP (Use rg (ripgrep) for ctrlp indexing
 if executable('rg')
   let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
