@@ -19,6 +19,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'tpope/vim-repeat' " repeat.vim: enable repeating supported plugin maps with .
   Plug 'andrewradev/undoquit.vim' " reopen the last window you closed
   Plug 'ervandew/supertab' " Perform all your vim insert mode completions with Tab
+  Plug 'mg979/vim-visual-multi' " Multiple cursors plugin for vim/neovim
 
   " Misc 
   Plug 'tpope/vim-fugitive' " Git wrapper
@@ -44,7 +45,7 @@ call plug#end()
 if executable('rg')
   let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
 endif
-nnoremap <C-b> :CtrlPBuffer<cr>
+nnoremap <c-;> :CtrlPBuffer<cr>
 
 " Git blame
 vmap <c-b> :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>,<C-R>=line("'>") <CR>p <CR>
