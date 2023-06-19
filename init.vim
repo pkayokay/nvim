@@ -19,6 +19,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'Raimondi/delimitMate' " provides insert mode auto-completion for quotes, parens, brackets, etc.
   Plug 'rhysd/clever-f.vim' " Extended f, F, t and T key mappings for Vim.
   Plug 'tpope/vim-repeat' " repeat.vim: enable repeating supported plugin maps with .
+  Plug 'andrewradev/undoquit.vim' " reopen the last window you closed
 
   " Misc 
   Plug 'tpope/vim-fugitive' " Git wrapper
@@ -53,7 +54,6 @@ endif
 " https://github.com/AndrewRadev/writable_search.vim
 " https://github.com/AndrewRadev/undoquit.vim
 " https://github.com/t9md/vim-textmanip
-" https://github.com/tpope/vim-repeat
 
 set clipboard=unnamed
 let g:airline_theme='wombat'
@@ -89,6 +89,10 @@ map <C-k> <C-W>k
 map <C-l> <C-W>l
 nnoremap <leader>[ :bn<cr>
 nnoremap <leader>] :bp<cr>
+
+
+" Undo quit
+let g:undoquit_mapping = '_u'
 
 " Clever F
 let g:clever_f_smart_case = 1
