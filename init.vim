@@ -1,6 +1,8 @@
 call plug#begin('~/.config/nvim/plugged')
   " New Plugins here...
 
+
+
   " Search
   Plug 'nvim-lua/plenary.nvim' " co-dependent to telescope
   Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
@@ -15,6 +17,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'tpope/vim-endwise' "helps to end certain structures automatically. In Ruby, this means adding end after if, do, def and several other keywords.
   Plug 'chaoren/vim-wordmotion' " More useful word motions for Vim
   Plug 'Raimondi/delimitMate' " provides insert mode auto-completion for quotes, parens, brackets, etc.
+  Plug 'rhysd/clever-f.vim' " Extended f, F, t and T key mappings for Vim.
 
   " Misc 
   Plug 'tpope/vim-fugitive' " Git wrapper
@@ -35,15 +38,13 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'ryanoasis/vim-devicons' " Ensure it's the last plugin and install Nerd Font https://www.nerdfonts.com/font-downloads
 call plug#end()
 
-
-" CtrlP (Use rg (ripgrep) for ctrlp indexing
+" CtrlP (Use rg (ripgrep) for ctrlp indexing, brew install ripgrep
 if executable('rg')
   let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
 endif
 
-
 " :Commands for help
-" TODO: delete word backwards, find in file with reg exp, find in files and multi select, buf explorer?, quick list for telescope?, grep, vim grep?
+" TODO: find in files and multi select, buf explorer?, quick list for telescope?, grep, vim grep?
 " https://github.com/carlhuda/janus
 " https://github.com/excid3/dotfiles/blob/master/vim/vimrc
 " https://github.com/wincent/ferret
@@ -52,7 +53,6 @@ endif
 " https://github.com/AndrewRadev/undoquit.vim
 " https://github.com/t9md/vim-textmanip
 " https://github.com/tpope/vim-repeat
-" https://github.com/rhysd/clever-f.vim
 
 set clipboard=unnamed
 let g:airline_theme='wombat'
@@ -86,6 +86,12 @@ map <C-h> <C-W>h
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-l> <C-W>l
+nnoremap <leader>[ :bn<cr>
+nnoremap <leader>] :bp<cr>
+
+" Clever F
+let g:clever_f_smart_case = 1
+
 
 " ALE
 let g:ale_lint_on_text_changed = 0
@@ -99,9 +105,8 @@ let g:ale_sign_error = 'E'
 let g:ale_sign_warning = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
-
 " NERDTree
-autocmd VimEnter * NERDTree | wincmd p "Start NERDTree and put the cursor back in the other window
+" autocmd VimEnter * NERDTree | wincmd p "Start NERDTree and put the cursor back in the other window
 nnoremap <leader>nt :NERDTreeToggle<CR>
 nnoremap <leader>nf :NERDTreeFind<CR>
 nnoremap <leader>nrs :vertical resize 30<cr>
@@ -142,7 +147,7 @@ endfunction
 lua << EOF
  require('telescope').setup {
     defaults = {
-      path_display = 'truncate',
+      path_display = 'smart',
       sorting_strategy = 'ascending',
       layout_strategy = 'vertical',
       layout_config = {
