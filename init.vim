@@ -57,6 +57,10 @@ endif
 " Ctags(definitions and even source code)
 " Look at tips from Thoughtbot and plugins
 " Look at Jason's setup too
+" https://github.com/jeetsukumaran/vim-buffergator
+" https://github.com/terryma/vim-multiple-cursors
+" https://github.com/preservim/tagbar
+" https://github.com/ervandew/supertab
 
 set clipboard=unnamed
 let g:airline_theme='wombat'
@@ -155,7 +159,7 @@ endfunction
 lua << EOF
  require('telescope').setup {
     defaults = {
-      path_display = 'smart',
+      path_display = { 'tail' },
       sorting_strategy = 'ascending',
       layout_strategy = 'vertical',
       layout_config = {
@@ -171,5 +175,4 @@ EOF
 " grep_string vs live_grep
 nnoremap <leader>ff :lua require('telescope.builtin').find_files({previewer=false, layout_config={height=0.3,width=0.5}})<cr>
 nnoremap <leader>ef :lua require('telescope.builtin').buffers({previewer=false, layout_config={height=0.3,width=0.5}})<cr>
-nnoremap <leader>sf :Telescope grep_string<cr>
-
+nnoremap <leader>sf :lua require'telescope.builtin'.grep_string{ shorten_path = true, word_match = "-w", only_sort_text = true, search = '' }<cr>
