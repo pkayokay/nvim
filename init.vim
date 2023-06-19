@@ -51,8 +51,6 @@ endif
 " https://github.com/excid3/dotfiles/blob/master/vim/vimrc
 " https://github.com/wincent/ferret
 " https://github.com/lfv89/vim-interestingwords
-" https://github.com/AndrewRadev/writable_search.vim
-" https://github.com/AndrewRadev/undoquit.vim
 " https://github.com/t9md/vim-textmanip
 
 set clipboard=unnamed
