@@ -2,6 +2,7 @@ call plug#begin('~/.config/nvim/plugged')
   " New Plugins here...
 
 
+  Plug 'preservim/tagbar'
 
   " Search
   Plug 'nvim-lua/plenary.nvim' " co-dependent to telescope
@@ -47,6 +48,8 @@ if executable('rg')
 endif
 nnoremap <C-b> :CtrlPBuffer<cr>
 
+
+" :h tags (ctags) -> ex. see has_many definition in Rails source code
 " https://github.com/excid3/dotfiles/blob/master/vim/vimrc
 " https://github.com/wincent/ferret
 " https://github.com/lfv89/vim-interestingwords
