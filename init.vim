@@ -18,6 +18,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'chaoren/vim-wordmotion' " More useful word motions for Vim
   Plug 'Raimondi/delimitMate' " provides insert mode auto-completion for quotes, parens, brackets, etc.
   Plug 'rhysd/clever-f.vim' " Extended f, F, t and T key mappings for Vim.
+  Plug 'tpope/vim-repeat' " repeat.vim: enable repeating supported plugin maps with .
 
   " Misc 
   Plug 'tpope/vim-fugitive' " Git wrapper
