@@ -47,15 +47,10 @@ if executable('rg')
 endif
 nnoremap <C-b> :CtrlPBuffer<cr>
 
-" :Commands for help
-" TODO: find in files and multi select, buf explorer?, quick list for telescope?, grep, vim grep?
-" https://github.com/carlhuda/janus
 " https://github.com/excid3/dotfiles/blob/master/vim/vimrc
 " https://github.com/wincent/ferret
 " https://github.com/lfv89/vim-interestingwords
 " https://github.com/t9md/vim-textmanip
-" https://github.com/garbas/vim-snipmate
-" https://github.com/tpope/vim-rails
 " Ctags(definitions and even source code)
 " Look at tips from Thoughtbot and plugins
 " Look at Jason's setup too
@@ -63,9 +58,6 @@ nnoremap <C-b> :CtrlPBuffer<cr>
 " https://github.com/mg979/vim-visual-multi
 " https://github.com/preservim/tagbar
 " https://github.com/ervandew/supertab
-
-"
-
 
 
 set clipboard=unnamed
@@ -177,6 +169,12 @@ lua << EOF
   }
 EOF
 
-nnoremap <leader>ff :lua require('telescope.builtin').find_files({previewer=false, layout_config={height=0.3,width=0.5}})<cr>
-nnoremap <leader>ef :lua require('telescope.builtin').buffers({previewer=false, layout_config={height=0.3,width=0.5}})<cr>
-nnoremap <leader>sf :lua require'telescope.builtin'.grep_string({ path_display={'smart'},shorten_path = true, word_match = "-w", only_sort_text = true, search = '' })<cr>
+" nnoremap <leader>ff :lua require('telescope.builtin').find_files({previewer=false, layout_config={height=0.3,width=0.5}})<cr>
+" nnoremap <leader>sf :lua require('telescope.builtin').grep_string({ path_display={'smart'},shorten_path = true, word_match = "-w", only_sort_text = true, search = '' })<cr>
+" nnoremap <leader>ef :lua require('telescope.builtin').buffers({previewer=false, layout_config={height=0.3,width=0.5}})<cr>
+
+nnoremap <leader>ff :lua require('telescope.builtin').find_files(require('telescope.themes').get_ivy({previewer=false5}))<cr>
+nnoremap <leader>ef :lua require('telescope.builtin').buffers(require('telescope.themes').get_ivy({previewer=false, layout_config={height=0.3,width=0.5}}))<cr>
+nnoremap <leader>sf :lua require('telescope.builtin').grep_string(require('telescope.themes').get_ivy({ path_display={'tail'},shorten_path = true, word_match = "-w", only_sort_text = true, search = '' }))<cr>
+
+
