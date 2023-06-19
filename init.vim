@@ -44,6 +44,7 @@ call plug#end()
 if executable('rg')
   let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
 endif
+nnoremap <c>b :CtrlPBuffer<cr>
 
 " :Commands for help
 " TODO: find in files and multi select, buf explorer?, quick list for telescope?, grep, vim grep?
