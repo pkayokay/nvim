@@ -1,7 +1,6 @@
 call plug#begin('~/.config/nvim/plugged')
   " New Plugins here...
 
-
   " Search
   Plug 'nvim-lua/plenary.nvim' " co-dependent to telescope
   Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
@@ -36,16 +35,12 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'ryanoasis/vim-devicons' " Ensure it's the last plugin and install Nerd Font https://www.nerdfonts.com/font-downloads
 call plug#end()
 
+
 " CtrlP (Use rg (ripgrep) for ctrlp indexing
 if executable('rg')
   let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
 endif
 
-" Navigation through windows
-map <C-h> <C-W>h
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-l> <C-W>l
 
 " :Commands for help
 " TODO: delete word backwards, find in file with reg exp, find in files and multi select, buf explorer?, quick list for telescope?, grep, vim grep?
@@ -86,7 +81,11 @@ nnoremap <leader>1 :tabn 1<cr>
 nnoremap <leader>2 :tabn 2<cr>
 nnoremap <leader>3 :tabn 3<cr>
 nnoremap <leader>4 :tabn 4<cr>
-
+" Navigation through windows
+map <C-h> <C-W>h
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-l> <C-W>l
 
 " ALE
 let g:ale_lint_on_text_changed = 0
@@ -143,6 +142,7 @@ endfunction
 lua << EOF
  require('telescope').setup {
     defaults = {
+      path_display = 'truncate',
       sorting_strategy = 'ascending',
       layout_strategy = 'vertical',
       layout_config = {
@@ -154,10 +154,9 @@ lua << EOF
     }
   }
 EOF
-nnoremap <leader>ff :lua require('telescope.builtin').find_files(require('telescope.themes').get_ivy({}))<cr>
-" nnoremap <leader>ff :lua require('telescope.builtin').find_files(require('telescope.themes').get_ivy({previewer=false, layout_config={mirror=false,height=0.3,width=0.5}}))<cr>
 
-" nnoremap <leader>ff :lua require('telescope.builtin').find_files({previewer=false, layout_config={mirror=false,height=0.3,width=0.5}})<cr>
-nnoremap <leader>ef :lua require('telescope.builtin').buffers({previewer=false, layout_config={mirror=false,height=0.3,width=0.5}})<cr>
-nnoremap <leader>sf :Telescope live_grep<cr>
+" grep_string vs live_grep
+nnoremap <leader>ff :lua require('telescope.builtin').find_files({previewer=false, layout_config={height=0.3,width=0.5}})<cr>
+nnoremap <leader>ef :lua require('telescope.builtin').buffers({previewer=false, layout_config={height=0.3,width=0.5}})<cr>
+nnoremap <leader>sf :Telescope grep_string<cr>
 
