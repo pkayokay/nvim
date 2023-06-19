@@ -62,8 +62,6 @@ vmap <c-b> :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") 
 " Ctags(definitions and even source code)
 " Look at tips from Thoughtbot and plugins
 " https://github.com/mg979/vim-visual-multi
-" https://github.com/preservim/tagbar
-" https://github.com/ervandew/supertab
 
 set gdefault " assume /g flag on for :s subtitutions
 set clipboard=unnamed
