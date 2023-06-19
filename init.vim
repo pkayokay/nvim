@@ -60,7 +60,8 @@ vmap <c-b> :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") 
 " - [g i] -> jump to where you were last inserted
 " - [c i] or [c o] jump list (ex. jump from definition and back) (:jumps)
 
-set gdefault " assume /g flag on for :s subtitutions
+
+" set gdefault " assume /g flag on for :s subtitutions
 set clipboard=unnamed
 let g:airline_theme='wombat'
 let mapleader = "\<Space>"
