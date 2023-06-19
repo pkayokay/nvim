@@ -1,9 +1,6 @@
 call plug#begin('~/.config/nvim/plugged')
   " New Plugins here...
 
-
-  Plug 'preservim/tagbar'
-
   " Search
   Plug 'nvim-lua/plenary.nvim' " co-dependent to telescope
   Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
@@ -21,6 +18,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'rhysd/clever-f.vim' " Extended f, F, t and T key mappings for Vim.
   Plug 'tpope/vim-repeat' " repeat.vim: enable repeating supported plugin maps with .
   Plug 'andrewradev/undoquit.vim' " reopen the last window you closed
+  Plug 'ervandew/supertab' " Perform all your vim insert mode completions with Tab
 
   " Misc 
   Plug 'tpope/vim-fugitive' " Git wrapper
@@ -48,21 +46,26 @@ if executable('rg')
 endif
 nnoremap <C-b> :CtrlPBuffer<cr>
 
+" Git blame
+vmap <c-b> :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>,<C-R>=line("'>") <CR>p <CR>
 
-" :h tags (ctags) -> ex. see has_many definition in Rails source code
-" https://github.com/excid3/dotfiles/blob/master/vim/vimrc
-" https://github.com/wincent/ferret
-" https://github.com/lfv89/vim-interestingwords
-" https://github.com/t9md/vim-textmanip
+" Tags :h tags (ctags) -> ex. see has_many definition in Rails source code, :tag has_many, :tag /validates_.*
+" Tips
+" - [c i ""] -> change inside "something" it deletes what's inside the quotes and put you on I mode
+" - [d a ""] -> delete around it deletes what's inside and quotes, keeps you normal mode
+" - [d a w] -> delete around word
+" - [g i] -> jump to where you were last inserted
+" - [c i] or [c o] jump list (ex. jump from definition and back) (:jumps)
+"  
+"
+"
 " Ctags(definitions and even source code)
 " Look at tips from Thoughtbot and plugins
-" Look at Jason's setup too
-" https://github.com/jeetsukumaran/vim-buffergator
 " https://github.com/mg979/vim-visual-multi
 " https://github.com/preservim/tagbar
 " https://github.com/ervandew/supertab
 
-
+set gdefault " assume /g flag on for :s subtitutions
 set clipboard=unnamed
 let g:airline_theme='wombat'
 let mapleader = "\<Space>"
@@ -79,7 +82,6 @@ set number
 set splitbelow splitright
 set scrolloff=10 sidescrolloff=20
 set ignorecase smartcase " make searches case-insensitive, unless they contain upper-case letters
-nnoremap <C-i> :PlugInstall<cr> :qall!
 tnoremap <Esc> <C-\><C-n>
 tnoremap jj  <C-\><C-n>
 inoremap jj <ESC>
@@ -176,7 +178,7 @@ EOF
 " nnoremap <leader>sf :lua require('telescope.builtin').grep_string({ path_display={'smart'},shorten_path = true, word_match = "-w", only_sort_text = true, search = '' })<cr>
 " nnoremap <leader>ef :lua require('telescope.builtin').buffers({previewer=false, layout_config={height=0.3,width=0.5}})<cr>
 
-nnoremap <leader>ff :lua require('telescope.builtin').find_files(require('telescope.themes').get_ivy({previewer=false5}))<cr>
+nnoremap <leader>ff :lua require('telescope.builtin').find_files(require('telescope.themes').get_ivy({previewer=false}))<cr>
 nnoremap <leader>ef :lua require('telescope.builtin').buffers(require('telescope.themes').get_ivy({previewer=false, layout_config={height=0.3,width=0.5}}))<cr>
 nnoremap <leader>sf :lua require('telescope.builtin').grep_string(require('telescope.themes').get_ivy({ path_display={'tail'},shorten_path = true, word_match = "-w", only_sort_text = true, search = '' }))<cr>
 
