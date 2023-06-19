@@ -58,7 +58,7 @@ endif
 " Look at tips from Thoughtbot and plugins
 " Look at Jason's setup too
 " https://github.com/jeetsukumaran/vim-buffergator
-" https://github.com/terryma/vim-multiple-cursors
+" https://github.com/mg979/vim-visual-multi
 " https://github.com/preservim/tagbar
 " https://github.com/ervandew/supertab
 
@@ -159,7 +159,7 @@ endfunction
 lua << EOF
  require('telescope').setup {
     defaults = {
-      path_display = { 'tail' },
+      path_display = { 'smart' },
       sorting_strategy = 'ascending',
       layout_strategy = 'vertical',
       layout_config = {
