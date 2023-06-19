@@ -33,6 +33,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'dense-analysis/ale'
   Plug 'jlcrochet/vim-ruby'
   Plug 'pangloss/vim-javascript'
+  Plug 'tpope/vim-rails'
 
   " Make it pretty
   Plug 'doums/darcula'
@@ -62,6 +63,10 @@ nnoremap <C-b> :CtrlPBuffer<cr>
 " https://github.com/mg979/vim-visual-multi
 " https://github.com/preservim/tagbar
 " https://github.com/ervandew/supertab
+
+"
+
+
 
 set clipboard=unnamed
 let g:airline_theme='wombat'
@@ -160,7 +165,6 @@ endfunction
 lua << EOF
  require('telescope').setup {
     defaults = {
-      path_display = { 'smart' },
       sorting_strategy = 'ascending',
       layout_strategy = 'vertical',
       layout_config = {
@@ -173,7 +177,6 @@ lua << EOF
   }
 EOF
 
-" grep_string vs live_grep
 nnoremap <leader>ff :lua require('telescope.builtin').find_files({previewer=false, layout_config={height=0.3,width=0.5}})<cr>
 nnoremap <leader>ef :lua require('telescope.builtin').buffers({previewer=false, layout_config={height=0.3,width=0.5}})<cr>
-nnoremap <leader>sf :lua require'telescope.builtin'.grep_string{ shorten_path = true, word_match = "-w", only_sort_text = true, search = '' }<cr>
+nnoremap <leader>sf :lua require'telescope.builtin'.grep_string({ path_display={'smart'},shorten_path = true, word_match = "-w", only_sort_text = true, search = '' })<cr>
