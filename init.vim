@@ -52,6 +52,11 @@ endif
 " https://github.com/wincent/ferret
 " https://github.com/lfv89/vim-interestingwords
 " https://github.com/t9md/vim-textmanip
+" https://github.com/garbas/vim-snipmate
+" https://github.com/tpope/vim-rails
+" Ctags(definitions and even source code)
+" Look at tips from Thoughtbot and plugins
+" Look at Jason's setup too
 
 set clipboard=unnamed
 let g:airline_theme='wombat'
