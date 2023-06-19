@@ -36,7 +36,8 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'tpope/vim-rails'
 
   " Make it pretty
-  Plug 'doums/darcula'
+  Plug 'rktjmp/lush.nvim' " required for darcula-solid 
+  Plug 'briones-gabriel/darcula-solid.nvim'
   Plug 'vwxyutarooo/nerdtree-devicons-syntax'
   Plug 'ryanoasis/vim-devicons' " Ensure it's the last plugin and install Nerd Font https://www.nerdfonts.com/font-downloads
 call plug#end()
@@ -61,11 +62,13 @@ vmap <c-b> :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") 
 " - [c i] or [c o] jump list (ex. jump from definition and back) (:jumps)
 
 
+set cursorline
+hi CursorLine cterm=NONE ctermbg=black
 " set gdefault " assume /g flag on for :s subtitutions
 set clipboard=unnamed
 let g:airline_theme='wombat'
 let mapleader = "\<Space>"
-colorscheme darcula
+colorscheme darcula-solid
 set termguicolors
 set encoding=UTF-8 " for vim-devicons
 set tabstop=2               " number of columns occupied by a tab character
