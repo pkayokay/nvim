@@ -50,19 +50,15 @@ nnoremap <c-;> :CtrlPBuffer<cr>
 " Git blame
 vmap <c-b> :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>,<C-R>=line("'>") <CR>p <CR>
 
+" Todo: Ctags(definitions and even source code)
 " Tags :h tags (ctags) -> ex. see has_many definition in Rails source code, :tag has_many, :tag /validates_.*
+
 " Tips
 " - [c i ""] -> change inside "something" it deletes what's inside the quotes and put you on I mode
 " - [d a ""] -> delete around it deletes what's inside and quotes, keeps you normal mode
 " - [d a w] -> delete around word
 " - [g i] -> jump to where you were last inserted
 " - [c i] or [c o] jump list (ex. jump from definition and back) (:jumps)
-"  
-"
-"
-" Ctags(definitions and even source code)
-" Look at tips from Thoughtbot and plugins
-" https://github.com/mg979/vim-visual-multi
 
 set gdefault " assume /g flag on for :s subtitutions
 set clipboard=unnamed
@@ -172,13 +168,13 @@ lua << EOF
     }
   }
 EOF
-
-" nnoremap <leader>ff :lua require('telescope.builtin').find_files({previewer=false, layout_config={height=0.3,width=0.5}})<cr>
-" nnoremap <leader>sf :lua require('telescope.builtin').grep_string({ path_display={'smart'},shorten_path = true, word_match = "-w", only_sort_text = true, search = '' })<cr>
-" nnoremap <leader>ef :lua require('telescope.builtin').buffers({previewer=false, layout_config={height=0.3,width=0.5}})<cr>
-
-nnoremap <leader>ff :lua require('telescope.builtin').find_files(require('telescope.themes').get_ivy({previewer=false}))<cr>
-nnoremap <leader>ef :lua require('telescope.builtin').buffers(require('telescope.themes').get_ivy({previewer=false, layout_config={height=0.3,width=0.5}}))<cr>
-nnoremap <leader>sf :lua require('telescope.builtin').grep_string(require('telescope.themes').get_ivy({ path_display={'tail'},shorten_path = true, word_match = "-w", only_sort_text = true, search = '' }))<cr>
+  
+ nnoremap <leader>ff :lua require('telescope.builtin').find_files({previewer=false, layout_config={height=0.3,width=0.5}})<cr>
+ nnoremap <leader>sf :lua require('telescope.builtin').grep_string({ path_display={'smart'},shorten_path = true, word_match = "-w", only_sort_text = true, search = '' })<cr>
+ nnoremap <leader>ef :lua require('telescope.builtin').buffers({previewer=false, layout_config={height=0.3,width=0.5}})<cr>
+  
+" nnoremap <leader>ff :lua require('telescope.builtin').find_files(require('telescope.themes').get_ivy({previewer=false}))<cr>
+" nnoremap <leader>ef :lua require('telescope.builtin').buffers(require('telescope.themes').get_ivy({previewer=false, layout_config={height=0.3,width=0.5}}))<cr>
+" nnoremap <leader>sf :lua require('telescope.builtin').grep_string(require('telescope.themes').get_ivy({ path_display={'tail'},shorten_path = true, word_match = "-w", only_sort_text = true, search = '' }))<cr>
 
 
