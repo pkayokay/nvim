@@ -1,6 +1,5 @@
 call plug#begin('~/.config/nvim/plugged')
   " New Plugins here...
-Plug 'tomasiser/vim-code-dark'
   " Search
   Plug 'nvim-lua/plenary.nvim' " co-dependent to telescope
   Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
@@ -61,11 +60,8 @@ vmap <c-b> :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") 
 " - [g i] -> jump to where you were last inserted
 " - [c i] or [c o] jump list (ex. jump from efinition and back) (:jumps)
 
-colorscheme codedark
-
+colorscheme darcula-solid
 set termguicolors
-
-
 set cursorline
 " set gdefault " assume /g flag on for :s subtitutions
 set clipboard=unnamed
