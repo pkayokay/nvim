@@ -40,8 +40,6 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'tpope/vim-rails'
 
   " Make it pretty
-  Plug 'Mofiqul/vscode.nvim'
-  Plug 'tomasiser/vim-code-dark'
   Plug 'ntk148v/komau.vim' " black/white
   Plug 'rktjmp/lush.nvim' " required for darcula-solid
   Plug 'briones-gabriel/darcula-solid.nvim'
@@ -71,11 +69,10 @@ vmap <c-b> :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") 
 " - I beginning of line insert mode
 " - A end of line insert mode 
 
-
-let $BAT_THEME="Visual Studio Dark+" " brew install bat, used for Fzf previews
+let $BAT_THEME="zenburn" " brew install bat, used for Fzf previews
 nnoremap <c-'> :colorscheme  
 set background=dark
-colorscheme vscode " darcula-solid
+colorscheme darcula-solid
 set termguicolors
 set cursorline
 " set gdefault " assume /g flag on for :s subtitutions
@@ -94,7 +91,7 @@ set splitbelow splitright
 set scrolloff=10 sidescrolloff=20
 set ignorecase smartcase " make searches case-insensitive, unless they contain upper-case letters
 " noremap <Esc> <C-\><C-n>
-tnoremap jj  <C-\><C-n> :FloatermToggle<cr>
+tnoremap jj  <C-\><C-n>
 inoremap jj <ESC>
 nnoremap <leader>d<Bslash> :split<cr>
 nnoremap <leader><Bslash> :vsplit<cr>| ":vnew or :new for empty windows
@@ -173,14 +170,14 @@ endfunction
 
 " FZF
 let g:fzf_buffers_jump = 1 " Always open buffer in existing tab
-noremap <leader>ff :GFilesCustom<cr>
+" noremap <leader>ff :GFilesCustom<cr>
 nnoremap <leader>sf :Rg<cr>
-nnoremap <leader>ef :BufferCustom<cr>
-nnoremap <leader>et :WindowsCustom<cr>
-nnoremap <leader>sl :BLinesCustom<cr>
+" nnoremap <leader>ef :BufferCustom<cr>
+" nnoremap <leader>et :WindowsCustom<cr>
+" nnoremap <leader>sl :BLinesCustom<cr>
 
 let $FZF_DEFAULT_OPTS = '--layout=reverse --no-info --margin=0 --padding=0 --border=rounded --pointer=👉'
-let g:original_fzf_layout_values = { 'window': { 'width': 0.8, 'height': 0.8, 'relative': v:false,} }
+let g:original_fzf_layout_values = { 'window': { 'width': 0.8, 'height': 0.5, 'relative': v:false,} }
 let g:fzf_preview_window_values = ['down,60%', 'ctrl-/']
 let g:fzf_layout = g:original_fzf_layout_values
 let g:fzf_preview_window = g:fzf_preview_window_values
@@ -222,8 +219,8 @@ lua << EOF
 EOF
 
 
-" nnoremap <leader>ff :lua require('telescope.builtin').find_files({previewer=false, layout_config={height=0.3,width=0.5}})<cr>
+nnoremap <leader>ff :lua require('telescope.builtin').find_files({previewer=false, layout_config={height=0.3,width=0.5}})<cr>
 " nnoremap <leader>sf :lua require('telescope.builtin').grep_string(require('telescope.themes').get_dropdown({preview=false,layout_config = {anchor = 'N'}, path_display={'smart'},shorten_path = true, word_match = "-w", only_sort_text = true, search = '' }))<cr>
 " nnoremap <leader>sf :lua require('telescope.builtin').grep_string(require('telescope.themes').get_dropdown({layout_strategy = 'horizontal',layout_config = {width = 0.8, height, 0.6, mirror= false, anchor = 'CENTER'}, path_display={'smart'},shorten_path = true, word_match = "-w", only_sort_text = true, search = '' }))<cr>
-" nnoremap <leader>ef :lua require('telescope.builtin').buffers({previewer=false, layout_config={height=0.3,width=0.5}})<cr>
+nnoremap <leader>ef :lua require('telescope.builtin').buffers({previewer=false, layout_config={height=0.3,width=0.5}})<cr>
    
