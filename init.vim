@@ -171,10 +171,10 @@ endfunction
 " FZF
 let g:fzf_buffers_jump = 1 " Always open buffer in existing tab
 " noremap <leader>ff :GFilesCustom<cr>
-nnoremap <leader>sf :Rg<cr>
+" nnoremap <leader>sf :Rg<cr>
 " nnoremap <leader>ef :BufferCustom<cr>
 " nnoremap <leader>et :WindowsCustom<cr>
-" nnoremap <leader>sl :BLinesCustom<cr>
+nnoremap <leader>sl :BLinesCustom<cr>
 
 let $FZF_DEFAULT_OPTS = '--layout=reverse --no-info --margin=0 --padding=0 --border=rounded --pointer=👉'
 let g:original_fzf_layout_values = { 'window': { 'width': 0.8, 'height': 0.5, 'relative': v:false,} }
@@ -221,6 +221,5 @@ EOF
 
 nnoremap <leader>ff :lua require('telescope.builtin').find_files({previewer=false, layout_config={height=0.3,width=0.5}})<cr>
 " nnoremap <leader>sf :lua require('telescope.builtin').grep_string(require('telescope.themes').get_dropdown({preview=false,layout_config = {anchor = 'N'}, path_display={'smart'},shorten_path = true, word_match = "-w", only_sort_text = true, search = '' }))<cr>
-" nnoremap <leader>sf :lua require('telescope.builtin').grep_string(require('telescope.themes').get_dropdown({layout_strategy = 'horizontal',layout_config = {width = 0.8, height, 0.6, mirror= false, anchor = 'CENTER'}, path_display={'smart'},shorten_path = true, word_match = "-w", only_sort_text = true, search = '' }))<cr>
+nnoremap <leader>sf :lua require('telescope.builtin').grep_string(require('telescope.themes').get_dropdown({layout_strategy = 'horizontal',layout_config = {width = 0.8, height, 0.6, mirror= false, anchor = 'CENTER'}, path_display={'smart'},shorten_path = true, word_match = "-w", only_sort_text = true, search = '' }))<cr>
 nnoremap <leader>ef :lua require('telescope.builtin').buffers({previewer=false, layout_config={height=0.3,width=0.5}})<cr>
-   
