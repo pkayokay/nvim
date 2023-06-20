@@ -35,11 +35,13 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'tpope/vim-rails'
 
   " Make it pretty
+  Plug 'ntk148v/komau.vim' " black/white
   Plug 'rktjmp/lush.nvim' " required for darcula-solid
   Plug 'briones-gabriel/darcula-solid.nvim'
-  Plug 'vwxyutarooo/nerdtree-devicons-syntax'
+  Plug 'vwxyutarooo/nerdtree-devicons-syntax'  
   Plug 'ryanoasis/vim-devicons' " Ensure it's the last plugin and install Nerd Font https://www.nerdfonts.com/font-downloads
 call plug#end()
+
 
 " CtrlP (Use rg (ripgrep) for ctrlp indexing, brew install ripgrep
 if executable('rg')
@@ -59,7 +61,10 @@ vmap <c-b> :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") 
 " - [d a w] -> delete around word
 " - [g i] -> jump to where you were last inserted
 " - [c i] or [c o] jump list (ex. jump from efinition and back) (:jumps)
-
+" - I beginning of line insert mode
+" - A end of line insert mode 
+nnoremap <c-'> :colorscheme  
+set background=dark
 colorscheme darcula-solid
 set termguicolors
 set cursorline
@@ -174,5 +179,6 @@ EOF
 
 nnoremap <leader>ff :lua require('telescope.builtin').find_files({previewer=false, layout_config={height=0.3,width=0.5}})<cr>
 nnoremap <leader>sf :lua require('telescope.builtin').grep_string(require('telescope.themes').get_dropdown({layout_config = {anchor = 'N'}, path_display={'smart'},shorten_path = true, word_match = "-w", only_sort_text = true, search = '' }))<cr>
+" nnoremap <leader>sf :lua require('telescope.builtin').grep_string(require('telescope.themes').get_dropdown({layout_strategy = 'horizontal',layout_config = {width = 0.8, height, 0.6, mirror= false, anchor = 'CENTER'}, path_display={'smart'},shorten_path = true, word_match = "-w", only_sort_text = true, search = '' }))<cr>
 nnoremap <leader>ef :lua require('telescope.builtin').buffers({previewer=false, layout_config={height=0.3,width=0.5}})<cr>
    
