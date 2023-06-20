@@ -77,7 +77,7 @@ set termguicolors
 set cursorline
 " set gdefault " assume /g flag on for :s subtitutions
 set clipboard=unnamed
-let g:airline_theme='wombat'
+let g:airline_theme='distinguished'
 let mapleader = "\<Space>"
 set encoding=UTF-8 " for vim-devicons
 set tabstop=2               " number of columns occupied by a tab character
