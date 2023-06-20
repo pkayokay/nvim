@@ -169,36 +169,36 @@ endfunction
 
 
 " FZF
-let g:fzf_buffers_jump = 1 " Always open buffer in existing tab
+" let g:fzf_buffers_jump = 1 " Always open buffer in existing tab
 " noremap <leader>ff :GFilesCustom<cr>
 " nnoremap <leader>sf :Rg<cr>
 " nnoremap <leader>ef :BufferCustom<cr>
 " nnoremap <leader>et :WindowsCustom<cr>
-nnoremap <leader>sl :BLinesCustom<cr>
+" nnoremap <leader>sl :BLinesCustom<cr>
 
-let $FZF_DEFAULT_OPTS = '--layout=reverse --no-info --margin=0 --padding=0 --border=rounded --pointer=👉'
-let g:original_fzf_layout_values = { 'window': { 'width': 0.8, 'height': 0.5, 'relative': v:false,} }
-let g:fzf_preview_window_values = ['down,60%', 'ctrl-/']
-let g:fzf_layout = g:original_fzf_layout_values
-let g:fzf_preview_window = g:fzf_preview_window_values
-
-
-" Bind custom command so fzf_layout window is smaller for GFiles
-autocmd VimEnter * command! -bang -nargs=? GFilesCustom call CustomFzfLayout(<q-args>, <bang>0, 'GFiles')
-autocmd VimEnter * command! -bang -nargs=? BufferCustom call CustomFzfLayout(<q-args>, <bang>0, 'Buffers')
-autocmd VimEnter * command! -bang -nargs=? WindowsCustom call CustomFzfLayout(<q-args>, <bang>0, 'Windows')
-autocmd VimEnter * command! -bang -nargs=? BLinesCustom call CustomFzfLayout(<q-args>, <bang>0, 'BLines')
-
-function! CustomFzfLayout(args, bang, command)
-  let g:fzf_preview_window = []
-  let g:fzf_layout = { 'window': { 'width': 0.6, 'height': 0.4, 'relative': v:false } }
-
-  execute 'silent! ' a:command . ' '. a:args . (a:bang ? '!' : '')
-  let g:fzf_layout = g:original_fzf_layout_values
-  let g:fzf_preview_window = g:fzf_preview_window_values
-endfunction
-
-
+" let $FZF_DEFAULT_OPTS = '--layout=reverse --no-info --margin=0 --padding=0 --border=rounded --pointer=👉'
+" let g:original_fzf_layout_values = { 'window': { 'width': 0.8, 'height': 0.5, 'relative': v:false,} }
+" let g:fzf_preview_window_values = ['down,60%', 'ctrl-/']
+" let g:fzf_layout = g:original_fzf_layout_values
+" let g:fzf_preview_window = g:fzf_preview_window_values
+"
+"
+" " Bind custom command so fzf_layout window is smaller for GFiles
+" autocmd VimEnter * command! -bang -nargs=? GFilesCustom call CustomFzfLayout(<q-args>, <bang>0, 'GFiles')
+" autocmd VimEnter * command! -bang -nargs=? BufferCustom call CustomFzfLayout(<q-args>, <bang>0, 'Buffers')
+" autocmd VimEnter * command! -bang -nargs=? WindowsCustom call CustomFzfLayout(<q-args>, <bang>0, 'Windows')
+" autocmd VimEnter * command! -bang -nargs=? BLinesCustom call CustomFzfLayout(<q-args>, <bang>0, 'BLines')
+"
+" function! CustomFzfLayout(args, bang, command)
+"   let g:fzf_preview_window = []
+"   let g:fzf_layout = { 'window': { 'width': 0.6, 'height': 0.4, 'relative': v:false } }
+"
+"   execute 'silent! ' a:command . ' '. a:args . (a:bang ? '!' : '')
+"   let g:fzf_layout = g:original_fzf_layout_values
+"   let g:fzf_preview_window = g:fzf_preview_window_values
+" endfunction
+"
+"
 
 " Telescope
 lua << EOF
