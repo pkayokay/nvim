@@ -40,6 +40,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'tpope/vim-rails'
 
   " Make it pretty
+  Plug 'Mofiqul/vscode.nvim'
   Plug 'tomasiser/vim-code-dark'
   Plug 'ntk148v/komau.vim' " black/white
   Plug 'rktjmp/lush.nvim' " required for darcula-solid
@@ -74,7 +75,7 @@ vmap <c-b> :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") 
 let $BAT_THEME="Visual Studio Dark+" " brew install bat, used for Fzf previews
 nnoremap <c-'> :colorscheme  
 set background=dark
-colorscheme codedark " darcula-solid
+colorscheme vscode " darcula-solid
 set termguicolors
 set cursorline
 " set gdefault " assume /g flag on for :s subtitutions
@@ -93,7 +94,7 @@ set splitbelow splitright
 set scrolloff=10 sidescrolloff=20
 set ignorecase smartcase " make searches case-insensitive, unless they contain upper-case letters
 " noremap <Esc> <C-\><C-n>
-tnoremap jj  <C-\><C-n>
+tnoremap jj  <C-\><C-n> :FloatermToggle<cr>
 inoremap jj <ESC>
 nnoremap <leader>d<Bslash> :split<cr>
 nnoremap <leader><Bslash> :vsplit<cr>| ":vnew or :new for empty windows
