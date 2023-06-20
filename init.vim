@@ -1,17 +1,17 @@
 call plug#begin('~/.config/nvim/plugged')
   " New Plugins here...
-
+Plug 'tomasiser/vim-code-dark'
   " Search
   Plug 'nvim-lua/plenary.nvim' " co-dependent to telescope
   Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
   Plug 'dyng/ctrlsf.vim' " search/replace like sublime text
   Plug 'jlanzarotta/bufexplorer' " allows quicky deletion of buffers
-  Plug 'ctrlpvim/ctrlp.vim' " file finder, multi select open 
+  Plug 'ctrlpvim/ctrlp.vim' " file finder, multi select open
 
   " Efficiency
   Plug 'andrewRadev/tagalong.vim' " Change an HTML(ish) opening tag and take the closing one along as well
   Plug 'tpope/vim-surround' " delete/change/add parentheses/quotes/XML-tags/much more with ease
-  Plug 'tomtom/tcomment_vim' " An extensible & universal comment vim-plugin 
+  Plug 'tomtom/tcomment_vim' " An extensible & universal comment vim-plugin
   Plug 'tpope/vim-endwise' "helps to end certain structures automatically. In Ruby, this means adding end after if, do, def and several other keywords.
   Plug 'chaoren/vim-wordmotion' " More useful word motions for Vim
   Plug 'Raimondi/delimitMate' " provides insert mode auto-completion for quotes, parens, brackets, etc.
@@ -21,7 +21,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'ervandew/supertab' " Perform all your vim insert mode completions with Tab
   Plug 'mg979/vim-visual-multi' " Multiple cursors plugin for vim/neovim
 
-  " Misc 
+  " Misc
   Plug 'tpope/vim-fugitive' " Git wrapper
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
@@ -36,7 +36,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'tpope/vim-rails'
 
   " Make it pretty
-  Plug 'rktjmp/lush.nvim' " required for darcula-solid 
+  Plug 'rktjmp/lush.nvim' " required for darcula-solid
   Plug 'briones-gabriel/darcula-solid.nvim'
   Plug 'vwxyutarooo/nerdtree-devicons-syntax'
   Plug 'ryanoasis/vim-devicons' " Ensure it's the last plugin and install Nerd Font https://www.nerdfonts.com/font-downloads
@@ -59,17 +59,18 @@ vmap <c-b> :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") 
 " - [d a ""] -> delete around it deletes what's inside and quotes, keeps you normal mode
 " - [d a w] -> delete around word
 " - [g i] -> jump to where you were last inserted
-" - [c i] or [c o] jump list (ex. jump from definition and back) (:jumps)
+" - [c i] or [c o] jump list (ex. jump from efinition and back) (:jumps)
+
+colorscheme codedark
+
+set termguicolors
 
 
 set cursorline
-hi CursorLine cterm=NONE ctermbg=black
 " set gdefault " assume /g flag on for :s subtitutions
 set clipboard=unnamed
 let g:airline_theme='wombat'
 let mapleader = "\<Space>"
-colorscheme darcula-solid
-set termguicolors
 set encoding=UTF-8 " for vim-devicons
 set tabstop=2               " number of columns occupied by a tab character
 set expandtab               " convert tabs to white space
@@ -141,7 +142,7 @@ let g:floaterm_wintype = 'split'
 " CtrlSF
 let g:ctrlsf_regex_pattern = 1
 let g:ctrlsf_auto_focus = { 'at': 'start' }
-nnoremap <leader>se :CtrlSF 
+nnoremap <leader>se :CtrlSF
 nnoremap <leader>st :CtrlSFToggle<cr>'
 let g:ctrlsf_compact_winsize = '30%'
 let g:ctrlsf_auto_close = {'normal' : 0, 'compact': 0}
@@ -164,6 +165,7 @@ lua << EOF
       sorting_strategy = 'ascending',
       layout_strategy = 'vertical',
       layout_config = {
+        anchor = 'CENTER',
         prompt_position = 'top',
         mirror = true,
         height = 0.8,
@@ -172,13 +174,9 @@ lua << EOF
     }
   }
 EOF
-  
- nnoremap <leader>ff :lua require('telescope.builtin').find_files({previewer=false, layout_config={height=0.3,width=0.5}})<cr>
- nnoremap <leader>sf :lua require('telescope.builtin').grep_string({ path_display={'smart'},shorten_path = true, word_match = "-w", only_sort_text = true, search = '' })<cr>
- nnoremap <leader>ef :lua require('telescope.builtin').buffers({previewer=false, layout_config={height=0.3,width=0.5}})<cr>
-  
-" nnoremap <leader>ff :lua require('telescope.builtin').find_files(require('telescope.themes').get_ivy({previewer=false}))<cr>
-" nnoremap <leader>ef :lua require('telescope.builtin').buffers(require('telescope.themes').get_ivy({previewer=false, layout_config={height=0.3,width=0.5}}))<cr>
-" nnoremap <leader>sf :lua require('telescope.builtin').grep_string(require('telescope.themes').get_ivy({ path_display={'tail'},shorten_path = true, word_match = "-w", only_sort_text = true, search = '' }))<cr>
 
 
+nnoremap <leader>ff :lua require('telescope.builtin').find_files({previewer=false, layout_config={height=0.3,width=0.5}})<cr>
+nnoremap <leader>sf :lua require('telescope.builtin').grep_string(require('telescope.themes').get_dropdown({layout_config = {anchor = 'N'}, path_display={'smart'},shorten_path = true, word_match = "-w", only_sort_text = true, search = '' }))<cr>
+nnoremap <leader>ef :lua require('telescope.builtin').buffers({previewer=false, layout_config={height=0.3,width=0.5}})<cr>
+   
