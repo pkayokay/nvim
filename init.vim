@@ -17,8 +17,8 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'tpope/vim-surround' " delete/change/add parentheses/quotes/XML-tags/much more with ease
   Plug 'tomtom/tcomment_vim' " An extensible & universal comment vim-plugin
   Plug 'tpope/vim-endwise' "helps to end certain structures automatically. In Ruby, this means adding end after if, do, def and several other keywords.
-  Plug 'chaoren/vim-wordmotion' " More useful word motions for Vim
-  Plug 'Raimondi/delimitMate' " provides insert mode auto-completion for quotes, parens, brackets, etc.
+  Plug 'chaoren/vim-wordmotion' " More useful word motions for Vim 
+  Plug 'Raimondi/delimitMate' " provides insert mode auto-completion for quotes, parens, brackets, etc.  
   Plug 'rhysd/clever-f.vim' " Extended f, F, t and T key mappings for Vim.
   Plug 'tpope/vim-repeat' " repeat.vim: enable repeating supported plugin maps with .
   Plug 'andrewradev/undoquit.vim' " reopen the last window you closed
@@ -50,8 +50,11 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'ryanoasis/vim-devicons' " Ensure it's the last plugin and install Nerd Font https://www.nerdfonts.com/font-downloads
 call plug#end()
 
-set omnifunc=ccomplete#Complete
+" ctags -R -f ../tags --languages=ruby,javascript,typescript --exclude=.git --exclude=public --exclude=tmp . $(bundle list --paths)
+" set omnifunc=ccomplete#Complete
 set tags=../../Projects/tags
+" supertab
+let g:SuperTabDefaultCompletionType = "<c-n>" " sort order
 
 " CtrlP (Use rg (ripgrep) for ctrlp indexing, brew install ripgrep
 if executable('rg')
@@ -92,7 +95,6 @@ highlight GitGutterAdd    guifg=#859c61 ctermfg=2
 highlight GitGutterChange guifg=#f9c269 ctermfg=3
 highlight GitGutterDelete guifg=#c77532 ctermfg=1
 highlight Directory guifg=#cacbcd
-
 
 
 
