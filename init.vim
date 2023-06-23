@@ -109,7 +109,7 @@ set number
 set splitbelow splitright
 set scrolloff=10 sidescrolloff=20
 set ignorecase smartcase " make searches case-insensitive, unless they contain upper-case letters
-noremap <Esc> <C-\><C-n>
+tnoremap <Esc> <C-\><C-n>
 inoremap jj <ESC>
 nnoremap <leader>d<Bslash> :split<cr>
 nnoremap <leader><Bslash> :vsplit<cr>| ":vnew or :new for empty windows
