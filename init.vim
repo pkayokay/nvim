@@ -50,7 +50,17 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'ryanoasis/vim-devicons' " Ensure it's the last plugin and install Nerd Font https://www.nerdfonts.com/font-downloads
 call plug#end()
 
-" ctags -R -f ../tags --languages=ruby,javascript,typescript --exclude=.git --exclude=public --exclude=tmp . $(bundle list --paths)
+"
+" gtags() {
+"     echo "Generating tags...."
+"     SECONDS=0
+"
+"     ctags -R -f ../tags --languages=ruby --exclude=.git --exclude=public --exclude=tmp . $(bundle list --paths)
+"
+"     echo "Finished generating tags in $SECONDS seconds."
+" }
+" gtags &
+
 " set omnifunc=ccomplete#Complete
 set tags=../../Projects/tags
 " supertab
