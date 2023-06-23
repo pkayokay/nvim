@@ -57,7 +57,7 @@ nnoremap <c-;> :CtrlPBuffer<cr>
 " Git blame
 vmap <c-b> :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>,<C-R>=line("'>") <CR>p <CR>
 
-" Todo: Ctags(definitions and even source code)
+" Todo: Ctags(definitions and even source code), tmux
 " Tags :h tags (ctags) -> ex. see has_many definition in Rails source code, :tag has_many, :tag /validates_.*
 
 " Tips
