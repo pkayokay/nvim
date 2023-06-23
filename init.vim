@@ -26,7 +26,8 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'mg979/vim-visual-multi' " Multiple cursors plugin for vim/neovim
   Plug 'tyru/open-browser.vim' 
   Plug 'tyru/open-browser-github.vim' " Open Github from code 
- 
+  Plug 'airblade/vim-gitgutter' " Diff changes on the side
+
   " Misc
   Plug 'tpope/vim-fugitive' " Git wrapper
   Plug 'vim-airline/vim-airline'
@@ -49,6 +50,8 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'ryanoasis/vim-devicons' " Ensure it's the last plugin and install Nerd Font https://www.nerdfonts.com/font-downloads
 call plug#end()
 
+set omnifunc=ccomplete#Complete
+set tags=../../Projects/tags
 
 " CtrlP (Use rg (ripgrep) for ctrlp indexing, brew install ripgrep
 if executable('rg')
@@ -81,6 +84,18 @@ set cursorline
 set clipboard=unnamed
 let g:airline_theme='distinguished'
 let mapleader = "\<Space>"
+
+
+let g:gitgutter_enabled = 1
+
+highlight GitGutterAdd    guifg=#859c61 ctermfg=2
+highlight GitGutterChange guifg=#f9c269 ctermfg=3
+highlight GitGutterDelete guifg=#c77532 ctermfg=1
+highlight Directory guifg=#cacbcd
+
+
+
+
 set encoding=UTF-8 " for vim-devicons
 set tabstop=2               " number of columns occupied by a tab character
 set expandtab               " convert tabs to white space
@@ -92,8 +107,7 @@ set number
 set splitbelow splitright
 set scrolloff=10 sidescrolloff=20
 set ignorecase smartcase " make searches case-insensitive, unless they contain upper-case letters
-" noremap <Esc> <C-\><C-n>
-tnoremap jj  <C-\><C-n>
+noremap <Esc> <C-\><C-n>
 inoremap jj <ESC>
 nnoremap <leader>d<Bslash> :split<cr>
 nnoremap <leader><Bslash> :vsplit<cr>| ":vnew or :new for empty windows
