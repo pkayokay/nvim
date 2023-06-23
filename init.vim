@@ -5,7 +5,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
 
-  " Search
+ " Search
   Plug 'nvim-lua/plenary.nvim' " co-dependent to telescope
   Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
   Plug 'dyng/ctrlsf.vim' " search/replace like sublime text
@@ -24,7 +24,9 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'andrewradev/undoquit.vim' " reopen the last window you closed
   Plug 'ervandew/supertab' " Perform all your vim insert mode completions with Tab
   Plug 'mg979/vim-visual-multi' " Multiple cursors plugin for vim/neovim
-
+  Plug 'tyru/open-browser.vim' 
+  Plug 'tyru/open-browser-github.vim' " Open Github from code 
+ 
   " Misc
   Plug 'tpope/vim-fugitive' " Git wrapper
   Plug 'vim-airline/vim-airline'
@@ -105,9 +107,10 @@ map <C-h> <C-W>h
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-l> <C-W>l
-nnoremap <leader>[ :bn<cr>
-nnoremap <leader>] :bp<cr>
 
+" Open browser
+vnoremap <c-\> :OpenGithubFile<cr>
+let g:openbrowser_github_always_used_branch = 'main'
 
 " Undo quit
 let g:undoquit_mapping = '_u'
