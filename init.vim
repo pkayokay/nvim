@@ -2,8 +2,8 @@ call plug#begin('~/.config/nvim/plugged')
   " New Plugins here...
   "
   "
-  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  Plug 'junegunn/fzf.vim'
+  " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  " Plug 'junegunn/fzf.vim'
 
  " Search
   Plug 'nvim-lua/plenary.nvim' " co-dependent to telescope
