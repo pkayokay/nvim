@@ -75,6 +75,7 @@ nnoremap <c-;> :CtrlPBuffer<cr>
 " Git blame
 vmap <c-b> :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>,<C-R>=line("'>") <CR>p <CR>
 
+" practice bookmarks
 " Todo: Ctags(definitions and even source code), tmux
 " Tags :h tags (ctags) -> ex. see has_many definition in Rails source code, :tag has_many, :tag /validates_.*
 
@@ -159,7 +160,7 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
 " NERDTree
 " autocmd VimEnter * NERDTree | wincmd p "Start NERDTree and put the cursor back in the other window
-let g:NERDTreeWinPos = "right"
+let g:NERDTreeWinPos = "bottom"
 nnoremap <leader>nt :NERDTreeToggle<CR>
 nnoremap <leader>nf :NERDTreeFind<CR>
 nnoremap <leader>nrs :vertical resize 30<cr>
