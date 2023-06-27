@@ -95,7 +95,7 @@ set termguicolors
 set cursorline
 " set gdefault " assume /g flag on for :s subtitutions
 set clipboard=unnamed
-let g:airline_theme='distinguished'
+let g:airline_theme='bubblegum'
 let mapleader = "\<Space>"
 
 
