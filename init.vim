@@ -72,8 +72,8 @@ if executable('rg')
 endif
 " nnoremap <c-;> :CtrlPBuffer<cr>
 nnoremap <leader>ef :CtrlPBuffer<cr>
-nnoremap <leader>ff :CtrlP<cr>
-"
+let g:ctrlp_map = '<leader>ff'
+
 " Git blame
 vmap <c-b> :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>,<C-R>=line("'>") <CR>p <CR>
 
