@@ -59,8 +59,6 @@ call plug#end()
 
 " set omnifunc=ccomplete#Complete
 set tags=../../Projects/tags
-" supertab
-let g:SuperTabDefaultCompletionType = "<c-n>" " sort order
 
 " CtrlP (Use rg (ripgrep) for ctrlp indexing, brew install ripgrep
 if executable('rg')
@@ -83,6 +81,8 @@ vmap <c-b> :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") 
 " - I beginning of line insert mode
 " - A end of line insert mode 
 
+
+let mapleader = "\<Space>"
 nnoremap <c-'> :colorscheme  
 set background=dark
 colorscheme darcula-solid
@@ -91,8 +91,7 @@ set cursorline
 " set gdefault " assume /g flag on for :s subtitutions
 set clipboard=unnamed
 let g:airline_theme='bubblegum'
-let mapleader = "\<Space>"
-
+let g:SuperTabDefaultCompletionType = "<c-n>" " sort order for supertab plugin
 nnoremap <leader>ef :CtrlPBuffer<cr>
 let g:ctrlp_map = '<leader>ff'
 
