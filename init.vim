@@ -101,7 +101,7 @@ let mapleader = "\<Space>"
 nnoremap <leader>ef :CtrlPBuffer<cr>
 let g:ctrlp_map = '<leader>ff'
 
-# vim-gitgutter 
+" vim-gitgutter 
 let g:gitgutter_enabled = 1
 highlight GitGutterAdd    guifg=#859c61 ctermfg=2
 highlight GitGutterChange guifg=#f9c269 ctermfg=3
