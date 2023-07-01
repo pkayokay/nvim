@@ -70,9 +70,6 @@ let g:SuperTabDefaultCompletionType = "<c-n>" " sort order
 if executable('rg')
   let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
 endif
-" nnoremap <c-;> :CtrlPBuffer<cr>
-nnoremap <leader>ef :CtrlPBuffer<cr>
-let g:ctrlp_map = '<leader>ff'
 
 " Git blame
 vmap <c-b> :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>,<C-R>=line("'>") <CR>p <CR>
@@ -101,15 +98,15 @@ set clipboard=unnamed
 let g:airline_theme='bubblegum'
 let mapleader = "\<Space>"
 
+nnoremap <leader>ef :CtrlPBuffer<cr>
+let g:ctrlp_map = '<leader>ff'
 
+# vim-gitgutter 
 let g:gitgutter_enabled = 1
-
 highlight GitGutterAdd    guifg=#859c61 ctermfg=2
 highlight GitGutterChange guifg=#f9c269 ctermfg=3
 highlight GitGutterDelete guifg=#c77532 ctermfg=1
 highlight Directory guifg=#cacbcd
-
-
 
 set encoding=UTF-8 " for vim-devicons
 set tabstop=2               " number of columns occupied by a tab character
