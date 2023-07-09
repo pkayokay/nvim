@@ -92,8 +92,8 @@ set cursorline
 set clipboard=unnamed
 let g:airline_theme='bubblegum'
 let g:SuperTabDefaultCompletionType = "<c-n>" " sort order for supertab plugin
-nnoremap <leader>ef :CtrlPBuffer<cr>
-let g:ctrlp_map = '<leader>ff'
+" nnoremap <leader>ef :CtrlPBuffer<cr>
+" let g:ctrlp_map = '<leader>ff'
 
 " vim-gitgutter 
 let g:gitgutter_enabled = 1
@@ -209,9 +209,9 @@ lua << EOF
 EOF
 
 " Buffer
-" nnoremap <leader>ef :lua require('telescope.builtin').buffers({previewer=false, layout_config={height=0.3,width=0.5}})<cr>
+nnoremap <leader>ef :lua require('telescope.builtin').buffers({previewer=false, layout_config={height=0.3,width=0.5}})<cr>
 " Find files
-" nnoremap <leader>ff :lua require('telescope.builtin').find_files({previewer=false, layout_config={height=0.3,width=0.5}})<cr>
+nnoremap <leader>ff :lua require('telescope.builtin').find_files({previewer=false, layout_config={height=0.3,width=0.5}})<cr>
 
 " Live grep 
 " vertical
@@ -219,6 +219,6 @@ EOF
 " horizontal middle
 " nnoremap <leader>sf :lua require('telescope.builtin').live_grep(require('telescope.themes').get_dropdown({layout_strategy = 'horizontal',layout_config = {width = 0.8, height, 0.6, mirror= false, anchor = 'CENTER'}, path_display={'smart'},shorten_path = true, word_match = "-w", only_sort_text = true, search = '' }))<cr>
 " horizontal bottom
-" nnoremap <leader>sf :lua require('telescope.builtin').live_grep(require('telescope.themes').get_ivy({shorten_path = true, word_match = "-w", only_sort_text = true, search = '' }))<cr>
+nnoremap <leader>sf :lua require('telescope.builtin').live_grep(require('telescope.themes').get_ivy({shorten_path = true, word_match = "-w", only_sort_text = true, search = '' }))<cr>
 " horizontal bottom no preview
-nnoremap <leader>sf :lua require('telescope.builtin').live_grep(require('telescope.themes').get_ivy({previewer=false,shorten_path = true, word_match = "-w", only_sort_text = true, search = '' }))<cr>
+" nnoremap <leader>sf :lua require('telescope.builtin').live_grep(require('telescope.themes').get_ivy({previewer=false,shorten_path = true, word_match = "-w", only_sort_text = true, search = '' }))<cr>
