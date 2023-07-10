@@ -88,10 +88,10 @@ set background=dark
 colorscheme darcula-solid
 set termguicolors
 set cursorline
-set gdefault " assume /g flag on for :s subtitutions
+" set gdefault " assume /g flag on for :s subtitutions
 set clipboard=unnamed
 let g:airline_theme='bubblegum'
-  let g:airline_extensions = []
+let g:airline_extensions = []
 let g:SuperTabDefaultCompletionType = "<c-n>" " sort order for supertab plugin
 " nnoremap <leader>ef :CtrlPBuffer<cr>
 " let g:ctrlp_map = '<leader>ff'
