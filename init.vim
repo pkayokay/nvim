@@ -169,7 +169,7 @@ let test#strategy = "floaterm"
 
 " Float term
 nnoremap <silent><leader>it :FloatermToggle<cr>
-let g:floaterm_height = 0.3
+let g:floaterm_height = 0.5
 let g:floaterm_wintype = 'split'
 
 " CtrlSF
