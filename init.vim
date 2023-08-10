@@ -39,6 +39,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'tpope/vim-rails'
 
   " Make it pretty
+  Plug 'w0ng/vim-hybrid'
   Plug 'ntk148v/komau.vim' " black/white
   Plug 'rktjmp/lush.nvim' " required for darcula-solid
   Plug 'briones-gabriel/darcula-solid.nvim'
@@ -86,6 +87,7 @@ let mapleader = "\<Space>"
 nnoremap <c-'> :colorscheme  
 set background=dark
 colorscheme darcula-solid
+colorscheme hybrid
 set termguicolors
 set cursorline
 " set gdefault " assume /g flag on for :s subtitutions
