@@ -56,7 +56,7 @@ call plug#end()
 "
 "     echo "Finished generating tags in $SECONDS seconds."
 " }
-" gtags &
+" gtags &> /dev/null &
 
 " set omnifunc=ccomplete#Complete
 set tags=../../Projects/tags
