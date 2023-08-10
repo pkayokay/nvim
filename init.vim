@@ -83,6 +83,8 @@ vmap <c-b> :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") 
 " - A end of line insert mode 
 
 
+inoremap dry before { driven_by(:selenium_chrome) }
+
 let mapleader = "\<Space>"
 nnoremap <c-'> :colorscheme  
 set background=dark
