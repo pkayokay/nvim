@@ -89,7 +89,7 @@ let mapleader = "\<Space>"
 nnoremap <c-'> :colorscheme  
 set background=dark
 colorscheme darcula-solid
-colorscheme hybrid
+" colorscheme hybrid
 set termguicolors
 set cursorline
 " set gdefault " assume /g flag on for :s subtitutions
@@ -173,7 +173,7 @@ let test#strategy = "floaterm"
 
 " Float term
 nnoremap <silent><leader>it :FloatermToggle<cr>
-let g:floaterm_height = 0.5
+let g:floaterm_height = 0.4
 let g:floaterm_wintype = 'split'
 
 " CtrlSF
