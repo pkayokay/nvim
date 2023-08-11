@@ -36,7 +36,6 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'dense-analysis/ale'
   Plug 'jlcrochet/vim-ruby'
   Plug 'pangloss/vim-javascript'
-  Plug 'tpope/vim-rails'
 
   " Make it pretty
   Plug 'w0ng/vim-hybrid'
