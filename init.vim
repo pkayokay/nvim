@@ -144,6 +144,7 @@ let g:clever_f_smart_case = 1
 
 
 " ALE
+" npm install -g prettier
 let g:ale_lint_on_text_changed = 0
 let g:ale_lint_on_enter = 1
 let g:ale_lint_on_save = 1
