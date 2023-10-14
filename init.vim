@@ -220,10 +220,10 @@ nnoremap <leader>ff :lua require('telescope.builtin').find_files({previewer=fals
 
 " Live grep 
 " vertical
-" noremap <leader>sf :lua require('telescope.builtin').live_grep(require('telescope.themes').get_dropdown({preview=false,layout_config = {width = 0.8, anchor = 'N'}, path_display={'smart'},shorten_path = true, word_match = "-w", only_sort_text = true, search = '' }))<cr>
+noremap <leader>sf :lua require('telescope.builtin').live_grep(require('telescope.themes').get_dropdown({preview=false,layout_config = {width = 0.8, anchor = 'N'}, path_display={'smart'},shorten_path = true, word_match = "-w", only_sort_text = true, search = '' }))<cr>
 " horizontal middle
 " nnoremap <leader>sf :lua require('telescope.builtin').live_grep(require('telescope.themes').get_dropdown({layout_strategy = 'horizontal',layout_config = {width = 0.8, height, 0.6, mirror= false, anchor = 'CENTER'}, path_display={'smart'},shorten_path = true, word_match = "-w", only_sort_text = true, search = '' }))<cr>
 " horizontal bottom
-nnoremap <leader>sf :lua require('telescope.builtin').live_grep(require('telescope.themes').get_ivy({shorten_path = true, word_match = "-w", only_sort_text = true, search = '' }))<cr>
+" nnoremap <leader>sf :lua require('telescope.builtin').live_grep(require('telescope.themes').get_ivy({shorten_path = true, word_match = "-w", only_sort_text = true, search = '' }))<cr>
 " horizontal bottom no preview
 " nnoremap <leader>sf :lua require('telescope.builtin').live_grep(require('telescope.themes').get_ivy({previewer=false,shorten_path = true, word_match = "-w", only_sort_text = true, search = '' }))<cr>
