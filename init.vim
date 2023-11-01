@@ -19,7 +19,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'tpope/vim-repeat' " repeat.vim: enable repeating supported plugin maps with .
   Plug 'andrewradev/undoquit.vim' " reopen the last window you closed
   Plug 'ervandew/supertab' " Perform all your vim insert mode completions with Tab
-  Plug 'mg979/vim-visual-multi' " Multiple cursors plugin for vim/neovim
+  Plug 'mg979/vim-visual-multi' " Multiple cursors plugin for vim/neovim, for vertical section enter v-block then shift+i insert mode
   Plug 'tyru/open-browser.vim' 
   Plug 'tyru/open-browser-github.vim' " Open Github from code 
   Plug 'airblade/vim-gitgutter' " Diff changes on the side
