@@ -26,10 +26,10 @@ call plug#begin('~/.config/nvim/plugged')
 
   " Misc
   Plug 'tpope/vim-fugitive' " Git wrapper
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
-  Plug 'voldikss/vim-floaterm'
-  Plug 'preservim/nerdtree'
+  Plug 'vim-airline/vim-airline' " Status bar
+  Plug 'vim-airline/vim-airline-themes' " Status bar themes
+  Plug 'voldikss/vim-floaterm' " floating terminal
+  Plug 'preservim/nerdtree' " Tree navigation
 
   " Languages
   Plug 'vim-test/vim-test'
