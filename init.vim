@@ -38,15 +38,13 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'pangloss/vim-javascript'
 
   " Make it pretty
-  Plug 'w0ng/vim-hybrid'
-  Plug 'ntk148v/komau.vim' " black/white
   Plug 'rktjmp/lush.nvim' " required for darcula-solid
   Plug 'briones-gabriel/darcula-solid.nvim'
   Plug 'vwxyutarooo/nerdtree-devicons-syntax'  
   Plug 'ryanoasis/vim-devicons' " Ensure it's the last plugin and install Nerd Font https://www.nerdfonts.com/font-downloads
 call plug#end()
 
-"
+" https://youtu.be/9J2OjH8Ao_A?t=1092
 " gtags() {
 "     echo "Generating tags...."
 "     SECONDS=0
@@ -88,7 +86,6 @@ let mapleader = "\<Space>"
 nnoremap <c-'> :colorscheme  
 set background=dark
 colorscheme darcula-solid
-" colorscheme hybrid
 set termguicolors
 set cursorline
 " set gdefault " assume /g flag on for :s subtitutions
