@@ -44,6 +44,17 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'ryanoasis/vim-devicons' " Ensure it's the last plugin and install Nerd Font https://www.nerdfonts.com/font-downloads
 call plug#end()
 
+
+"
+" function tabcolor {
+"   echo -n -e "\033]6;1;bg;red;brightness;$1\a"
+"   echo -n -e "\033]6;1;bg;green;brightness;$2\a"
+"   echo -n -e "\033]6;1;bg;blue;brightness;$3\a"
+" }
+"
+" tabcolor $(jot -r 1 0 255) $(jot -r 1 0 255) $(jot -r 1 0 255)
+
+
 " https://youtu.be/9J2OjH8Ao_A?t=1092
 " gtags() {
 "     echo "Generating tags...."
