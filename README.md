@@ -3,5 +3,7 @@
 2. Add this repo under ~/.config/nvim
 
 For telescope install
+brew install ripgrep
+brew install fd
 https://github.com/BurntSushi/ripgrep
 https://github.com/sharkdp/fd
