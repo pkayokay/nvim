@@ -3,7 +3,7 @@ call plug#begin('~/.config/nvim/plugged')
 
  " Search
   Plug 'nvim-lua/plenary.nvim' " co-dependent to telescope
-  Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
+  Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.4' }
   Plug 'dyng/ctrlsf.vim' " search/replace like sublime text
   Plug 'jlanzarotta/bufexplorer' " allows quicky deletion of buffers
   Plug 'ctrlpvim/ctrlp.vim' " file finder, multi select open
