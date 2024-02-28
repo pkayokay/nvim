@@ -36,6 +36,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'dense-analysis/ale'
   Plug 'jlcrochet/vim-ruby'
   Plug 'pangloss/vim-javascript'
+  Plug 'tpope/vim-rails'
 
   " Make it pretty
   Plug 'rktjmp/lush.nvim' " required for darcula-solid
@@ -214,7 +215,7 @@ lua << EOF
         prompt_position = 'top',
         mirror = true,
         height = 0.8,
-        width = 0.6,
+        width = 0.8,
       }
     }
   }
@@ -224,7 +225,7 @@ EOF
 " Buffer
 nnoremap <leader>ef :lua require('telescope.builtin').buffers({previewer=false, layout_config={height=0.3,width=0.5}})<cr>
 " Find files
-nnoremap <leader>ff :lua require('telescope.builtin').find_files({previewer=false, layout_config={height=0.3,width=0.5}})<cr>
+nnoremap <leader>ff :lua require('telescope.builtin').find_files({previewer=false, layout_config={height=0.4,width=0.8}})<cr>
 
 " Live grep 
 " vertical
