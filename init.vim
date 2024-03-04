@@ -1,7 +1,8 @@
 call plug#begin('~/.config/nvim/plugged')
   " New Plugins here...
+  
 
- " Search
+" Search
   Plug 'nvim-lua/plenary.nvim' " co-dependent to telescope
   Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.4' }
   Plug 'dyng/ctrlsf.vim' " search/replace like sublime text
@@ -107,6 +108,8 @@ set cursorline
 " set gdefault " assume /g flag on for :s subtitutions
 set clipboard=unnamed
 let g:airline_theme='bubblegum'
+let g:airline_section_c = '%t'
+let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_extensions = []
 let g:SuperTabDefaultCompletionType = "<c-n>" " sort order for supertab plugin
 " nnoremap <leader>ef :CtrlPBuffer<cr>
@@ -208,7 +211,7 @@ function! FindAndReplace()
     redraw!
 endfunction
 
-" Telescope
+"Telescope
 lua << EOF
  require('telescope').setup {
     defaults = {
@@ -223,20 +226,8 @@ lua << EOF
       }
     }
   }
-
 EOF
 
-" Buffer
-nnoremap <leader>ef :lua require('telescope.builtin').buffers({previewer=false, layout_config={height=0.3,width=0.5}})<cr>
-" Find files
-nnoremap <leader>ff :lua require('telescope.builtin').find_files({previewer=false, layout_config={height=0.4,width=0.8}})<cr>
-
-" Live grep 
-" vertical
+nnoremap <leader>ef :lua require('telescope.builtin').buffers({previewer=false, layout_config={height=0.4,width=0.6}})<cr>
+nnoremap <leader>ff :lua require('telescope.builtin').find_files({previewer=false, layout_config={height=0.4,width=0.6}})<cr>
 noremap <leader>sf :lua require('telescope.builtin').live_grep(require('telescope.themes').get_dropdown({preview=false,layout_config = {width = 0.8, anchor = 'N'}, path_display={'smart'},shorten_path = true, word_match = "-w", only_sort_text = true, search = '' }))<cr>
-" horizontal middle
-" nnoremap <leader>sf :lua require('telescope.builtin').live_grep(require('telescope.themes').get_dropdown({layout_strategy = 'horizontal',layout_config = {width = 0.8, height, 0.6, mirror= false, anchor = 'CENTER'}, path_display={'smart'},shorten_path = true, word_match = "-w", only_sort_text = true, search = '' }))<cr>
-" horizontal bottom
-" nnoremap <leader>sf :lua require('telescope.builtin').live_grep(require('telescope.themes').get_ivy({shorten_path = true, word_match = "-w", only_sort_text = true, search = '' }))<cr>
-" horizontal bottom no preview
-" nnoremap <leader>sf :lua require('telescope.builtin').live_grep(require('telescope.themes').get_ivy({previewer=false,shorten_path = true, word_match = "-w", only_sort_text = true, search = '' }))<cr>
