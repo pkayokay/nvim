@@ -42,9 +42,7 @@ call plug#begin('~/.config/nvim/plugged')
   " Make it pretty
   Plug 'rktjmp/lush.nvim' " required for darcula-solid
   Plug 'briones-gabriel/darcula-solid.nvim'
-  Plug 'neanias/everforest-nvim', { 'branch': 'main' }
-  Plug 'nordtheme/vim'
-  Plug 'AlexvZyl/nordic.nvim', { 'branch': 'main' } 
+  Plug 'rockyzhang24/arctic.nvim'
   Plug 'vwxyutarooo/nerdtree-devicons-syntax'  
   Plug 'ryanoasis/vim-devicons' " Ensure it's the last plugin and install Nerd Font https://www.nerdfonts.com/font-downloads
 call plug#end()
@@ -102,7 +100,6 @@ let mapleader = "\<Space>"
 nnoremap <c-'> :colorscheme  
 set background=dark
 colorscheme darcula-solid
-" colorscheme everforest
 set termguicolors
 set cursorline
 " set gdefault " assume /g flag on for :s subtitutions
