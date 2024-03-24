@@ -1,8 +1,7 @@
 call plug#begin('~/.config/nvim/plugged')
   " New Plugins here...
-  " https://github.com/alvan/vim-closetag
 
-" Search
+  " Search
   Plug 'nvim-lua/plenary.nvim' " co-dependent to telescope
   Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.4' }
   Plug 'dyng/ctrlsf.vim' " search/replace like sublime text
@@ -58,15 +57,6 @@ call plug#end()
 "
 " tabcolor $(jot -r 1 0 255) $(jot -r 1 0 255) $(jot -r 1 0 255)
 
-
-" CtrlP (Use rg (ripgrep) for ctrlp indexing, brew install ripgrep
-if executable('rg')
-  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
-endif
-
-" Git blame
-vmap <c-b> :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>,<C-R>=line("'>") <CR>p <CR>
-
 " Tips
 " - [c i ""] -> change inside "something" it deletes what's inside the quotes and put you on I mode
 " - [d a ""] -> delete around it deletes what's inside and quotes, keeps you normal mode
@@ -76,12 +66,13 @@ vmap <c-b> :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") 
 " - I beginning of line insert mode
 " - A end of line insert mode
 
+
+
+" [Generic]
 " Relative lines
 set relativenumber
-
 " Paste by typign dry on insert mode
 inoremap dry before { driven_by(:selenium_chrome) }
-
 let mapleader = "\<Space>"
 nnoremap <c-'> :colorscheme
 set background=dark
@@ -90,20 +81,6 @@ set termguicolors
 set cursorline
 " set gdefault " assume /g flag on for :s subtitutions
 set clipboard=unnamed
-let g:airline_theme='bubblegum'
-let g:airline_section_c = '%t'
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline_extensions = []
-let g:SuperTabDefaultCompletionType = "<c-n>" " sort order for supertab plugin
-" let g:ctrlp_map = '<leader>ff'
-
-" vim-gitgutter
-let g:gitgutter_enabled = 1
-highlight GitGutterAdd    guifg=#859c61 ctermfg=2
-highlight GitGutterChange guifg=#f9c269 ctermfg=3
-highlight GitGutterDelete guifg=#c77532 ctermfg=1
-highlight Directory guifg=#cacbcd
-
 set encoding=UTF-8 " for vim-devicons
 set tabstop=2               " number of columns occupied by a tab character
 set expandtab               " convert tabs to white space
@@ -130,9 +107,42 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-l> <C-W>l
 
+
+" Git blame
+vmap <c-b> :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>,<C-R>=line("'>") <CR>p <CR>
+
+" Custom command to find and replace in file
+nnoremap <leader>fr :call FindAndReplace()<CR>
+function! FindAndReplace()
+    let find = input('Find: ')
+    let replace = input('Replace with: ')
+    execute '%s/' . find . '/' . replace . '/gc'
+    redraw!
+endfunction
+
+" [Plugins]
+" vim-airline/vim-airline
+let g:airline_theme='bubblegum'
+let g:airline_section_c = '%t'
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline_extensions = []
+let g:SuperTabDefaultCompletionType = "<c-n>" " sort order for supertab plugin
+
+" vim-gitgutter
+let g:gitgutter_enabled = 1
+highlight GitGutterAdd    guifg=#859c61 ctermfg=2
+highlight GitGutterChange guifg=#f9c269 ctermfg=3
+highlight GitGutterDelete guifg=#c77532 ctermfg=1
+highlight Directory guifg=#cacbcd
+
 " Open browser
 vnoremap <c-\> :OpenGithubFile<cr>
 let g:openbrowser_github_always_used_branch = 'main'
+
+" CtrlP (Use rg (ripgrep) for ctrlp indexing, brew install ripgrep
+if executable('rg')
+  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+endif
 
 " Undo quit
 let g:undoquit_mapping = '_u'
@@ -141,7 +151,7 @@ let g:undoquit_mapping = '_u'
 let g:clever_f_smart_case = 1
 
 " ALE
-" npm install -g prettier
+" npm install -g prettier && gem install standard
 let g:ale_lint_on_text_changed = 0
 let g:ale_lint_on_enter = 1
 let g:ale_lint_on_save = 1
