@@ -38,6 +38,8 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'pangloss/vim-javascript'
   Plug 'tpope/vim-rails'
   Plug 'maxmellon/vim-jsx-pretty'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 
   " Make it pretty
   Plug 'rktjmp/lush.nvim' " required for darcula-solid
