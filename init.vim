@@ -38,6 +38,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'jlcrochet/vim-ruby'
   Plug 'pangloss/vim-javascript'
   Plug 'tpope/vim-rails'
+  Plug 'maxmellon/vim-jsx-pretty'
 
   " Make it pretty
   Plug 'rktjmp/lush.nvim' " required for darcula-solid
