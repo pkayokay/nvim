@@ -1,6 +1,6 @@
 call plug#begin('~/.config/nvim/plugged')
   " New Plugins here...
-  
+  " https://github.com/alvan/vim-closetag  
 
 " Search
   Plug 'nvim-lua/plenary.nvim' " co-dependent to telescope
@@ -38,6 +38,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'jlcrochet/vim-ruby'
   Plug 'pangloss/vim-javascript'
   Plug 'tpope/vim-rails'
+ 
 
   " Make it pretty
   Plug 'rktjmp/lush.nvim' " required for darcula-solid
@@ -58,20 +59,6 @@ call plug#end()
 " tabcolor $(jot -r 1 0 255) $(jot -r 1 0 255) $(jot -r 1 0 255)
 
 
-" https://youtu.be/9J2OjH8Ao_A?t=1092
-" gtags() {
-"     echo "Generating tags...."
-"     SECONDS=0
-"
-"     ctags -R -f ../tags --languages=ruby --exclude=.git --exclude=public --exclude=tmp . $(bundle list --paths)
-"
-"     echo "Finished generating tags in $SECONDS seconds."
-" }
-" gtags &> /dev/null &
-
-" set omnifunc=ccomplete#Complete
-set tags=../../Projects/tags
-
 " CtrlP (Use rg (ripgrep) for ctrlp indexing, brew install ripgrep
 if executable('rg')
   let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
@@ -79,10 +66,6 @@ endif
 
 " Git blame
 vmap <c-b> :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>,<C-R>=line("'>") <CR>p <CR>
-
-" practice bookmarks
-" Todo: Ctags(definitions and even source code), tmux
-" Tags :h tags (ctags) -> ex. see has_many definition in Rails source code, :tag has_many, :tag /validates_.*
 
 " Tips
 " - [c i ""] -> change inside "something" it deletes what's inside the quotes and put you on I mode
@@ -93,7 +76,9 @@ vmap <c-b> :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") 
 " - I beginning of line insert mode
 " - A end of line insert mode 
 
+set relativenumber
 
+" Paste by typign dry on insert mode
 inoremap dry before { driven_by(:selenium_chrome) }
 
 let mapleader = "\<Space>"
@@ -109,7 +94,6 @@ let g:airline_section_c = '%t'
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_extensions = []
 let g:SuperTabDefaultCompletionType = "<c-n>" " sort order for supertab plugin
-" nnoremap <leader>ef :CtrlPBuffer<cr>
 " let g:ctrlp_map = '<leader>ff'
 
 " vim-gitgutter 
@@ -154,7 +138,6 @@ let g:undoquit_mapping = '_u'
 
 " Clever F
 let g:clever_f_smart_case = 1
-
 
 " ALE
 " npm install -g prettier
