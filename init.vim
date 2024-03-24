@@ -68,7 +68,7 @@ call plug#end()
 
 
 
-" [Generic]
+" ------Generic-------
 " Relative lines
 set relativenumber
 " Paste by typign dry on insert mode
@@ -120,7 +120,7 @@ function! FindAndReplace()
     redraw!
 endfunction
 
-" [Plugins]
+" ------Plugins-------
 " vim-airline/vim-airline
 let g:airline_theme='bubblegum'
 let g:airline_section_c = '%t'
@@ -135,19 +135,19 @@ highlight GitGutterChange guifg=#f9c269 ctermfg=3
 highlight GitGutterDelete guifg=#c77532 ctermfg=1
 highlight Directory guifg=#cacbcd
 
-" Open browser
+" open-browser-github
 vnoremap <c-\> :OpenGithubFile<cr>
 let g:openbrowser_github_always_used_branch = 'main'
 
-" CtrlP (Use rg (ripgrep) for ctrlp indexing, brew install ripgrep
+" ctrlp (Use rg (ripgrep) for ctrlp indexing, brew install ripgrep
 if executable('rg')
   let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
 endif
 
-" Undo quit
+" undoquit
 let g:undoquit_mapping = '_u'
 
-" Clever F
+" clever-f
 let g:clever_f_smart_case = 1
 
 " ALE
@@ -216,7 +216,7 @@ nnoremap <silent><leader>it :FloatermToggle<cr>
 let g:floaterm_height = 0.4
 let g:floaterm_wintype = 'split'
 
-" CtrlSF
+" ctrlsf
 let g:ctrlsf_regex_pattern = 1
 let g:ctrlsf_auto_focus = { 'at': 'start' }
 nnoremap <leader>se :CtrlSF
@@ -226,17 +226,7 @@ let g:ctrlsf_auto_close = {'normal' : 0, 'compact': 0}
 let g:ctrlsf_default_view_mode = 'normal'
 let g:ctrlsf_position = 'bottom'
 
-" Custom command to find and replace in file
-nnoremap <leader>fr :call FindAndReplace()<CR>
-function! FindAndReplace()
-    let find = input('Find: ')
-    let replace = input('Replace with: ')
-    execute '%s/' . find . '/' . replace . '/gc'
-    redraw!
-endfunction
-
-
-"Telescope
+" telescope
 lua << EOF
  require('telescope').setup {
     defaults = {
