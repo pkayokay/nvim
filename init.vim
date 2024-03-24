@@ -1,6 +1,6 @@
 call plug#begin('~/.config/nvim/plugged')
   " New Plugins here...
-  " https://github.com/alvan/vim-closetag  
+  " https://github.com/alvan/vim-closetag
 
 " Search
   Plug 'nvim-lua/plenary.nvim' " co-dependent to telescope
@@ -14,15 +14,15 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'tpope/vim-surround' " delete/change/add parentheses/quotes/XML-tags/much more with ease
   Plug 'tomtom/tcomment_vim' " An extensible & universal comment vim-plugin
   Plug 'tpope/vim-endwise' "helps to end certain structures automatically. In Ruby, this means adding end after if, do, def and several other keywords.
-  Plug 'chaoren/vim-wordmotion' " More useful word motions for Vim 
-  Plug 'Raimondi/delimitMate' " provides insert mode auto-completion for quotes, parens, brackets, etc.  
+  Plug 'chaoren/vim-wordmotion' " More useful word motions for Vim
+  Plug 'Raimondi/delimitMate' " provides insert mode auto-completion for quotes, parens, brackets, etc.
   Plug 'rhysd/clever-f.vim' " Extended f, F, t and T key mappings for Vim.
   Plug 'tpope/vim-repeat' " repeat.vim: enable repeating supported plugin maps with .
   Plug 'andrewradev/undoquit.vim' " reopen the last window you closed
   Plug 'ervandew/supertab' " Perform all your vim insert mode completions with Tab
   Plug 'mg979/vim-visual-multi' " Multiple cursors plugin for vim/neovim, for vertical section enter v-block then shift+i insert mode
-  Plug 'tyru/open-browser.vim' 
-  Plug 'tyru/open-browser-github.vim' " Open Github from code 
+  Plug 'tyru/open-browser.vim'
+  Plug 'tyru/open-browser-github.vim' " Open Github from code
   Plug 'airblade/vim-gitgutter' " Diff changes on the side
 
   " Misc
@@ -38,13 +38,12 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'jlcrochet/vim-ruby'
   Plug 'pangloss/vim-javascript'
   Plug 'tpope/vim-rails'
- 
 
   " Make it pretty
   Plug 'rktjmp/lush.nvim' " required for darcula-solid
   Plug 'briones-gabriel/darcula-solid.nvim'
   Plug 'rockyzhang24/arctic.nvim'
-  Plug 'vwxyutarooo/nerdtree-devicons-syntax'  
+  Plug 'vwxyutarooo/nerdtree-devicons-syntax'
   Plug 'ryanoasis/vim-devicons' " Ensure it's the last plugin and install Nerd Font https://www.nerdfonts.com/font-downloads
 call plug#end()
 
@@ -74,15 +73,16 @@ vmap <c-b> :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") 
 " - [g i] -> jump to where you were last inserted
 " - [c i] or [c o] jump list (ex. jump from efinition and back) (:jumps)
 " - I beginning of line insert mode
-" - A end of line insert mode 
+" - A end of line insert mode
 
+" Relative lines
 set relativenumber
 
 " Paste by typign dry on insert mode
 inoremap dry before { driven_by(:selenium_chrome) }
 
 let mapleader = "\<Space>"
-nnoremap <c-'> :colorscheme  
+nnoremap <c-'> :colorscheme
 set background=dark
 colorscheme darcula-solid
 set termguicolors
@@ -96,7 +96,7 @@ let g:airline_extensions = []
 let g:SuperTabDefaultCompletionType = "<c-n>" " sort order for supertab plugin
 " let g:ctrlp_map = '<leader>ff'
 
-" vim-gitgutter 
+" vim-gitgutter
 let g:gitgutter_enabled = 1
 highlight GitGutterAdd    guifg=#859c61 ctermfg=2
 highlight GitGutterChange guifg=#f9c269 ctermfg=3
@@ -145,12 +145,45 @@ let g:ale_lint_on_text_changed = 0
 let g:ale_lint_on_enter = 1
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_filetype_changed = 1
-let g:ale_linters = { 'ruby': ['ruby','standardrb', 'rubocop'], 'eruby': ['erblint']}
-let g:ale_fixers = { 'javascript': ['prettier'], 'javascriptreact': ['prettier'], 'typescript': ['prettier'], 'ruby': ['rubocop', 'standardrb'], 'eruby': ['erblint']}
 let g:ale_fix_on_save = 1
 let g:ale_sign_error = 'E'
 let g:ale_sign_warning = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'javascriptreact': ['eslint'],
+\   'typescript': ['eslint'],
+\   'typescriptreact': ['eslint'],
+\   'ruby': ['rubocop'],
+\   'eruby': ['erblint'],
+\ }
+
+let g:ale_fixers = {
+\   'javascript': ['eslint'],
+\   'javascriptreact': ['eslint'],
+\   'typescript': ['eslint'],
+\   'typescriptreact': ['eslint'],
+\   'ruby': ['rubocop'],
+\   'eruby': ['erblint'],
+\ }
+
+function! SetPrettierLinter()
+  let g:ale_linters['javascript'] = ['prettier']
+  let g:ale_linters['javascriptreact'] = ['prettier']
+  let g:ale_linters['typescript'] = ['prettier']
+  let g:ale_linters['typescriptreact'] = ['prettier']
+  let g:ale_fixers['javascript'] = ['prettier']
+  let g:ale_fixers['javascriptreact'] = ['prettier']
+  let g:ale_fixers['typescript'] = ['prettier']
+  let g:ale_fixers['typescriptreact'] = ['prettier']
+endfunction
+command! SetPrettierLinter call SetPrettierLinter()
+
+function! SetStandardLinter()
+  let g:ale_linters['ruby'] = ['standardrb']
+  let g:ale_fixers['ruby'] = ['standardrb']
+endfunction
+command! SetStandardLinter call SetStandardLinter()
 
 " NERDTree
 " autocmd VimEnter * NERDTree | wincmd p "Start NERDTree and put the cursor back in the other window
@@ -175,7 +208,7 @@ let g:floaterm_wintype = 'split'
 " CtrlSF
 let g:ctrlsf_regex_pattern = 1
 let g:ctrlsf_auto_focus = { 'at': 'start' }
-nnoremap <leader>se :CtrlSF 
+nnoremap <leader>se :CtrlSF
 nnoremap <leader>st :CtrlSFToggle<cr>'
 let g:ctrlsf_compact_winsize = '30%'
 let g:ctrlsf_auto_close = {'normal' : 0, 'compact': 0}
@@ -190,6 +223,7 @@ function! FindAndReplace()
     execute '%s/' . find . '/' . replace . '/gc'
     redraw!
 endfunction
+
 
 "Telescope
 lua << EOF
