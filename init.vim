@@ -18,7 +18,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'rhysd/clever-f.vim' " Extended f, F, t and T key mappings for Vim.
   Plug 'tpope/vim-repeat' " repeat.vim: enable repeating supported plugin maps with .
   Plug 'andrewradev/undoquit.vim' " reopen the last window you closed
-  Plug 'ervandew/supertab' " Perform all your vim insert mode completions with Tab
+  " Plug 'ervandew/supertab' " Perform all your vim insert mode completions with Tab
   Plug 'mg979/vim-visual-multi' " Multiple cursors plugin for vim/neovim, for vertical section enter v-block then shift+i insert mode
   Plug 'tyru/open-browser.vim'
   Plug 'tyru/open-browser-github.vim' " Open Github from code
@@ -39,7 +39,6 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'tpope/vim-rails'
   Plug 'maxmellon/vim-jsx-pretty'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
 
   " Make it pretty
   Plug 'rktjmp/lush.nvim' " required for darcula-solid
@@ -123,6 +122,22 @@ function! FindAndReplace()
 endfunction
 
 " ------Plugins-------
+"  coc.vim
+" use <tab> to trigger completion and navigate to the next complete item
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+
+inoremap <silent><expr> <CR>
+      \ coc#pum#visible() ? coc#pum#confirm() :
+      \ "\<CR>"
+
 " vim-airline/vim-airline
 let g:airline_theme='bubblegum'
 let g:airline_section_c = '%t'

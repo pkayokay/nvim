@@ -13,4 +13,6 @@ https://github.com/sharkdp/fd
 ### Solargraph / Ruby 
 https://github.com/neoclide/coc.nvim
 https://github.com/neoclide/coc-solargraph
-
+```
+:CocInstall coc-solargraph
+```
