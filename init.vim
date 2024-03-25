@@ -130,7 +130,7 @@ function! CheckBackspace() abort
 endfunction
 
 inoremap <silent><expr> <Tab>
-      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ coc#pum#visible() ? coc#pum#confirm() :
       \ CheckBackspace() ? "\<Tab>" :
       \ coc#refresh()
 
