@@ -16,3 +16,9 @@ https://github.com/neoclide/coc-solargraph
 ```
 :CocInstall coc-solargraph
 ```
+
+### Typescript / Javascript
+https://github.com/neoclide/coc-tsserver
+```
+:CocInstall coc-tsserver
+```
