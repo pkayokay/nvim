@@ -80,6 +80,7 @@ set background=dark
 colorscheme darcula-solid
 set termguicolors
 set cursorline
+set cursorcolumn
 " set gdefault " assume /g flag on for :s subtitutions
 set clipboard=unnamed
 set encoding=UTF-8 " for vim-devicons
