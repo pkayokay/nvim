@@ -66,11 +66,11 @@ call plug#end()
 " - [c i] or [c o] jump list (ex. jump from efinition and back) (:jumps)
 " - I beginning of line insert mode
 " - A end of line insert mode
-
-
+" shift + i -> beggining of line in insert mode
+" shift + $ -> end of line
 
 " ------Generic-------
-" Relative lines
+  " Relative lines
 set relativenumber
 " Paste by typign dry on insert mode
 inoremap dry before { driven_by(:selenium_chrome) }
@@ -80,7 +80,7 @@ set background=dark
 colorscheme darcula-solid
 set termguicolors
 set cursorline
-set cursorcolumn
+set guicursor=a:hor20-Cursor
 " set gdefault " assume /g flag on for :s subtitutions
 set clipboard=unnamed
 set encoding=UTF-8 " for vim-devicons
