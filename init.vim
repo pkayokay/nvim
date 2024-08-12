@@ -94,6 +94,7 @@ set nowrap " :set wrap! :set wrap
 let mapleader = "\<Space>"
 set number
 set splitbelow splitright
+set scroll=10
 set scrolloff=10 sidescrolloff=20
 set ignorecase smartcase " make searches case-insensitive, unless they contain upper-case letters
 tnoremap <Esc> <C-\><C-n>
