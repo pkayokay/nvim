@@ -69,6 +69,7 @@ call plug#end()
 " - A end of line insert mode
 " shift + i -> beggining of line in insert mode
 " shift + $ -> end of line
+" vertical cursor, ctrl + v, shift + I or A
 
 " ------Generic-------
   " Relative lines
