@@ -252,7 +252,7 @@ let g:ctrlsf_auto_close = {'normal' : 0, 'compact': 0}
 let g:ctrlsf_default_view_mode = 'normal'
 let g:ctrlsf_position = 'bottom'
 
-" telescope
+" Setup Telescope using Lua (no direct Vimscript equivalent)
 lua << EOF
  require('telescope').setup {
     defaults = {
@@ -269,6 +269,7 @@ lua << EOF
   }
 EOF
 
+" Vimscript key mappings that call Lua functions for Telescope
 nnoremap <leader>ef :lua require('telescope.builtin').buffers({previewer=false, layout_config={height=0.4,width=0.6}})<cr>
 nnoremap <leader>ff :lua require('telescope.builtin').find_files({previewer=false, layout_config={height=0.4,width=0.6}})<cr>
 noremap <leader>sf :lua require('telescope.builtin').live_grep(require('telescope.themes').get_dropdown({preview=false,layout_config = {width = 0.8, anchor = 'N'}, path_display={'smart'},shorten_path = true, word_match = "-w", only_sort_text = true, search = '' }))<cr>
