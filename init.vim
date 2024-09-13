@@ -218,6 +218,10 @@ function! SetStandardLinter()
 endfunction
 command! SetStandardLinter call SetStandardLinter()
 
+" For personal projects set these linters
+SetStandardLinter
+SetPrettierLinter
+
 " NERDTree
 " autocmd VimEnter * NERDTree | wincmd p "Start NERDTree and put the cursor back in the other window
 let g:NERDTreeWinPos = "right"
