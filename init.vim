@@ -247,7 +247,7 @@ let g:ctrlsf_regex_pattern = 1
 let g:ctrlsf_auto_focus = { 'at': 'start' }
 nnoremap <leader>se :CtrlSF
 nnoremap <leader>st :CtrlSFToggle<cr>'
-let g:ctrlsf_compact_winsize = '30%'
+let g:ctrlsf_compact_winsize = '80%'
 let g:ctrlsf_auto_close = {'normal' : 0, 'compact': 0}
 let g:ctrlsf_default_view_mode = 'normal'
 let g:ctrlsf_position = 'bottom'
