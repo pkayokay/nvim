@@ -4,6 +4,7 @@
 
 
 If using JetBrains Mono, download the font locally here https://www.jetbrains.com/lp/mono/, otherwise NerdTree Icons won't work properly.
+
 ### For telescope install
 ```
 brew install ripgrep
@@ -12,7 +13,7 @@ https://github.com/BurntSushi/ripgrep
 https://github.com/sharkdp/fd
 ```
 
-### Solargraph / Ruby 
+### Solargraph / Ruby
 https://github.com/neoclide/coc.nvim
 https://github.com/neoclide/coc-solargraph
 ```
