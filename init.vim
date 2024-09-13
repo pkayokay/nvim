@@ -38,7 +38,6 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'pangloss/vim-javascript'
   Plug 'tpope/vim-rails'
   Plug 'maxmellon/vim-jsx-pretty'
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
   " https://lsp-zero.netlify.app/v4.x/template/vimscript-config.html
   " LSP-ZERO
@@ -184,21 +183,6 @@ function! FindAndReplace()
 endfunction
 
 " ------Plugins-------
-"  coc.vim
-" use <tab> to trigger completion and navigate to the next complete item
-function! CheckBackspace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-inoremap <silent><expr> <Tab>
-      \ coc#pum#visible() ? coc#pum#confirm() :
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
-
-inoremap <silent><expr> <CR>
-      \ coc#pum#visible() ? coc#pum#confirm() :
-      \ "\<CR>"
 
 " vim-airline/vim-airline
 let g:airline_theme='bubblegum'
