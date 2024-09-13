@@ -40,6 +40,15 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'maxmellon/vim-jsx-pretty'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+  " https://lsp-zero.netlify.app/v4.x/template/vimscript-config.html
+  " LSP-ZERO
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'williamboman/mason.nvim'
+  Plug 'williamboman/mason-lspconfig.nvim'
+  Plug 'hrsh7th/nvim-cmp'
+  Plug 'hrsh7th/cmp-nvim-lsp'
+  Plug 'VonHeikemen/lsp-zero.nvim', {'branch': 'v4.x'}
+
   " Make it pretty
   Plug 'rktjmp/lush.nvim' " required for darcula-solid
   Plug 'briones-gabriel/darcula-solid.nvim'
@@ -49,6 +58,54 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'ryanoasis/vim-devicons' " Ensure it's the last plugin and install Nerd Font https://www.nerdfonts.com/font-downloads
 call plug#end()
 
+" LSP-ZERO config
+lua <<EOF
+local lsp_zero = require('lsp-zero')
+
+local lsp_attach = function(client, bufnr)
+  local opts = {buffer = bufnr}
+
+  vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
+  vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
+  vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
+  vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
+  vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
+  vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
+  vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
+  vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
+  vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
+  vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+end
+
+lsp_zero.extend_lspconfig({
+  sign_text = true,
+  lsp_attach = lsp_attach,
+  capabilities = require('cmp_nvim_lsp').default_capabilities()
+})
+
+require('mason').setup({})
+require('mason-lspconfig').setup({
+  handlers = {
+    function(server_name)
+      require('lspconfig')[server_name].setup({})
+    end,
+  }
+})
+
+local cmp = require('cmp')
+
+cmp.setup({
+  sources = {
+    {name = 'nvim_lsp'},
+  },
+  snippet = {
+    expand = function(args)
+      vim.snippet.expand(args.body)
+    end,
+  },
+  mapping = cmp.mapping.preset.insert({}),
+})
+EOF
 
 " Add to ZSH to switch tab colors
 " function tabcolor {
