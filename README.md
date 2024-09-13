@@ -13,6 +13,14 @@ https://github.com/BurntSushi/ripgrep
 https://github.com/sharkdp/fd
 ```
 
+---
+
+## Conque of Completion
+
+https://github.com/neoclide/coc.nvim
+
+Make your Vim/Neovim as smart as VS Code
+
 ### Solargraph / Ruby
 https://github.com/neoclide/coc.nvim
 https://github.com/neoclide/coc-solargraph
