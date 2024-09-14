@@ -135,6 +135,7 @@ endfunction
 
 " ------Plugins-------
 " LSP-ZERO config
+" https://lsp-zero.netlify.app/v4.x/template/vimscript-config.html
 lua <<EOF
   local lsp_zero = require('lsp-zero')
 
