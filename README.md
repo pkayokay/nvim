@@ -23,6 +23,9 @@ Helps setup nvim-lspconfig and nvim-cmp (auto completion) with pre-made configur
 
 Install LSPs, linters and formatters
 
+
+`gem install ruby-lsp`
+
 Ex.
 ```
 :LspInstall ruby-lsp
