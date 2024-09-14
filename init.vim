@@ -270,7 +270,7 @@ nnoremap <leader>nt :NERDTreeToggle<CR>
 nnoremap <leader>nf :NERDTreeFind<CR>
 nnoremap <leader>nrs :vertical resize 30<cr>
 let NERDTreeQuitOnOpen = 0
-let g:NERDTreeWinSize=30
+let g:NERDTreeWinSize=40
 let g:NERDTreeIgnore = ['^node_modules$','^tmp$']
 
 " vim-test
