@@ -21,10 +21,7 @@ https://github.com/VonHeikemen/lsp-zero.nvim
 
 Helps setup nvim-lspconfig and nvim-cmp (auto completion) with pre-made configuration for various language servers.
 
-Install LSPs, linters and formatters
-
-
-`gem install ruby-lsp`
+Install LSPs, linters and formatters (do not need to use for formatters though)
 
 Ex.
 ```
