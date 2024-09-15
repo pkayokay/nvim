@@ -15,21 +15,17 @@ https://github.com/sharkdp/fd
 
 ---
 
-## Conque of Completion
+## LSP
 
-https://github.com/neoclide/coc.nvim
+https://github.com/VonHeikemen/lsp-zero.nvim
 
-Make your Vim/Neovim as smart as VS Code
+Helps setup nvim-lspconfig and nvim-cmp (auto completion) with pre-made configuration for various language servers.
 
-### Solargraph / Ruby
-https://github.com/neoclide/coc.nvim
-https://github.com/neoclide/coc-solargraph
+Install LSPs, linters and formatters (do not need to use for formatters though)
+
+Ex.
 ```
-:CocInstall coc-solargraph
-```
-
-### Typescript / Javascript
-https://github.com/neoclide/coc-tsserver
-```
-:CocInstall coc-tsserver
+:LspInstall ruby-lsp
+:LspInstall html-lsp
+:LspInstall tailwindcss-language-server
 ```
