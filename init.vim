@@ -47,6 +47,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'hrsh7th/nvim-cmp'
   Plug 'hrsh7th/cmp-nvim-lsp'
   Plug 'VonHeikemen/lsp-zero.nvim', {'branch': 'v4.x'}
+  Plug 'j-hui/fidget.nvim' " Extensible UI for Neovim notifications and LSP progress messages.
 
   " Make it pretty
   Plug 'rktjmp/lush.nvim' " required for darcula-solid
@@ -182,6 +183,14 @@ lua <<EOF
     },
     mapping = cmp.mapping.preset.insert({}),
   })
+EOF
+
+
+" Fidget
+lua <<EOF
+  require("fidget").setup {
+    -- options
+  }
 EOF
 
 " vim-airline/vim-airline
