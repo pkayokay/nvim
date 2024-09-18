@@ -56,6 +56,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'mhartington/oceanic-next'
   Plug 'vwxyutarooo/nerdtree-devicons-syntax'
   Plug 'ryanoasis/vim-devicons' " Ensure it's the last plugin and install Nerd Font https://www.nerdfonts.com/font-downloads
+  Plug 'ferdinandrau/lavish.nvim'
 call plug#end()
 
 " Add to ZSH to switch tab colors
