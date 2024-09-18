@@ -88,7 +88,7 @@ inoremap dry before { driven_by(:selenium_chrome) }
 let mapleader = "\<Space>"
 nnoremap <c-'> :colorscheme
 set background=dark
-colorscheme hybrid
+colorscheme lavish
 set termguicolors
 set cursorline
 set guicursor=a:hor20-Cursor
