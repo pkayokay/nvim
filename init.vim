@@ -31,6 +31,9 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'voldikss/vim-floaterm' " floating terminal
   Plug 'preservim/nerdtree' " Tree navigation
 
+  " AI
+  Plug 'supermaven-inc/supermaven-nvim'
+
   " Languages
   Plug 'vim-test/vim-test'
   Plug 'dense-analysis/ale'
@@ -136,6 +139,13 @@ function! FindAndReplace()
 endfunction
 
 " ------Plugins-------
+
+lua << EOF
+require("supermaven-nvim").setup({
+  -- You can pass any configuration options here
+})
+EOF
+
 " LSP-ZERO config
 " https://lsp-zero.netlify.app/v4.x/template/vimscript-config.html
 lua <<EOF
