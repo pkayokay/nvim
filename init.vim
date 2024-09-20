@@ -60,10 +60,38 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'briones-gabriel/darcula-solid.nvim'
   Plug 'HoNamDuong/hybrid.nvim'
   Plug 'mhartington/oceanic-next'
-  Plug 'vwxyutarooo/nerdtree-devicons-syntax'
+  Plug 'danilo-augusto/vim-afterglow'
+  Plug 'projekt0n/github-nvim-theme'
+
+  Plug 'vwxyutarooo/nerdtree-devicons-syntax' " needs vim-devicons
   Plug 'ryanoasis/vim-devicons' " Ensure it's the last plugin and install Nerd Font https://www.nerdfonts.com/font-downloads
-  Plug 'ferdinandrau/lavish.nvim'
 call plug#end()
+
+" --------------------------------------------------
+" 👉 Switch themes instantly!
+" --------------------------------------------------
+colorscheme hybrid
+let g:airline_theme='hybrid'
+
+let g:theme_index = 0
+let g:themes = ['hybrid', 'darcula-solid', "OceanicNext", "afterglow","github_dark",'github_dark_dimmed', "github_light"]
+
+" Function to switch to the next theme
+function! SwitchThemeNext()
+  let g:theme_index = (g:theme_index + 1) % len(g:themes)
+  execute 'colorscheme ' . g:themes[g:theme_index]
+  echo "Theme: " . g:themes[g:theme_index]
+endfunction
+
+" Function to switch to the previous theme
+function! SwitchThemePrev()
+  let g:theme_index = (g:theme_index - 1 + len(g:themes)) % len(g:themes)
+  execute 'colorscheme ' . g:themes[g:theme_index]
+  echo "Theme: " . g:themes[g:theme_index]
+endfunction
+
+nnoremap <C-S-p> :call SwitchThemePrev()<CR>
+nnoremap <C-S-n> :call SwitchThemeNext()<CR>
 
 " --------------------------------------------------
 " 👉 Notes!
@@ -100,7 +128,6 @@ set relativenumber " set norelativenumber
 let mapleader = "\<Space>"
 nnoremap <c-'> :colorscheme
 set background=dark
-colorscheme lavish
 set termguicolors
 set cursorline
 set guicursor=a:hor20-Cursor
@@ -222,7 +249,7 @@ lua <<EOF
 EOF
 
 " vim-airline/vim-airline
-let g:airline_theme='bubblegum'
+" Note: airline theme is set above in theme context ex. let g:airline_theme='bubblegum'
 let g:airline_section_c = '%t'
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_extensions = []
@@ -343,7 +370,7 @@ lua << EOF
         anchor = 'CENTER',
         prompt_position = 'top',
         mirror = true,
-        height = 0.75,
+        height = 0.8,
         width = 0.75,
       }
     },
