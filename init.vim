@@ -4,6 +4,7 @@ call plug#begin('~/.config/nvim/plugged')
   " Search
   Plug 'nvim-lua/plenary.nvim' " co-dependent to telescope
   Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.4' }
+  Plug 'nvim-telescope/telescope-live-grep-args.nvim' " Extends telescope and allows passing arguments to grep
   Plug 'dyng/ctrlsf.vim' " search/replace like sublime text
   Plug 'jlanzarotta/bufexplorer' " allows quicky deletion of buffers
   Plug 'ctrlpvim/ctrlp.vim' " file finder, multi select open
@@ -306,7 +307,7 @@ let g:floaterm_wintype = 'split'
 " ctrlsf
 let g:ctrlsf_regex_pattern = 1
 let g:ctrlsf_auto_focus = { 'at': 'start' }
-nnoremap <leader>se :CtrlSF
+nnoremap <leader>se :CtrlSF<Space>
 nnoremap <leader>st :CtrlSFToggle<cr>'
 let g:ctrlsf_compact_winsize = '80%'
 let g:ctrlsf_auto_close = {'normal' : 0, 'compact': 0}
@@ -315,7 +316,9 @@ let g:ctrlsf_position = 'bottom'
 
 " Setup Telescope using Lua (no direct Vimscript equivalent)
 lua << EOF
- require('telescope').setup {
+  local lga_actions = require("telescope-live-grep-args.actions")
+
+  require('telescope').setup {
     defaults = {
       sorting_strategy = 'ascending',
       layout_strategy = 'vertical',
@@ -323,8 +326,20 @@ lua << EOF
         anchor = 'CENTER',
         prompt_position = 'top',
         mirror = true,
-        height = 0.8,
-        width = 0.8,
+        height = 0.75,
+        width = 0.75,
+      }
+    },
+    extensions = {
+      live_grep_args = {
+        auto_quoting = true,
+        mappings = {
+          i = {
+            ["<C-k>"] = lga_actions.quote_prompt(),
+            ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+            ["<C-space>"] = lga_actions.to_fuzzy_refine,
+          }
+        }
       }
     }
   }
@@ -333,4 +348,11 @@ EOF
 " Vimscript key mappings that call Lua functions for Telescope
 nnoremap <leader>ef :lua require('telescope.builtin').buffers({previewer=false, layout_config={height=0.4,width=0.6}})<cr>
 nnoremap <leader>ff :lua require('telescope.builtin').find_files({previewer=false, layout_config={height=0.4,width=0.6}})<cr>
-noremap <leader>sf :lua require('telescope.builtin').live_grep(require('telescope.themes').get_dropdown({preview=false,layout_config = {width = 0.8, anchor = 'N'}, path_display={'smart'},shorten_path = true, word_match = "-w", only_sort_text = true, search = '' }))<cr>
+" Telescope telescope-live-grep-args
+nnoremap <leader>sf :lua require('telescope').extensions.live_grep_args.live_grep_args()<cr>
+" It enables passing arguments to the grep command, rg examples:
+" foo → press <C-k> → "foo"  → "foo" -tmd
+" Only works if you set up the <C-k> mapping
+" --no-ignore foo
+" "foo bar" bazdir
+" "foo" --iglob **/bar/**
