@@ -343,6 +343,10 @@ lua << EOF
       }
     }
   }
+
+  " Search the word under the cursor
+  local live_grep_args_shortcuts = require("telescope-live-grep-args.shortcuts")
+  vim.keymap.set("n", "<leader>gc", live_grep_args_shortcuts.grep_word_under_cursor)
 EOF
 
 " Vimscript key mappings that call Lua functions for Telescope
