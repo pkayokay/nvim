@@ -74,7 +74,7 @@ colorscheme hybrid
 let g:airline_theme='hybrid'
 
 let g:theme_index = 0
-let g:themes = ['hybrid', 'habamax', 'darcula-solid', 'OceanicNext', 'afterglow', 'github_dark_dimmed']
+let g:themes = ['hybrid', 'afterglow', 'darcula-solid', 'OceanicNext', 'github_dark_dimmed']
 
 " Function to switch to the next theme
 function! SwitchThemeNext()
@@ -92,7 +92,6 @@ endfunction
 
 nnoremap <C-S-p> :call SwitchThemePrev()<CR>
 nnoremap <C-S-n> :call SwitchThemeNext()<CR>
-
 " --------------------------------------------------
 " 👉 Notes!
 " --------------------------------------------------
