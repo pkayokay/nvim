@@ -1,5 +1,7 @@
 call plug#begin('~/.config/nvim/plugged')
-  " New Plugins here...
+  " --------------------------------------------------
+  " 👉 Plugins installation
+  " --------------------------------------------------
 
   " Search
   Plug 'nvim-lua/plenary.nvim' " co-dependent to telescope
@@ -63,6 +65,10 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'ferdinandrau/lavish.nvim'
 call plug#end()
 
+" --------------------------------------------------
+" 👉 Notes!
+" --------------------------------------------------
+
 " Add to ZSH to switch tab colors
 " function tabcolor {
 "   echo -n -e "\033]6;1;bg;red;brightness;$1\a"
@@ -84,11 +90,13 @@ call plug#end()
 " shift + $ -> end of line
 " vertical cursor, ctrl + v, shift + I or A
 
-" ------Generic-------
-  " Relative lines
-set relativenumber
-" Paste by typign dry on insert mode
-inoremap dry before { driven_by(:selenium_chrome) }
+
+" --------------------------------------------------
+" 👉 Neovim settings
+" --------------------------------------------------
+
+" Relative lines
+set relativenumber " set norelativenumber
 let mapleader = "\<Space>"
 nnoremap <c-'> :colorscheme
 set background=dark
@@ -104,28 +112,34 @@ set expandtab               " convert tabs to white space
 set shiftwidth=2            " width for autoindents
 set softtabstop=2           " see multiple spaces as tabstops so <BS> does the right thing
 set nowrap " :set wrap! :set wrap
-let mapleader = "\<Space>"
 set number
 set splitbelow splitright
 set scroll=10
 set scrolloff=10
-set sidescrolloff=20
+set sidescrolloff=10
 set ignorecase smartcase " make searches case-insensitive, unless they contain upper-case letters
 tnoremap <Esc> <C-\><C-n>
-inoremap jj <ESC>
+inoremap jj <ESC> " escape insert mode
+
+" Split windows
 nnoremap <leader>d<Bslash> :split<cr>
 nnoremap <leader><Bslash> :vsplit<cr>| ":vnew or :new for empty windows
+
+" Navigate through tabs
 nnoremap <leader><S-t> :tabnew<cr>
 nnoremap <leader>1 :tabn 1<cr>
 nnoremap <leader>2 :tabn 2<cr>
 nnoremap <leader>3 :tabn 3<cr>
 nnoremap <leader>4 :tabn 4<cr>
+
 " Navigation through windows
 map <C-h> <C-W>h
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-l> <C-W>l
 
+" Paste by typign dry on insert mode
+inoremap dry before { driven_by(:selenium_chrome) }
 
 " Git blame
 vmap <c-b> :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>,<C-R>=line("'>") <CR>p <CR>
@@ -139,8 +153,11 @@ function! FindAndReplace()
     redraw!
 endfunction
 
-" ------Plugins-------
+" --------------------------------------------------
+" 👉 Plugins config
+" --------------------------------------------------
 
+" Supermaven
 lua << EOF
 require("supermaven-nvim").setup({
   -- You can pass any configuration options here
@@ -197,8 +214,7 @@ lua <<EOF
   })
 EOF
 
-
-" Fidget
+" Fidget (LSP notifications)
 lua <<EOF
   require("fidget").setup {
     -- options
@@ -301,7 +317,7 @@ let test#strategy = "floaterm"
 
 " Float term
 nnoremap <silent><leader>it :FloatermToggle<cr>
-let g:floaterm_height = 0.4
+let g:floaterm_height = 0.5
 let g:floaterm_wintype = 'split'
 
 " ctrlsf
@@ -314,11 +330,12 @@ let g:ctrlsf_auto_close = {'normal' : 0, 'compact': 0}
 let g:ctrlsf_default_view_mode = 'normal'
 let g:ctrlsf_position = 'bottom'
 
-" Setup Telescope using Lua (no direct Vimscript equivalent)
+" Telescope
 lua << EOF
+  local telescope = require('telescope')
   local lga_actions = require("telescope-live-grep-args.actions")
 
-  require('telescope').setup {
+  telescope.setup {
     defaults = {
       sorting_strategy = 'ascending',
       layout_strategy = 'vertical',
@@ -344,19 +361,40 @@ lua << EOF
     }
   }
 
-  " Search the word under the cursor
+  -- Telescope telescope-live-grep-args
+  vim.keymap.set("n", "<leader>sf", function()
+    require('telescope').extensions.live_grep_args.live_grep_args()
+    -- It enables passing arguments to the grep command, rg examples:
+    -- foo → press <C-k> → "foo"  → "foo" -tmd
+    -- Only works if you set up the <C-k> mapping
+    -- --no-ignore foo
+    -- foo bar" bazdir
+    -- "foo" --iglob **/bar/**
+  end)
+
+  -- Searches for the word in the cursor while in normal mode
   local live_grep_args_shortcuts = require("telescope-live-grep-args.shortcuts")
   vim.keymap.set("n", "<leader>gc", live_grep_args_shortcuts.grep_word_under_cursor)
-EOF
 
-" Vimscript key mappings that call Lua functions for Telescope
-nnoremap <leader>ef :lua require('telescope.builtin').buffers({previewer=false, layout_config={height=0.4,width=0.6}})<cr>
-nnoremap <leader>ff :lua require('telescope.builtin').find_files({previewer=false, layout_config={height=0.4,width=0.6}})<cr>
-" Telescope telescope-live-grep-args
-nnoremap <leader>sf :lua require('telescope').extensions.live_grep_args.live_grep_args()<cr>
-" It enables passing arguments to the grep command, rg examples:
-" foo → press <C-k> → "foo"  → "foo" -tmd
-" Only works if you set up the <C-k> mapping
-" --no-ignore foo
-" "foo bar" bazdir
-" "foo" --iglob **/bar/**
+  -- Buffer
+  vim.keymap.set("n", "<leader>ef", function()
+    require('telescope.builtin').buffers({
+      previewer = false,
+      layout_config = {
+        height = 0.5,
+        width = 0.7
+      }
+    })
+  end)
+
+  -- Find files
+  vim.keymap.set("n", "<leader>ff", function()
+    require('telescope.builtin').find_files({
+      previewer = false,
+      layout_config = {
+        height = 0.5,
+        width = 0.7
+      }
+    })
+  end)
+EOF
