@@ -106,6 +106,7 @@ nnoremap <C-S-n> :call SwitchThemeNext()<CR>
 " tabcolor $(jot -r 1 0 255) $(jot -r 1 0 255) $(jot -r 1 0 255)
 
 " Tips
+" - ctrl + 6 (^) to switch between last file 
 " - [c i ""] -> change inside "something" it deletes what's inside the quotes and put you on I mode
 " - [d a ""] -> delete around it deletes what's inside and quotes, keeps you normal mode
 " - [d a w] -> delete around word
