@@ -324,8 +324,8 @@ endfunction
 command! SetStandardLinter call SetStandardLinter()
 
 " For personal projects set these linters
-SetStandardLinter
-SetPrettierLinter
+" SetStandardLinter
+" SetPrettierLinter
 
 " NERDTree
 " autocmd VimEnter * NERDTree | wincmd p "Start NERDTree and put the cursor back in the other window
@@ -392,6 +392,7 @@ lua << EOF
   vim.keymap.set("n", "<leader>sf", function()
     require('telescope').extensions.live_grep_args.live_grep_args()
     -- It enables passing arguments to the grep command, rg examples:
+    -- "foo" -t ruby find in ruby files
     -- foo → press <C-k> → "foo"  → "foo" -tmd
     -- Only works if you set up the <C-k> mapping
     -- --no-ignore foo
