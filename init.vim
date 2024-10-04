@@ -70,11 +70,11 @@ call plug#end()
 " --------------------------------------------------
 " 👉 Switch themes instantly!
 " --------------------------------------------------
-colorscheme hybrid
-let g:airline_theme='hybrid'
+colorscheme habamax
+let g:airline_theme='tomorrow'
 
 let g:theme_index = 0
-let g:themes = ['hybrid', 'afterglow', 'darcula-solid', 'OceanicNext', 'github_dark_dimmed']
+let g:themes = ['habamax', 'hybrid', 'afterglow', 'darcula-solid', 'OceanicNext', 'github_dark_dimmed']
 
 " Function to switch to the next theme
 function! SwitchThemeNext()
