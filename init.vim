@@ -1,4 +1,4 @@
-call plug#begin('~/.config/nvim/plugged')
+cll plug#begin('~/.config/nvim/plugged')
   " --------------------------------------------------
   " 👉 Plugins installation
   " --------------------------------------------------
@@ -64,7 +64,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'projekt0n/github-nvim-theme'
 
   Plug 'vwxyutarooo/nerdtree-devicons-syntax' " needs vim-devicons
-  Plug 'ryanoasis/vim-devicons' " Ensure it's the last plugin and install Nerd Font https://www.nerdfonts.com/font-downloads
+  Plug 'ryanoasis/vim-devicons' " Ensure it's the last plugin and install JetBrains Mono Nerd Font https://www.nerdfonts.com/font-downloads
 call plug#end()
 
 " --------------------------------------------------
