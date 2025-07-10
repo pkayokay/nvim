@@ -1,4 +1,4 @@
-cll plug#begin('~/.config/nvim/plugged')
+call plug#begin('~/.config/nvim/plugged')
   " --------------------------------------------------
   " 👉 Plugins installation
   " --------------------------------------------------
