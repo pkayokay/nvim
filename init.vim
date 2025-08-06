@@ -253,7 +253,7 @@ EOF
 
 " vim-airline/vim-airline
 " Note: airline theme is set above in theme context ex. let g:airline_theme='bubblegum'
-let g:airline_section_c = '%t'
+let g:airline_section_c = '%f'
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_extensions = []
 let g:SuperTabDefaultCompletionType = "<c-n>" " sort order for supertab plugin
