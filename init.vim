@@ -21,7 +21,6 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'rhysd/clever-f.vim' " Extended f, F, t and T key mappings for Vim.
   Plug 'tpope/vim-repeat' " repeat.vim: enable repeating supported plugin maps with .
   Plug 'andrewradev/undoquit.vim' " reopen the last window you closed
-  " Plug 'ervandew/supertab' " Perform all your vim insert mode completions with Tab
   Plug 'mg979/vim-visual-multi' " Multiple cursors plugin for vim/neovim, for vertical section enter v-block then shift+i insert mode
   Plug 'tyru/open-browser.vim'
   Plug 'tyru/open-browser-github.vim' " Open Github from code
@@ -35,7 +34,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'preservim/nerdtree' " Tree navigation
 
   " AI
-  " Plug 'supermaven-inc/supermaven-nvim'
+  Plug 'supermaven-inc/supermaven-nvim'
 
   " Languages
   Plug 'vim-test/vim-test'
@@ -45,14 +44,14 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'tpope/vim-rails'
   Plug 'maxmellon/vim-jsx-pretty'
 
-  " https://lsp-zero.netlify.app/v4.x/template/vimscript-config.html
-  " LSP-ZERO
+  " Native LSP Support (Neovim 0.11+)
   Plug 'neovim/nvim-lspconfig'
   Plug 'williamboman/mason.nvim'
   Plug 'williamboman/mason-lspconfig.nvim'
   Plug 'hrsh7th/nvim-cmp'
   Plug 'hrsh7th/cmp-nvim-lsp'
-  Plug 'VonHeikemen/lsp-zero.nvim', {'branch': 'v4.x'}
+  Plug 'hrsh7th/cmp-buffer'
+  Plug 'hrsh7th/cmp-path'
   Plug 'j-hui/fidget.nvim' " Extensible UI for Neovim notifications and LSP progress messages.
 
   " Make it pretty
@@ -186,69 +185,164 @@ endfunction
 
 " Supermaven
 lua << EOF
--- require("supermaven-nvim").setup({
-  -- You can pass any configuration options here
--- })
+  require("supermaven-nvim").setup({})
 EOF
 
-" LSP-ZERO config
-" https://lsp-zero.netlify.app/v4.x/template/vimscript-config.html
+" Native LSP configuration (replaces LSP-Zero)
 lua <<EOF
-  local lsp_zero = require('lsp-zero')
-
-  local lsp_attach = function(client, bufnr)
-    local opts = {buffer = bufnr}
-
-    vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
-    vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
-    vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
-    vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
-    vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
-    vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
-    vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
-    vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-    vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
-    vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
-  end
-
-  lsp_zero.extend_lspconfig({
-    sign_text = true,
-    lsp_attach = lsp_attach,
-    capabilities = require('cmp_nvim_lsp').default_capabilities()
+  -- Configure diagnostics
+  vim.diagnostic.config({
+    virtual_text = true,
+    signs = true,
+    underline = true,
+    update_in_insert = false,
+    severity_sort = true,
   })
 
-  require('mason').setup({})
-  require('mason-lspconfig').setup({
-    handlers = {
-      function(server_name)
-        require('lspconfig')[server_name].setup({})
-      end,
+  -- Define signs for diagnostics
+  local signs = { Error = "E", Warn = "W", Hint = "H", Info = "I" }
+  for type, icon in pairs(signs) do
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+  end
+
+  -- LSP attach function
+  local on_attach = function(client, bufnr)
+    local opts = { buffer = bufnr, silent = true }
+
+    -- Key mappings
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', 'go', vim.lsp.buf.type_definition, opts)
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+    vim.keymap.set('n', 'gs', vim.lsp.buf.signature_help, opts)
+    vim.keymap.set('n', '<F2>', vim.lsp.buf.rename, opts)
+    vim.keymap.set({'n', 'x'}, '<F3>', function()
+      vim.lsp.buf.format({ async = true })
+    end, opts)
+    vim.keymap.set('n', '<F4>', vim.lsp.buf.code_action, opts)
+
+    -- Diagnostic navigation
+    vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+    vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+    vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, opts)
+    vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, opts)
+  end
+
+  -- Setup Mason
+  require('mason').setup({
+    ui = {
+      border = 'rounded'
     }
   })
 
+  -- Setup Mason-LSPConfig
+  require('mason-lspconfig').setup({
+    ensure_installed = {
+      'lua_ls',
+      'ruby_lsp',
+      'solargraph',
+      'ts_ls',
+      'html',
+      'cssls',
+      'tailwindcss',
+      'herb_ls',
+    },
+    handlers = {
+      function(server_name)
+        local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+        require('lspconfig')[server_name].setup({
+          on_attach = on_attach,
+          capabilities = capabilities,
+        })
+      end,
+
+      -- Special configuration for lua_ls
+      ['lua_ls'] = function()
+        require('lspconfig').lua_ls.setup({
+          on_attach = on_attach,
+          capabilities = require('cmp_nvim_lsp').default_capabilities(),
+          settings = {
+            Lua = {
+              runtime = {
+                version = 'LuaJIT',
+              },
+              diagnostics = {
+                globals = {'vim'},
+              },
+              workspace = {
+                library = vim.api.nvim_get_runtime_file("", true),
+                checkThirdParty = false,
+              },
+              telemetry = {
+                enable = false,
+              },
+            },
+          },
+        })
+      end,
+
+      -- Special configuration for Ruby LSP
+      ['ruby_lsp'] = function()
+        require('lspconfig').ruby_lsp.setup({
+          on_attach = on_attach,
+          capabilities = require('cmp_nvim_lsp').default_capabilities(),
+          init_options = {
+            formatter = 'auto',
+          },
+        })
+      end,
+    },
+  })
+
+  -- Setup nvim-cmp
   local cmp = require('cmp')
 
   cmp.setup({
-    sources = {
-      {name = 'nvim_lsp'},
+    completion = {
+      completeopt = 'menu,menuone,noinsert',
     },
-    snippet = {
-      expand = function(args)
-        vim.snippet.expand(args.body)
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp' },
+      { name = 'buffer' },
+      { name = 'path' },
+    }),
+    mapping = cmp.mapping.preset.insert({
+      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<C-e>'] = cmp.mapping.abort(),
+      ['<Tab>'] = cmp.mapping.confirm({ select = true }),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }),
+      ['<C-n>'] = cmp.mapping.select_next_item(),
+      ['<C-p>'] = cmp.mapping.select_prev_item(),
+    }),
+    formatting = {
+      format = function(entry, vim_item)
+        -- Set a name for each source
+        vim_item.menu = ({
+          nvim_lsp = "[LSP]",
+          buffer = "[Buffer]",
+          path = "[Path]",
+        })[entry.source.name]
+        return vim_item
       end,
     },
-    mapping = cmp.mapping.preset.insert({
-      ['<Tab>'] = cmp.mapping.confirm({ select = true }),
-      ['<CR>'] = cmp.mapping.confirm({ select = true })
-    }),
   })
 EOF
 
 " Fidget (LSP notifications)
 lua <<EOF
-  require("fidget").setup {
-    -- options
-  }
+  require("fidget").setup({
+    notification = {
+      window = {
+        winblend = 0,
+      },
+    },
+  })
 EOF
 
 " vim-airline/vim-airline

@@ -24,7 +24,14 @@ Install LSPs, linters and formatters (do not need to use for formatters though a
 
 Ex.
 ```
-:LspInstall ruby-lsp
-:LspInstall html-lsp
-:LspInstall tailwindcss-language-server
+:Mason
+
+'lua_ls',
+'ruby_lsp',
+'solargraph',
+'ts_ls',
+'html',
+'cssls',
+'tailwindcss',
+'herb_ls',
 ```
