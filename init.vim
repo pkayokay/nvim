@@ -12,7 +12,6 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'ctrlpvim/ctrlp.vim' " file finder, multi select open
 
   " Efficiency
-  Plug 'ervandew/supertab' " Perform all your vim insert mode completions with Tab
   Plug 'andrewRadev/tagalong.vim' " Change an HTML(ish) opening tag and take the closing one along as well
   Plug 'tpope/vim-surround' " delete/change/add parentheses/quotes/XML-tags/much more with ease
   Plug 'tomtom/tcomment_vim' " An extensible & universal comment vim-plugin
@@ -351,9 +350,6 @@ EOF
 let g:airline_section_c = '%f'
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_extensions = []
-
-" ervandew/supertab
-let g:SuperTabDefaultCompletionType = "<c-n>" " sort order for supertab plugin
 
 " vim-gitgutter
 let g:gitgutter_enabled = 1
