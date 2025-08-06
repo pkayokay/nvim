@@ -2,8 +2,7 @@
 1. Install VIM PLUG https://github.com/junegunn/vim-plug#neovim
 2. Add this repo under ~/.config/nvim
 
-
-If using JetBrains Mono, download the font locally here https://www.jetbrains.com/lp/mono/, otherwise NerdTree Icons won't work properly.
+For NerdTree Icons, use download JetBrainsMono Nerd Font here https://www.nerdfonts.com/font-downloads
 
 ### For telescope install
 ```
