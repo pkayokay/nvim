@@ -383,41 +383,45 @@ let g:ale_fix_on_save = 1
 let g:ale_sign_error = 'E'
 let g:ale_sign_warning = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
+" --- DEFAULTS (Prettier + StandardRB) ---
 let g:ale_linters = {
-\   'javascript': ['eslint'],
-\   'javascriptreact': ['eslint'],
-\   'typescript': ['eslint'],
-\   'typescriptreact': ['eslint'],
-\   'ruby': ['rubocop'],
+\   'javascript': ['prettier'],
+\   'javascriptreact': ['prettier'],
+\   'typescript': ['prettier'],
+\   'typescriptreact': ['prettier'],
+\   'ruby': ['standardrb'],
 \   'eruby': ['erblint'],
 \ }
 
 let g:ale_fixers = {
-\   'javascript': ['eslint'],
-\   'javascriptreact': ['eslint'],
-\   'typescript': ['eslint'],
-\   'typescriptreact': ['eslint'],
-\   'ruby': ['rubocop'],
+\   'javascript': ['prettier'],
+\   'javascriptreact': ['prettier'],
+\   'typescript': ['prettier'],
+\   'typescriptreact': ['prettier'],
+\   'ruby': ['standardrb'],
 \   'eruby': ['erblint'],
 \ }
 
-function! SetPrettierLinter()
-  let g:ale_linters['javascript'] = ['prettier']
-  let g:ale_linters['javascriptreact'] = ['prettier']
-  let g:ale_linters['typescript'] = ['prettier']
-  let g:ale_linters['typescriptreact'] = ['prettier']
-  let g:ale_fixers['javascript'] = ['prettier']
-  let g:ale_fixers['javascriptreact'] = ['prettier']
-  let g:ale_fixers['typescript'] = ['prettier']
-  let g:ale_fixers['typescriptreact'] = ['prettier']
-endfunction
-command! SetPrettierLinter call SetPrettierLinter()
+" --- COMMANDS TO switch BACK to ESLint/RuboCop when needed ---
 
-function! SetStandardLinter()
-  let g:ale_linters['ruby'] = ['standardrb']
-  let g:ale_fixers['ruby'] = ['standardrb']
+function! SetESLintLinter()
+  let g:ale_linters['javascript'] = ['eslint']
+  let g:ale_linters['javascriptreact'] = ['eslint']
+  let g:ale_linters['typescript'] = ['eslint']
+  let g:ale_linters['typescriptreact'] = ['eslint']
+  let g:ale_fixers['javascript'] = ['eslint']
+  let g:ale_fixers['javascriptreact'] = ['eslint']
+  let g:ale_fixers['typescript'] = ['eslint']
+  let g:ale_fixers['typescriptreact'] = ['eslint']
 endfunction
-command! SetStandardLinter call SetStandardLinter()
+command! SetESLintLinter call SetESLintLinter()
+
+function! SetRuboCopLinter()
+  let g:ale_linters['ruby'] = ['rubocop']
+  let g:ale_fixers['ruby'] = ['rubocop']
+endfunction
+command! SetRuboCopLinter call SetRuboCopLinter()
 
 " For personal projects set these linters
 " SetStandardLinter
