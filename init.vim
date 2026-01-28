@@ -33,9 +33,6 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'voldikss/vim-floaterm' " floating terminal
   Plug 'preservim/nerdtree' " Tree navigation
 
-  " AI
-  Plug 'supermaven-inc/supermaven-nvim'
-
   " Languages
   Plug 'vim-test/vim-test'
   Plug 'dense-analysis/ale'
@@ -182,11 +179,6 @@ endfunction
 " --------------------------------------------------
 " 👉 Plugins config
 " --------------------------------------------------
-
-" Supermaven
-lua << EOF
-  require("supermaven-nvim").setup({})
-EOF
 
 " Native LSP configuration (replaces LSP-Zero)
 lua <<EOF
