@@ -66,7 +66,7 @@ call plug#end()
 " --------------------------------------------------
 " 👉 Switch themes instantly!
 " --------------------------------------------------
-colorscheme habamax
+colorscheme hybrid
 let g:airline_theme='tomorrow'
 
 let g:theme_index = 0
@@ -428,6 +428,9 @@ nnoremap <leader>nrs :vertical resize 30<cr>
 let NERDTreeQuitOnOpen = 0
 let g:NERDTreeWinSize=40
 let g:NERDTreeIgnore = ['^node_modules$','^tmp$']
+
+" Allow delete entire line without cutting
+nnoremap <leader>D "_dd
 
 " vim-test
 nnoremap <silent> <leader>tn :TestNearest<CR>
