@@ -1,4 +1,3 @@
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   vim.fn.system({
@@ -14,6 +13,12 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local opts = {}
-local plugins = {}
+local plugins = {
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 }
+}
 
 require("lazy").setup(plugins, opts)
+
+-- Theme
+require("catppuccin").setup()
+vim.cmd.colorscheme "catppuccin"
