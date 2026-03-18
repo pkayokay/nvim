@@ -25,7 +25,15 @@ vim.opt.rtp:prepend(lazypath)
 
 local opts = {}
 local plugins = {
-  { "catppuccin/nvim", name = "catppuccin", priority = 1000 }
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  {
+    'nvim-telescope/telescope.nvim', version = '*',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      -- optional but recommended
+      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+    }
+  }
 }
 
 require("lazy").setup(plugins, opts)
@@ -33,3 +41,9 @@ require("lazy").setup(plugins, opts)
 -- Theme
 require("catppuccin").setup()
 vim.cmd.colorscheme "catppuccin"
+
+-- Telescope
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<C-p>', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+
