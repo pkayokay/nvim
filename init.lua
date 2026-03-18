@@ -24,32 +24,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local opts = {}
-local plugins = {
-  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-  {
-    'nvim-telescope/telescope.nvim', version = '*',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      -- optional but recommended
-      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-    }
-  },
-  {
-    'nvim-treesitter/nvim-treesitter',
-    build = ':TSUpdate'
-  },
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-      "nvim-tree/nvim-web-devicons",
-    },
-  }
-}
-
-require("lazy").setup(plugins, opts)
+require("lazy").setup("plugins")
 
 -- Theme
 require("catppuccin").setup()
