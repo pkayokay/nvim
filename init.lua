@@ -33,6 +33,10 @@ local plugins = {
       -- optional but recommended
       { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
     }
+  },
+  {
+    'nvim-treesitter/nvim-treesitter',
+    build = ':TSUpdate'
   }
 }
 
@@ -47,3 +51,10 @@ local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<C-p>', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 
+-- Treesitter
+local config = require("nvim-treesitter.configs")
+config.setup({
+  ensure_installed = {"lua", "javascript", "ruby", "elixir"},
+  highlight = { enable = true },
+  indent = { enable = true }
+})
