@@ -10,7 +10,7 @@ return {
     "mason-org/mason-lspconfig.nvim",
     lazy = false,
     opts = {
-      ensure_installed = { "lua_ls", "ruby_lsp" },
+      ensure_installed = { "lua_ls", "ruby_lsp", "ts_ls", "elixirls" },
     }
   },
   {
