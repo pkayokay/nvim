@@ -1,8 +1,10 @@
 return {
-  "catppuccin/nvim",
-  name = "catppuccin",
+  "HoNamDuong/hybrid.nvim",
+  lazy = false,
   priority = 1000,
-  config = function()
-    vim.cmd.colorscheme "catppuccin"
+  opts = {},
+  config = function(_, opts)
+    require("hybrid").setup(opts)
+    vim.cmd.colorscheme("hybrid")
   end
 }
