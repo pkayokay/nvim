@@ -14,6 +14,15 @@ return {
     }
   },
   {
+    -- mason-lspconfig only installs LSP servers; formatters need this
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    lazy = false,
+    dependencies = { "mason-org/mason.nvim" },
+    opts = {
+      ensure_installed = { "stylua", "prettier" },
+    }
+  },
+  {
     "neovim/nvim-lspconfig",
     lazy = false,
     config = function()
