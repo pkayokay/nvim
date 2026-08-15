@@ -9,3 +9,8 @@ vim.cmd("set shiftwidth=2")  -- auto-indent and the >> / << commands shift by 2
 -- <leader> is a prefix key you press before a shortcut. Space is the convention.
 -- Every "<leader>x" mapping in lua/plugins/ therefore means: press Space, then x.
 vim.g.mapleader = " "
+
+-- Print the diagnostic message inline, to the right of the offending line.
+-- Neovim 0.11+ ships this off by default: errors show only as a gutter sign,
+-- which reads like the LSP is doing nothing. Use ]d / [d to jump between them.
+vim.diagnostic.config({ virtual_text = true })
