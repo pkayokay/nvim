@@ -40,7 +40,17 @@ return {
   {
     "neovim/nvim-lspconfig",
     lazy = false,
+    dependencies = { "hrsh7th/cmp-nvim-lsp" },
     config = function()
+      -- Tells every server this client can do snippets and resolve, which is what
+      -- unlocks auto-imports and expandable signatures in the cmp menu.
+      -- The '*' applies it to all servers: tutorials attach capabilities inside
+      -- lspconfig.<server>.setup(), but nothing here calls setup() -- mason-lspconfig
+      -- auto-enables the servers instead (see the note above).
+      vim.lsp.config("*", {
+        capabilities = require("cmp_nvim_lsp").default_capabilities(),
+      })
+
       vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
       vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
       vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
