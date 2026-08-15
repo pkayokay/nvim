@@ -1,9 +1,15 @@
 -- LSP stack: installs language servers/tools and wires up the keymaps to use them.
 --
---   mason.nvim                 -- package manager for LSP servers, formatters, linters (:Mason to browse)
---   mason-lspconfig.nvim       -- bridges mason and nvim-lspconfig; auto-installs + enables the servers below
+--   mason.nvim                 -- pure installer: downloads binaries to mason/bin (:Mason to browse).
+--                                 Knows nothing about LSP -- it installs linters and DAP adapters too.
+--   mason-lspconfig.nvim       -- the bridge. Maps package names to lspconfig names
+--                                 (lua-language-server <-> lua_ls), and with automatic_enable
+--                                 (on by default) calls vim.lsp.enable() for each installed server.
 --   mason-tool-installer.nvim  -- installs non-LSP tools (formatters/linters) that mason-lspconfig ignores
---   nvim-lspconfig             -- default server configs; here it just carries the LSP keymaps
+--   nvim-lspconfig             -- supplies the server definitions (cmd, filetypes, root markers) that
+--                                 vim.lsp.enable() resolves off the runtimepath; also holds the keymaps
+--
+-- Nothing here calls .setup() on a server: mason-lspconfig enables them, lspconfig defines them.
 --
 -- The tools installed here are consumed elsewhere: stylua/prettier by none-ls.lua.
 -- <leader>ca renders through telescope's ui-select extension (telescope.lua), and every
