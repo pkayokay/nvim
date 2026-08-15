@@ -1,7 +1,11 @@
 -- Syntax parsing: nvim-treesitter installs per-language parsers that give Neovim a real
--- syntax tree, which drives accurate highlighting and indentation (and feeds other
--- treesitter-aware plugins). Tracking the `main` branch, where the plugin only manages
--- parser installs and Neovim core owns highlight/indent -- hence the FileType autocmd below.
+-- syntax tree, which drives accurate highlighting and indentation. Tracking the `main`
+-- branch, where the plugin only manages parser installs and Neovim core owns
+-- highlight/indent -- hence the FileType autocmd below.
+--
+-- Pairs with theme.lua: the parser produces @capture groups (@function, @keyword, ...)
+-- and hybrid.nvim supplies the colors for them. Without a parser installed for a
+-- filetype, that buffer silently falls back to Vim's older regex syntax.
 return {
   'nvim-treesitter/nvim-treesitter',
   branch = 'main',

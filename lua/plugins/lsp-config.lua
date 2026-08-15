@@ -6,6 +6,8 @@
 --   nvim-lspconfig             -- default server configs; here it just carries the LSP keymaps
 --
 -- The tools installed here are consumed elsewhere: stylua/prettier by none-ls.lua.
+-- <leader>ca renders through telescope's ui-select extension (telescope.lua), and every
+-- <leader> mapping below depends on mapleader being set in vim-options.lua first.
 return {
   {
     "mason-org/mason.nvim",

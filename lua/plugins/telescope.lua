@@ -4,6 +4,10 @@
 --   plenary.nvim                -- lua utility library telescope is built on (required)
 --   telescope-fzf-native.nvim   -- compiled C sorter; much faster/better matching than the lua default
 --   telescope-ui-select.nvim    -- makes vim.ui.select prompts (LSP code actions, etc.) render in telescope
+--
+-- Cross-file: ui-select is what gives <leader>ca (code actions, defined in lsp-config.lua)
+-- a telescope dropdown instead of Neovim's numbered-list prompt. plenary is shared with
+-- neo-tree.lua and none-ls.lua -- lazy installs one copy for all three.
 return {
   'nvim-telescope/telescope.nvim', version = '*',
   dependencies = {
