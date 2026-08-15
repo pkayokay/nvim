@@ -1,3 +1,11 @@
+-- LSP stack: installs language servers/tools and wires up the keymaps to use them.
+--
+--   mason.nvim                 -- package manager for LSP servers, formatters, linters (:Mason to browse)
+--   mason-lspconfig.nvim       -- bridges mason and nvim-lspconfig; auto-installs + enables the servers below
+--   mason-tool-installer.nvim  -- installs non-LSP tools (formatters/linters) that mason-lspconfig ignores
+--   nvim-lspconfig             -- default server configs; here it just carries the LSP keymaps
+--
+-- The tools installed here are consumed elsewhere: stylua/prettier by none-ls.lua.
 return {
   {
     "mason-org/mason.nvim",

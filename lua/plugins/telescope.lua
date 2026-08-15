@@ -1,3 +1,9 @@
+-- Fuzzy finder: pickers for files, grep, buffers, LSP results, and more.
+--
+--   telescope.nvim              -- the picker UI itself (<C-p> files, <leader>fg grep)
+--   plenary.nvim                -- lua utility library telescope is built on (required)
+--   telescope-fzf-native.nvim   -- compiled C sorter; much faster/better matching than the lua default
+--   telescope-ui-select.nvim    -- makes vim.ui.select prompts (LSP code actions, etc.) render in telescope
 return {
   'nvim-telescope/telescope.nvim', version = '*',
   dependencies = {

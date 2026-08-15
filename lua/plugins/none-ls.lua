@@ -1,3 +1,10 @@
+-- Formatting/linting: exposes external CLI tools to Neovim as if they were an LSP server.
+--
+--   none-ls.nvim   -- maintained fork of null-ls; runs stylua/prettier through the LSP formatting API
+--   plenary.nvim   -- lua utility library (required)
+--
+-- The stylua/prettier binaries come from mason-tool-installer in lsp-config.lua.
+-- <leader>gf formats the buffer.
 return {
   "nvimtools/none-ls.nvim",
   dependencies = { "nvim-lua/plenary.nvim" },
