@@ -6,7 +6,6 @@
 --   plenary.nvim   -- lua utility library (required)
 --
 -- The stylua/prettier binaries come from mason-tool-installer in lsp-config.lua.
--- <leader>gf formats the buffer.
 return {
   "nvimtools/none-ls.nvim",
   dependencies = { "nvim-lua/plenary.nvim" },

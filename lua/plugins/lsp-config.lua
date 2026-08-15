@@ -11,9 +11,8 @@
 --
 -- Nothing here calls .setup() on a server: mason-lspconfig enables them, lspconfig defines them.
 --
--- The tools installed here are consumed elsewhere: stylua/prettier by none-ls.lua.
--- <leader>ca renders through telescope's ui-select extension (telescope.lua), and every
--- <leader> mapping below depends on mapleader being set in vim-options.lua first.
+-- The tools installed here are consumed elsewhere: stylua/prettier by none-ls.lua,
+-- and <leader>ca renders through telescope's ui-select extension (telescope.lua).
 return {
   {
     "mason-org/mason.nvim",
