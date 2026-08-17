@@ -46,9 +46,12 @@ return {
             require("luasnip").lsp_expand(args.body)
           end,
         },
+        -- The border has to be named explicitly: on Neovim 0.11+ a bare bordered()
+        -- inherits vim.o.winborder, which defaults to "none" -- so the menu and the
+        -- docs window render flush against each other with no visible edge.
         window = {
-          completion = cmp.config.window.bordered(),
-          documentation = cmp.config.window.bordered(),
+          completion = cmp.config.window.bordered({ border = "rounded" }),
+          documentation = cmp.config.window.bordered({ border = "rounded" }),
         },
         -- preset.insert supplies the usual defaults (C-n / C-p to move through the
         -- menu); the table below adds to them rather than replacing them.
