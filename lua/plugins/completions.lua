@@ -65,6 +65,8 @@ return {
         -- Two groups: cmp only falls back to the second when the first returns
         -- nothing, so buffer words never clutter real LSP results.
         sources = cmp.config.sources({
+          -- group_index 0 puts lazydev's Neovim API results above everything else
+          { name = "lazydev", group_index = 0 },
           { name = "nvim_lsp" },
           { name = "luasnip" }, -- For luasnip users.
           { name = "path" },
