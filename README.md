@@ -33,6 +33,10 @@ press <kbd>Space</kbd> then <kbd>g</kbd> then <kbd>d</kbd>.
 | <kbd>Space</kbd> `ca` | Code actions (quick fixes) | LSP |
 | <kbd>Space</kbd> `rn` | Rename symbol across the project | LSP |
 | <kbd>Space</kbd> `gf` | Format the current file | none-ls |
+| <kbd>Space</kbd> `dt` | Toggle breakpoint *(needs an adapter)* | nvim-dap |
+| <kbd>Space</kbd> `dc` | Start / continue debugging *(needs an adapter)* | nvim-dap |
+| <kbd>Space</kbd> `dx` | Terminate debug session | nvim-dap |
+| <kbd>Space</kbd> `do` | Step over | nvim-dap |
 
 ## Terms
 
@@ -61,9 +65,12 @@ lua/plugins/
   theme.lua           hybrid.nvim colorscheme
   treesitter.lua      syntax parsers
   lsp-config.lua      mason + lspconfig, and the LSP keymaps
+  completions.lua     nvim-cmp autocompletion and snippets
+  lazydev.lua         Neovim API types for lua_ls
   none-ls.lua         stylua / prettier formatting
   telescope.lua       fuzzy finder
   neo-tree.lua        file tree
+  debugging.lua       nvim-dap and its UI
 ```
 
 Language servers installed automatically: `lua_ls`, `ruby_lsp`, `ts_ls`, `elixirls`,
@@ -71,8 +78,13 @@ Language servers installed automatically: `lua_ls`, `ruby_lsp`, `ts_ls`, `elixir
 
 ## Not set up yet
 
-- **Autocompletion.** There's no completion plugin, so you get LSP diagnostics, hover,
-  and go-to-definition but no popup menu as you type. Add `blink.cmp` or `nvim-cmp`.
+- **Debug adapters.** nvim-dap is installed but has no adapter, so no debug session can
+  start yet -- `dap.adapters` and `dap.configurations` are both empty. Each language
+  needs its own debugger wired up, in two parts: install the adapter binary (most live
+  in mason: `js-debug-adapter`, `debugpy`, `delve`; Ruby's `rdbg` ships as the `debug`
+  gem instead), then define `dap.adapters.<name>` and `dap.configurations.<filetype>`
+  so nvim-dap knows how to launch it. `jay-babu/mason-nvim-dap.nvim` can do both steps.
+  Until then the `<leader>d*` keymaps set breakpoints nothing will ever hit.
 - **Linting.** none-ls runs formatters only; no `diagnostics` sources are registered.
 - **Format on save** is written but commented out at the bottom of `none-ls.lua`.
 - `plugged/` is leftover from the old vim-plug setup and is no longer loaded.

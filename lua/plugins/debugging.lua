@@ -5,6 +5,13 @@
 --   nvim-dap-ui  -- panels for scopes, breakpoints, stack frames, watches and the repl.
 --                   nvim-dap works without it, but exposes no interface of its own.
 --   nvim-nio     -- async primitives nvim-dap-ui is built on (a hard requirement)
+--
+-- NOTHING RUNS UNTIL A LANGUAGE ADAPTER IS ADDED. nvim-dap is only the client; it
+-- ships no debuggers. Each language needs two things: the adapter binary (mason has
+-- js-debug-adapter, debugpy, delve; Ruby's rdbg comes from the `debug` gem instead),
+-- and a dap.adapters.<name> + dap.configurations.<filetype> pair telling nvim-dap how
+-- to launch it. Until then the keymaps below set breakpoints that never get hit --
+-- check with :lua print(vim.inspect(require("dap").adapters))
 return {
   "mfussenegger/nvim-dap",
   dependencies = {
