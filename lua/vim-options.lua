@@ -72,14 +72,71 @@ vim.keymap.set("n", "<leader>fr", function()
   vim.cmd("%s/" .. find .. "/" .. replace .. "/gc")
 end)
 
--- Git blame the visual selection (no plugin; shells out).
--- Visual mode only: select lines, then Ctrl-b. In normal mode Ctrl-b is still page-up.
+--[[ Git blame (visual Ctrl-b)
+  Replaces the old :!git blame dump.
+  Visual mode only: select lines, then Ctrl-b. In normal mode Ctrl-b is still page-up.
+  Step 1: telescope dropdown of blame lines (same UI as <leader>ca code actions).
+  Step 2: pick a line -> float with that commit's message (q / Esc to close).
+]]
 vim.keymap.set("v", "<C-b>", function()
   local file = vim.fn.expand("%:p")
+  local dir = vim.fn.fnamemodify(file, ":h")
   local start_line = vim.fn.line("v")
   local end_line = vim.fn.line(".")
   if start_line > end_line then
     start_line, end_line = end_line, start_line
   end
-  vim.cmd("!git blame " .. vim.fn.shellescape(file) .. " | sed -n " .. start_line .. "," .. end_line .. "p")
+
+  -- Leave visual so telescope can take over the UI
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
+
+  -- Step 1: git blame the selected lines, show them in the same telescope
+  -- dropdown as <leader>ca (code actions) via vim.ui.select.
+  local lines = vim.fn.systemlist({
+    "git", "-C", dir, "blame", "--date=short", "-L", start_line .. "," .. end_line, "--", file,
+  })
+  if vim.v.shell_error ~= 0 then
+    vim.notify(table.concat(lines, "\n"), vim.log.levels.ERROR)
+    return
+  end
+
+  vim.ui.select(lines, { prompt = "Git blame" }, function(choice)
+    if not choice then
+      return
+    end
+    local hash = choice:match("^(%S+)")
+    if not hash or hash:match("^0+$") or hash:match("^0+%^") then
+      vim.notify("Not committed yet", vim.log.levels.INFO)
+      return
+    end
+    hash = hash:gsub("%^$", "")
+
+    -- Step 2: still git blame — open that commit's message in a float (q / Esc to close).
+    local info = vim.fn.systemlist({ "git", "-C", dir, "show", "-s", hash })
+    if vim.v.shell_error ~= 0 then
+      vim.notify(table.concat(info, "\n"), vim.log.levels.ERROR)
+      return
+    end
+
+    local buf = vim.api.nvim_create_buf(false, true)
+    vim.api.nvim_buf_set_lines(buf, 0, -1, false, info)
+    vim.bo[buf].modifiable = false
+    vim.bo[buf].bufhidden = "wipe"
+    local width = math.min(80, vim.o.columns - 4)
+    local height = math.min(math.max(#info + 2, 6), math.floor(vim.o.lines / 2))
+    local win = vim.api.nvim_open_win(buf, true, {
+      relative = "editor",
+      width = width,
+      height = height,
+      row = math.floor((vim.o.lines - height) / 2),
+      col = math.floor((vim.o.columns - width) / 2),
+      style = "minimal",
+      border = "rounded",
+      title = " git blame " .. hash:sub(1, 7) .. " ",
+    })
+    vim.wo[win].wrap = true
+    vim.keymap.set("n", "q", "<cmd>close<CR>", { buffer = buf, silent = true })
+    vim.keymap.set("n", "<Esc>", "<cmd>close<CR>", { buffer = buf, silent = true })
+  end)
 end)
+--[[ end git blame ]]
