@@ -105,13 +105,7 @@ Dropped: `encoding=UTF-8` — Neovim is UTF-8 always; that line was for vim-devi
 
 `mapleader` is Space on both branches, so `<leader>` mappings carry over unchanged.
 
-**Ported to `lua/vim-options.lua`:** `jj`, `<Esc>` in terminal, `<leader>\` / `<leader>d\`, `<C-h/j/k/l>`, `<leader><S-t>` / `<leader>1..4`, `<leader>D`.
-
-**Worth porting — plugin-independent:**
-
-| Mapping | Does |
-| --- | --- |
-| `<leader>fr` | Find-and-replace prompt (needs `FindAndReplace()`, below) |
+**Ported to `lua/vim-options.lua`:** `jj`, `<Esc>` in terminal, `<leader>\` / `<leader>d\`, `<C-h/j/k/l>`, `<leader><S-t>` / `<leader>1..4`, `<leader>D`, `<leader>fr`.
 
 **Tied to plugins you have not ported:**
 
@@ -132,8 +126,7 @@ snippets are for now, and you have LuaSnip.
 
 - `SwitchThemeNext()` / `SwitchThemePrev()` — cycle themes; only useful with the five
   themes from `main` installed
-- `FindAndReplace()` — prompts for find/replace then runs `%s`. Easy to rewrite in Lua
-  with `vim.fn.input`
+- `FindAndReplace()` — ported to `<leader>fr` in `lua/vim-options.lua`
 - `SetESLintLinter()` / `SetRuboCopLinter()` — swap ALE's linters per project.
   ALE is replaced by none-ls, so this needs rethinking rather than porting
 

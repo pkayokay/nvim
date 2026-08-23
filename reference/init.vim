@@ -130,15 +130,6 @@ inoremap dry before { driven_by(:selenium_chrome) }
 " Git blame
 vmap <c-b> :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>,<C-R>=line("'>") <CR>p <CR>
 
-" Custom command to find and replace in file
-nnoremap <leader>fr :call FindAndReplace()<CR>
-function! FindAndReplace()
-    let find = input('Find: ')
-    let replace = input('Replace with: ')
-    execute '%s/' . find . '/' . replace . '/gc'
-    redraw!
-endfunction
-
 " --------------------------------------------------
 " 👉 Plugins config
 " --------------------------------------------------

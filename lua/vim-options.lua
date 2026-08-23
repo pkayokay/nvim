@@ -59,3 +59,15 @@ vim.keymap.set("n", "<leader>4", ":tabn 4<CR>") -- jump to tab 4
 
 -- Delete the line without clobbering the yank register
 vim.keymap.set("n", "<leader>D", '"_dd')
+
+-- Prompt for find/replace, then run :%s/find/replace/gc (confirm each match).
+-- Example: "foo foo foo" with find foo, replace bar -> "bar bar bar"
+-- (% = whole file, g = every match on a line, c = confirm). Without g, only the first foo on each line would change.
+vim.keymap.set("n", "<leader>fr", function()
+  local find = vim.fn.input("Find: ")
+  if find == "" then
+    return
+  end
+  local replace = vim.fn.input("Replace with: ")
+  vim.cmd("%s/" .. find .. "/" .. replace .. "/gc")
+end)

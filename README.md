@@ -32,6 +32,7 @@ press <kbd>Space</kbd> then <kbd>g</kbd> then <kbd>d</kbd>.
 | <kbd>Space</kbd> <kbd>Shift</kbd>+<kbd>t</kbd> | New tab | vim-options |
 | <kbd>Space</kbd> `1`–`4` | Jump to tab 1–4 | vim-options |
 | <kbd>Space</kbd> `D` | Delete line without yanking | vim-options |
+| <kbd>Space</kbd> `fr` | Find and replace in file | vim-options |
 | <kbd>Ctrl</kbd>+<kbd>p</kbd> | Find files by name | telescope |
 | <kbd>Space</kbd> `fg` | Search file *contents* across the project | telescope |
 | <kbd>Ctrl</kbd>+<kbd>n</kbd> | Toggle the file tree | neo-tree |
