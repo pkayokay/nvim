@@ -95,16 +95,11 @@ functions, and most of it has nothing to do with which plugins you pick.
 
 ## `set` options (18)
 
-Already in `lua/vim-options.lua`: `mapleader`, indent (`tabstop` `expandtab` `shiftwidth` `softtabstop`), display (`number` `relativenumber` `cursorline` `termguicolors` `background` `guicursor` `nowrap`), splits/scroll (`splitbelow` `splitright` `scroll` `scrolloff` `sidescrolloff`). Those lines were deleted from `reference/init.vim`.
+All in `lua/vim-options.lua` and deleted from `reference/init.vim`.
 
 Dropped: `encoding=UTF-8` — Neovim is UTF-8 always; that line was for vim-devicons.
 
-Not yet ported:
-
-| Option | What it does |
-| --- | --- |
-| `clipboard=unnamed` | Yank goes to the system clipboard |
-| `ignorecase` + `smartcase` | Case-insensitive search unless you type a capital |
+`clipboard` is `unnamedplus` (old `init.vim` had `unnamed`; same pasteboard on macOS).
 
 ## Mappings (29)
 

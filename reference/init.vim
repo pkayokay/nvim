@@ -118,13 +118,11 @@ nnoremap <C-S-n> :call SwitchThemeNext()<CR>
 " --------------------------------------------------
 " 👉 Neovim settings
 " --------------------------------------------------
-" Ported `set` options (leader, indent, display, splits/scroll) live in lua/vim-options.lua.
+" Ported `set` options live in lua/vim-options.lua.
 " encoding=UTF-8 was dropped: Neovim is UTF-8 always.
 
 nnoremap <c-'> :colorscheme
 " set gdefault " assume /g flag on for :s subtitutions
-set clipboard=unnamed
-set ignorecase smartcase " make searches case-insensitive, unless they contain upper-case letters
 tnoremap <Esc> <C-\><C-n>
 inoremap jj <ESC> " escape insert mode
 

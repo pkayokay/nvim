@@ -27,6 +27,11 @@ vim.opt.scroll = 10          -- Ctrl-d / Ctrl-u jump 10 lines (Neovim may reset 
 vim.opt.scrolloff = 10       -- keep 10 lines visible above and below the cursor
 vim.opt.sidescrolloff = 10   -- keep 10 columns visible beside the cursor (wrap is off)
 
+-- Search / clipboard
+vim.opt.ignorecase = true         -- /foo matches foo, Foo, FOO
+vim.opt.smartcase = true          -- ignorecase unless the search contains a capital
+vim.opt.clipboard = "unnamedplus" -- yank/delete/put use the OS clipboard (same as unnamed on macOS)
+
 -- Print the diagnostic message inline, to the right of the offending line.
 -- Neovim 0.11+ ships this off by default: errors show only as a gutter sign,
 -- which reads like the LSP is doing nothing. Use ]d / [d to jump between them.
