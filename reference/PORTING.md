@@ -1,8 +1,9 @@
 # Porting notes: `main` (vim-plug) → `lua` (lazy.nvim)
 
-`reference/init.vim` is a verbatim copy of `init.vim` from the `main` branch, kept here
-only for reference while porting. Nothing loads it — Neovim reads `init.lua` at the
-config root, and a real `init.vim` there would raise `E5422: Conflicting configs`.
+`reference/init.vim` started as a copy of `init.vim` from `main`. Lines are deleted
+as they are ported, so what remains is still todo. Nothing loads it — Neovim reads
+`init.lua` at the config root, and a real `init.vim` there would raise
+`E5422: Conflicting configs`.
 
 46 plugins were declared on `main`. Status below.
 
@@ -94,25 +95,16 @@ functions, and most of it has nothing to do with which plugins you pick.
 
 ## `set` options (18)
 
-Already in `lua/vim-options.lua`: `tabstop`, `expandtab`, `shiftwidth`, `softtabstop`.
+Already in `lua/vim-options.lua`: `mapleader`, indent (`tabstop` `expandtab` `shiftwidth` `softtabstop`), display (`number` `relativenumber` `cursorline` `termguicolors` `background` `guicursor` `nowrap`), splits/scroll (`splitbelow` `splitright` `scroll` `scrolloff` `sidescrolloff`). Those lines were deleted from `reference/init.vim`.
 
-Not yet ported — all straightforward `vim.opt.x = y`:
+Dropped: `encoding=UTF-8` — Neovim is UTF-8 always; that line was for vim-devicons.
+
+Not yet ported:
 
 | Option | What it does |
 | --- | --- |
-| `relativenumber` + `number` | Hybrid line numbers (absolute on cursor line) |
-| `cursorline` | Highlight the line the cursor is on |
-| `termguicolors` | 24-bit colour — **required by most Lua themes** |
-| `background=dark` | Tell plugins to assume a dark background |
-| `guicursor=a:hor20-Cursor` | Horizontal bar cursor |
 | `clipboard=unnamed` | Yank goes to the system clipboard |
-| `nowrap` | No soft line wrapping |
-| `splitbelow` `splitright` | New splits open below / to the right |
-| `scroll=10` `scrolloff=10` `sidescrolloff=10` | Keep 10 lines of context around the cursor |
 | `ignorecase` + `smartcase` | Case-insensitive search unless you type a capital |
-| `encoding=UTF-8` | Was for vim-devicons; Neovim is UTF-8 always, droppable |
-
-`termguicolors` is the one that actually matters — themes look wrong without it.
 
 ## Mappings (29)
 

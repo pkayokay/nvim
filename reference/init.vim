@@ -118,28 +118,12 @@ nnoremap <C-S-n> :call SwitchThemeNext()<CR>
 " --------------------------------------------------
 " 👉 Neovim settings
 " --------------------------------------------------
+" Ported `set` options (leader, indent, display, splits/scroll) live in lua/vim-options.lua.
+" encoding=UTF-8 was dropped: Neovim is UTF-8 always.
 
-" Relative lines
-set relativenumber " set norelativenumber
-let mapleader = "\<Space>"
 nnoremap <c-'> :colorscheme
-set background=dark
-set termguicolors
-set cursorline
-set guicursor=a:hor20-Cursor
 " set gdefault " assume /g flag on for :s subtitutions
 set clipboard=unnamed
-set encoding=UTF-8 " for vim-devicons
-set tabstop=2               " number of columns occupied by a tab character
-set expandtab               " convert tabs to white space
-set shiftwidth=2            " width for autoindents
-set softtabstop=2           " see multiple spaces as tabstops so <BS> does the right thing
-set nowrap " :set wrap! :set wrap
-set number
-set splitbelow splitright
-set scroll=10
-set scrolloff=10
-set sidescrolloff=10
 set ignorecase smartcase " make searches case-insensitive, unless they contain upper-case letters
 tnoremap <Esc> <C-\><C-n>
 inoremap jj <ESC> " escape insert mode
