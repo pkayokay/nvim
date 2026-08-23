@@ -34,6 +34,8 @@ press <kbd>Space</kbd> then <kbd>g</kbd> then <kbd>d</kbd>.
 | <kbd>Space</kbd> `D` | Delete line without yanking | vim-options |
 | <kbd>Space</kbd> `fr` | Find and replace in file | vim-options |
 | <kbd>Ctrl</kbd>+<kbd>b</kbd> (visual) | Git blame selected lines (telescope, like code actions) | vim-options |
+| <kbd>Ctrl</kbd>+<kbd>'</kbd> | Start `:colorscheme` (tab-complete a name) | theme |
+| <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>n</kbd> / <kbd>p</kbd> | Next / previous colorscheme | theme |
 | <kbd>Ctrl</kbd>+<kbd>p</kbd> | Find files by name | telescope |
 | <kbd>Space</kbd> `fg` | Search file *contents* across the project | telescope |
 | <kbd>Ctrl</kbd>+<kbd>n</kbd> | Toggle the file tree | neo-tree |
@@ -72,7 +74,7 @@ press <kbd>Space</kbd> then <kbd>g</kbd> then <kbd>d</kbd>.
 init.lua              bootstraps lazy.nvim, then loads the two below
 lua/vim-options.lua   tabs, line numbers, clipboard, mapleader, insert/terminal maps
 lua/plugins/
-  theme.lua           hybrid.nvim colorscheme
+  theme.lua           hybrid.nvim (default) plus extra colorschemes and the switcher
   treesitter.lua      syntax parsers
   lsp-config.lua      mason + lspconfig, and the LSP keymaps
   completions.lua     nvim-cmp autocompletion and snippets

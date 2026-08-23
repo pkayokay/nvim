@@ -43,40 +43,10 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'j-hui/fidget.nvim' " Extensible UI for Neovim notifications and LSP progress messages.
 
   " Make it pretty
-  Plug 'rktjmp/lush.nvim' " required for darcula-solid
-  Plug 'briones-gabriel/darcula-solid.nvim'
-  Plug 'mhartington/oceanic-next'
-  Plug 'danilo-augusto/vim-afterglow'
-  Plug 'projekt0n/github-nvim-theme'
-
   Plug 'vwxyutarooo/nerdtree-devicons-syntax' " needs vim-devicons
   Plug 'ryanoasis/vim-devicons' " Ensure it's the last plugin and install JetBrains Mono Nerd Font https://www.nerdfonts.com/font-downloads
 call plug#end()
 
-" --------------------------------------------------
-" 👉 Switch themes instantly!
-" --------------------------------------------------
-let g:airline_theme='tomorrow'
-
-let g:theme_index = 0
-let g:themes = ['habamax', 'hybrid', 'afterglow', 'darcula-solid', 'OceanicNext', 'github_dark_dimmed']
-
-" Function to switch to the next theme
-function! SwitchThemeNext()
-  let g:theme_index = (g:theme_index + 1) % len(g:themes)
-  execute 'colorscheme ' . g:themes[g:theme_index]
-  echo "Theme: " . g:themes[g:theme_index]
-endfunction
-
-" Function to switch to the previous theme
-function! SwitchThemePrev()
-  let g:theme_index = (g:theme_index - 1 + len(g:themes)) % len(g:themes)
-  execute 'colorscheme ' . g:themes[g:theme_index]
-  echo "Theme: " . g:themes[g:theme_index]
-endfunction
-
-nnoremap <C-S-p> :call SwitchThemePrev()<CR>
-nnoremap <C-S-n> :call SwitchThemeNext()<CR>
 " --------------------------------------------------
 " 👉 Notes!
 " --------------------------------------------------
@@ -110,9 +80,6 @@ nnoremap <C-S-n> :call SwitchThemeNext()<CR>
 " Ported `set` options live in lua/vim-options.lua.
 " encoding=UTF-8 was dropped: Neovim is UTF-8 always.
 
-nnoremap <c-'> :colorscheme
-" set gdefault " assume /g flag on for :s subtitutions
-
 " --------------------------------------------------
 " 👉 Plugins config
 " --------------------------------------------------
@@ -129,7 +96,7 @@ lua <<EOF
 EOF
 
 " vim-airline/vim-airline
-" Note: airline theme is set above in theme context ex. let g:airline_theme='bubblegum'
+let g:airline_theme='tomorrow'
 let g:airline_section_c = '%f'
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_extensions = []

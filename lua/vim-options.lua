@@ -38,6 +38,7 @@ vim.opt.sidescrolloff = 10   -- keep 10 columns visible beside the cursor (wrap 
 -- Search
 vim.opt.ignorecase = true         -- /foo matches foo, Foo, FOO
 vim.opt.smartcase = true          -- ignorecase unless the search contains a capital
+-- vim.opt.gdefault = true        -- assume /g flag on for :s subtitutions
 -- Prompt for find/replace, then run :%s/find/replace/gc (confirm each match).
 -- Example: "foo foo foo" with find foo, replace bar -> "bar bar bar"
 -- (% = whole file, g = every match on a line, c = confirm). Without g, only the first foo on each line would change.

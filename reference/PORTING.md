@@ -7,15 +7,17 @@ as they are ported, so what remains is still todo. Nothing loads it — Neovim r
 
 46 plugins were declared on `main`. Status below.
 
-## Done (8)
+## Done (10)
 
 `hybrid.nvim`, `nvim-cmp`, `cmp-buffer`, `cmp-nvim-lsp`, `cmp-path`, `nvim-lspconfig`,
-`plenary.nvim`, `telescope.nvim`
+`plenary.nvim`, `telescope.nvim`, `vim-afterglow`, `oceanic-next`
 
 Their leftover `Plug` lines, `colorscheme hybrid`, and the Native LSP/cmp `lua <<EOF`
 block are deleted from `reference/init.vim`. The telescope *config* block stays: the
 lua branch only has `<C-p>` find-files and `<leader>fg` grep; live-grep-args, buffers,
 and the old layout are not ported yet.
+
+Theme switcher (`<C-S-n>` / `<C-S-p>`) and `<C-'>` live in `lua/plugins/theme.lua`.
 
 ## Replaced by a different plugin (6)
 
@@ -28,7 +30,7 @@ and the old layout are not ported yet.
 | `dense-analysis/ale` | `none-ls.nvim` |
 | `ryanoasis/vim-devicons` | `nvim-web-devicons` |
 
-## Not ported yet (31)
+## Not ported yet (26)
 
 Grouped by what they do, with the usual modern equivalent where the original is a
 Vimscript plugin that has one. Plenty of these still work fine under lazy.nvim — being
@@ -69,11 +71,6 @@ Vimscript is not a reason to replace them, only a reason to check.
 ### Browser
 - `tyru/open-browser.vim`, `tyru/open-browser-github.vim`
 
-### Themes (only one can be active)
-- `briones-gabriel/darcula-solid.nvim`, `danilo-augusto/vim-afterglow`,
-  `mhartington/oceanic-next`, `projekt0n/github-nvim-theme`, `rktjmp/lush.nvim`
-- The `lua` branch currently uses `hybrid.nvim`
-
 ## How to port one
 
 Create `lua/plugins/<name>.lua` returning a lazy.nvim spec. The vim-plug line
@@ -106,11 +103,15 @@ Dropped: `encoding=UTF-8` — Neovim is UTF-8 always; that line was for vim-devi
 
 `clipboard` is `unnamedplus` (old `init.vim` had `unnamed`; same pasteboard on macOS).
 
+`gdefault` is in `lua/vim-options.lua` but commented out (same as the old file).
+
 ## Mappings (29)
 
 `mapleader` is Space on both branches, so `<leader>` mappings carry over unchanged.
 
 **Ported to `lua/vim-options.lua`:** `jj`, `<Esc>` in terminal, `<leader>\` / `<leader>d\`, `<C-h/j/k/l>`, `<leader><S-t>` / `<leader>1..4`, `<leader>D`, `<leader>fr`, visual `<C-b>` git blame.
+
+**Ported to `lua/plugins/theme.lua`:** `<C-'>`, `<C-S-n>`, `<C-S-p>`.
 
 **Tied to plugins you have not ported:**
 
@@ -121,15 +122,13 @@ Dropped: `encoding=UTF-8` — Neovim is UTF-8 always; that line was for vim-devi
 | `<leader>it` | vim-floaterm |
 | `<leader>se` `<leader>st` | ctrlsf |
 | `<C-\>` | open-browser-github |
-| `<C-S-p>` `<C-S-n>` `<c-'>` | the theme switcher functions |
 
 **Dropped:** `inoremap dry ...` (Rails system-test snippet). Never existed on the lua
 branch; deleted from `reference/init.vim`.
 
 ## Functions (5)
 
-- `SwitchThemeNext()` / `SwitchThemePrev()` — cycle themes; only useful with the five
-  themes from `main` installed
+- `SwitchThemeNext()` / `SwitchThemePrev()` — ported to `lua/plugins/theme.lua`
 - `FindAndReplace()` — ported to `<leader>fr` in `lua/vim-options.lua`
 - `SetESLintLinter()` / `SetRuboCopLinter()` — swap ALE's linters per project.
   ALE is replaced by none-ls, so this needs rethinking rather than porting
