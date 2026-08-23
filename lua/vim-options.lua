@@ -20,46 +20,24 @@ vim.opt.background = "dark"      -- hint for default highlights; does not paint 
 vim.opt.guicursor = "a:hor20-Cursor" -- horizontal bar cursor in every mode
 vim.opt.wrap = false             -- long lines scroll sideways instead of wrapping
 
--- Splits / scrolling
+-- Splits: where they open, how to create them, how to move between them
 vim.opt.splitbelow = true    -- :split opens the new window below, not above
 vim.opt.splitright = true    -- :vsplit opens the new window to the right, not left
 vim.keymap.set("n", "<leader>\\", ":vsplit<CR>")  -- vertical split; opens right because of splitright
 vim.keymap.set("n", "<leader>d\\", ":split<CR>")  -- horizontal split; opens below because of splitbelow
-vim.opt.scroll = 10          -- Ctrl-d / Ctrl-u jump 10 lines (Neovim may reset this on resize)
-vim.opt.scrolloff = 10       -- keep 10 lines visible above and below the cursor
-vim.opt.sidescrolloff = 10   -- keep 10 columns visible beside the cursor (wrap is off)
-
--- Search / clipboard
-vim.opt.ignorecase = true         -- /foo matches foo, Foo, FOO
-vim.opt.smartcase = true          -- ignorecase unless the search contains a capital
-vim.opt.clipboard = "unnamedplus" -- yank/delete/put use the OS clipboard (same as unnamed on macOS)
-
--- Print the diagnostic message inline, to the right of the offending line.
--- Neovim 0.11+ ships this off by default: errors show only as a gutter sign,
--- which reads like the LSP is doing nothing. Use ]d / [d to jump between them.
-vim.diagnostic.config({ virtual_text = true })
-
--- Plugin-independent mappings, ported from reference/init.vim.
-
-vim.keymap.set("i", "jj", "<Esc>") -- escape insert mode
-vim.keymap.set("t", "<Esc>", "<C-\\><C-n>") -- :terminal: Esc leaves the shell; without this, press Ctrl-\ then Ctrl-n
-
--- Split navigation (stock is Ctrl-w then h/j/k/l)
-vim.keymap.set("n", "<C-h>", "<C-w>h") -- left
+vim.keymap.set("n", "<C-h>", "<C-w>h") -- left  (stock is Ctrl-w then h)
 vim.keymap.set("n", "<C-j>", "<C-w>j") -- down
 vim.keymap.set("n", "<C-k>", "<C-w>k") -- up
 vim.keymap.set("n", "<C-l>", "<C-w>l") -- right
 
--- Tabs (stock is :tabnew, gt/gT, {count}gt)
-vim.keymap.set("n", "<leader><S-t>", ":tabnew<CR>") -- new tab
-vim.keymap.set("n", "<leader>1", ":tabn 1<CR>") -- jump to tab 1
-vim.keymap.set("n", "<leader>2", ":tabn 2<CR>") -- jump to tab 2
-vim.keymap.set("n", "<leader>3", ":tabn 3<CR>") -- jump to tab 3
-vim.keymap.set("n", "<leader>4", ":tabn 4<CR>") -- jump to tab 4
+-- Scrolling
+vim.opt.scroll = 10          -- Ctrl-d / Ctrl-u jump 10 lines (Neovim may reset this on resize)
+vim.opt.scrolloff = 10       -- keep 10 lines visible above and below the cursor
+vim.opt.sidescrolloff = 10   -- keep 10 columns visible beside the cursor (wrap is off)
 
--- Delete the line without clobbering the yank register
-vim.keymap.set("n", "<leader>D", '"_dd')
-
+-- Search
+vim.opt.ignorecase = true         -- /foo matches foo, Foo, FOO
+vim.opt.smartcase = true          -- ignorecase unless the search contains a capital
 -- Prompt for find/replace, then run :%s/find/replace/gc (confirm each match).
 -- Example: "foo foo foo" with find foo, replace bar -> "bar bar bar"
 -- (% = whole file, g = every match on a line, c = confirm). Without g, only the first foo on each line would change.
@@ -71,6 +49,27 @@ vim.keymap.set("n", "<leader>fr", function()
   local replace = vim.fn.input("Replace with: ")
   vim.cmd("%s/" .. find .. "/" .. replace .. "/gc")
 end)
+
+-- Clipboard: yank/delete/put use the OS clipboard. dd is cut; <leader>D is true delete.
+vim.opt.clipboard = "unnamedplus" -- same pasteboard as unnamed on macOS
+vim.keymap.set("n", "<leader>D", '"_dd') -- delete the line without clobbering the yank register
+
+-- Diagnostics
+-- Print the diagnostic message inline, to the right of the offending line.
+-- Neovim 0.11+ ships this off by default: errors show only as a gutter sign,
+-- which reads like the LSP is doing nothing. Use ]d / [d to jump between them.
+vim.diagnostic.config({ virtual_text = true })
+
+-- Insert / terminal
+vim.keymap.set("i", "jj", "<Esc>") -- escape insert mode
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>") -- :terminal: Esc leaves the shell; without this, press Ctrl-\ then Ctrl-n
+
+-- Tabs (stock is :tabnew, gt/gT, {count}gt)
+vim.keymap.set("n", "<leader><S-t>", ":tabnew<CR>") -- new tab
+vim.keymap.set("n", "<leader>1", ":tabn 1<CR>") -- jump to tab 1
+vim.keymap.set("n", "<leader>2", ":tabn 2<CR>") -- jump to tab 2
+vim.keymap.set("n", "<leader>3", ":tabn 3<CR>") -- jump to tab 3
+vim.keymap.set("n", "<leader>4", ":tabn 4<CR>") -- jump to tab 4
 
 --[[ Git blame (visual Ctrl-b)
   Replaces the old :!git blame dump.
