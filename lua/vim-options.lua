@@ -20,6 +20,13 @@ vim.opt.background = "dark"      -- hint for default highlights; does not paint 
 vim.opt.guicursor = "a:hor20-Cursor" -- horizontal bar cursor in every mode
 vim.opt.wrap = false             -- long lines scroll sideways instead of wrapping
 
+-- Splits / scrolling
+vim.opt.splitbelow = true    -- :split opens the new window below, not above
+vim.opt.splitright = true    -- :vsplit opens the new window to the right, not left
+vim.opt.scroll = 10          -- Ctrl-d / Ctrl-u jump 10 lines (Neovim may reset this on resize)
+vim.opt.scrolloff = 10       -- keep 10 lines visible above and below the cursor
+vim.opt.sidescrolloff = 10   -- keep 10 columns visible beside the cursor (wrap is off)
+
 -- Print the diagnostic message inline, to the right of the offending line.
 -- Neovim 0.11+ ships this off by default: errors show only as a gutter sign,
 -- which reads like the LSP is doing nothing. Use ]d / [d to jump between them.
