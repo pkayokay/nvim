@@ -39,9 +39,6 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'tpope/vim-rails'
   Plug 'maxmellon/vim-jsx-pretty'
 
-  " Native LSP Support (Neovim 0.11+)
-  Plug 'j-hui/fidget.nvim' " Extensible UI for Neovim notifications and LSP progress messages.
-
   " Make it pretty
   Plug 'vwxyutarooo/nerdtree-devicons-syntax' " needs vim-devicons
   Plug 'ryanoasis/vim-devicons' " Ensure it's the last plugin and install JetBrains Mono Nerd Font https://www.nerdfonts.com/font-downloads
@@ -83,17 +80,6 @@ call plug#end()
 " --------------------------------------------------
 " 👉 Plugins config
 " --------------------------------------------------
-
-" Fidget (LSP notifications)
-lua <<EOF
-  require("fidget").setup({
-    notification = {
-      window = {
-        winblend = 0,
-      },
-    },
-  })
-EOF
 
 " vim-airline/vim-airline
 let g:airline_theme='tomorrow'

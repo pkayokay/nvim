@@ -7,10 +7,10 @@ as they are ported, so what remains is still todo. Nothing loads it — Neovim r
 
 46 plugins were declared on `main`. Status below.
 
-## Done (10)
+## Done (11)
 
 `hybrid.nvim`, `nvim-cmp`, `cmp-buffer`, `cmp-nvim-lsp`, `cmp-path`, `nvim-lspconfig`,
-`plenary.nvim`, `telescope.nvim`, `vim-afterglow`, `oceanic-next`
+`plenary.nvim`, `telescope.nvim`, `vim-afterglow`, `oceanic-next`, `fidget.nvim`
 
 Their leftover `Plug` lines, `colorscheme hybrid`, and the Native LSP/cmp `lua <<EOF`
 block are deleted from `reference/init.vim`. The telescope *config* block stays: the
@@ -30,7 +30,7 @@ Theme switcher (`<C-S-n>` / `<C-S-p>`) and `<C-'>` live in `lua/plugins/theme.lu
 | `dense-analysis/ale` | `none-ls.nvim` |
 | `ryanoasis/vim-devicons` | `nvim-web-devicons` |
 
-## Not ported yet (26)
+## Not ported yet (25)
 
 Grouped by what they do, with the usual modern equivalent where the original is a
 Vimscript plugin that has one. Plenty of these still work fine under lazy.nvim — being
@@ -65,7 +65,6 @@ Vimscript is not a reason to replace them, only a reason to check.
 
 ### UI
 - `vim-airline/vim-airline` + `-themes` — modern: `nvim-lualine/lualine.nvim`
-- `j-hui/fidget.nvim` — LSP progress; already a Lua plugin, easy port
 - `voldikss/vim-floaterm` — modern: `akinsho/toggleterm.nvim`
 
 ### Browser
