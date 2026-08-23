@@ -124,10 +124,6 @@ nnoremap <C-S-n> :call SwitchThemeNext()<CR>
 nnoremap <c-'> :colorscheme
 " set gdefault " assume /g flag on for :s subtitutions
 
-" Split windows
-nnoremap <leader>d<Bslash> :split<cr>
-nnoremap <leader><Bslash> :vsplit<cr>| ":vnew or :new for empty windows
-
 " Navigate through tabs
 nnoremap <leader><S-t> :tabnew<cr>
 nnoremap <leader>1 :tabn 1<cr>

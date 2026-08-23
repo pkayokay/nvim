@@ -4,6 +4,7 @@
 -- <leader> is a prefix key you press before a shortcut. Space is the convention.
 -- Every "<leader>x" mapping in lua/plugins/ therefore means: press Space, then x.
 vim.g.mapleader = " "
+local map = vim.keymap.set -- shorthand: map("n", "jj", ...) instead of vim.keymap.set(...)
 
 -- Indentation
 vim.opt.expandtab = true     -- pressing Tab inserts spaces, never a literal tab character
@@ -23,6 +24,8 @@ vim.opt.wrap = false             -- long lines scroll sideways instead of wrappi
 -- Splits / scrolling
 vim.opt.splitbelow = true    -- :split opens the new window below, not above
 vim.opt.splitright = true    -- :vsplit opens the new window to the right, not left
+map("n", "<leader>\\", ":vsplit<CR>")  -- vertical split; opens right because of splitright
+map("n", "<leader>d\\", ":split<CR>")  -- horizontal split; opens below because of splitbelow
 vim.opt.scroll = 10          -- Ctrl-d / Ctrl-u jump 10 lines (Neovim may reset this on resize)
 vim.opt.scrolloff = 10       -- keep 10 lines visible above and below the cursor
 vim.opt.sidescrolloff = 10   -- keep 10 columns visible beside the cursor (wrap is off)
@@ -38,7 +41,6 @@ vim.opt.clipboard = "unnamedplus" -- yank/delete/put use the OS clipboard (same 
 vim.diagnostic.config({ virtual_text = true })
 
 -- Plugin-independent mappings, ported from reference/init.vim.
-local map = vim.keymap.set
 
 map("i", "jj", "<Esc>") -- escape insert mode
 map("t", "<Esc>", "<C-\\><C-n>") -- :terminal: Esc leaves the shell; without this, press Ctrl-\ then Ctrl-n

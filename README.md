@@ -26,6 +26,8 @@ press <kbd>Space</kbd> then <kbd>g</kbd> then <kbd>d</kbd>.
 | --- | --- | --- |
 | <kbd>j</kbd><kbd>j</kbd> | Escape insert mode | vim-options |
 | <kbd>Esc</kbd> in `:terminal` | Leave the shell (else Ctrl-\ Ctrl-n) | vim-options |
+| <kbd>Space</kbd> `\` | Vertical split (opens right) | vim-options |
+| <kbd>Space</kbd> `d\` | Horizontal split (opens below) | vim-options |
 | <kbd>Ctrl</kbd>+<kbd>p</kbd> | Find files by name | telescope |
 | <kbd>Space</kbd> `fg` | Search file *contents* across the project | telescope |
 | <kbd>Ctrl</kbd>+<kbd>n</kbd> | Toggle the file tree | neo-tree |
