@@ -71,3 +71,15 @@ vim.keymap.set("n", "<leader>fr", function()
   local replace = vim.fn.input("Replace with: ")
   vim.cmd("%s/" .. find .. "/" .. replace .. "/gc")
 end)
+
+-- Git blame the visual selection (no plugin; shells out).
+-- Visual mode only: select lines, then Ctrl-b. In normal mode Ctrl-b is still page-up.
+vim.keymap.set("v", "<C-b>", function()
+  local file = vim.fn.expand("%:p")
+  local start_line = vim.fn.line("v")
+  local end_line = vim.fn.line(".")
+  if start_line > end_line then
+    start_line, end_line = end_line, start_line
+  end
+  vim.cmd("!git blame " .. vim.fn.shellescape(file) .. " | sed -n " .. start_line .. "," .. end_line .. "p")
+end)

@@ -127,9 +127,6 @@ nnoremap <c-'> :colorscheme
 " Paste by typign dry on insert mode
 inoremap dry before { driven_by(:selenium_chrome) }
 
-" Git blame
-vmap <c-b> :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>,<C-R>=line("'>") <CR>p <CR>
-
 " --------------------------------------------------
 " 👉 Plugins config
 " --------------------------------------------------

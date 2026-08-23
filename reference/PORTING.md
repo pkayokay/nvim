@@ -105,7 +105,7 @@ Dropped: `encoding=UTF-8` — Neovim is UTF-8 always; that line was for vim-devi
 
 `mapleader` is Space on both branches, so `<leader>` mappings carry over unchanged.
 
-**Ported to `lua/vim-options.lua`:** `jj`, `<Esc>` in terminal, `<leader>\` / `<leader>d\`, `<C-h/j/k/l>`, `<leader><S-t>` / `<leader>1..4`, `<leader>D`, `<leader>fr`.
+**Ported to `lua/vim-options.lua`:** `jj`, `<Esc>` in terminal, `<leader>\` / `<leader>d\`, `<C-h/j/k/l>`, `<leader><S-t>` / `<leader>1..4`, `<leader>D`, `<leader>fr`, visual `<C-b>` git blame.
 
 **Tied to plugins you have not ported:**
 
@@ -117,7 +117,6 @@ Dropped: `encoding=UTF-8` — Neovim is UTF-8 always; that line was for vim-devi
 | `<leader>se` `<leader>st` | ctrlsf |
 | `<C-\>` | open-browser-github |
 | `<C-S-p>` `<C-S-n>` `<c-'>` | the theme switcher functions |
-| `<c-b>` (visual) | git blame on the selection — shells out, no plugin needed |
 
 **Probably drop:** `inoremap dry ...` inserts a Rails system-test line; that is what
 snippets are for now, and you have LuaSnip.
