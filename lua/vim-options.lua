@@ -11,6 +11,15 @@ vim.opt.tabstop = 2          -- an existing tab character renders 2 columns wide
 vim.opt.softtabstop = 2      -- Tab/Backspace move by 2 spaces, so they feel like one unit
 vim.opt.shiftwidth = 2       -- auto-indent and the >> / << commands shift by 2
 
+-- Display
+vim.opt.number = true            -- gutter shows absolute line numbers
+vim.opt.relativenumber = false   -- off: no distance-from-cursor numbers (for 5j / d3k)
+vim.opt.cursorline = true        -- highlight the row the cursor is on
+vim.opt.termguicolors = true     -- 24-bit colour; required by most Lua themes
+vim.opt.background = "dark"      -- hint for default highlights; does not paint the UI
+vim.opt.guicursor = "a:hor20-Cursor" -- horizontal bar cursor in every mode
+vim.opt.wrap = false             -- long lines scroll sideways instead of wrapping
+
 -- Print the diagnostic message inline, to the right of the offending line.
 -- Neovim 0.11+ ships this off by default: errors show only as a gutter sign,
 -- which reads like the LSP is doing nothing. Use ]d / [d to jump between them.
