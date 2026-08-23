@@ -49,3 +49,10 @@ vim.keymap.set("n", "<C-h>", "<C-w>h") -- left
 vim.keymap.set("n", "<C-j>", "<C-w>j") -- down
 vim.keymap.set("n", "<C-k>", "<C-w>k") -- up
 vim.keymap.set("n", "<C-l>", "<C-w>l") -- right
+
+-- Tabs (stock is :tabnew, gt/gT, {count}gt)
+vim.keymap.set("n", "<leader><S-t>", ":tabnew<CR>") -- new tab
+vim.keymap.set("n", "<leader>1", ":tabn 1<CR>") -- jump to tab 1
+vim.keymap.set("n", "<leader>2", ":tabn 2<CR>") -- jump to tab 2
+vim.keymap.set("n", "<leader>3", ":tabn 3<CR>") -- jump to tab 3
+vim.keymap.set("n", "<leader>4", ":tabn 4<CR>") -- jump to tab 4

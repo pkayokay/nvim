@@ -124,13 +124,6 @@ nnoremap <C-S-n> :call SwitchThemeNext()<CR>
 nnoremap <c-'> :colorscheme
 " set gdefault " assume /g flag on for :s subtitutions
 
-" Navigate through tabs
-nnoremap <leader><S-t> :tabnew<cr>
-nnoremap <leader>1 :tabn 1<cr>
-nnoremap <leader>2 :tabn 2<cr>
-nnoremap <leader>3 :tabn 3<cr>
-nnoremap <leader>4 :tabn 4<cr>
-
 " Paste by typign dry on insert mode
 inoremap dry before { driven_by(:selenium_chrome) }
 
