@@ -123,8 +123,6 @@ nnoremap <C-S-n> :call SwitchThemeNext()<CR>
 
 nnoremap <c-'> :colorscheme
 " set gdefault " assume /g flag on for :s subtitutions
-tnoremap <Esc> <C-\><C-n>
-inoremap jj <ESC> " escape insert mode
 
 " Split windows
 nnoremap <leader>d<Bslash> :split<cr>

@@ -36,3 +36,9 @@ vim.opt.clipboard = "unnamedplus" -- yank/delete/put use the OS clipboard (same 
 -- Neovim 0.11+ ships this off by default: errors show only as a gutter sign,
 -- which reads like the LSP is doing nothing. Use ]d / [d to jump between them.
 vim.diagnostic.config({ virtual_text = true })
+
+-- Plugin-independent mappings, ported from reference/init.vim.
+local map = vim.keymap.set
+
+map("i", "jj", "<Esc>") -- escape insert mode
+map("t", "<Esc>", "<C-\\><C-n>") -- :terminal: Esc leaves the shell; without this, press Ctrl-\ then Ctrl-n

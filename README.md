@@ -24,6 +24,8 @@ press <kbd>Space</kbd> then <kbd>g</kbd> then <kbd>d</kbd>.
 
 | Key | Does | From |
 | --- | --- | --- |
+| <kbd>j</kbd><kbd>j</kbd> | Escape insert mode | vim-options |
+| <kbd>Esc</kbd> in `:terminal` | Leave the shell (else Ctrl-\ Ctrl-n) | vim-options |
 | <kbd>Ctrl</kbd>+<kbd>p</kbd> | Find files by name | telescope |
 | <kbd>Space</kbd> `fg` | Search file *contents* across the project | telescope |
 | <kbd>Ctrl</kbd>+<kbd>n</kbd> | Toggle the file tree | neo-tree |
@@ -60,7 +62,7 @@ press <kbd>Space</kbd> then <kbd>g</kbd> then <kbd>d</kbd>.
 
 ```
 init.lua              bootstraps lazy.nvim, then loads the two below
-lua/vim-options.lua   tabs, indentation, mapleader
+lua/vim-options.lua   tabs, line numbers, clipboard, mapleader, insert/terminal maps
 lua/plugins/
   theme.lua           hybrid.nvim colorscheme
   treesitter.lua      syntax parsers
