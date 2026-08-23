@@ -105,13 +105,12 @@ Dropped: `encoding=UTF-8` — Neovim is UTF-8 always; that line was for vim-devi
 
 `mapleader` is Space on both branches, so `<leader>` mappings carry over unchanged.
 
-**Ported to `lua/vim-options.lua`:** `jj`, `<Esc>` in terminal, `<leader>\` / `<leader>d\`.
+**Ported to `lua/vim-options.lua`:** `jj`, `<Esc>` in terminal, `<leader>\` / `<leader>d\`, `<C-h/j/k/l>`.
 
 **Worth porting — plugin-independent:**
 
 | Mapping | Does |
 | --- | --- |
-| `<C-h/j/k/l>` | Move between splits |
 | `<leader><S-t>`, `<leader>1..4` | New tab, jump to tab N |
 | `<leader>D` → `"_dd` | Delete line without clobbering the yank register |
 | `<leader>fr` | Find-and-replace prompt (needs `FindAndReplace()`, below) |

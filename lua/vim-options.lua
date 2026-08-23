@@ -43,3 +43,9 @@ vim.diagnostic.config({ virtual_text = true })
 
 vim.keymap.set("i", "jj", "<Esc>") -- escape insert mode
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>") -- :terminal: Esc leaves the shell; without this, press Ctrl-\ then Ctrl-n
+
+-- Split navigation (stock is Ctrl-w then h/j/k/l)
+vim.keymap.set("n", "<C-h>", "<C-w>h") -- left
+vim.keymap.set("n", "<C-j>", "<C-w>j") -- down
+vim.keymap.set("n", "<C-k>", "<C-w>k") -- up
+vim.keymap.set("n", "<C-l>", "<C-w>l") -- right

@@ -131,12 +131,6 @@ nnoremap <leader>2 :tabn 2<cr>
 nnoremap <leader>3 :tabn 3<cr>
 nnoremap <leader>4 :tabn 4<cr>
 
-" Navigation through windows
-map <C-h> <C-W>h
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-l> <C-W>l
-
 " Paste by typign dry on insert mode
 inoremap dry before { driven_by(:selenium_chrome) }
 
