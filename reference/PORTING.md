@@ -123,8 +123,8 @@ Dropped: `encoding=UTF-8` — Neovim is UTF-8 always; that line was for vim-devi
 | `<C-\>` | open-browser-github |
 | `<C-S-p>` `<C-S-n>` `<c-'>` | the theme switcher functions |
 
-**Probably drop:** `inoremap dry ...` inserts a Rails system-test line; that is what
-snippets are for now, and you have LuaSnip.
+**Dropped:** `inoremap dry ...` (Rails system-test snippet). Never existed on the lua
+branch; deleted from `reference/init.vim`.
 
 ## Functions (5)
 

@@ -113,9 +113,6 @@ nnoremap <C-S-n> :call SwitchThemeNext()<CR>
 nnoremap <c-'> :colorscheme
 " set gdefault " assume /g flag on for :s subtitutions
 
-" Paste by typign dry on insert mode
-inoremap dry before { driven_by(:selenium_chrome) }
-
 " --------------------------------------------------
 " 👉 Plugins config
 " --------------------------------------------------
