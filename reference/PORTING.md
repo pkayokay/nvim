@@ -19,7 +19,7 @@ and the old layout are not ported yet.
 
 Theme switcher (`<C-S-n>` / `<C-S-p>`) and `<C-'>` live in `lua/plugins/theme.lua`.
 
-## Replaced by a different plugin (6)
+## Replaced by a different plugin (7)
 
 | main | lua branch |
 | --- | --- |
@@ -29,8 +29,12 @@ Theme switcher (`<C-S-n>` / `<C-S-p>`) and `<C-'>` live in `lua/plugins/theme.lu
 | `ctrlpvim/ctrlp.vim` | `telescope.nvim` |
 | `dense-analysis/ale` | `none-ls.nvim` |
 | `ryanoasis/vim-devicons` | `nvim-web-devicons` |
+| `vim-airline/vim-airline` + `-themes` | `nvim-lualine/lualine.nvim` |
 
-## Not ported yet (25)
+Airline leftover (`Plug` lines, `g:airline_*`) is deleted from `reference/init.vim`.
+Lualine uses `theme = "auto"` (follows the colorscheme) instead of airline `tomorrow`.
+
+## Not ported yet (24)
 
 Grouped by what they do, with the usual modern equivalent where the original is a
 Vimscript plugin that has one. Plenty of these still work fine under lazy.nvim — being
@@ -64,7 +68,6 @@ Vimscript is not a reason to replace them, only a reason to check.
 - `vim-test/vim-test` — modern: `nvim-neotest/neotest`
 
 ### UI
-- `vim-airline/vim-airline` + `-themes` — modern: `nvim-lualine/lualine.nvim`
 - `voldikss/vim-floaterm` — modern: `akinsho/toggleterm.nvim`
 
 ### Browser

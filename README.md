@@ -76,6 +76,7 @@ lua/vim-options.lua   tabs, line numbers, clipboard, mapleader, insert/terminal 
 lua/plugins/
   theme.lua           hybrid.nvim (default) plus extra colorschemes and the switcher
   fidget.lua          LSP progress overlay in the corner
+  lualine.lua         statusline (bottom bar)
   treesitter.lua      syntax parsers
   lsp-config.lua      mason + lspconfig, and the LSP keymaps
   completions.lua     nvim-cmp autocompletion and snippets

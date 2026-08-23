@@ -26,8 +26,6 @@ call plug#begin('~/.config/nvim/plugged')
 
   " Misc
   Plug 'tpope/vim-fugitive' " Git wrapper
-  Plug 'vim-airline/vim-airline' " Status bar
-  Plug 'vim-airline/vim-airline-themes' " Status bar themes
   Plug 'voldikss/vim-floaterm' " floating terminal
   Plug 'preservim/nerdtree' " Tree navigation
 
@@ -80,12 +78,6 @@ call plug#end()
 " --------------------------------------------------
 " 👉 Plugins config
 " --------------------------------------------------
-
-" vim-airline/vim-airline
-let g:airline_theme='tomorrow'
-let g:airline_section_c = '%f'
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline_extensions = []
 
 " vim-gitgutter
 let g:gitgutter_enabled = 1
