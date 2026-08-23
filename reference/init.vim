@@ -392,9 +392,6 @@ let NERDTreeQuitOnOpen = 0
 let g:NERDTreeWinSize=40
 let g:NERDTreeIgnore = ['^node_modules$','^tmp$']
 
-" Allow delete entire line without cutting
-nnoremap <leader>D "_dd
-
 " vim-test
 nnoremap <silent> <leader>tn :TestNearest<CR>
 nnoremap <silent> <leader>ta :TestFile<CR>

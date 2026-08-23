@@ -56,3 +56,6 @@ vim.keymap.set("n", "<leader>1", ":tabn 1<CR>") -- jump to tab 1
 vim.keymap.set("n", "<leader>2", ":tabn 2<CR>") -- jump to tab 2
 vim.keymap.set("n", "<leader>3", ":tabn 3<CR>") -- jump to tab 3
 vim.keymap.set("n", "<leader>4", ":tabn 4<CR>") -- jump to tab 4
+
+-- Delete the line without clobbering the yank register
+vim.keymap.set("n", "<leader>D", '"_dd')
