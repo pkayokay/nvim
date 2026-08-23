@@ -12,6 +12,11 @@ as they are ported, so what remains is still todo. Nothing loads it — Neovim r
 `hybrid.nvim`, `nvim-cmp`, `cmp-buffer`, `cmp-nvim-lsp`, `cmp-path`, `nvim-lspconfig`,
 `plenary.nvim`, `telescope.nvim`
 
+Their leftover `Plug` lines, `colorscheme hybrid`, and the Native LSP/cmp `lua <<EOF`
+block are deleted from `reference/init.vim`. The telescope *config* block stays: the
+lua branch only has `<C-p>` find-files and `<leader>fg` grep; live-grep-args, buffers,
+and the old layout are not ported yet.
+
 ## Replaced by a different plugin (6)
 
 | main | lua branch |

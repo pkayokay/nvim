@@ -4,8 +4,6 @@ call plug#begin('~/.config/nvim/plugged')
   " --------------------------------------------------
 
   " Search
-  Plug 'nvim-lua/plenary.nvim' " co-dependent to telescope
-  Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.4' }
   Plug 'nvim-telescope/telescope-live-grep-args.nvim' " Extends telescope and allows passing arguments to grep
   Plug 'dyng/ctrlsf.vim' " search/replace like sublime text
   Plug 'jlanzarotta/bufexplorer' " allows quicky deletion of buffers
@@ -42,19 +40,11 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'maxmellon/vim-jsx-pretty'
 
   " Native LSP Support (Neovim 0.11+)
-  Plug 'neovim/nvim-lspconfig'
-  Plug 'williamboman/mason.nvim'
-  Plug 'williamboman/mason-lspconfig.nvim'
-  Plug 'hrsh7th/nvim-cmp'
-  Plug 'hrsh7th/cmp-nvim-lsp'
-  Plug 'hrsh7th/cmp-buffer'
-  Plug 'hrsh7th/cmp-path'
   Plug 'j-hui/fidget.nvim' " Extensible UI for Neovim notifications and LSP progress messages.
 
   " Make it pretty
   Plug 'rktjmp/lush.nvim' " required for darcula-solid
   Plug 'briones-gabriel/darcula-solid.nvim'
-  Plug 'HoNamDuong/hybrid.nvim'
   Plug 'mhartington/oceanic-next'
   Plug 'danilo-augusto/vim-afterglow'
   Plug 'projekt0n/github-nvim-theme'
@@ -66,7 +56,6 @@ call plug#end()
 " --------------------------------------------------
 " 👉 Switch themes instantly!
 " --------------------------------------------------
-colorscheme hybrid
 let g:airline_theme='tomorrow'
 
 let g:theme_index = 0
@@ -130,152 +119,6 @@ inoremap dry before { driven_by(:selenium_chrome) }
 " --------------------------------------------------
 " 👉 Plugins config
 " --------------------------------------------------
-
-" Native LSP configuration (replaces LSP-Zero)
-lua <<EOF
-  -- Configure diagnostics
-  vim.diagnostic.config({
-    virtual_text = true,
-    signs = true,
-    underline = true,
-    update_in_insert = false,
-    severity_sort = true,
-  })
-
-  -- Define signs for diagnostics
-  local signs = { Error = "E", Warn = "W", Hint = "H", Info = "I" }
-  for type, icon in pairs(signs) do
-    local hl = "DiagnosticSign" .. type
-    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-  end
-
-  -- LSP attach function
-  local on_attach = function(client, bufnr)
-    local opts = { buffer = bufnr, silent = true }
-
-    -- Key mappings
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-    vim.keymap.set('n', 'go', vim.lsp.buf.type_definition, opts)
-    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-    vim.keymap.set('n', 'gs', vim.lsp.buf.signature_help, opts)
-    vim.keymap.set('n', '<F2>', vim.lsp.buf.rename, opts)
-    vim.keymap.set({'n', 'x'}, '<F3>', function()
-      vim.lsp.buf.format({ async = true })
-    end, opts)
-    vim.keymap.set('n', '<F4>', vim.lsp.buf.code_action, opts)
-
-    -- Diagnostic navigation
-    vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-    vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-    vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, opts)
-    vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, opts)
-  end
-
-  -- Setup Mason
-  require('mason').setup({
-    ui = {
-      border = 'rounded'
-    }
-  })
-
-  -- Setup Mason-LSPConfig
-  require('mason-lspconfig').setup({
-    ensure_installed = {
-      'lua_ls',
-      'ruby_lsp',
-      'solargraph',
-      'ts_ls',
-      'html',
-      'cssls',
-      'tailwindcss',
-      'herb_ls',
-    },
-    handlers = {
-      function(server_name)
-        local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-        require('lspconfig')[server_name].setup({
-          on_attach = on_attach,
-          capabilities = capabilities,
-        })
-      end,
-
-      -- Special configuration for lua_ls
-      ['lua_ls'] = function()
-        require('lspconfig').lua_ls.setup({
-          on_attach = on_attach,
-          capabilities = require('cmp_nvim_lsp').default_capabilities(),
-          settings = {
-            Lua = {
-              runtime = {
-                version = 'LuaJIT',
-              },
-              diagnostics = {
-                globals = {'vim'},
-              },
-              workspace = {
-                library = vim.api.nvim_get_runtime_file("", true),
-                checkThirdParty = false,
-              },
-              telemetry = {
-                enable = false,
-              },
-            },
-          },
-        })
-      end,
-
-      -- Special configuration for Ruby LSP
-      ['ruby_lsp'] = function()
-        require('lspconfig').ruby_lsp.setup({
-          on_attach = on_attach,
-          capabilities = require('cmp_nvim_lsp').default_capabilities(),
-          init_options = {
-            formatter = 'auto',
-          },
-        })
-      end,
-    },
-  })
-
-  -- Setup nvim-cmp
-  local cmp = require('cmp')
-
-  cmp.setup({
-    completion = {
-      completeopt = 'menu,menuone,noinsert',
-    },
-    sources = cmp.config.sources({
-      { name = 'nvim_lsp' },
-      { name = 'buffer' },
-      { name = 'path' },
-    }),
-    mapping = cmp.mapping.preset.insert({
-      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-      ['<C-f>'] = cmp.mapping.scroll_docs(4),
-      ['<C-Space>'] = cmp.mapping.complete(),
-      ['<C-e>'] = cmp.mapping.abort(),
-      ['<Tab>'] = cmp.mapping.confirm({ select = true }),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }),
-      ['<C-n>'] = cmp.mapping.select_next_item(),
-      ['<C-p>'] = cmp.mapping.select_prev_item(),
-    }),
-    formatting = {
-      format = function(entry, vim_item)
-        -- Set a name for each source
-        vim_item.menu = ({
-          nvim_lsp = "[LSP]",
-          buffer = "[Buffer]",
-          path = "[Path]",
-        })[entry.source.name]
-        return vim_item
-      end,
-    },
-  })
-EOF
 
 " Fidget (LSP notifications)
 lua <<EOF
