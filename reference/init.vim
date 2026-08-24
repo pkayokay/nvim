@@ -3,9 +3,6 @@ call plug#begin('~/.config/nvim/plugged')
   " 👉 Plugins installation
   " --------------------------------------------------
 
-  " Search
-  Plug 'jlanzarotta/bufexplorer' " allows quicky deletion of buffers
-
   " Efficiency
   Plug 'andrewRadev/tagalong.vim' " Change an HTML(ish) opening tag and take the closing one along as well
   Plug 'tpope/vim-surround' " delete/change/add parentheses/quotes/XML-tags/much more with ease
@@ -65,44 +62,3 @@ call plug#end()
 
 " Folder name color (was next to gitgutter; used by netrw).
 highlight Directory guifg=#cacbcd
-
-" Telescope
-lua << EOF
-  local telescope = require('telescope')
-
-  telescope.setup {
-    defaults = {
-      sorting_strategy = 'ascending',
-      layout_strategy = 'vertical',
-      layout_config = {
-        anchor = 'CENTER',
-        prompt_position = 'top',
-        mirror = true,
-        height = 0.8,
-        width = 0.75,
-      }
-    },
-  }
-
-  -- Buffer
-  vim.keymap.set("n", "<leader>ef", function()
-    require('telescope.builtin').buffers({
-      previewer = false,
-      layout_config = {
-        height = 0.5,
-        width = 0.7
-      }
-    })
-  end)
-
-  -- Find files
-  vim.keymap.set("n", "<leader>ff", function()
-    require('telescope.builtin').find_files({
-      previewer = false,
-      layout_config = {
-        height = 0.5,
-        width = 0.7
-      }
-    })
-  end)
-EOF

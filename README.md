@@ -48,6 +48,7 @@ mode (`jj` or <kbd>Esc</kbd>).
 | <kbd>_</kbd><kbd>U</kbd> | | Reopen closed windows in this tab | undoquit |
 | <kbd>Space</kbd> `fg` | | Search file *contents* across the project | telescope |
 | <kbd>Space</kbd> `wfg` | | Grep the word under the cursor | telescope |
+| <kbd>Space</kbd> `ef` | | Open buffers (`Ctrl-d` deletes one) | telescope |
 | <kbd>Space</kbd> `se` | | Project search (boxed float, Enter) | ctrlsf |
 | <kbd>Space</kbd> `st` | | Toggle the search-results panel | ctrlsf |
 | <kbd>Space</kbd> `nt` | | Toggle the file tree | neo-tree |
@@ -248,7 +249,7 @@ lua/plugins/
   completions.lua     nvim-cmp autocompletion and snippets
   lazydev.lua         Neovim API types for lua_ls
   none-ls.lua         stylua / prettier formatting
-  telescope.lua       fuzzy finder
+  telescope.lua       fuzzy finder (ff / fg / wfg / ef, vertical layout)
   neo-tree.lua        file tree
   debugging.lua       nvim-dap and its UI
 ```

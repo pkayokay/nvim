@@ -17,8 +17,9 @@ as they are ported, so what remains is still todo. Nothing loads it — Neovim r
 Their leftover `Plug` lines, `colorscheme hybrid`, and the Native LSP/cmp `lua <<EOF`
 block are deleted from `reference/init.vim`. The telescope *config* block stays: the
 lua branch has `<leader>ff` files, `<leader>fg` grep, `<leader>wfg` word under
-cursor. Leftover: buffers (`<leader>ef`) and the old vertical layout. Dropped
-live-grep-args (`<leader>sf`, `<leader>gc`).
+cursor, `<leader>ef` buffers, and the old vertical centered layout at stock
+size (80% × 90%). Dropped live-grep-args (`<leader>sf`, `<leader>gc`), leftover
+no-preview `ff`, and bufexplorer.
 
 Theme switcher (`<C-S-n>` / `<C-S-p>`) and `<C-'>` live in `lua/plugins/theme.lua`.
 
@@ -54,7 +55,7 @@ Lualine uses `theme = "auto"` (follows the colorscheme) instead of airline `tomo
 ALE leftover (`Plug` line, `g:ale_*`, `SetESLintLinter` / `SetRuboCopLinter`) is deleted
 from `reference/init.vim`. Keep none-ls; lint/format-on-save can be added there later.
 
-## Not ported yet (14)
+## Not ported yet (13)
 
 Grouped by what they do, with the usual modern equivalent where the original is a
 Vimscript plugin that has one. Plenty of these still work fine under lazy.nvim — being
@@ -72,9 +73,6 @@ Vimscript is not a reason to replace them, only a reason to check.
 - `andrewradev/tagalong.vim` — renames paired HTML/JSX tags
 - `mg979/vim-visual-multi` — multiple cursors
 - `chaoren/vim-wordmotion` — subword motions
-
-### Navigation / search
-- `jlanzarotta/bufexplorer` — telescope `buffers` picker covers this
 
 ### Ruby / Rails / JS
 - `tpope/vim-rails`
@@ -140,9 +138,9 @@ Later: try `grug-far.nvim` for the same search-then-replace workflow; keep ctrls
 **Dropped:** `inoremap dry ...` (Rails system-test snippet). Never existed on the lua
 branch; deleted from `reference/init.vim`.
 
-**Ported to `lua/plugins/telescope.lua`:** `<leader>wfg` greps the word under the cursor (old leftover `<leader>gc`). Uses builtin `grep_string`, not live-grep-args.
+**Ported to `lua/plugins/telescope.lua`:** `<leader>wfg` word under cursor, `<leader>ef` buffers (no preview). Vertical centered layout from leftover init.vim, stock 80% × 90% size. Leftover no-preview `ff` dropped (keep current `ff`).
 
-**Dropped leftover `<leader>sf` / live-grep-args:** `<leader>fg` is typed grep; `<leader>wfg` is word-under-cursor.
+**Dropped leftover `<leader>sf` / live-grep-args / bufexplorer:** `<leader>fg` is typed grep; `<leader>wfg` is word-under-cursor; `<leader>ef` is the buffer list.
 
 ## Functions (5)
 

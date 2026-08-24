@@ -1,13 +1,20 @@
 -- Fuzzy finder: pickers for files, grep, buffers, LSP results, and more.
 --
 --   telescope.nvim              -- the picker UI itself
---                               -- <leader>ff files, <leader>fg grep, <leader>wfg word under cursor
+--                               -- <leader>ff files, <leader>fg grep,
+--                               -- <leader>wfg word under cursor, <leader>ef buffers
 --   plenary.nvim                -- lua utility library telescope is built on (required)
 --   telescope-fzf-native.nvim   -- compiled C sorter; much faster/better matching than the lua default
 --   telescope-ui-select.nvim    -- makes vim.ui.select prompts (LSP code actions, etc.) render in telescope
 --
 -- ui-select is what gives <leader>ca (code actions, defined in lsp-config.lua) a
 -- telescope dropdown instead of Neovim's numbered-list prompt.
+--
+-- Default pickers are a centered vertical stack (prompt on top), same as the
+-- leftover init.vim layout, but stock size (80% × 90%). ui-select stays a
+-- small dropdown. ef is the old bufexplorer job: pick an open buffer; <C-d>
+-- in the picker deletes it.
+
 return {
   'nvim-telescope/telescope.nvim', version = '*',
   dependencies = {
@@ -17,6 +24,17 @@ return {
   },
   config = function()
     require('telescope').setup({
+      defaults = {
+        sorting_strategy = "ascending",
+        layout_strategy = "vertical",
+        layout_config = {
+          anchor = "CENTER",
+          prompt_position = "top",
+          mirror = true,
+          height = 0.9,
+          width = 0.8,
+        },
+      },
       extensions = {
         ['ui-select'] = require('telescope.themes').get_dropdown({
           -- ╭╮ rounded corners (nvim 0.11 default winborder is none / square)
@@ -41,5 +59,15 @@ return {
     vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
     -- wfg = word find globally: grep the word under the cursor (old leftover gc)
     vim.keymap.set('n', '<leader>wfg', builtin.grep_string, {})
+    -- ef = open buffers (old leftover + bufexplorer). No preview; compact.
+    vim.keymap.set('n', '<leader>ef', function()
+      builtin.buffers({
+        previewer = false,
+        layout_config = {
+          height = 0.5,
+          width = 0.45,
+        },
+      })
+    end)
   end
 }
