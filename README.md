@@ -22,42 +22,168 @@ Font works well) set as your terminal font, otherwise the file tree shows tofu b
 `<leader>` is <kbd>Space</kbd>, set in `lua/vim-options.lua`. So `<leader>gd` means
 press <kbd>Space</kbd> then <kbd>g</kbd> then <kbd>d</kbd>.
 
-| Key | Does | From |
+**When** is the mode or UI the key works in. Blank = normal mode in a regular
+buffer. Leader maps do nothing in insert or `:terminal` until you leave that
+mode (`jj` or <kbd>Esc</kbd>).
+
+### Call a feature
+
+| Key | When | Does | From |
+| --- | --- | --- | --- |
+| <kbd>j</kbd><kbd>j</kbd> | insert | Escape insert mode | vim-options |
+| <kbd>Esc</kbd> | terminal | Leave the shell (else Ctrl-\ Ctrl-n) | vim-options |
+| <kbd>Space</kbd> `\` | | Vertical split (opens right) | vim-options |
+| <kbd>Space</kbd> `d\` | | Horizontal split (opens below) | vim-options |
+| <kbd>Ctrl</kbd>+<kbd>h</kbd>/<kbd>j</kbd>/<kbd>k</kbd>/<kbd>l</kbd> | | Move between splits | vim-options |
+| <kbd>Space</kbd> <kbd>Shift</kbd>+<kbd>t</kbd> | | New tab | vim-options |
+| <kbd>Space</kbd> `1`–`4` | | Jump to tab 1–4 | vim-options |
+| <kbd>Space</kbd> `D` | | Delete line without yanking | vim-options |
+| <kbd>Space</kbd> `fr` | | Find and replace in file | vim-options |
+| <kbd>Ctrl</kbd>+<kbd>b</kbd> | visual | Git blame selected lines (telescope dropdown) | vim-options |
+| <kbd>Ctrl</kbd>+<kbd>\</kbd> | visual | Open file / selection on GitHub (`main`) | open-browser |
+| <kbd>Ctrl</kbd>+<kbd>'</kbd> | | Start `:colorscheme` (tab-complete a name) | theme |
+| <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>n</kbd> / <kbd>p</kbd> | | Next / previous colorscheme | theme |
+| <kbd>Space</kbd> `ff` | | Find files by name | telescope |
+| <kbd>_</kbd><kbd>u</kbd> | | Reopen the last closed window | undoquit |
+| <kbd>_</kbd><kbd>U</kbd> | | Reopen closed windows in this tab | undoquit |
+| <kbd>Space</kbd> `fg` | | Search file *contents* across the project | telescope |
+| <kbd>Space</kbd> `nt` | | Toggle the file tree | neo-tree |
+| <kbd>Space</kbd> `nf` | | File tree, jump to current file | neo-tree |
+| <kbd>Space</kbd> `tn` / `ta` | | neotest nearest / this file | neotest |
+| <kbd>Space</kbd> `tp` | | Pick a test (telescope dropdown) | neotest |
+| <kbd>Space</kbd> `ts` | | neotest summary panel | neotest |
+| <kbd>Space</kbd> `it` | | Toggle the last used floating terminal | toggleterm |
+| <kbd>Space</kbd> `i1`–`i4` | | Toggle floating terminal 1–4 | toggleterm |
+| <kbd>K</kbd> | | Show docs for the symbol under the cursor | LSP |
+| <kbd>Space</kbd> `gd` | | Go to definition | LSP |
+| <kbd>Space</kbd> `gr` | | List references | LSP |
+| <kbd>Space</kbd> `ca` | | Code actions (quick fixes, telescope dropdown) | LSP |
+| <kbd>Space</kbd> `rn` | | Rename symbol across the project | LSP |
+| `[d` / `]d` | | Prev / next diagnostic | Neovim stock |
+| <kbd>Space</kbd> `gf` | | Format the current file | none-ls |
+| <kbd>Space</kbd> `dt` | | Toggle breakpoint *(needs an adapter)* | nvim-dap |
+| <kbd>Space</kbd> `dc` | | Start / continue debugging *(needs an adapter)* | nvim-dap |
+| <kbd>Space</kbd> `dx` | | Terminate debug session | nvim-dap |
+| <kbd>Space</kbd> `do` | | Step over | nvim-dap |
+
+### Completion (insert, nvim-cmp)
+
+Popup as you type. <kbd>Ctrl</kbd>+<kbd>n</kbd> / <kbd>p</kbd> also *open* the
+menu if it is hidden. Docs-scroll keys only do something when the docs window
+is showing. Visual <kbd>Ctrl</kbd>+<kbd>b</kbd> (blame) is a different mode, so
+it does not clash with scroll-docs.
+
+Snippets expand when you confirm a luasnip item with Enter. Placeholder jump
+is **not mapped** — LuaSnip ships no Tab binding, and this config does not add
+one.
+
+| Key | Does |
+| --- | --- |
+| <kbd>Ctrl</kbd>+<kbd>n</kbd> / <kbd>p</kbd> | Next / previous item (or open the menu) |
+| <kbd>Up</kbd> / <kbd>Down</kbd> | Previous / next item |
+| <kbd>Ctrl</kbd>+<kbd>Space</kbd> | Force-open the menu |
+| <kbd>Enter</kbd> | Confirm (auto-selects the first item) |
+| <kbd>Ctrl</kbd>+<kbd>y</kbd> | Confirm the highlighted item only |
+| <kbd>Ctrl</kbd>+<kbd>e</kbd> | Abort / close the menu |
+| <kbd>Ctrl</kbd>+<kbd>b</kbd> / <kbd>f</kbd> | Scroll the docs window |
+
+### clever-f (`f` / `F` / `t` / `T`)
+
+Same first jump as stock Vim. Repeat is remapped; `;` / `,` are unused.
+`fa` matches `a` and `A`; `fA` matches only `A` (`clever_f_smart_case`).
+
+| Key | Does |
+| --- | --- |
+| `f` / `F` / `t` / `T` then a char | Jump (forward / back, on / before) |
+| `f` again (after `f`/`t`) | Next match (stock is `;`) |
+| `F` again (after `f`/`t`) | Previous match (stock is `,`) |
+
+### Telescope (inside `ff` / `fg` / `ca` / `tp` / visual <kbd>Ctrl</kbd>+<kbd>b</kbd>)
+
+Opens in **insert**. Type to filter. These are telescope defaults (this config
+does not override them). Same keys in the ui-select dropdown used by code
+actions, test pick, and git blame.
+
+| Key | When | Does |
 | --- | --- | --- |
-| <kbd>j</kbd><kbd>j</kbd> | Escape insert mode | vim-options |
-| <kbd>Esc</kbd> in `:terminal` | Leave the shell (else Ctrl-\ Ctrl-n) | vim-options |
-| <kbd>Space</kbd> `\` | Vertical split (opens right) | vim-options |
-| <kbd>Space</kbd> `d\` | Horizontal split (opens below) | vim-options |
-| <kbd>Ctrl</kbd>+<kbd>h</kbd>/<kbd>j</kbd>/<kbd>k</kbd>/<kbd>l</kbd> | Move between splits | vim-options |
-| <kbd>Space</kbd> <kbd>Shift</kbd>+<kbd>t</kbd> | New tab | vim-options |
-| <kbd>Space</kbd> `1`–`4` | Jump to tab 1–4 | vim-options |
-| <kbd>Space</kbd> `D` | Delete line without yanking | vim-options |
-| <kbd>Space</kbd> `fr` | Find and replace in file | vim-options |
-| <kbd>Ctrl</kbd>+<kbd>b</kbd> (visual) | Git blame selected lines (telescope, like code actions) | vim-options |
-| <kbd>Ctrl</kbd>+<kbd>\</kbd> (visual) | Open file / selection on GitHub (`main`) | open-browser |
-| <kbd>Ctrl</kbd>+<kbd>'</kbd> | Start `:colorscheme` (tab-complete a name) | theme |
-| <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>n</kbd> / <kbd>p</kbd> | Next / previous colorscheme | theme |
-| <kbd>Space</kbd> `ff` | Find files by name | telescope |
-| <kbd>_</kbd><kbd>u</kbd> | Reopen the last closed window | undoquit |
-| <kbd>_</kbd><kbd>U</kbd> | Reopen closed windows in this tab | undoquit |
-| <kbd>Space</kbd> `fg` | Search file *contents* across the project | telescope |
-| <kbd>Space</kbd> `nt` | Toggle the file tree | neo-tree |
-| <kbd>Space</kbd> `nf` | File tree, jump to current file | neo-tree |
-| <kbd>Space</kbd> `tn` / `ta` | neotest nearest / this file | neotest |
-| <kbd>Space</kbd> `tp` | Pick a test (telescope dropdown) | neotest |
-| <kbd>Space</kbd> `ts` | neotest summary panel | neotest |
-| <kbd>Space</kbd> `it` | Toggle the last used floating terminal | toggleterm |
-| <kbd>Space</kbd> `i1`–`i4` | Toggle floating terminal 1–4 | toggleterm |
-| <kbd>K</kbd> | Show docs for the symbol under the cursor | LSP |
-| <kbd>Space</kbd> `gd` | Go to definition | LSP |
-| <kbd>Space</kbd> `gr` | List references | LSP |
-| <kbd>Space</kbd> `ca` | Code actions (quick fixes) | LSP |
-| <kbd>Space</kbd> `rn` | Rename symbol across the project | LSP |
-| <kbd>Space</kbd> `gf` | Format the current file | none-ls |
-| <kbd>Space</kbd> `dt` | Toggle breakpoint *(needs an adapter)* | nvim-dap |
-| <kbd>Space</kbd> `dc` | Start / continue debugging *(needs an adapter)* | nvim-dap |
-| <kbd>Space</kbd> `dx` | Terminate debug session | nvim-dap |
-| <kbd>Space</kbd> `do` | Step over | nvim-dap |
+| <kbd>Ctrl</kbd>+<kbd>n</kbd> / <kbd>p</kbd> | insert | Next / previous result |
+| <kbd>Enter</kbd> | insert or normal | Open the selection |
+| <kbd>Ctrl</kbd>+<kbd>x</kbd> / <kbd>v</kbd> / <kbd>t</kbd> | insert or normal | Open in split / vsplit / tab |
+| <kbd>Ctrl</kbd>+<kbd>u</kbd> / <kbd>d</kbd> | insert or normal | Scroll the preview |
+| <kbd>Ctrl</kbd>+<kbd>c</kbd> | insert | Close the picker |
+| <kbd>Esc</kbd> | insert | Drop to telescope normal mode (does **not** close) |
+| <kbd>Esc</kbd> | normal | Close the picker |
+| `j` / `k` | normal | Next / previous result |
+| <kbd>Ctrl</kbd>+<kbd>q</kbd> | insert or normal | Send all results to the quickfix list |
+| <kbd>Ctrl</kbd>+<kbd>/</kbd> | insert | Show telescope's own keymap help |
+| `?` | normal | Same help |
+
+### neo-tree (inside `nt` / `nf`)
+
+The tree is a centered float. `/` is neo-tree's filter, not buffer search.
+`?` lists every command.
+
+| Key | Does |
+| --- | --- |
+| <kbd>Enter</kbd> | Open the file (or toggle a directory) |
+| `/` | Fuzzy-filter by name |
+| `a` / `A` | Add a file / directory |
+| `d` | Delete |
+| `r` | Rename |
+| `y` / `x` / `p` | Copy / cut / paste |
+| `s` / `S` / `t` | Open in vsplit / split / tab |
+| <kbd>Backspace</kbd> | Up a directory |
+| `.` | Set this folder as the tree root |
+| `H` | Toggle hidden files |
+| `R` | Refresh |
+| `q` / <kbd>Esc</kbd> | Close the tree |
+| `?` | Help |
+
+### neotest summary (inside `ts`)
+
+Side panel of the test tree. `Space ts` again (from a normal buffer) toggles it
+closed; `q` in the panel also closes it. `?` lists every command.
+
+| Key | Does |
+| --- | --- |
+| <kbd>Enter</kbd> | Expand / collapse |
+| `r` | Run the test under the cursor |
+| `i` | Jump to that test in the file |
+| `o` | Show output |
+| `u` | Stop a running test |
+| `m` / `R` | Mark / run marked tests |
+| `J` / `K` | Next / previous failed test |
+| `?` | Help |
+| `q` | Close the panel |
+
+### Git blame float (after visual <kbd>Ctrl</kbd>+<kbd>b</kbd>, pick a line)
+
+Telescope first (keys above). Picking a commit opens a message float.
+
+| Key | Does |
+| --- | --- |
+| `q` / <kbd>Esc</kbd> | Close the commit popup |
+
+### toggleterm (inside `it` / `i1`–`i4`)
+
+Float starts in terminal mode, so typed keys go to the shell. <kbd>Esc</kbd>
+leaves the shell (vim-options); then `Space it` hides the same session.
+`Space i1`–`i4` each own a numbered shell.
+
+### DAP UI (only while a debug session is running)
+
+Panels open on `Space dc` and close on `Space dx`. No adapter is wired yet, so
+this UI never appears until `dap.adapters` is filled in. Defaults from
+nvim-dap-ui:
+
+| Key | Does |
+| --- | --- |
+| <kbd>Enter</kbd> | Expand the variable / node |
+| `o` | Open |
+| `d` | Remove |
+| `e` | Edit |
+| `t` | Toggle |
+| `q` / <kbd>Esc</kbd> | Close a DAP float |
 
 ## Terms
 
