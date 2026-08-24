@@ -7,7 +7,6 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'nvim-telescope/telescope-live-grep-args.nvim' " Extends telescope and allows passing arguments to grep
   Plug 'dyng/ctrlsf.vim' " search/replace like sublime text
   Plug 'jlanzarotta/bufexplorer' " allows quicky deletion of buffers
-  Plug 'ctrlpvim/ctrlp.vim' " file finder, multi select open
 
   " Efficiency
   Plug 'andrewRadev/tagalong.vim' " Change an HTML(ish) opening tag and take the closing one along as well
@@ -78,11 +77,6 @@ call plug#end()
 
 " Not gitgutter: folder color for netrw/NERDTree. Left here from that block.
 highlight Directory guifg=#cacbcd
-
-" ctrlp (Use rg (ripgrep) for ctrlp indexing, brew install ripgrep
-if executable('rg')
-  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
-endif
 
 " undoquit
 let g:undoquit_mapping = '_u'

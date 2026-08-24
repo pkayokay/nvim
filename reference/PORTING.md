@@ -15,7 +15,7 @@ as they are ported, so what remains is still todo. Nothing loads it — Neovim r
 
 Their leftover `Plug` lines, `colorscheme hybrid`, and the Native LSP/cmp `lua <<EOF`
 block are deleted from `reference/init.vim`. The telescope *config* block stays: the
-lua branch only has `<C-p>` find-files and `<leader>fg` grep; live-grep-args, buffers,
+lua branch only has `<leader>ff` find-files and `<leader>fg` grep; live-grep-args, buffers,
 and the old layout are not ported yet.
 
 Theme switcher (`<C-S-n>` / `<C-S-p>`) and `<C-'>` live in `lua/plugins/theme.lua`.
@@ -27,11 +27,13 @@ Theme switcher (`<C-S-n>` / `<C-S-p>`) and `<C-'>` live in `lua/plugins/theme.lu
 | `williamboman/mason.nvim` | `mason-org/mason.nvim` (org renamed) |
 | `williamboman/mason-lspconfig.nvim` | `mason-org/mason-lspconfig.nvim` (org renamed) |
 | `preservim/nerdtree` | `neo-tree.nvim` |
-| `ctrlpvim/ctrlp.vim` | `telescope.nvim` |
+| `ctrlpvim/ctrlp.vim` | `telescope.nvim` (`<leader>ff` find-files) |
 | `dense-analysis/ale` | `none-ls.nvim` |
 | `ryanoasis/vim-devicons` | `nvim-web-devicons` |
 | `vim-airline/vim-airline` + `-themes` | `nvim-lualine/lualine.nvim` |
 | `airblade/vim-gitgutter` | `lewis6991/gitsigns.nvim` |
+
+CtrlP leftover (`Plug` line, `g:ctrlp_user_command`) is deleted from `reference/init.vim`.
 
 Gitgutter leftover is deleted from `reference/init.vim`. `highlight Directory` stays
 (it was next to gitgutter but is a folder-name color, not a hunk sign).

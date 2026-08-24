@@ -37,7 +37,7 @@ press <kbd>Space</kbd> then <kbd>g</kbd> then <kbd>d</kbd>.
 | <kbd>Ctrl</kbd>+<kbd>\</kbd> (visual) | Open file / selection on GitHub (`main`) | open-browser |
 | <kbd>Ctrl</kbd>+<kbd>'</kbd> | Start `:colorscheme` (tab-complete a name) | theme |
 | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>n</kbd> / <kbd>p</kbd> | Next / previous colorscheme | theme |
-| <kbd>Ctrl</kbd>+<kbd>p</kbd> | Find files by name | telescope |
+| <kbd>Space</kbd> `ff` | Find files by name | telescope |
 | <kbd>Space</kbd> `fg` | Search file *contents* across the project | telescope |
 | <kbd>Ctrl</kbd>+<kbd>n</kbd> | Toggle the file tree | neo-tree |
 | <kbd>K</kbd> | Show docs for the symbol under the cursor | LSP |
