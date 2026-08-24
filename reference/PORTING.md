@@ -19,7 +19,7 @@ and the old layout are not ported yet.
 
 Theme switcher (`<C-S-n>` / `<C-S-p>`) and `<C-'>` live in `lua/plugins/theme.lua`.
 
-## Replaced by a different plugin (7)
+## Replaced by a different plugin (8)
 
 | main | lua branch |
 | --- | --- |
@@ -30,11 +30,15 @@ Theme switcher (`<C-S-n>` / `<C-S-p>`) and `<C-'>` live in `lua/plugins/theme.lu
 | `dense-analysis/ale` | `none-ls.nvim` |
 | `ryanoasis/vim-devicons` | `nvim-web-devicons` |
 | `vim-airline/vim-airline` + `-themes` | `nvim-lualine/lualine.nvim` |
+| `airblade/vim-gitgutter` | `lewis6991/gitsigns.nvim` |
+
+Gitgutter leftover is deleted from `reference/init.vim`. `highlight Directory` stays
+(it was next to gitgutter but is a folder-name color, not a hunk sign).
 
 Airline leftover (`Plug` lines, `g:airline_*`) is deleted from `reference/init.vim`.
 Lualine uses `theme = "auto"` (follows the colorscheme) instead of airline `tomorrow`.
 
-## Not ported yet (24)
+## Not ported yet (23)
 
 Grouped by what they do, with the usual modern equivalent where the original is a
 Vimscript plugin that has one. Plenty of these still work fine under lazy.nvim — being
@@ -42,7 +46,6 @@ Vimscript is not a reason to replace them, only a reason to check.
 
 ### Git
 - `tpope/vim-fugitive` — still the standard, port as-is
-- `airblade/vim-gitgutter` — modern equivalent: `lewis6991/gitsigns.nvim`
 
 ### Editing
 - `tpope/vim-surround` — modern: `kylechui/nvim-surround`

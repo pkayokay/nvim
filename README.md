@@ -77,6 +77,7 @@ lua/plugins/
   theme.lua           hybrid.nvim (default) plus extra colorschemes and the switcher
   fidget.lua          LSP progress overlay in the corner
   lualine.lua         statusline (bottom bar)
+  gitsigns.lua        git hunk signs in the gutter
   treesitter.lua      syntax parsers
   lsp-config.lua      mason + lspconfig, and the LSP keymaps
   completions.lua     nvim-cmp autocompletion and snippets

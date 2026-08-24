@@ -22,7 +22,6 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'mg979/vim-visual-multi' " Multiple cursors plugin for vim/neovim, for vertical section enter v-block then shift+i insert mode
   Plug 'tyru/open-browser.vim'
   Plug 'tyru/open-browser-github.vim' " Open Github from code
-  Plug 'airblade/vim-gitgutter' " Diff changes on the side
 
   " Misc
   Plug 'tpope/vim-fugitive' " Git wrapper
@@ -79,11 +78,7 @@ call plug#end()
 " 👉 Plugins config
 " --------------------------------------------------
 
-" vim-gitgutter
-let g:gitgutter_enabled = 1
-highlight GitGutterAdd    guifg=#859c61 ctermfg=2
-highlight GitGutterChange guifg=#f9c269 ctermfg=3
-highlight GitGutterDelete guifg=#c77532 ctermfg=1
+" Not gitgutter: folder color for netrw/NERDTree. Left here from that block.
 highlight Directory guifg=#cacbcd
 
 " open-browser-github
