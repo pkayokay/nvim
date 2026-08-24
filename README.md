@@ -53,7 +53,7 @@ mode (`jj` or <kbd>Esc</kbd>).
 | <kbd>Space</kbd> `tp` | | Pick a test (telescope dropdown) | neotest |
 | <kbd>Space</kbd> `ts` | | neotest summary panel | neotest |
 | <kbd>Space</kbd> `it` | | Toggle the last used floating terminal | toggleterm |
-| <kbd>Space</kbd> `i1`–`i4` | | Toggle floating terminal 1–4 | toggleterm |
+| <kbd>Space</kbd> `i1`–`i6` | | Toggle floating terminal 1–6 | toggleterm |
 | <kbd>K</kbd> | | Show docs for the symbol under the cursor | LSP |
 | <kbd>Space</kbd> `gd` | | Go to definition | LSP |
 | <kbd>Space</kbd> `gr` | | List references | LSP |
@@ -164,11 +164,11 @@ Telescope first (keys above). Picking a commit opens a message float.
 | --- | --- |
 | `q` / <kbd>Esc</kbd> | Close the commit popup |
 
-### toggleterm (inside `it` / `i1`–`i4`)
+### toggleterm (inside `it` / `i1`–`i6`)
 
 Float starts in terminal mode, so typed keys go to the shell. <kbd>Esc</kbd>
 leaves the shell (vim-options); then `Space it` hides the same session.
-`Space i1`–`i4` each own a numbered shell.
+`Space i1`–`i6` each own a numbered shell.
 
 ### DAP UI (only while a debug session is running)
 
@@ -217,7 +217,7 @@ lua/plugins/
   undoquit.lua        _u last closed window, _U this tab's closed windows
   clever-f.lua        f/t repeat with highlights (smart_case)
   neotest.lua         test runner + summary panel (tn / ta / tp / ts)
-  toggleterm.lua      floating terminals (<leader>it last used, i1–i4)
+  toggleterm.lua      floating terminals (<leader>it last used, i1–i6)
   treesitter.lua      syntax parsers
   lsp-config.lua      mason + lspconfig, and the LSP keymaps
   completions.lua     nvim-cmp autocompletion and snippets

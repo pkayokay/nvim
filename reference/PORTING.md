@@ -131,7 +131,7 @@ Dropped: `encoding=UTF-8` — Neovim is UTF-8 always; that line was for vim-devi
 
 **Ported to `lua/plugins/neotest.lua`:** `<leader>tn` nearest, `<leader>ta` file, `<leader>tp` pick, `<leader>ts` summary. vim-test leftover deleted (plugin kept as detection only).
 
-**Ported to `lua/plugins/toggleterm.lua`:** `<leader>it` last used, `<leader>i1`–`i4` numbered slots (float, rounded border).
+**Ported to `lua/plugins/toggleterm.lua`:** `<leader>it` last used, `<leader>i1`–`i6` numbered slots (float, rounded border).
 
 **Tied to plugins you have not ported:**
 
