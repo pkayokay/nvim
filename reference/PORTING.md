@@ -7,12 +7,12 @@ as they are ported, so what remains is still todo. Nothing loads it — Neovim r
 
 46 plugins were declared on `main`. Status below.
 
-## Done (17)
+## Done (19)
 
 `hybrid.nvim`, `nvim-cmp`, `cmp-buffer`, `cmp-nvim-lsp`, `cmp-path`, `nvim-lspconfig`,
 `plenary.nvim`, `telescope.nvim`, `vim-afterglow`, `oceanic-next`, `fidget.nvim`,
 `open-browser.vim`, `open-browser-github.vim`, `undoquit.vim`, `clever-f.vim`,
-`ctrlsf.vim`, `vim-wordmotion`
+`ctrlsf.vim`, `vim-wordmotion`, `vim-surround`, `vim-repeat`
 
 Their leftover `Plug` lines, `colorscheme hybrid`, and the Native LSP/cmp `lua <<EOF`
 block are deleted from `reference/init.vim`. The telescope *config* block stays: the
@@ -70,7 +70,7 @@ Leftover `Plug` lines deleted from `reference/init.vim`. No leftover `g:`.
 `.jsx` is `javascriptreact`; that filetype is in the treesitter autocmd so highlight
 and indent still run after dropping jsx-pretty.
 
-## Not ported yet (6)
+## Not ported yet (4)
 
 Grouped by what they do, with the usual modern equivalent where the original is a
 Vimscript plugin that has one. Plenty of these still work fine under lazy.nvim — being
@@ -80,8 +80,6 @@ Vimscript is not a reason to replace them, only a reason to check.
 - `tpope/vim-fugitive` — still the standard, port as-is
 
 ### Editing
-- `tpope/vim-surround` — modern: `kylechui/nvim-surround`
-- `tpope/vim-repeat` — needed by vim-surround; drop if you move to nvim-surround
 - `andrewradev/tagalong.vim` — renames paired HTML/JSX tags
 - `mg979/vim-visual-multi` — multiple cursors
 
@@ -152,6 +150,8 @@ branch; deleted from `reference/init.vim`.
 **Dropped leftover `<leader>sf` / live-grep-args / bufexplorer:** `<leader>fg` is typed grep; `<leader>wfg` is word-under-cursor; `<leader>fb` is the buffer list.
 
 **Ported to `lua/plugins/wordmotion.lua`:** stock `w`/`b`/`e` become subword (camelCase / snake_case). Leftover `Plug` line deleted from `reference/init.vim`. No leftover `g:` settings.
+
+**Ported to `lua/plugins/surround.lua`:** `cs` / `ds` / `ys` edit wrappers. `vim-repeat` is a dependency so `.` repeats them. Leftover `Plug` lines deleted from `reference/init.vim`. No leftover `g:`.
 
 **Replaced with `lua/plugins/autopairs.lua`:** `nvim-autopairs` instead of delimitMate. Stock defaults plus Ruby/Lua/Elixir `end` (replaces vim-endwise). nvim-cmp `confirm_done` inserts `()` after function/method completions. Leftover `Plug` lines deleted from `reference/init.vim`. No leftover `g:`.
 

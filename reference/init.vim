@@ -5,8 +5,6 @@ call plug#begin('~/.config/nvim/plugged')
 
   " Efficiency
   Plug 'andrewRadev/tagalong.vim' " Change an HTML(ish) opening tag and take the closing one along as well
-  Plug 'tpope/vim-surround' " delete/change/add parentheses/quotes/XML-tags/much more with ease
-  Plug 'tpope/vim-repeat' " repeat.vim: enable repeating supported plugin maps with .
   Plug 'mg979/vim-visual-multi' " Multiple cursors plugin for vim/neovim, for vertical section enter v-block then shift+i insert mode
 
   " Misc

@@ -109,6 +109,34 @@ Same first jump as stock Vim. Repeat is remapped; `;` / `,` are unused.
 Stock `w` jumps a whole `getUserName` or `foo_bar`. This stops on each piece.
 `W` / `B` / `E` still skip whitespace-separated WORDs.
 
+### surround (`cs` / `ds` / `ys`)
+
+Stock Vim edits **inside** or **around** a pair. `da"` on `"foo"` deletes the
+whole `"foo"`. Surround edits only the quotes/parens: `ds"` on `"foo"` leaves
+`foo`. `.` repeats these (vim-repeat).
+
+Stock (no plugin):
+
+| Key | Stands for | Example |
+| --- | --- | --- |
+| `ci"` | change inner quotes | `"foo"` → `""`, insert mode |
+| `di"` | delete inner quotes | `"foo"` → `""` |
+| `da"` | delete around quotes | `"foo"` → (gone) |
+| `yi{` | yank inner braces | `{foo}` → yank `foo`, braces stay |
+
+Surround:
+
+| Key | Stands for | Example |
+| --- | --- | --- |
+| `ds"` | delete surround | `"foo"` → `foo` |
+| `cs"'` | change surround | `"foo"` → `'foo'` |
+| `ysiw)` | you surround inner word | `foo` → `(foo)` |
+| `yss"` | you surround this line | `foo bar` → `"foo bar"` |
+| visual `S)` | surround selection | `foo` → `(foo)` |
+
+`ys` is the operator (you surround) + a motion + a wrapper: `ysiw)` on `foo` → `(foo)`.
+`iw` is stock inner word (same as `ciw` on `foo`). So `ysiw)` = you surround inner word with parens.
+
 ### nvim-autopairs (insert)
 
 Typing `(` inserts `()`; same for quotes and brackets. Typing the closer skips
@@ -258,6 +286,7 @@ lua/plugins/
   undoquit.lua        _u last closed window, _U this tab's closed windows
   clever-f.lua        f/t repeat with highlights (smart_case)
   wordmotion.lua      w/b/e stop on camelCase / snake_case
+  surround.lua        cs/ds/ys change wrappers (quotes, parens)
   autopairs.lua       insert auto-pairs for quotes and brackets
   neotest.lua         test runner + summary panel (tn / ta / tp / ts)
   toggleterm.lua      floating terminals (<leader>it last used, i1–i6)
