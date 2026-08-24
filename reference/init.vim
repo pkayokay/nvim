@@ -4,7 +4,6 @@ call plug#begin('~/.config/nvim/plugged')
   " --------------------------------------------------
 
   " Search
-  Plug 'nvim-telescope/telescope-live-grep-args.nvim' " Extends telescope and allows passing arguments to grep
   Plug 'jlanzarotta/bufexplorer' " allows quicky deletion of buffers
 
   " Efficiency
@@ -70,7 +69,6 @@ highlight Directory guifg=#cacbcd
 " Telescope
 lua << EOF
   local telescope = require('telescope')
-  local lga_actions = require("telescope-live-grep-args.actions")
 
   telescope.setup {
     defaults = {
@@ -84,23 +82,7 @@ lua << EOF
         width = 0.75,
       }
     },
-    extensions = {
-      live_grep_args = {
-        auto_quoting = true,
-        mappings = {
-          i = {
-            ["<C-k>"] = lga_actions.quote_prompt(),
-            ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
-            ["<C-space>"] = lga_actions.to_fuzzy_refine,
-          }
-        }
-      }
-    }
   }
-
-  -- Searches for the word in the cursor while in normal mode
-  local live_grep_args_shortcuts = require("telescope-live-grep-args.shortcuts")
-  vim.keymap.set("n", "<leader>gc", live_grep_args_shortcuts.grep_word_under_cursor)
 
   -- Buffer
   vim.keymap.set("n", "<leader>ef", function()

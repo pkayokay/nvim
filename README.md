@@ -47,6 +47,7 @@ mode (`jj` or <kbd>Esc</kbd>).
 | <kbd>_</kbd><kbd>u</kbd> | | Reopen the last closed window | undoquit |
 | <kbd>_</kbd><kbd>U</kbd> | | Reopen closed windows in this tab | undoquit |
 | <kbd>Space</kbd> `fg` | | Search file *contents* across the project | telescope |
+| <kbd>Space</kbd> `wfg` | | Grep the word under the cursor | telescope |
 | <kbd>Space</kbd> `se` | | Project search (boxed float, Enter) | ctrlsf |
 | <kbd>Space</kbd> `st` | | Toggle the search-results panel | ctrlsf |
 | <kbd>Space</kbd> `nt` | | Toggle the file tree | neo-tree |

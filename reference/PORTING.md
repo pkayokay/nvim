@@ -16,10 +16,9 @@ as they are ported, so what remains is still todo. Nothing loads it — Neovim r
 
 Their leftover `Plug` lines, `colorscheme hybrid`, and the Native LSP/cmp `lua <<EOF`
 block are deleted from `reference/init.vim`. The telescope *config* block stays: the
-lua branch only has `<leader>ff` find-files and `<leader>fg` grep; leftover
-live-grep-args (`<leader>gc`), buffers (`<leader>ef`), and the old layout are
-not ported yet. Dropped leftover `<leader>sf` (live-grep-args picker); `fg` covers
-plain project grep.
+lua branch has `<leader>ff` files, `<leader>fg` grep, `<leader>wfg` word under
+cursor. Leftover: buffers (`<leader>ef`) and the old vertical layout. Dropped
+live-grep-args (`<leader>sf`, `<leader>gc`).
 
 Theme switcher (`<C-S-n>` / `<C-S-p>`) and `<C-'>` live in `lua/plugins/theme.lua`.
 
@@ -55,7 +54,7 @@ Lualine uses `theme = "auto"` (follows the colorscheme) instead of airline `tomo
 ALE leftover (`Plug` line, `g:ale_*`, `SetESLintLinter` / `SetRuboCopLinter`) is deleted
 from `reference/init.vim`. Keep none-ls; lint/format-on-save can be added there later.
 
-## Not ported yet (15)
+## Not ported yet (14)
 
 Grouped by what they do, with the usual modern equivalent where the original is a
 Vimscript plugin that has one. Plenty of these still work fine under lazy.nvim — being
@@ -76,7 +75,6 @@ Vimscript is not a reason to replace them, only a reason to check.
 
 ### Navigation / search
 - `jlanzarotta/bufexplorer` — telescope `buffers` picker covers this
-- `nvim-telescope/telescope-live-grep-args.nvim` — telescope extension, easy port
 
 ### Ruby / Rails / JS
 - `tpope/vim-rails`
@@ -142,7 +140,9 @@ Later: try `grug-far.nvim` for the same search-then-replace workflow; keep ctrls
 **Dropped:** `inoremap dry ...` (Rails system-test snippet). Never existed on the lua
 branch; deleted from `reference/init.vim`.
 
-**Dropped leftover `<leader>sf`:** live-grep-args picker. `<leader>fg` is the grep.
+**Ported to `lua/plugins/telescope.lua`:** `<leader>wfg` greps the word under the cursor (old leftover `<leader>gc`). Uses builtin `grep_string`, not live-grep-args.
+
+**Dropped leftover `<leader>sf` / live-grep-args:** `<leader>fg` is typed grep; `<leader>wfg` is word-under-cursor.
 
 ## Functions (5)
 
