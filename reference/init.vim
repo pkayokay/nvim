@@ -24,7 +24,6 @@ call plug#begin('~/.config/nvim/plugged')
 
   " Languages
   Plug 'vim-test/vim-test'
-  Plug 'dense-analysis/ale'
   Plug 'jlcrochet/vim-ruby'
   Plug 'pangloss/vim-javascript'
   Plug 'tpope/vim-rails'
@@ -70,60 +69,6 @@ call plug#end()
 
 " Folder name color (was next to gitgutter; used by netrw).
 highlight Directory guifg=#cacbcd
-
-" ALE
-" npm install -g prettier && gem install standard
-let g:ale_lint_on_text_changed = 0
-let g:ale_lint_on_enter = 1
-let g:ale_lint_on_save = 1
-let g:ale_lint_on_filetype_changed = 1
-let g:ale_fix_on_save = 1
-let g:ale_sign_error = 'E'
-let g:ale_sign_warning = 'W'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-
-" --- DEFAULTS (Prettier + StandardRB) ---
-let g:ale_linters = {
-\   'javascript': ['prettier'],
-\   'javascriptreact': ['prettier'],
-\   'typescript': ['prettier'],
-\   'typescriptreact': ['prettier'],
-\   'ruby': ['standardrb'],
-\   'eruby': ['erblint'],
-\ }
-
-let g:ale_fixers = {
-\   'javascript': ['prettier'],
-\   'javascriptreact': ['prettier'],
-\   'typescript': ['prettier'],
-\   'typescriptreact': ['prettier'],
-\   'ruby': ['standardrb'],
-\   'eruby': ['erblint'],
-\ }
-
-" --- COMMANDS TO switch BACK to ESLint/RuboCop when needed ---
-
-function! SetESLintLinter()
-  let g:ale_linters['javascript'] = ['eslint']
-  let g:ale_linters['javascriptreact'] = ['eslint']
-  let g:ale_linters['typescript'] = ['eslint']
-  let g:ale_linters['typescriptreact'] = ['eslint']
-  let g:ale_fixers['javascript'] = ['eslint']
-  let g:ale_fixers['javascriptreact'] = ['eslint']
-  let g:ale_fixers['typescript'] = ['eslint']
-  let g:ale_fixers['typescriptreact'] = ['eslint']
-endfunction
-command! SetESLintLinter call SetESLintLinter()
-
-function! SetRuboCopLinter()
-  let g:ale_linters['ruby'] = ['rubocop']
-  let g:ale_fixers['ruby'] = ['rubocop']
-endfunction
-command! SetRuboCopLinter call SetRuboCopLinter()
-
-" For personal projects set these linters
-" SetStandardLinter
-" SetPrettierLinter
 
 " vim-test
 nnoremap <silent> <leader>tn :TestNearest<CR>

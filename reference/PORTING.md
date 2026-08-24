@@ -44,7 +44,10 @@ Gitgutter leftover is deleted from `reference/init.vim`. `highlight Directory` s
 Airline leftover (`Plug` lines, `g:airline_*`) is deleted from `reference/init.vim`.
 Lualine uses `theme = "auto"` (follows the colorscheme) instead of airline `tomorrow`.
 
-## Not ported yet (19)
+ALE leftover (`Plug` line, `g:ale_*`, `SetESLintLinter` / `SetRuboCopLinter`) is deleted
+from `reference/init.vim`. Keep none-ls; lint/format-on-save can be added there later.
+
+## Not ported yet (18)
 
 Grouped by what they do, with the usual modern equivalent where the original is a
 Vimscript plugin that has one. Plenty of these still work fine under lazy.nvim — being
@@ -140,13 +143,11 @@ branch; deleted from `reference/init.vim`.
 
 - `SwitchThemeNext()` / `SwitchThemePrev()` — ported to `lua/plugins/theme.lua`
 - `FindAndReplace()` — ported to `<leader>fr` in `lua/vim-options.lua`
-- `SetESLintLinter()` / `SetRuboCopLinter()` — swap ALE's linters per project.
-  ALE is replaced by none-ls, so this needs rethinking rather than porting
+- `SetESLintLinter()` / `SetRuboCopLinter()` — dropped with ALE (were per-project linter swaps)
 
-## ALE config (~20 lines)
+## ALE config
 
-`g:ale_linters`, `g:ale_fixers`, `ale_fix_on_save` and friends do not translate — none-ls
-uses a different model. The equivalents:
+Dropped with ALE. none-ls equivalents if you want them later:
 
 - `ale_fix_on_save` → the commented-out `BufWritePre` autocmd in `none-ls.lua`
 - `ale_linters` → `null_ls.builtins.diagnostics.*` sources
