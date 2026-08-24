@@ -39,6 +39,7 @@ press <kbd>Space</kbd> then <kbd>g</kbd> then <kbd>d</kbd>.
 | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>n</kbd> / <kbd>p</kbd> | Next / previous colorscheme | theme |
 | <kbd>Space</kbd> `ff` | Find files by name | telescope |
 | <kbd>_</kbd><kbd>u</kbd> | Reopen the last closed window | undoquit |
+| <kbd>_</kbd><kbd>U</kbd> | Reopen closed windows in this tab | undoquit |
 | <kbd>Space</kbd> `fg` | Search file *contents* across the project | telescope |
 | <kbd>Ctrl</kbd>+<kbd>n</kbd> | Toggle the file tree | neo-tree |
 | <kbd>K</kbd> | Show docs for the symbol under the cursor | LSP |
@@ -81,7 +82,7 @@ lua/plugins/
   lualine.lua         statusline (bottom bar)
   gitsigns.lua        git hunk signs in the gutter
   open-browser.lua    visual Ctrl-\ opens the file on GitHub
-  undoquit.lua        _u reopens the last closed window
+  undoquit.lua        _u last closed window, _U this tab's closed windows
   treesitter.lua      syntax parsers
   lsp-config.lua      mason + lspconfig, and the LSP keymaps
   completions.lua     nvim-cmp autocompletion and snippets

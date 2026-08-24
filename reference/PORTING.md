@@ -119,7 +119,7 @@ Dropped: `encoding=UTF-8` — Neovim is UTF-8 always; that line was for vim-devi
 
 **Ported to `lua/plugins/open-browser.lua`:** visual `<C-\>` (`:OpenGithubFile`).
 
-**Ported to `lua/plugins/undoquit.lua`:** `_u` (reopen last `:quit` window).
+**Ported to `lua/plugins/undoquit.lua`:** `_u` last window, `_U` this tab's closed windows.
 
 **Tied to plugins you have not ported:**
 
