@@ -47,7 +47,7 @@ mode (`jj` or <kbd>Esc</kbd>).
 | <kbd>_</kbd><kbd>u</kbd> | | Reopen the last closed window | undoquit |
 | <kbd>_</kbd><kbd>U</kbd> | | Reopen closed windows in this tab | undoquit |
 | <kbd>Space</kbd> `fg` | | Search file *contents* across the project | telescope |
-| <kbd>Space</kbd> `se` | | Project search (type a query, Enter) | ctrlsf |
+| <kbd>Space</kbd> `se` | | Project search (float prompt, Enter) | ctrlsf |
 | <kbd>Space</kbd> `st` | | Toggle the search-results panel | ctrlsf |
 | <kbd>Space</kbd> `nt` | | Toggle the file tree | neo-tree |
 | <kbd>Space</kbd> `nf` | | File tree, jump to current file | neo-tree |
@@ -168,7 +168,8 @@ Telescope first (keys above). Picking a commit opens a message float.
 
 ### ctrlsf (inside `se` / `st`)
 
-Bottom panel of matches with context. Edit a match line and `:w` writes it
+`Space se` is a one-line float to type the query. Results are a centered float
+(ctrlsf opens a split; we convert it). Edit a match line and `:w` writes it
 back to the file. `:%s` in that buffer + `:w` is project replace on this search.
 `Space st` hides/shows the same panel.
 

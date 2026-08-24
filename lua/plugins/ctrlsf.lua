@@ -2,7 +2,7 @@
 --
 --   ctrlsf.vim
 --
---   <leader>se  prompt :CtrlSF  (type a query, Enter)
+--   <leader>se  one-line float, type a query, Enter
 --   <leader>st  hide/show the results panel
 --
 -- Results are a buffer: edit match lines, :w writes them back to the files.
@@ -12,9 +12,77 @@
 --
 -- regex_pattern: query is a regex (same as old init.vim).
 -- auto_focus at start: jump into the results when the search finishes.
--- Bottom panel, normal view (context around matches). Don't auto-close
--- when you open a file. compact_winsize only applies if you switch to
--- compact view (M in the results).
+-- Don't auto-close when you open a file. compact_winsize only applies if
+-- you switch to compact view (M in the results).
+--
+-- ctrlsf has no center/float option (only left/right/top/bottom splits).
+-- After it opens the split, we convert that window to a centered float.
+-- Preview stays inside the main window so it does not open a second split.
+
+local function prompt_search()
+  local width = math.min(72, vim.o.columns - 4)
+  local buf = vim.api.nvim_create_buf(false, true)
+  local win = vim.api.nvim_open_win(buf, true, {
+    relative = "editor",
+    width = width,
+    height = 1,
+    row = math.max(0, math.floor(vim.o.lines / 2) - 1),
+    col = math.max(0, math.floor((vim.o.columns - width) / 2)),
+    border = "rounded",
+    title = " CtrlSF ",
+    title_pos = "center",
+    style = "minimal",
+    zindex = 60,
+  })
+  vim.bo[buf].buftype = "prompt"
+  vim.fn.prompt_setprompt(buf, "")
+
+  local function close()
+    vim.cmd("stopinsert")
+    if vim.api.nvim_win_is_valid(win) then
+      vim.api.nvim_win_close(win, true)
+    end
+    if vim.api.nvim_buf_is_valid(buf) then
+      pcall(vim.api.nvim_buf_delete, buf, { force = true })
+    end
+  end
+
+  vim.fn.prompt_setcallback(buf, function(text)
+    vim.schedule(function()
+      close()
+      text = vim.trim(text or "")
+      if text ~= "" then
+        vim.cmd("CtrlSF " .. text)
+      end
+    end)
+  end)
+  vim.fn.prompt_setinterrupt(buf, function()
+    vim.schedule(close)
+  end)
+  vim.keymap.set({ "n", "i" }, "<Esc>", function()
+    vim.schedule(close)
+  end, { buffer = buf, nowait = true })
+  vim.cmd("startinsert")
+end
+
+local function float_results(win)
+  if not vim.api.nvim_win_is_valid(win) then
+    return
+  end
+  local width = math.min(math.max(60, math.floor(vim.o.columns * 0.8)), vim.o.columns - 2)
+  local height = math.min(math.max(16, math.floor(vim.o.lines * 0.8)), vim.o.lines - 4)
+  vim.api.nvim_win_set_config(win, {
+    relative = "editor",
+    width = width,
+    height = height,
+    row = math.max(0, math.floor((vim.o.lines - height) / 2) - 1),
+    col = math.max(0, math.floor((vim.o.columns - width) / 2)),
+    border = "rounded",
+    title = " CtrlSF ",
+    title_pos = "center",
+    zindex = 50,
+  })
+end
 
 return {
   "dyng/ctrlsf.vim",
@@ -26,9 +94,23 @@ return {
     vim.g.ctrlsf_auto_close = { normal = 0, compact = 0 }
     vim.g.ctrlsf_default_view_mode = "normal"
     vim.g.ctrlsf_position = "bottom"
+    vim.g.ctrlsf_preview_position = "inside"
+  end,
+  config = function()
+    vim.api.nvim_create_autocmd("BufWinEnter", {
+      group = vim.api.nvim_create_augroup("ctrlsf-float", { clear = true }),
+      callback = function(ev)
+        if not vim.api.nvim_buf_get_name(ev.buf):match("__CtrlSF__$") then
+          return
+        end
+        vim.schedule(function()
+          float_results(vim.fn.bufwinid(ev.buf))
+        end)
+      end,
+    })
   end,
   keys = {
-    { "<leader>se", ":CtrlSF ", silent = false }, -- type a query after this
+    { "<leader>se", prompt_search },
     { "<leader>st", "<cmd>CtrlSFToggle<CR>" },
   },
 }
