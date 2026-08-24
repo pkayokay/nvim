@@ -18,7 +18,7 @@ return {
 
     -- highlight/indent are no longer plugin modules; Neovim owns them now
     vim.api.nvim_create_autocmd('FileType', {
-      pattern = { 'lua', 'javascript', 'ruby', 'elixir', 'typescript', 'typescriptreact' },
+      pattern = { 'lua', 'javascript', 'javascriptreact', 'ruby', 'elixir', 'typescript', 'typescriptreact' },
       callback = function()
         vim.treesitter.start()
         vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"

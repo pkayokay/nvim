@@ -14,10 +14,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'tpope/vim-fugitive' " Git wrapper
 
   " Languages
-  Plug 'jlcrochet/vim-ruby'
-  Plug 'pangloss/vim-javascript'
   Plug 'tpope/vim-rails'
-  Plug 'maxmellon/vim-jsx-pretty'
 call plug#end()
 
 " --------------------------------------------------

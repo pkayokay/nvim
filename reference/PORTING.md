@@ -56,15 +56,20 @@ Lualine uses `theme = "auto"` (follows the colorscheme) instead of airline `tomo
 ALE leftover (`Plug` line, `g:ale_*`, `SetESLintLinter` / `SetRuboCopLinter`) is deleted
 from `reference/init.vim`. Keep none-ls; lint/format-on-save can be added there later.
 
-## Dropped (1)
+## Dropped (4)
 
 | main | why |
 | --- | --- |
 | `tomtom/tcomment_vim` | Neovim 0.10+ has `gc` / `gcc` built in |
+| `jlcrochet/vim-ruby` | treesitter `ruby` parser (highlight + indent) |
+| `pangloss/vim-javascript` | treesitter `javascript` parser |
+| `maxmellon/vim-jsx-pretty` | treesitter `javascript` / `tsx` parsers |
 
-Leftover `Plug` line deleted from `reference/init.vim`. No leftover `g:`.
+Leftover `Plug` lines deleted from `reference/init.vim`. No leftover `g:`.
+`.jsx` is `javascriptreact`; that filetype is in the treesitter autocmd so highlight
+and indent still run after dropping jsx-pretty.
 
-## Not ported yet (10)
+## Not ported yet (7)
 
 Grouped by what they do, with the usual modern equivalent where the original is a
 Vimscript plugin that has one. Plenty of these still work fine under lazy.nvim — being
@@ -80,10 +85,8 @@ Vimscript is not a reason to replace them, only a reason to check.
 - `andrewradev/tagalong.vim` — renames paired HTML/JSX tags
 - `mg979/vim-visual-multi` — multiple cursors
 
-### Ruby / Rails / JS
+### Ruby / Rails
 - `tpope/vim-rails`
-- `jlcrochet/vim-ruby`, `pangloss/vim-javascript`, `maxmellon/vim-jsx-pretty` —
-  treesitter already handles this highlighting; probably droppable
 
 ## How to port one
 
