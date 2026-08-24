@@ -88,7 +88,6 @@ vim.keymap.set("n", "<leader>3", ":tabn 3<CR>") -- jump to tab 3
 vim.keymap.set("n", "<leader>4", ":tabn 4<CR>") -- jump to tab 4
 
 --[[ Git blame (visual Ctrl-b)
-  Replaces the old :!git blame dump.
   Visual mode only: select lines, then Ctrl-b. In normal mode Ctrl-b is still page-up.
   Step 1: telescope dropdown of blame lines (same UI as <leader>ca code actions).
   Step 2: pick a line -> float with that commit's message (q / Esc to close).

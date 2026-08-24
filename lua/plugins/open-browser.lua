@@ -3,7 +3,7 @@
 --   open-browser.vim         -- generic "open this URL in a browser" (required)
 --   open-browser-github.vim  -- :OpenGithubFile, :OpenGithubProject, etc.
 --
--- Visual Ctrl-\ only, same as the old map. Normal-mode Ctrl-\ is unused here
+-- Visual Ctrl-\ only. Normal-mode Ctrl-\ is unused here
 -- (in :terminal, Ctrl-\ Ctrl-n still leaves the shell — different mode).
 -- always_used_branch = main: links use main even if you are on a feature
 -- branch, so the URL does not 404 when that branch is not on the remote.

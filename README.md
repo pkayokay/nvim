@@ -114,6 +114,7 @@ Stock `w` jumps a whole `getUserName` or `foo_bar`. This stops on each piece.
 Typing `(` inserts `()`; same for quotes and brackets. Typing the closer skips
 over the one it added. Backspace on an empty pair deletes both. Enter between
 braces opens a new indented line. Confirming a function completion also adds `()`.
+Enter after `def` / `if` / `do` in Ruby, Lua, or Elixir inserts `end`.
 
 ### Telescope (inside `ff` / `fg` / `fb` / `ca` / `tp` / visual <kbd>Ctrl</kbd>+<kbd>b</kbd>)
 

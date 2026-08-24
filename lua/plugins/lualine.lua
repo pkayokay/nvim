@@ -1,5 +1,5 @@
 -- Statusline: the bar at the bottom of each window (mode, file, git, cursor).
--- Lua replacement for vim-airline. nvim-web-devicons is already used by neo-tree.
+-- nvim-web-devicons is already used by neo-tree.
 --
 -- The bar is split into sections, left to right:
 --   A  mode (NORMAL / INSERT / VISUAL)
@@ -10,8 +10,8 @@
 --   Z  line:column
 --
 -- theme = "auto" follows the colorscheme, so <C-S-n>/<C-S-p> restyle the bar too.
--- path = 1 is a relative path (lua/plugins/lualine.lua), same as old airline %f.
--- No tabline: old airline had g:airline_extensions = [] so extras were off.
+-- path = 1 is a relative path (lua/plugins/lualine.lua).
+-- No tabline.
 
 return {
   "nvim-lualine/lualine.nvim",

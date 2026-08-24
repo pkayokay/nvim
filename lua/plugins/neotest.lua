@@ -1,4 +1,4 @@
--- Lua test runner with a results panel (replaces vim-test as the UI).
+-- Lua test runner with a results panel.
 --
 --   neotest              -- runner + summary UI
 --   nvim-nio             -- async library neotest requires
@@ -13,8 +13,8 @@
 --     into neotest. Run with tn/ta/tp/ts only. A test may appear twice if
 --     both a dedicated adapter and vim-test match the file.
 --
---   <leader>tn  nearest (old vim-test key)
---   <leader>ta  this file (old vim-test key)
+--   <leader>tn  nearest
+--   <leader>ta  this file
 --   <leader>tp  pick a test (telescope dropdown, same UI as <leader>ca)
 --   <leader>ts  toggle the summary tree
 

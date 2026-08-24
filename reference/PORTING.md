@@ -23,11 +23,12 @@ no-preview `ff`, and bufexplorer.
 
 Theme switcher (`<C-S-n>` / `<C-S-p>`) and `<C-'>` live in `lua/plugins/theme.lua`.
 
-## Replaced by a different plugin (11)
+## Replaced by a different plugin (12)
 
 | main | lua branch |
 | --- | --- |
 | `Raimondi/delimitMate` | `windwp/nvim-autopairs` |
+| `tpope/vim-endwise` | `nvim-autopairs` endwise rules (Ruby / Lua / Elixir) |
 | `williamboman/mason.nvim` | `mason-org/mason.nvim` (org renamed) |
 | `williamboman/mason-lspconfig.nvim` | `mason-org/mason-lspconfig.nvim` (org renamed) |
 | `preservim/nerdtree` | `neo-tree.nvim` (`<leader>nt` toggle, `<leader>nf` reveal) |
@@ -69,7 +70,7 @@ Leftover `Plug` lines deleted from `reference/init.vim`. No leftover `g:`.
 `.jsx` is `javascriptreact`; that filetype is in the treesitter autocmd so highlight
 and indent still run after dropping jsx-pretty.
 
-## Not ported yet (7)
+## Not ported yet (6)
 
 Grouped by what they do, with the usual modern equivalent where the original is a
 Vimscript plugin that has one. Plenty of these still work fine under lazy.nvim — being
@@ -81,7 +82,6 @@ Vimscript is not a reason to replace them, only a reason to check.
 ### Editing
 - `tpope/vim-surround` — modern: `kylechui/nvim-surround`
 - `tpope/vim-repeat` — needed by vim-surround; drop if you move to nvim-surround
-- `tpope/vim-endwise` — Ruby/Lua `end` insertion; nvim-autopairs can cover this
 - `andrewradev/tagalong.vim` — renames paired HTML/JSX tags
 - `mg979/vim-visual-multi` — multiple cursors
 
@@ -153,7 +153,7 @@ branch; deleted from `reference/init.vim`.
 
 **Ported to `lua/plugins/wordmotion.lua`:** stock `w`/`b`/`e` become subword (camelCase / snake_case). Leftover `Plug` line deleted from `reference/init.vim`. No leftover `g:` settings.
 
-**Replaced with `lua/plugins/autopairs.lua`:** `nvim-autopairs` instead of delimitMate. Stock defaults. nvim-cmp `confirm_done` inserts `()` after function/method completions. Leftover `Plug` line deleted from `reference/init.vim`. No leftover `g:`.
+**Replaced with `lua/plugins/autopairs.lua`:** `nvim-autopairs` instead of delimitMate. Stock defaults plus Ruby/Lua/Elixir `end` (replaces vim-endwise). nvim-cmp `confirm_done` inserts `()` after function/method completions. Leftover `Plug` lines deleted from `reference/init.vim`. No leftover `g:`.
 
 ## Functions (5)
 
