@@ -7,12 +7,12 @@ as they are ported, so what remains is still todo. Nothing loads it — Neovim r
 
 46 plugins were declared on `main`. Status below.
 
-## Done (16)
+## Done (17)
 
 `hybrid.nvim`, `nvim-cmp`, `cmp-buffer`, `cmp-nvim-lsp`, `cmp-path`, `nvim-lspconfig`,
 `plenary.nvim`, `telescope.nvim`, `vim-afterglow`, `oceanic-next`, `fidget.nvim`,
 `open-browser.vim`, `open-browser-github.vim`, `undoquit.vim`, `clever-f.vim`,
-`ctrlsf.vim`
+`ctrlsf.vim`, `vim-wordmotion`
 
 Their leftover `Plug` lines, `colorscheme hybrid`, and the Native LSP/cmp `lua <<EOF`
 block are deleted from `reference/init.vim`. The telescope *config* block stays: the
@@ -23,10 +23,11 @@ no-preview `ff`, and bufexplorer.
 
 Theme switcher (`<C-S-n>` / `<C-S-p>`) and `<C-'>` live in `lua/plugins/theme.lua`.
 
-## Replaced by a different plugin (10)
+## Replaced by a different plugin (11)
 
 | main | lua branch |
 | --- | --- |
+| `Raimondi/delimitMate` | `windwp/nvim-autopairs` |
 | `williamboman/mason.nvim` | `mason-org/mason.nvim` (org renamed) |
 | `williamboman/mason-lspconfig.nvim` | `mason-org/mason-lspconfig.nvim` (org renamed) |
 | `preservim/nerdtree` | `neo-tree.nvim` (`<leader>nt` toggle, `<leader>nf` reveal) |
@@ -55,7 +56,7 @@ Lualine uses `theme = "auto"` (follows the colorscheme) instead of airline `tomo
 ALE leftover (`Plug` line, `g:ale_*`, `SetESLintLinter` / `SetRuboCopLinter`) is deleted
 from `reference/init.vim`. Keep none-ls; lint/format-on-save can be added there later.
 
-## Not ported yet (13)
+## Not ported yet (11)
 
 Grouped by what they do, with the usual modern equivalent where the original is a
 Vimscript plugin that has one. Plenty of these still work fine under lazy.nvim — being
@@ -68,11 +69,9 @@ Vimscript is not a reason to replace them, only a reason to check.
 - `tpope/vim-surround` — modern: `kylechui/nvim-surround`
 - `tpope/vim-repeat` — needed by vim-surround; drop if you move to nvim-surround
 - `tomtom/tcomment_vim` — Neovim 0.10+ has commenting built in (`gc`), likely droppable
-- `raimondi/delimitmate` — modern: `windwp/nvim-autopairs`
 - `tpope/vim-endwise` — Ruby/Lua `end` insertion; nvim-autopairs can cover this
 - `andrewradev/tagalong.vim` — renames paired HTML/JSX tags
 - `mg979/vim-visual-multi` — multiple cursors
-- `chaoren/vim-wordmotion` — subword motions
 
 ### Ruby / Rails / JS
 - `tpope/vim-rails`
@@ -141,6 +140,10 @@ branch; deleted from `reference/init.vim`.
 **Ported to `lua/plugins/telescope.lua`:** `<leader>wfg` word under cursor, `<leader>fb` buffers (no preview; old leftover `ef`). Vertical centered layout from leftover init.vim, stock 80% × 90% size. Leftover no-preview `ff` dropped (keep current `ff`).
 
 **Dropped leftover `<leader>sf` / live-grep-args / bufexplorer:** `<leader>fg` is typed grep; `<leader>wfg` is word-under-cursor; `<leader>fb` is the buffer list.
+
+**Ported to `lua/plugins/wordmotion.lua`:** stock `w`/`b`/`e` become subword (camelCase / snake_case). Leftover `Plug` line deleted from `reference/init.vim`. No leftover `g:` settings.
+
+**Replaced with `lua/plugins/autopairs.lua`:** `nvim-autopairs` instead of delimitMate. Stock defaults. nvim-cmp `confirm_done` inserts `()` after function/method completions. Leftover `Plug` line deleted from `reference/init.vim`. No leftover `g:`.
 
 ## Functions (5)
 

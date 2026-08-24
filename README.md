@@ -102,6 +102,17 @@ Same first jump as stock Vim. Repeat is remapped; `;` / `,` are unused.
 | `f` again (after `f`/`t`) | Next match (stock is `;`) |
 | `F` again (after `f`/`t`) | Previous match (stock is `,`) |
 
+### wordmotion (`w` / `b` / `e`)
+
+Stock `w` jumps a whole `getUserName` or `foo_bar`. This stops on each piece.
+`W` / `B` / `E` still skip whitespace-separated WORDs.
+
+### nvim-autopairs (insert)
+
+Typing `(` inserts `()`; same for quotes and brackets. Typing the closer skips
+over the one it added. Backspace on an empty pair deletes both. Enter between
+braces opens a new indented line. Confirming a function completion also adds `()`.
+
 ### Telescope (inside `ff` / `fg` / `fb` / `ca` / `tp` / visual <kbd>Ctrl</kbd>+<kbd>b</kbd>)
 
 Opens in **insert**. Type to filter. These are telescope defaults (this config
@@ -243,6 +254,8 @@ lua/plugins/
   open-browser.lua    visual Ctrl-\ opens the file on GitHub
   undoquit.lua        _u last closed window, _U this tab's closed windows
   clever-f.lua        f/t repeat with highlights (smart_case)
+  wordmotion.lua      w/b/e stop on camelCase / snake_case
+  autopairs.lua       insert auto-pairs for quotes and brackets
   neotest.lua         test runner + summary panel (tn / ta / tp / ts)
   toggleterm.lua      floating terminals (<leader>it last used, i1–i6)
   ctrlsf.lua          project search + edit (<leader>se / st)

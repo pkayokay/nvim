@@ -8,8 +8,6 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'tpope/vim-surround' " delete/change/add parentheses/quotes/XML-tags/much more with ease
   Plug 'tomtom/tcomment_vim' " An extensible & universal comment vim-plugin
   Plug 'tpope/vim-endwise' "helps to end certain structures automatically. In Ruby, this means adding end after if, do, def and several other keywords.
-  Plug 'chaoren/vim-wordmotion' " More useful word motions for Vim
-  Plug 'Raimondi/delimitMate' " provides insert mode auto-completion for quotes, parens, brackets, etc.
   Plug 'tpope/vim-repeat' " repeat.vim: enable repeating supported plugin maps with .
   Plug 'mg979/vim-visual-multi' " Multiple cursors plugin for vim/neovim, for vertical section enter v-block then shift+i insert mode
 
