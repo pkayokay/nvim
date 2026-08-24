@@ -7,10 +7,11 @@ as they are ported, so what remains is still todo. Nothing loads it — Neovim r
 
 46 plugins were declared on `main`. Status below.
 
-## Done (11)
+## Done (13)
 
 `hybrid.nvim`, `nvim-cmp`, `cmp-buffer`, `cmp-nvim-lsp`, `cmp-path`, `nvim-lspconfig`,
-`plenary.nvim`, `telescope.nvim`, `vim-afterglow`, `oceanic-next`, `fidget.nvim`
+`plenary.nvim`, `telescope.nvim`, `vim-afterglow`, `oceanic-next`, `fidget.nvim`,
+`open-browser.vim`, `open-browser-github.vim`
 
 Their leftover `Plug` lines, `colorscheme hybrid`, and the Native LSP/cmp `lua <<EOF`
 block are deleted from `reference/init.vim`. The telescope *config* block stays: the
@@ -38,7 +39,7 @@ Gitgutter leftover is deleted from `reference/init.vim`. `highlight Directory` s
 Airline leftover (`Plug` lines, `g:airline_*`) is deleted from `reference/init.vim`.
 Lualine uses `theme = "auto"` (follows the colorscheme) instead of airline `tomorrow`.
 
-## Not ported yet (23)
+## Not ported yet (21)
 
 Grouped by what they do, with the usual modern equivalent where the original is a
 Vimscript plugin that has one. Plenty of these still work fine under lazy.nvim — being
@@ -72,9 +73,6 @@ Vimscript is not a reason to replace them, only a reason to check.
 
 ### UI
 - `voldikss/vim-floaterm` — modern: `akinsho/toggleterm.nvim`
-
-### Browser
-- `tyru/open-browser.vim`, `tyru/open-browser-github.vim`
 
 ## How to port one
 
@@ -118,6 +116,8 @@ Dropped: `encoding=UTF-8` — Neovim is UTF-8 always; that line was for vim-devi
 
 **Ported to `lua/plugins/theme.lua`:** `<C-'>`, `<C-S-n>`, `<C-S-p>`.
 
+**Ported to `lua/plugins/open-browser.lua`:** visual `<C-\>` (`:OpenGithubFile`).
+
 **Tied to plugins you have not ported:**
 
 | Mapping | Needs |
@@ -126,7 +126,6 @@ Dropped: `encoding=UTF-8` — Neovim is UTF-8 always; that line was for vim-devi
 | `<leader>tn` `<leader>ta` | vim-test |
 | `<leader>it` | vim-floaterm |
 | `<leader>se` `<leader>st` | ctrlsf |
-| `<C-\>` | open-browser-github |
 
 **Dropped:** `inoremap dry ...` (Rails system-test snippet). Never existed on the lua
 branch; deleted from `reference/init.vim`.

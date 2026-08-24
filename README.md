@@ -34,6 +34,7 @@ press <kbd>Space</kbd> then <kbd>g</kbd> then <kbd>d</kbd>.
 | <kbd>Space</kbd> `D` | Delete line without yanking | vim-options |
 | <kbd>Space</kbd> `fr` | Find and replace in file | vim-options |
 | <kbd>Ctrl</kbd>+<kbd>b</kbd> (visual) | Git blame selected lines (telescope, like code actions) | vim-options |
+| <kbd>Ctrl</kbd>+<kbd>\</kbd> (visual) | Open file / selection on GitHub (`main`) | open-browser |
 | <kbd>Ctrl</kbd>+<kbd>'</kbd> | Start `:colorscheme` (tab-complete a name) | theme |
 | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>n</kbd> / <kbd>p</kbd> | Next / previous colorscheme | theme |
 | <kbd>Ctrl</kbd>+<kbd>p</kbd> | Find files by name | telescope |
@@ -78,6 +79,7 @@ lua/plugins/
   fidget.lua          LSP progress overlay in the corner
   lualine.lua         statusline (bottom bar)
   gitsigns.lua        git hunk signs in the gutter
+  open-browser.lua    visual Ctrl-\ opens the file on GitHub
   treesitter.lua      syntax parsers
   lsp-config.lua      mason + lspconfig, and the LSP keymaps
   completions.lua     nvim-cmp autocompletion and snippets

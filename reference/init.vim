@@ -20,8 +20,6 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'tpope/vim-repeat' " repeat.vim: enable repeating supported plugin maps with .
   Plug 'andrewradev/undoquit.vim' " reopen the last window you closed
   Plug 'mg979/vim-visual-multi' " Multiple cursors plugin for vim/neovim, for vertical section enter v-block then shift+i insert mode
-  Plug 'tyru/open-browser.vim'
-  Plug 'tyru/open-browser-github.vim' " Open Github from code
 
   " Misc
   Plug 'tpope/vim-fugitive' " Git wrapper
@@ -80,10 +78,6 @@ call plug#end()
 
 " Not gitgutter: folder color for netrw/NERDTree. Left here from that block.
 highlight Directory guifg=#cacbcd
-
-" open-browser-github
-vnoremap <c-\> :OpenGithubFile<cr>
-let g:openbrowser_github_always_used_branch = 'main'
 
 " ctrlp (Use rg (ripgrep) for ctrlp indexing, brew install ripgrep
 if executable('rg')
