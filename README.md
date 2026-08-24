@@ -46,7 +46,8 @@ press <kbd>Space</kbd> then <kbd>g</kbd> then <kbd>d</kbd>.
 | <kbd>Space</kbd> `tn` / `ta` | neotest nearest / this file | neotest |
 | <kbd>Space</kbd> `tp` | Pick a test (telescope dropdown) | neotest |
 | <kbd>Space</kbd> `ts` | neotest summary panel | neotest |
-| <kbd>Space</kbd> `it` | Toggle the floating terminal | toggleterm |
+| <kbd>Space</kbd> `it` | Toggle the last used floating terminal | toggleterm |
+| <kbd>Space</kbd> `i1`–`i4` | Toggle floating terminal 1–4 | toggleterm |
 | <kbd>K</kbd> | Show docs for the symbol under the cursor | LSP |
 | <kbd>Space</kbd> `gd` | Go to definition | LSP |
 | <kbd>Space</kbd> `gr` | List references | LSP |
@@ -90,7 +91,7 @@ lua/plugins/
   undoquit.lua        _u last closed window, _U this tab's closed windows
   clever-f.lua        f/t repeat with highlights (smart_case)
   neotest.lua         test runner + summary panel (tn / ta / tp / ts)
-  toggleterm.lua      floating terminal (<leader>it)
+  toggleterm.lua      floating terminals (<leader>it last used, i1–i4)
   treesitter.lua      syntax parsers
   lsp-config.lua      mason + lspconfig, and the LSP keymaps
   completions.lua     nvim-cmp autocompletion and snippets
