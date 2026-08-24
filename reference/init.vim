@@ -22,7 +22,6 @@ call plug#begin('~/.config/nvim/plugged')
   " Misc
   Plug 'tpope/vim-fugitive' " Git wrapper
   Plug 'voldikss/vim-floaterm' " floating terminal
-  Plug 'preservim/nerdtree' " Tree navigation
 
   " Languages
   Plug 'vim-test/vim-test'
@@ -31,10 +30,6 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'pangloss/vim-javascript'
   Plug 'tpope/vim-rails'
   Plug 'maxmellon/vim-jsx-pretty'
-
-  " Make it pretty
-  Plug 'vwxyutarooo/nerdtree-devicons-syntax' " needs vim-devicons
-  Plug 'ryanoasis/vim-devicons' " Ensure it's the last plugin and install JetBrains Mono Nerd Font https://www.nerdfonts.com/font-downloads
 call plug#end()
 
 " --------------------------------------------------
@@ -74,7 +69,7 @@ call plug#end()
 " 👉 Plugins config
 " --------------------------------------------------
 
-" Not gitgutter: folder color for netrw/NERDTree. Left here from that block.
+" Folder name color (was next to gitgutter; used by netrw).
 highlight Directory guifg=#cacbcd
 
 " clever-f
@@ -133,16 +128,6 @@ command! SetRuboCopLinter call SetRuboCopLinter()
 " For personal projects set these linters
 " SetStandardLinter
 " SetPrettierLinter
-
-" NERDTree
-" autocmd VimEnter * NERDTree | wincmd p "Start NERDTree and put the cursor back in the other window
-let g:NERDTreeWinPos = "right"
-nnoremap <leader>nt :NERDTreeToggle<CR>
-nnoremap <leader>nf :NERDTreeFind<CR>
-nnoremap <leader>nrs :vertical resize 30<cr>
-let NERDTreeQuitOnOpen = 0
-let g:NERDTreeWinSize=40
-let g:NERDTreeIgnore = ['^node_modules$','^tmp$']
 
 " vim-test
 nnoremap <silent> <leader>tn :TestNearest<CR>

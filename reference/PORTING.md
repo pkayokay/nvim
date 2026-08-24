@@ -26,17 +26,20 @@ Theme switcher (`<C-S-n>` / `<C-S-p>`) and `<C-'>` live in `lua/plugins/theme.lu
 | --- | --- |
 | `williamboman/mason.nvim` | `mason-org/mason.nvim` (org renamed) |
 | `williamboman/mason-lspconfig.nvim` | `mason-org/mason-lspconfig.nvim` (org renamed) |
-| `preservim/nerdtree` | `neo-tree.nvim` |
+| `preservim/nerdtree` | `neo-tree.nvim` (`<leader>nt` toggle, `<leader>nf` reveal) |
 | `ctrlpvim/ctrlp.vim` | `telescope.nvim` (`<leader>ff` find-files) |
 | `dense-analysis/ale` | `none-ls.nvim` |
 | `ryanoasis/vim-devicons` | `nvim-web-devicons` |
 | `vim-airline/vim-airline` + `-themes` | `nvim-lualine/lualine.nvim` |
 | `airblade/vim-gitgutter` | `lewis6991/gitsigns.nvim` |
 
+NERDTree leftover (`Plug` lines, `g:NERDTree*`, nerdtree-devicons) is deleted from
+`reference/init.vim`.
+
 CtrlP leftover (`Plug` line, `g:ctrlp_user_command`) is deleted from `reference/init.vim`.
 
 Gitgutter leftover is deleted from `reference/init.vim`. `highlight Directory` stays
-(it was next to gitgutter but is a folder-name color, not a hunk sign).
+(folder-name color for netrw).
 
 Airline leftover (`Plug` lines, `g:airline_*`) is deleted from `reference/init.vim`.
 Lualine uses `theme = "auto"` (follows the colorscheme) instead of airline `tomorrow`.
@@ -121,11 +124,12 @@ Dropped: `encoding=UTF-8` — Neovim is UTF-8 always; that line was for vim-devi
 
 **Ported to `lua/plugins/undoquit.lua`:** `_u` last window, `_U` this tab's closed windows.
 
+**Ported to `lua/plugins/neo-tree.lua`:** `<leader>nt` toggle, `<leader>nf` reveal.
+
 **Tied to plugins you have not ported:**
 
 | Mapping | Needs |
 | --- | --- |
-| `<leader>nt` `<leader>nf` `<leader>nrs` | NERDTree — neo-tree uses `<C-n>` already |
 | `<leader>tn` `<leader>ta` | vim-test |
 | `<leader>it` | vim-floaterm |
 | `<leader>se` `<leader>st` | ctrlsf |

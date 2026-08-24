@@ -41,7 +41,8 @@ press <kbd>Space</kbd> then <kbd>g</kbd> then <kbd>d</kbd>.
 | <kbd>_</kbd><kbd>u</kbd> | Reopen the last closed window | undoquit |
 | <kbd>_</kbd><kbd>U</kbd> | Reopen closed windows in this tab | undoquit |
 | <kbd>Space</kbd> `fg` | Search file *contents* across the project | telescope |
-| <kbd>Ctrl</kbd>+<kbd>n</kbd> | Toggle the file tree | neo-tree |
+| <kbd>Space</kbd> `nt` | Toggle the file tree | neo-tree |
+| <kbd>Space</kbd> `nf` | File tree, jump to current file | neo-tree |
 | <kbd>K</kbd> | Show docs for the symbol under the cursor | LSP |
 | <kbd>Space</kbd> `gd` | Go to definition | LSP |
 | <kbd>Space</kbd> `gr` | List references | LSP |
