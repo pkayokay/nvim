@@ -20,7 +20,6 @@ call plug#begin('~/.config/nvim/plugged')
 
   " Misc
   Plug 'tpope/vim-fugitive' " Git wrapper
-  Plug 'voldikss/vim-floaterm' " floating terminal
 
   " Languages
   Plug 'jlcrochet/vim-ruby'
@@ -68,11 +67,6 @@ call plug#end()
 
 " Folder name color (was next to gitgutter; used by netrw).
 highlight Directory guifg=#cacbcd
-
-" Float term
-nnoremap <silent><leader>it :FloatermToggle<cr>
-let g:floaterm_height = 0.5
-let g:floaterm_wintype = 'split'
 
 " ctrlsf
 let g:ctrlsf_regex_pattern = 1

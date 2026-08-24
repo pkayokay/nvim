@@ -20,7 +20,7 @@ and the old layout are not ported yet.
 
 Theme switcher (`<C-S-n>` / `<C-S-p>`) and `<C-'>` live in `lua/plugins/theme.lua`.
 
-## Replaced by a different plugin (9)
+## Replaced by a different plugin (10)
 
 | main | lua branch |
 | --- | --- |
@@ -33,6 +33,10 @@ Theme switcher (`<C-S-n>` / `<C-S-p>`) and `<C-'>` live in `lua/plugins/theme.lu
 | `vim-airline/vim-airline` + `-themes` | `nvim-lualine/lualine.nvim` |
 | `airblade/vim-gitgutter` | `lewis6991/gitsigns.nvim` |
 | `vim-test/vim-test` | `nvim-neotest/neotest` (vim-test kept only as a neotest detection fallback) |
+| `voldikss/vim-floaterm` | `akinsho/toggleterm.nvim` (`<leader>it` float) |
+
+Floaterm leftover (`Plug` line, `g:floaterm_*`, `<leader>it`) is deleted from
+`reference/init.vim`.
 
 NERDTree leftover (`Plug` lines, `g:NERDTree*`, nerdtree-devicons) is deleted from
 `reference/init.vim`.
@@ -48,7 +52,7 @@ Lualine uses `theme = "auto"` (follows the colorscheme) instead of airline `tomo
 ALE leftover (`Plug` line, `g:ale_*`, `SetESLintLinter` / `SetRuboCopLinter`) is deleted
 from `reference/init.vim`. Keep none-ls; lint/format-on-save can be added there later.
 
-## Not ported yet (17)
+## Not ported yet (16)
 
 Grouped by what they do, with the usual modern equivalent where the original is a
 Vimscript plugin that has one. Plenty of these still work fine under lazy.nvim — being
@@ -76,9 +80,6 @@ Vimscript is not a reason to replace them, only a reason to check.
 - `tpope/vim-rails`
 - `jlcrochet/vim-ruby`, `pangloss/vim-javascript`, `maxmellon/vim-jsx-pretty` —
   treesitter already handles this highlighting; probably droppable
-
-### UI
-- `voldikss/vim-floaterm` — modern: `akinsho/toggleterm.nvim`
 
 ## How to port one
 
@@ -130,11 +131,12 @@ Dropped: `encoding=UTF-8` — Neovim is UTF-8 always; that line was for vim-devi
 
 **Ported to `lua/plugins/neotest.lua`:** `<leader>tn` nearest, `<leader>ta` file, `<leader>tp` pick, `<leader>ts` summary. vim-test leftover deleted (plugin kept as detection only).
 
+**Ported to `lua/plugins/toggleterm.lua`:** `<leader>it` (float, rounded border).
+
 **Tied to plugins you have not ported:**
 
 | Mapping | Needs |
 | --- | --- |
-| `<leader>it` | vim-floaterm |
 | `<leader>se` `<leader>st` | ctrlsf |
 
 **Dropped:** `inoremap dry ...` (Rails system-test snippet). Never existed on the lua
