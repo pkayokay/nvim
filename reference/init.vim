@@ -15,7 +15,6 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'tpope/vim-endwise' "helps to end certain structures automatically. In Ruby, this means adding end after if, do, def and several other keywords.
   Plug 'chaoren/vim-wordmotion' " More useful word motions for Vim
   Plug 'Raimondi/delimitMate' " provides insert mode auto-completion for quotes, parens, brackets, etc.
-  Plug 'rhysd/clever-f.vim' " Extended f, F, t and T key mappings for Vim.
   Plug 'tpope/vim-repeat' " repeat.vim: enable repeating supported plugin maps with .
   Plug 'mg979/vim-visual-multi' " Multiple cursors plugin for vim/neovim, for vertical section enter v-block then shift+i insert mode
 
@@ -71,9 +70,6 @@ call plug#end()
 
 " Folder name color (was next to gitgutter; used by netrw).
 highlight Directory guifg=#cacbcd
-
-" clever-f
-let g:clever_f_smart_case = 1
 
 " ALE
 " npm install -g prettier && gem install standard

@@ -84,6 +84,7 @@ lua/plugins/
   gitsigns.lua        git hunk signs in the gutter
   open-browser.lua    visual Ctrl-\ opens the file on GitHub
   undoquit.lua        _u last closed window, _U this tab's closed windows
+  clever-f.lua        f/t repeat with highlights (smart_case)
   treesitter.lua      syntax parsers
   lsp-config.lua      mason + lspconfig, and the LSP keymaps
   completions.lua     nvim-cmp autocompletion and snippets
