@@ -43,6 +43,9 @@ press <kbd>Space</kbd> then <kbd>g</kbd> then <kbd>d</kbd>.
 | <kbd>Space</kbd> `fg` | Search file *contents* across the project | telescope |
 | <kbd>Space</kbd> `nt` | Toggle the file tree | neo-tree |
 | <kbd>Space</kbd> `nf` | File tree, jump to current file | neo-tree |
+| <kbd>Space</kbd> `tn` / `ta` | neotest nearest / this file | neotest |
+| <kbd>Space</kbd> `tp` | Pick a test (telescope dropdown) | neotest |
+| <kbd>Space</kbd> `ts` | neotest summary panel | neotest |
 | <kbd>K</kbd> | Show docs for the symbol under the cursor | LSP |
 | <kbd>Space</kbd> `gd` | Go to definition | LSP |
 | <kbd>Space</kbd> `gr` | List references | LSP |
@@ -85,6 +88,7 @@ lua/plugins/
   open-browser.lua    visual Ctrl-\ opens the file on GitHub
   undoquit.lua        _u last closed window, _U this tab's closed windows
   clever-f.lua        f/t repeat with highlights (smart_case)
+  neotest.lua         test runner + summary panel (tn / ta / tp / ts)
   treesitter.lua      syntax parsers
   lsp-config.lua      mason + lspconfig, and the LSP keymaps
   completions.lua     nvim-cmp autocompletion and snippets

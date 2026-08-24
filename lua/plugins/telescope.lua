@@ -17,7 +17,15 @@ return {
   config = function()
     require('telescope').setup({
       extensions = {
-        ['ui-select'] = require('telescope.themes').get_dropdown({}),
+        ['ui-select'] = require('telescope.themes').get_dropdown({
+          -- ╭╮ rounded corners (nvim 0.11 default winborder is none / square)
+          border = true,
+          borderchars = {
+            prompt = { "─", "│", " ", "│", "╭", "╮", "│", "│" },
+            results = { "─", "│", "─", "│", "├", "┤", "╯", "╰" },
+            preview = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+          },
+        }),
       },
     })
 

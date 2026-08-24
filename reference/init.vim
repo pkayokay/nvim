@@ -23,7 +23,6 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'voldikss/vim-floaterm' " floating terminal
 
   " Languages
-  Plug 'vim-test/vim-test'
   Plug 'jlcrochet/vim-ruby'
   Plug 'pangloss/vim-javascript'
   Plug 'tpope/vim-rails'
@@ -69,11 +68,6 @@ call plug#end()
 
 " Folder name color (was next to gitgutter; used by netrw).
 highlight Directory guifg=#cacbcd
-
-" vim-test
-nnoremap <silent> <leader>tn :TestNearest<CR>
-nnoremap <silent> <leader>ta :TestFile<CR>
-let test#strategy = "floaterm"
 
 " Float term
 nnoremap <silent><leader>it :FloatermToggle<cr>
