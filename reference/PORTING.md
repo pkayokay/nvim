@@ -56,7 +56,15 @@ Lualine uses `theme = "auto"` (follows the colorscheme) instead of airline `tomo
 ALE leftover (`Plug` line, `g:ale_*`, `SetESLintLinter` / `SetRuboCopLinter`) is deleted
 from `reference/init.vim`. Keep none-ls; lint/format-on-save can be added there later.
 
-## Not ported yet (11)
+## Dropped (1)
+
+| main | why |
+| --- | --- |
+| `tomtom/tcomment_vim` | Neovim 0.10+ has `gc` / `gcc` built in |
+
+Leftover `Plug` line deleted from `reference/init.vim`. No leftover `g:`.
+
+## Not ported yet (10)
 
 Grouped by what they do, with the usual modern equivalent where the original is a
 Vimscript plugin that has one. Plenty of these still work fine under lazy.nvim — being
@@ -68,7 +76,6 @@ Vimscript is not a reason to replace them, only a reason to check.
 ### Editing
 - `tpope/vim-surround` — modern: `kylechui/nvim-surround`
 - `tpope/vim-repeat` — needed by vim-surround; drop if you move to nvim-surround
-- `tomtom/tcomment_vim` — Neovim 0.10+ has commenting built in (`gc`), likely droppable
 - `tpope/vim-endwise` — Ruby/Lua `end` insertion; nvim-autopairs can cover this
 - `andrewradev/tagalong.vim` — renames paired HTML/JSX tags
 - `mg979/vim-visual-multi` — multiple cursors

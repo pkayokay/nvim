@@ -64,6 +64,8 @@ mode (`jj` or <kbd>Esc</kbd>).
 | <kbd>Space</kbd> `ca` | | Code actions (quick fixes, telescope dropdown) | LSP |
 | <kbd>Space</kbd> `rn` | | Rename symbol across the project | LSP |
 | `[d` / `]d` | | Prev / next diagnostic | Neovim stock |
+| `gcc` | | Toggle comment on this line | Neovim stock |
+| `gc` | visual, or + motion | Toggle comments | Neovim stock |
 | <kbd>Space</kbd> `gf` | | Format the current file | none-ls |
 | <kbd>Space</kbd> `dt` | | Toggle breakpoint *(needs an adapter)* | nvim-dap |
 | <kbd>Space</kbd> `dc` | | Start / continue debugging *(needs an adapter)* | nvim-dap |
