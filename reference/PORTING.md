@@ -7,11 +7,11 @@ as they are ported, so what remains is still todo. Nothing loads it — Neovim r
 
 46 plugins were declared on `main`. Status below.
 
-## Done (13)
+## Done (14)
 
 `hybrid.nvim`, `nvim-cmp`, `cmp-buffer`, `cmp-nvim-lsp`, `cmp-path`, `nvim-lspconfig`,
 `plenary.nvim`, `telescope.nvim`, `vim-afterglow`, `oceanic-next`, `fidget.nvim`,
-`open-browser.vim`, `open-browser-github.vim`
+`open-browser.vim`, `open-browser-github.vim`, `undoquit.vim`
 
 Their leftover `Plug` lines, `colorscheme hybrid`, and the Native LSP/cmp `lua <<EOF`
 block are deleted from `reference/init.vim`. The telescope *config* block stays: the
@@ -41,7 +41,7 @@ Gitgutter leftover is deleted from `reference/init.vim`. `highlight Directory` s
 Airline leftover (`Plug` lines, `g:airline_*`) is deleted from `reference/init.vim`.
 Lualine uses `theme = "auto"` (follows the colorscheme) instead of airline `tomorrow`.
 
-## Not ported yet (21)
+## Not ported yet (20)
 
 Grouped by what they do, with the usual modern equivalent where the original is a
 Vimscript plugin that has one. Plenty of these still work fine under lazy.nvim — being
@@ -65,7 +65,6 @@ Vimscript is not a reason to replace them, only a reason to check.
 - `jlanzarotta/bufexplorer` — telescope `buffers` picker covers this
 - `rhysd/clever-f.vim` — improved `f`/`t`
 - `nvim-telescope/telescope-live-grep-args.nvim` — telescope extension, easy port
-- `andrewradev/undoquit.vim` — reopen closed windows
 
 ### Ruby / Rails / JS
 - `tpope/vim-rails`
@@ -119,6 +118,8 @@ Dropped: `encoding=UTF-8` — Neovim is UTF-8 always; that line was for vim-devi
 **Ported to `lua/plugins/theme.lua`:** `<C-'>`, `<C-S-n>`, `<C-S-p>`.
 
 **Ported to `lua/plugins/open-browser.lua`:** visual `<C-\>` (`:OpenGithubFile`).
+
+**Ported to `lua/plugins/undoquit.lua`:** `_u` (reopen last `:quit` window).
 
 **Tied to plugins you have not ported:**
 

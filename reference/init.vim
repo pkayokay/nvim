@@ -17,7 +17,6 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'Raimondi/delimitMate' " provides insert mode auto-completion for quotes, parens, brackets, etc.
   Plug 'rhysd/clever-f.vim' " Extended f, F, t and T key mappings for Vim.
   Plug 'tpope/vim-repeat' " repeat.vim: enable repeating supported plugin maps with .
-  Plug 'andrewradev/undoquit.vim' " reopen the last window you closed
   Plug 'mg979/vim-visual-multi' " Multiple cursors plugin for vim/neovim, for vertical section enter v-block then shift+i insert mode
 
   " Misc
@@ -77,9 +76,6 @@ call plug#end()
 
 " Not gitgutter: folder color for netrw/NERDTree. Left here from that block.
 highlight Directory guifg=#cacbcd
-
-" undoquit
-let g:undoquit_mapping = '_u'
 
 " clever-f
 let g:clever_f_smart_case = 1
