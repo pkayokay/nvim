@@ -2,7 +2,7 @@
 --
 --   telescope.nvim              -- the picker UI itself
 --                               -- <leader>ff files, <leader>fg grep,
---                               -- <leader>wfg word under cursor, <leader>ef buffers
+--                               -- <leader>wfg word under cursor, <leader>fb buffers
 --   plenary.nvim                -- lua utility library telescope is built on (required)
 --   telescope-fzf-native.nvim   -- compiled C sorter; much faster/better matching than the lua default
 --   telescope-ui-select.nvim    -- makes vim.ui.select prompts (LSP code actions, etc.) render in telescope
@@ -12,7 +12,7 @@
 --
 -- Default pickers are a centered vertical stack (prompt on top), same as the
 -- leftover init.vim layout, but stock size (80% × 90%). ui-select stays a
--- small dropdown. ef is the old bufexplorer job: pick an open buffer.
+-- small dropdown. fb is find buffers (old leftover ef / bufexplorer).
 -- Esc then dd deletes it (normal mode). Alt-d still works in insert too.
 
 return {
@@ -59,10 +59,10 @@ return {
     vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
     -- wfg = word find globally: grep the word under the cursor (old leftover gc)
     vim.keymap.set('n', '<leader>wfg', builtin.grep_string, {})
-    -- ef = open buffers (old leftover + bufexplorer). No preview; compact.
+    -- fb = find buffers (old leftover ef). No preview; compact.
     -- Esc (telescope normal mode) then dd deletes the highlighted buffer.
     -- Alt-d (M-d) still works in insert or normal.
-    vim.keymap.set('n', '<leader>ef', function()
+    vim.keymap.set('n', '<leader>fb', function()
       builtin.buffers({
         previewer = false,
         layout_config = {

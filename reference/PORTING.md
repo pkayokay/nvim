@@ -17,7 +17,7 @@ as they are ported, so what remains is still todo. Nothing loads it — Neovim r
 Their leftover `Plug` lines, `colorscheme hybrid`, and the Native LSP/cmp `lua <<EOF`
 block are deleted from `reference/init.vim`. The telescope *config* block stays: the
 lua branch has `<leader>ff` files, `<leader>fg` grep, `<leader>wfg` word under
-cursor, `<leader>ef` buffers, and the old vertical centered layout at stock
+cursor, `<leader>fb` buffers, and the old vertical centered layout at stock
 size (80% × 90%). Dropped live-grep-args (`<leader>sf`, `<leader>gc`), leftover
 no-preview `ff`, and bufexplorer.
 
@@ -138,9 +138,9 @@ Later: try `grug-far.nvim` for the same search-then-replace workflow; keep ctrls
 **Dropped:** `inoremap dry ...` (Rails system-test snippet). Never existed on the lua
 branch; deleted from `reference/init.vim`.
 
-**Ported to `lua/plugins/telescope.lua`:** `<leader>wfg` word under cursor, `<leader>ef` buffers (no preview). Vertical centered layout from leftover init.vim, stock 80% × 90% size. Leftover no-preview `ff` dropped (keep current `ff`).
+**Ported to `lua/plugins/telescope.lua`:** `<leader>wfg` word under cursor, `<leader>fb` buffers (no preview; old leftover `ef`). Vertical centered layout from leftover init.vim, stock 80% × 90% size. Leftover no-preview `ff` dropped (keep current `ff`).
 
-**Dropped leftover `<leader>sf` / live-grep-args / bufexplorer:** `<leader>fg` is typed grep; `<leader>wfg` is word-under-cursor; `<leader>ef` is the buffer list.
+**Dropped leftover `<leader>sf` / live-grep-args / bufexplorer:** `<leader>fg` is typed grep; `<leader>wfg` is word-under-cursor; `<leader>fb` is the buffer list.
 
 ## Functions (5)
 
