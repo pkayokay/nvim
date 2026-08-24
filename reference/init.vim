@@ -5,7 +5,6 @@ call plug#begin('~/.config/nvim/plugged')
 
   " Search
   Plug 'nvim-telescope/telescope-live-grep-args.nvim' " Extends telescope and allows passing arguments to grep
-  Plug 'dyng/ctrlsf.vim' " search/replace like sublime text
   Plug 'jlanzarotta/bufexplorer' " allows quicky deletion of buffers
 
   " Efficiency
@@ -67,16 +66,6 @@ call plug#end()
 
 " Folder name color (was next to gitgutter; used by netrw).
 highlight Directory guifg=#cacbcd
-
-" ctrlsf
-let g:ctrlsf_regex_pattern = 1
-let g:ctrlsf_auto_focus = { 'at': 'start' }
-nnoremap <leader>se :CtrlSF<Space>
-nnoremap <leader>st :CtrlSFToggle<cr>'
-let g:ctrlsf_compact_winsize = '80%'
-let g:ctrlsf_auto_close = {'normal' : 0, 'compact': 0}
-let g:ctrlsf_default_view_mode = 'normal'
-let g:ctrlsf_position = 'bottom'
 
 " Telescope
 lua << EOF

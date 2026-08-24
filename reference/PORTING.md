@@ -7,11 +7,12 @@ as they are ported, so what remains is still todo. Nothing loads it — Neovim r
 
 46 plugins were declared on `main`. Status below.
 
-## Done (15)
+## Done (16)
 
 `hybrid.nvim`, `nvim-cmp`, `cmp-buffer`, `cmp-nvim-lsp`, `cmp-path`, `nvim-lspconfig`,
 `plenary.nvim`, `telescope.nvim`, `vim-afterglow`, `oceanic-next`, `fidget.nvim`,
-`open-browser.vim`, `open-browser-github.vim`, `undoquit.vim`, `clever-f.vim`
+`open-browser.vim`, `open-browser-github.vim`, `undoquit.vim`, `clever-f.vim`,
+`ctrlsf.vim`
 
 Their leftover `Plug` lines, `colorscheme hybrid`, and the Native LSP/cmp `lua <<EOF`
 block are deleted from `reference/init.vim`. The telescope *config* block stays: the
@@ -52,7 +53,7 @@ Lualine uses `theme = "auto"` (follows the colorscheme) instead of airline `tomo
 ALE leftover (`Plug` line, `g:ale_*`, `SetESLintLinter` / `SetRuboCopLinter`) is deleted
 from `reference/init.vim`. Keep none-ls; lint/format-on-save can be added there later.
 
-## Not ported yet (16)
+## Not ported yet (15)
 
 Grouped by what they do, with the usual modern equivalent where the original is a
 Vimscript plugin that has one. Plenty of these still work fine under lazy.nvim — being
@@ -72,7 +73,6 @@ Vimscript is not a reason to replace them, only a reason to check.
 - `chaoren/vim-wordmotion` — subword motions
 
 ### Navigation / search
-- `dyng/ctrlsf.vim` — project search + edit; telescope covers most of it
 - `jlanzarotta/bufexplorer` — telescope `buffers` picker covers this
 - `nvim-telescope/telescope-live-grep-args.nvim` — telescope extension, easy port
 
@@ -133,11 +133,9 @@ Dropped: `encoding=UTF-8` — Neovim is UTF-8 always; that line was for vim-devi
 
 **Ported to `lua/plugins/toggleterm.lua`:** `<leader>it` last used, `<leader>i1`–`i6` numbered slots (float, rounded border).
 
-**Tied to plugins you have not ported:**
+**Ported to `lua/plugins/ctrlsf.lua`:** `<leader>se` prompt, `<leader>st` toggle. Same `g:ctrlsf_*` as old init.vim. Trailing `'` on the old `st` map was a typo and is gone.
 
-| Mapping | Needs |
-| --- | --- |
-| `<leader>se` `<leader>st` | ctrlsf |
+Later: try `grug-far.nvim` for the same search-then-replace workflow; keep ctrlsf until then.
 
 **Dropped:** `inoremap dry ...` (Rails system-test snippet). Never existed on the lua
 branch; deleted from `reference/init.vim`.
