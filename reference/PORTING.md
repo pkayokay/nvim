@@ -70,7 +70,7 @@ Leftover `Plug` lines deleted from `reference/init.vim`. No leftover `g:`.
 `.jsx` is `javascriptreact`; that filetype is in the treesitter autocmd so highlight
 and indent still run after dropping jsx-pretty.
 
-## Not ported yet (4)
+## Not ported yet (3)
 
 Grouped by what they do, with the usual modern equivalent where the original is a
 Vimscript plugin that has one. Plenty of these still work fine under lazy.nvim — being
@@ -80,7 +80,6 @@ Vimscript is not a reason to replace them, only a reason to check.
 - `tpope/vim-fugitive` — still the standard, port as-is
 
 ### Editing
-- `andrewradev/tagalong.vim` — renames paired HTML/JSX tags
 - `mg979/vim-visual-multi` — multiple cursors
 
 ### Ruby / Rails
@@ -154,6 +153,8 @@ branch; deleted from `reference/init.vim`.
 **Ported to `lua/plugins/surround.lua`:** `cs` / `ds` / `ys` edit wrappers. `vim-repeat` is a dependency so `.` repeats them. Leftover `Plug` lines deleted from `reference/init.vim`. No leftover `g:`.
 
 **Replaced with `lua/plugins/autopairs.lua`:** `nvim-autopairs` instead of delimitMate. Stock defaults plus Ruby/Lua/Elixir `end` (replaces vim-endwise). nvim-cmp `confirm_done` inserts `()` after function/method completions. Leftover `Plug` lines deleted from `reference/init.vim`. No leftover `g:`.
+
+**Added `lua/plugins/autotag.lua`:** `nvim-ts-autotag`. Close (`<div>` then `>` → `<div></div>`) and rename (both ends). `html` parser added in treesitter.lua.
 
 ## Functions (5)
 

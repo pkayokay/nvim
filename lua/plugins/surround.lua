@@ -6,14 +6,16 @@
 --
 --   On `"foo"` or `foo`
 --   What          Stock                      surround
+--   Change word   ciw  foo -> (insert)       (stock, not this plugin)
 --   Change inside ci"  "foo" -> "" (insert)  (stock, not this plugin)
 --   Delete around da"  "foo" -> (gone)       (stock, not this plugin)
 --   Drop wrappers none                       ds"   "foo" -> foo
 --   Swap wrappers none                       cs"'  "foo" -> 'foo'
 --   Add wrappers  none                       ysiw) foo   -> (foo)
 --
+--   ciw    change inner word (stock). foo -> word gone, insert mode
+--   iw     inner word (stock). same object as ciw / diw / yiw / ysiw
 --   ys     you surround + motion + wrapper. ysiw)  foo -> (foo)
---   iw     inner word (stock, same as ciw). ciw on foo -> insert over that word
 --   ysiw)  you surround inner word with (). foo -> (foo)
 --   yss"   you surround this line with quotes. foo bar -> "foo bar"
 --   cs"'   change surround. "foo" -> 'foo'

@@ -119,6 +119,7 @@ Stock (no plugin):
 
 | Key | Stands for | Example |
 | --- | --- | --- |
+| `ciw` | change inner word | `foo` → word gone, insert mode |
 | `ci"` | change inner quotes | `"foo"` → `""`, insert mode |
 | `di"` | delete inner quotes | `"foo"` → `""` |
 | `da"` | delete around quotes | `"foo"` → (gone) |
@@ -143,6 +144,17 @@ Typing `(` inserts `()`; same for quotes and brackets. Typing the closer skips
 over the one it added. Backspace on an empty pair deletes both. Enter between
 braces opens a new indented line. Confirming a function completion also adds `()`.
 Enter after `def` / `if` / `do` in Ruby, Lua, or Elixir inserts `end`.
+
+### nvim-ts-autotag (HTML / JSX / TSX)
+
+No new keys. Needs a treesitter parser for that filetype (`html` / `javascript` / `tsx`).
+
+| What | Example |
+| --- | --- |
+| Close | type `<div>` then `>` → `<div></div>` (cursor in the middle) |
+| Rename | `ciwspan` then Esc on `<div>` → `<span></span>` (both ends) |
+
+Stock Vim does neither. surround `cst` is the manual rename (you type the new tag).
 
 ### Telescope (inside `ff` / `fg` / `fb` / `ca` / `tp` / visual <kbd>Ctrl</kbd>+<kbd>b</kbd>)
 
@@ -287,6 +299,7 @@ lua/plugins/
   clever-f.lua        f/t repeat with highlights (smart_case)
   wordmotion.lua      w/b/e stop on camelCase / snake_case
   surround.lua        cs/ds/ys change wrappers (quotes, parens)
+  autotag.lua         HTML/JSX close and rename paired tags
   autopairs.lua       insert auto-pairs for quotes and brackets
   neotest.lua         test runner + summary panel (tn / ta / tp / ts)
   toggleterm.lua      floating terminals (<leader>it last used, i1–i6)
