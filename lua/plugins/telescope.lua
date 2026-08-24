@@ -12,8 +12,8 @@
 --
 -- Default pickers are a centered vertical stack (prompt on top), same as the
 -- leftover init.vim layout, but stock size (80% × 90%). ui-select stays a
--- small dropdown. ef is the old bufexplorer job: pick an open buffer; <C-d>
--- in the picker deletes it.
+-- small dropdown. ef is the old bufexplorer job: pick an open buffer.
+-- Esc then dd deletes it (normal mode). Alt-d still works in insert too.
 
 return {
   'nvim-telescope/telescope.nvim', version = '*',
@@ -60,6 +60,8 @@ return {
     -- wfg = word find globally: grep the word under the cursor (old leftover gc)
     vim.keymap.set('n', '<leader>wfg', builtin.grep_string, {})
     -- ef = open buffers (old leftover + bufexplorer). No preview; compact.
+    -- Esc (telescope normal mode) then dd deletes the highlighted buffer.
+    -- Alt-d (M-d) still works in insert or normal.
     vim.keymap.set('n', '<leader>ef', function()
       builtin.buffers({
         previewer = false,
@@ -67,6 +69,10 @@ return {
           height = 0.5,
           width = 0.45,
         },
+        attach_mappings = function(_, map)
+          map("n", "dd", require("telescope.actions").delete_buffer)
+          return true
+        end,
       })
     end)
   end

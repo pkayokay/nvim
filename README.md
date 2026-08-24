@@ -48,7 +48,7 @@ mode (`jj` or <kbd>Esc</kbd>).
 | <kbd>_</kbd><kbd>U</kbd> | | Reopen closed windows in this tab | undoquit |
 | <kbd>Space</kbd> `fg` | | Search file *contents* across the project | telescope |
 | <kbd>Space</kbd> `wfg` | | Grep the word under the cursor | telescope |
-| <kbd>Space</kbd> `ef` | | Open buffers (`Ctrl-d` deletes one) | telescope |
+| <kbd>Space</kbd> `ef` | | Open buffers (Esc then `dd` deletes; Alt-d also) | telescope |
 | <kbd>Space</kbd> `se` | | Project search (boxed float, Enter) | ctrlsf |
 | <kbd>Space</kbd> `st` | | Toggle the search-results panel | ctrlsf |
 | <kbd>Space</kbd> `nt` | | Toggle the file tree | neo-tree |
@@ -102,7 +102,7 @@ Same first jump as stock Vim. Repeat is remapped; `;` / `,` are unused.
 | `f` again (after `f`/`t`) | Next match (stock is `;`) |
 | `F` again (after `f`/`t`) | Previous match (stock is `,`) |
 
-### Telescope (inside `ff` / `fg` / `ca` / `tp` / visual <kbd>Ctrl</kbd>+<kbd>b</kbd>)
+### Telescope (inside `ff` / `fg` / `ef` / `ca` / `tp` / visual <kbd>Ctrl</kbd>+<kbd>b</kbd>)
 
 Opens in **insert**. Type to filter. These are telescope defaults (this config
 does not override them). Same keys in the ui-select dropdown used by code
@@ -121,6 +121,8 @@ actions, test pick, and git blame.
 | <kbd>Ctrl</kbd>+<kbd>q</kbd> | insert or normal | Send all results to the quickfix list |
 | <kbd>Ctrl</kbd>+<kbd>/</kbd> | insert | Show telescope's own keymap help |
 | `?` | normal | Same help |
+| `dd` | normal, `ef` only | Delete the highlighted buffer |
+| <kbd>Alt</kbd>+<kbd>d</kbd> | insert or normal, `ef` only | Same delete |
 
 ### neo-tree (inside `nt` / `nf`)
 
