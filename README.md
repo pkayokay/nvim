@@ -47,7 +47,7 @@ mode (`jj` or <kbd>Esc</kbd>).
 | <kbd>_</kbd><kbd>u</kbd> | | Reopen the last closed window | undoquit |
 | <kbd>_</kbd><kbd>U</kbd> | | Reopen closed windows in this tab | undoquit |
 | <kbd>Space</kbd> `fg` | | Search file *contents* across the project | telescope |
-| <kbd>Space</kbd> `se` | | Project search (float prompt, Enter) | ctrlsf |
+| <kbd>Space</kbd> `se` | | Project search (boxed float, Enter) | ctrlsf |
 | <kbd>Space</kbd> `st` | | Toggle the search-results panel | ctrlsf |
 | <kbd>Space</kbd> `nt` | | Toggle the file tree | neo-tree |
 | <kbd>Space</kbd> `nf` | | File tree, jump to current file | neo-tree |
@@ -174,10 +174,10 @@ Telescope first (keys above). Picking a commit opens a message float.
 
 ### ctrlsf (inside `se` / `st`)
 
-`Space se` is a one-line float to type the query. Results are a centered float
-(ctrlsf opens a split; we convert it). Edit a match line and `:w` writes it
-back to the file. `:%s` in that buffer + `:w` is project replace on this search.
-`Space st` hides/shows the same panel.
+`Space se` is a boxed float (same UI as `fr`) to type the query. Results are a
+centered float (ctrlsf opens a split; we convert it). Edit a match line and `:w`
+writes it back to the file. `:%s` in that buffer + `:w` is project replace on
+this search. `Space st` hides/shows the same panel.
 
 | Key | Does |
 | --- | --- |
@@ -230,6 +230,7 @@ nvim-dap-ui:
 ```
 init.lua              bootstraps lazy.nvim, then loads the two below
 lua/vim-options.lua   tabs, line numbers, clipboard, mapleader, insert/terminal maps
+lua/float-form.lua    boxed float form used by <leader>fr and <leader>se
 lua/plugins/
   theme.lua           hybrid.nvim (default) plus extra colorschemes and the switcher
   fidget.lua          LSP progress overlay in the corner
