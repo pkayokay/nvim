@@ -16,8 +16,10 @@ as they are ported, so what remains is still todo. Nothing loads it — Neovim r
 
 Their leftover `Plug` lines, `colorscheme hybrid`, and the Native LSP/cmp `lua <<EOF`
 block are deleted from `reference/init.vim`. The telescope *config* block stays: the
-lua branch only has `<leader>ff` find-files and `<leader>fg` grep; live-grep-args, buffers,
-and the old layout are not ported yet.
+lua branch only has `<leader>ff` find-files and `<leader>fg` grep; leftover
+live-grep-args (`<leader>gc`), buffers (`<leader>ef`), and the old layout are
+not ported yet. Dropped leftover `<leader>sf` (live-grep-args picker); `fg` covers
+plain project grep.
 
 Theme switcher (`<C-S-n>` / `<C-S-p>`) and `<C-'>` live in `lua/plugins/theme.lua`.
 
@@ -139,6 +141,8 @@ Later: try `grug-far.nvim` for the same search-then-replace workflow; keep ctrls
 
 **Dropped:** `inoremap dry ...` (Rails system-test snippet). Never existed on the lua
 branch; deleted from `reference/init.vim`.
+
+**Dropped leftover `<leader>sf`:** live-grep-args picker. `<leader>fg` is the grep.
 
 ## Functions (5)
 

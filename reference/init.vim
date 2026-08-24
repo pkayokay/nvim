@@ -98,18 +98,6 @@ lua << EOF
     }
   }
 
-  -- Telescope telescope-live-grep-args
-  vim.keymap.set("n", "<leader>sf", function()
-    require('telescope').extensions.live_grep_args.live_grep_args()
-    -- It enables passing arguments to the grep command, rg examples:
-    -- "foo" -t ruby find in ruby files
-    -- foo → press <C-k> → "foo"  → "foo" -tmd
-    -- Only works if you set up the <C-k> mapping
-    -- --no-ignore foo
-    -- foo bar" bazdir
-    -- "foo" --iglob **/bar/**
-  end)
-
   -- Searches for the word in the cursor while in normal mode
   local live_grep_args_shortcuts = require("telescope-live-grep-args.shortcuts")
   vim.keymap.set("n", "<leader>gc", live_grep_args_shortcuts.grep_word_under_cursor)
