@@ -39,16 +39,200 @@ vim.opt.sidescrolloff = 10   -- keep 10 columns visible beside the cursor (wrap 
 vim.opt.ignorecase = true         -- /foo matches foo, Foo, FOO
 vim.opt.smartcase = true          -- ignorecase unless the search contains a capital
 -- vim.opt.gdefault = true        -- assume /g flag on for :s subtitutions
--- Prompt for find/replace, then run :%s/find/replace/gc (confirm each match).
+-- Dialog float with real nested input windows (native rounded borders),
+-- titles on the boxes, focused field highlighted. Starts in insert on Find.
+-- Enter / Tab jumps to Replace; Enter there runs :%s/find/replace/gc
+-- (confirm each match). Esc / Ctrl-c cancels.
 -- Example: "foo foo foo" with find foo, replace bar -> "bar bar bar"
--- (% = whole file, g = every match on a line, c = confirm). Without g, only the first foo on each line would change.
+-- (% = whole file, g = every match on a line, c = confirm).
 vim.keymap.set("n", "<leader>fr", function()
-  local find = vim.fn.input("Find: ")
-  if find == "" then
-    return
+  local target_win = vim.api.nvim_get_current_win()
+  local width = math.min(56, vim.o.columns - 8)
+  local height = 9
+  -- col is the child's *outer* edge (its border), relative to parent content.
+  -- Subtract left gap + right gap + the child's own two vertical borders.
+  local gap = 2
+  local inner_w = math.max(20, width - gap * 2 - 2)
+  local pad = gap
+
+  local parent_buf = vim.api.nvim_create_buf(false, true)
+  vim.api.nvim_buf_set_lines(parent_buf, 0, -1, false, vim.split(string.rep("\n", height), "\n"))
+  vim.bo[parent_buf].buftype = "nofile"
+  vim.bo[parent_buf].bufhidden = "wipe"
+  vim.bo[parent_buf].swapfile = false
+  vim.bo[parent_buf].modifiable = false
+
+  local parent_win = vim.api.nvim_open_win(parent_buf, false, {
+    relative = "editor",
+    width = width,
+    height = height,
+    row = math.max(0, math.floor((vim.o.lines - (height + 2)) / 2)),
+    col = math.max(0, math.floor((vim.o.columns - (width + 2)) / 2)),
+    border = "rounded",
+    title = " Find and replace in file ",
+    title_pos = "center",
+    footer = " Enter next / replace    Esc cancel ",
+    footer_pos = "right",
+    style = "minimal",
+    zindex = 60,
+    focusable = false,
+  })
+
+  local function open_field(title, row)
+    local buf = vim.api.nvim_create_buf(false, true)
+    vim.api.nvim_buf_set_lines(buf, 0, -1, false, { "" })
+    vim.bo[buf].buftype = "nofile"
+    vim.bo[buf].bufhidden = "wipe"
+    vim.bo[buf].swapfile = false
+    local win = vim.api.nvim_open_win(buf, false, {
+      relative = "win",
+      win = parent_win,
+      width = inner_w,
+      height = 1,
+      row = row,
+      col = pad,
+      border = "rounded",
+      title = " " .. title .. " ",
+      title_pos = "left",
+      style = "minimal",
+      zindex = 61,
+    })
+    vim.wo[win].wrap = false
+    vim.wo[win].cursorline = false
+    vim.wo[win].sidescrolloff = 0
+    return buf, win
   end
-  local replace = vim.fn.input("Replace with: ")
-  vim.cmd("%s/" .. find .. "/" .. replace .. "/gc")
+
+  local find_buf, find_win = open_field("Find", 1)
+  local replace_buf, replace_win = open_field("Replace", 5)
+
+  local closing = false
+  local wins = { find_win, replace_win, parent_win }
+  local bufs = { find_buf, replace_buf, parent_buf }
+  local group = vim.api.nvim_create_augroup("find-replace-form", { clear = true })
+
+  local function close()
+    if closing then
+      return
+    end
+    closing = true
+    pcall(vim.api.nvim_del_augroup_by_id, group)
+    pcall(vim.cmd, "stopinsert")
+    for _, w in ipairs(wins) do
+      if vim.api.nvim_win_is_valid(w) then
+        pcall(vim.api.nvim_win_close, w, true)
+      end
+    end
+    for _, b in ipairs(bufs) do
+      if vim.api.nvim_buf_is_valid(b) then
+        pcall(vim.api.nvim_buf_delete, b, { force = true })
+      end
+    end
+  end
+
+  local function field_text(buf)
+    return vim.trim(table.concat(vim.api.nvim_buf_get_lines(buf, 0, -1, false), ""))
+  end
+
+  local function paint_focus(focused_win)
+    local on = "FloatBorder:FloatTitle,FloatTitle:FloatTitle,NormalFloat:NormalFloat"
+    local off = "FloatBorder:FloatBorder,FloatTitle:Comment,NormalFloat:NormalFloat"
+    if vim.api.nvim_win_is_valid(find_win) then
+      vim.wo[find_win].winhighlight = focused_win == find_win and on or off
+    end
+    if vim.api.nvim_win_is_valid(replace_win) then
+      vim.wo[replace_win].winhighlight = focused_win == replace_win and on or off
+    end
+  end
+
+  local function focus(win)
+    if not vim.api.nvim_win_is_valid(win) then
+      return
+    end
+    vim.api.nvim_set_current_win(win)
+    paint_focus(win)
+    vim.cmd("startinsert!")
+  end
+
+  local function submit()
+    local find = field_text(find_buf)
+    local replace = field_text(replace_buf)
+    close()
+    vim.schedule(function()
+      if find == "" then
+        return
+      end
+      if vim.api.nvim_win_is_valid(target_win) then
+        vim.api.nvim_set_current_win(target_win)
+      end
+      -- pcall: :s E486 inside vim.schedule dumps a lua traceback instead of
+      -- the usual "Pattern not found" line.
+      local ok, err = pcall(vim.cmd, "%s/" .. find .. "/" .. replace .. "/gc")
+      if not ok then
+        vim.notify(tostring(err):match("E%d+:.*") or "Pattern not found", vim.log.levels.WARN)
+      end
+    end)
+  end
+
+  local function next_or_submit()
+    if vim.api.nvim_get_current_win() == find_win then
+      focus(replace_win)
+    else
+      submit()
+    end
+  end
+
+  local function map_field(buf, win)
+    vim.keymap.set({ "n", "i" }, "<Esc>", function()
+      vim.schedule(close)
+    end, { buffer = buf, nowait = true })
+    vim.keymap.set({ "n", "i" }, "<C-c>", function()
+      vim.schedule(close)
+    end, { buffer = buf, nowait = true })
+    vim.keymap.set({ "n", "i" }, "<CR>", next_or_submit, { buffer = buf, nowait = true })
+    vim.keymap.set({ "n", "i" }, "<Tab>", next_or_submit, { buffer = buf, nowait = true })
+    vim.keymap.set({ "n", "i" }, "<S-Tab>", function()
+      focus(find_win)
+    end, { buffer = buf, nowait = true })
+    vim.keymap.set("n", "o", "<nop>", { buffer = buf })
+    vim.keymap.set("n", "O", "<nop>", { buffer = buf })
+    vim.api.nvim_create_autocmd("WinEnter", {
+      group = group,
+      buffer = buf,
+      callback = function()
+        paint_focus(win)
+      end,
+    })
+    vim.api.nvim_create_autocmd("TextChangedI", {
+      group = group,
+      buffer = buf,
+      callback = function()
+        local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
+        if #lines > 1 then
+          vim.api.nvim_buf_set_lines(buf, 0, -1, false, { table.concat(lines, "") })
+        end
+      end,
+    })
+  end
+
+  map_field(find_buf, find_win)
+  map_field(replace_buf, replace_win)
+
+  vim.api.nvim_create_autocmd("WinClosed", {
+    group = group,
+    nested = true,
+    callback = function(ev)
+      local id = tonumber(ev.match)
+      if id == find_win or id == replace_win or id == parent_win then
+        close()
+      end
+    end,
+  })
+
+  focus(find_win)
+  vim.schedule(function()
+    focus(find_win)
+  end)
 end)
 
 -- Clipboard: yank/delete/put use the OS clipboard. dd is cut; <leader>D is true delete.

@@ -38,7 +38,7 @@ mode (`jj` or <kbd>Esc</kbd>).
 | <kbd>Space</kbd> <kbd>Shift</kbd>+<kbd>t</kbd> | | New tab | vim-options |
 | <kbd>Space</kbd> `1`–`4` | | Jump to tab 1–4 | vim-options |
 | <kbd>Space</kbd> `D` | | Delete line without yanking | vim-options |
-| <kbd>Space</kbd> `fr` | | Find and replace in file | vim-options |
+| <kbd>Space</kbd> `fr` | | Find and replace in file (one float, confirm each) | vim-options |
 | <kbd>Ctrl</kbd>+<kbd>b</kbd> | visual | Git blame selected lines (telescope dropdown) | vim-options |
 | <kbd>Ctrl</kbd>+<kbd>\</kbd> | visual | Open file / selection on GitHub (`main`) | open-browser |
 | <kbd>Ctrl</kbd>+<kbd>'</kbd> | | Start `:colorscheme` (tab-complete a name) | theme |
@@ -157,6 +157,12 @@ closed; `q` in the panel also closes it. `?` lists every command.
 | `J` / `K` | Next / previous failed test |
 | `?` | Help |
 | `q` | Close the panel |
+
+### Find and replace (inside `fr`)
+
+One float titled **Find and replace in file**, with boxed **Find** and **Replace**
+fields. Starts in insert on Find. Enter or Tab moves to Replace; Enter there
+runs the substitute. Esc cancels. Then confirm each match (`y` / `n` / `a` / `q`).
 
 ### Git blame float (after visual <kbd>Ctrl</kbd>+<kbd>b</kbd>, pick a line)
 
