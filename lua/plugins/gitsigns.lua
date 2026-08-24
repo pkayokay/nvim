@@ -9,8 +9,6 @@
 --
 -- Not the same as lualine's branch/diff counts (that's a summary in the bar)
 -- or visual Ctrl-b blame (that's in vim-options.lua).
---
--- highlight Directory from the old file is not gitgutter — still in init.vim.
 
 return {
   "lewis6991/gitsigns.nvim",

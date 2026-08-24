@@ -56,9 +56,4 @@ call plug#end()
 " Ported `set` options live in lua/vim-options.lua.
 " encoding=UTF-8 was dropped: Neovim is UTF-8 always.
 
-" --------------------------------------------------
-" 👉 Plugins config
-" --------------------------------------------------
 
-" Folder name color (was next to gitgutter; used by netrw).
-highlight Directory guifg=#cacbcd

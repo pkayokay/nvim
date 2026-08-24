@@ -46,8 +46,8 @@ NERDTree leftover (`Plug` lines, `g:NERDTree*`, nerdtree-devicons) is deleted fr
 
 CtrlP leftover (`Plug` line, `g:ctrlp_user_command`) is deleted from `reference/init.vim`.
 
-Gitgutter leftover is deleted from `reference/init.vim`. `highlight Directory` stays
-(folder-name color for netrw).
+Gitgutter leftover is deleted from `reference/init.vim`. `highlight Directory`
+(netrw folder gray) was dropped; theme default (usually blue) is fine.
 
 Airline leftover (`Plug` lines, `g:airline_*`) is deleted from `reference/init.vim`.
 Lualine uses `theme = "auto"` (follows the colorscheme) instead of airline `tomorrow`.
