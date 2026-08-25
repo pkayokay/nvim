@@ -5,9 +5,6 @@ call plug#begin('~/.config/nvim/plugged')
 
   " Misc
   Plug 'tpope/vim-fugitive' " Git wrapper
-
-  " Languages
-  Plug 'tpope/vim-rails'
 call plug#end()
 
 " --------------------------------------------------

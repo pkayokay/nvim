@@ -57,7 +57,7 @@ Lualine uses `theme = "auto"` (follows the colorscheme) instead of airline `tomo
 ALE leftover (`Plug` line, `g:ale_*`, `SetESLintLinter` / `SetRuboCopLinter`) is deleted
 from `reference/init.vim`. Keep none-ls; lint/format-on-save can be added there later.
 
-## Dropped (4)
+## Dropped (5)
 
 | main | why |
 | --- | --- |
@@ -65,12 +65,13 @@ from `reference/init.vim`. Keep none-ls; lint/format-on-save can be added there 
 | `jlcrochet/vim-ruby` | treesitter `ruby` parser (highlight + indent) |
 | `pangloss/vim-javascript` | treesitter `javascript` parser |
 | `maxmellon/vim-jsx-pretty` | treesitter `javascript` / `tsx` parsers |
+| `tpope/vim-rails` | ruby_lsp `gd`, telescope `ff`, neotest; no `:A` maps were in the old file |
 
 Leftover `Plug` lines deleted from `reference/init.vim`. No leftover `g:`.
 `.jsx` is `javascriptreact`; that filetype is in the treesitter autocmd so highlight
 and indent still run after dropping jsx-pretty.
 
-## Not ported yet (2)
+## Not ported yet (1)
 
 Grouped by what they do, with the usual modern equivalent where the original is a
 Vimscript plugin that has one. Plenty of these still work fine under lazy.nvim — being
@@ -78,9 +79,6 @@ Vimscript is not a reason to replace them, only a reason to check.
 
 ### Git
 - `tpope/vim-fugitive` — still the standard, port as-is
-
-### Ruby / Rails
-- `tpope/vim-rails`
 
 ## How to port one
 
