@@ -5,6 +5,12 @@
 -- Every "<leader>x" mapping in lua/plugins/ therefore means: press Space, then x.
 vim.g.mapleader = " "
 
+-- Remote-plugin hosts unused by this config (all plugins are Lua). Silences checkhealth.
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_node_provider = 0
+vim.g.loaded_ruby_provider = 0
+
 -- Indentation
 vim.opt.expandtab = true     -- pressing Tab inserts spaces, never a literal tab character
 vim.opt.tabstop = 2          -- an existing tab character renders 2 columns wide
