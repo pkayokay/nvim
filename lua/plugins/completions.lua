@@ -68,7 +68,7 @@ return {
           -- group_index 0 puts lazydev's Neovim API results above everything else
           { name = "lazydev", group_index = 0 },
           { name = "nvim_lsp" },
-          { name = "luasnip" }, -- For luasnip users.
+          { name = "luasnip" },
           { name = "path" },
         }, {
           { name = "buffer" },

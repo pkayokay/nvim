@@ -1,4 +1,4 @@
--- Lua test runner with a results panel.
+-- Multi-language test runner with a results panel.
 --
 --   neotest              -- runner + summary UI
 --   nvim-nio             -- async library neotest requires

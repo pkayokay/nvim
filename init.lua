@@ -2,7 +2,7 @@
 -- The one ordering rule: vim-options must load before lazy.setup, because it sets
 -- mapleader and the plugin files register <leader> mappings as they load.
 
--- Lazy Vim: Package Manager
+-- lazy.nvim: package manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   vim.fn.system({
