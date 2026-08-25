@@ -13,8 +13,11 @@
 --   Swap wrappers none                       cs"'  "foo" -> 'foo'
 --   Add wrappers  none                       ysiw) foo   -> (foo)
 --
---   ciw    change inner word (stock). foo -> word gone, insert mode
---   iw     inner word (stock). same object as ciw / diw / yiw / ysiw
+--   Stock Vim (no plugin):
+--   ciw    change inner word. foo -> word gone, insert mode
+--   iw     inner word. same object as ciw / diw / yiw (also used by ysiw)
+--
+--   vim-surround:
 --   ys     you surround + motion + wrapper. ysiw)  foo -> (foo)
 --   ysiw)  you surround inner word with (). foo -> (foo)
 --   yss"   you surround this line with quotes. foo bar -> "foo bar"
