@@ -73,7 +73,7 @@ diagnostics) are rounded; Ctrl-d / Ctrl-u stay 10 lines after a resize.
 | `[d` / `]d` | | Prev / next diagnostic | Neovim stock |
 | `gcc` | | Toggle comment on this line | Neovim stock |
 | `gc` | visual, or + motion | Toggle comments | Neovim stock |
-| <kbd>Space</kbd> `gf` | | Format the current file (stylua / prettier / mix) | none-ls |
+| <kbd>Space</kbd> `gf` | | Format the current file (stylua / prettier / mix / ruby_lsp) | none-ls / LSP |
 | <kbd>Space</kbd> `dt` | | Toggle breakpoint *(needs an adapter)* | nvim-dap |
 | <kbd>Space</kbd> `dc` | | Start / continue debugging *(needs an adapter)* | nvim-dap |
 | <kbd>Space</kbd> `dx` | | Terminate debug session | nvim-dap |
@@ -362,7 +362,7 @@ lua/plugins/
   lsp-config.lua      mason + lspconfig, and the LSP keymaps
   completions.lua     nvim-cmp autocompletion and snippets (Tab jumps holes)
   lazydev.lua         Neovim API types for lua_ls
-  none-ls.lua         stylua / prettier / mix format (Elixir + HEEx)
+  none-ls.lua         stylua / prettier / mix; Ruby via ruby_lsp Gemfile auto-detect
   telescope.lua       fuzzy finder (ff / fg / wfg / fb / fo / fs / Space Space resume)
   neo-tree.lua        file tree
   debugging.lua       nvim-dap and its UI
@@ -370,7 +370,8 @@ lua/plugins/
 
 Language servers installed automatically: `lua_ls`, `ruby_lsp`, `ts_ls`, `elixirls`,
 `tailwindcss`. Formatters: `stylua`, `prettier`, `mix format` (Phoenix/HEEx via the
-project `.formatter.exs`).
+project `.formatter.exs`). Ruby: whatever is a direct Gemfile dep (`standard`,
+`rubocop`, or `syntax_tree`) — `ruby_lsp` auto-detects it.
 
 ## Not set up yet
 
@@ -381,7 +382,6 @@ project `.formatter.exs`).
   gem instead), then define `dap.adapters.<name>` and `dap.configurations.<filetype>`
   so nvim-dap knows how to launch it. `jay-babu/mason-nvim-dap.nvim` can do both steps.
   Until then the `<leader>d*` keymaps set breakpoints nothing will ever hit.
-- **Ruby formatter.** StandardRB via `ruby_lsp` is planned; `Space gf` does nothing on
-  Ruby until that is wired.
 - **Linting.** none-ls runs formatters only; no `diagnostics` sources are registered.
+  (Ruby linting comes from `ruby_lsp` when the project gem supports it.)
 - **Format on save** is written but commented out at the bottom of `none-ls.lua`.

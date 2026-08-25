@@ -8,8 +8,12 @@
 -- The stylua/prettier binaries come from mason-tool-installer in lsp-config.lua.
 -- mix format ships with Elixir (same install as elixirls). HEEx/EEx use the
 -- project's .formatter.exs (Phoenix.LiveView.HTMLFormatter) via --stdin-filename.
+-- Ruby has no none-ls source: ruby_lsp auto-detects standard / rubocop /
+-- syntax_tree from the project's Gemfile (formatter = "auto" default).
 --
---   <leader>gf  format the current file (none-ls only; skips competing LSP formatters)
+--   <leader>gf  format the current file. Prefers none-ls when it applies
+--               (stylua / prettier / mix); otherwise the language server
+--               (ruby_lsp + whatever the Gemfile lists).
 --
 -- Format on save is written but commented out at the bottom.
 return {
@@ -28,11 +32,19 @@ return {
       },
     })
 
-    -- only let none-ls format, so LSP servers that also format don't compete
+    -- Prefer none-ls when it is attached (Lua / JS / Elixir), so lua_ls /
+    -- ts_ls / elixirls do not fight it. Ruby has no none-ls source, so
+    -- Space gf falls through to ruby_lsp (Gemfile formatter).
     local function format()
+      local bufnr = vim.api.nvim_get_current_buf()
+      local prefer_null_ls = #vim.lsp.get_clients({ bufnr = bufnr, name = "null-ls" }) > 0
       vim.lsp.buf.format({
+        bufnr = bufnr,
         filter = function(client)
-          return client.name == "null-ls"
+          if prefer_null_ls then
+            return client.name == "null-ls"
+          end
+          return client.name ~= "null-ls"
         end,
       })
     end
