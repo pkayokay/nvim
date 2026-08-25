@@ -5,6 +5,19 @@
 --                     Handles formatters and linters; only formatters are wired up below.
 --   plenary.nvim   -- lua utility library (required)
 --
+-- Three layers (Space gf hits the same vim.lsp.buf.format() for all of them):
+--
+--   LSP          background per language (ruby_lsp, elixirls, …). Understands the
+--                project: gd / gr / rn / diagnostics. Sometimes can format too.
+--   Formatter    whatever rewrites style (stylua, prettier, mix format, …).
+--   none-ls      fake LSP client that runs CLI formatters so format() can use them.
+--
+--   Language       Who formats                         Via
+--   Lua            stylua                              none-ls
+--   JS/TS/HTML/…   prettier                            none-ls
+--   Elixir/HEEx    mix format (+ .formatter.exs)       none-ls
+--   Ruby           Gemfile gem (standard/rubocop/…)    ruby_lsp (auto)
+--
 -- The stylua/prettier binaries come from mason-tool-installer in lsp-config.lua.
 -- mix format ships with Elixir (same install as elixirls). HEEx/EEx use the
 -- project's .formatter.exs (Phoenix.LiveView.HTMLFormatter) via --stdin-filename.
