@@ -6,6 +6,10 @@
 --   plenary.nvim   -- lua utility library (required)
 --
 -- The stylua/prettier binaries come from mason-tool-installer in lsp-config.lua.
+--
+--   <leader>gf  format the current file (none-ls only; skips competing LSP formatters)
+--
+-- Format on save is written but commented out at the bottom.
 return {
   "nvimtools/none-ls.nvim",
   dependencies = { "nvim-lua/plenary.nvim" },

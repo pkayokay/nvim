@@ -12,6 +12,11 @@
 -- and a dap.adapters.<name> + dap.configurations.<filetype> pair telling nvim-dap how
 -- to launch it. Until then the keymaps below set breakpoints that never get hit --
 -- check with :lua print(vim.inspect(require("dap").adapters))
+--
+--   <leader>dt  toggle breakpoint
+--   <leader>dc  start / continue
+--   <leader>dx  terminate session
+--   <leader>do  step over
 return {
   "mfussenegger/nvim-dap",
   dependencies = {
@@ -38,9 +43,9 @@ return {
       dapui.close()
     end
 
-    vim.keymap.set("n", "<Leader>dt", ":DapToggleBreakpoint<CR>")
-    vim.keymap.set("n", "<Leader>dc", ":DapContinue<CR>")
-    vim.keymap.set("n", "<Leader>dx", ":DapTerminate<CR>")
-    vim.keymap.set("n", "<Leader>do", ":DapStepOver<CR>")
+    vim.keymap.set("n", "<leader>dt", ":DapToggleBreakpoint<CR>")
+    vim.keymap.set("n", "<leader>dc", ":DapContinue<CR>")
+    vim.keymap.set("n", "<leader>dx", ":DapTerminate<CR>")
+    vim.keymap.set("n", "<leader>do", ":DapStepOver<CR>")
   end,
 }

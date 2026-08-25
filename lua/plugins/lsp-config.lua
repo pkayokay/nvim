@@ -13,6 +13,14 @@
 --
 -- The tools installed here are consumed elsewhere: stylua/prettier by none-ls.lua,
 -- and <leader>ca renders through telescope's ui-select extension (telescope.lua).
+--
+--   K           hover docs
+--   <leader>gd  go to definition
+--   <leader>gr  list references
+--   <leader>ca  code actions (telescope dropdown)
+--   <leader>rn  rename
+--
+-- Jump diagnostics with stock [d / ]d (see vim-options.lua for virtual_text).
 return {
   {
     "mason-org/mason.nvim",
