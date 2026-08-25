@@ -6,6 +6,8 @@
 --   plenary.nvim   -- lua utility library (required)
 --
 -- The stylua/prettier binaries come from mason-tool-installer in lsp-config.lua.
+-- mix format ships with Elixir (same install as elixirls). HEEx/EEx use the
+-- project's .formatter.exs (Phoenix.LiveView.HTMLFormatter) via --stdin-filename.
 --
 --   <leader>gf  format the current file (none-ls only; skips competing LSP formatters)
 --
@@ -19,6 +21,10 @@ return {
       sources = {
         null_ls.builtins.formatting.stylua,
         null_ls.builtins.formatting.prettier,
+        -- Phoenix-recommended: mix format (+ HEEx via .formatter.exs plugin)
+        null_ls.builtins.formatting.mix.with({
+          extra_filetypes = { "heex", "eex" },
+        }),
       },
     })
 
