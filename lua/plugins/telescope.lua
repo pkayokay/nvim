@@ -10,9 +10,8 @@
 -- ui-select is what gives <leader>ca (code actions, defined in lsp-config.lua) a
 -- telescope dropdown instead of Neovim's numbered-list prompt.
 --
--- Default pickers are a centered vertical stack (prompt on top), same as the
--- leftover init.vim layout, but stock size (80% × 90%). ui-select stays a
--- small dropdown. fb is find buffers (old leftover ef / bufexplorer).
+-- Default pickers are a centered vertical stack (prompt on top), stock
+-- size (80% × 90%). ui-select stays a small dropdown. fb is find buffers.
 -- Esc then dd deletes it (normal mode). Alt-d still works in insert too.
 
 return {
@@ -57,9 +56,9 @@ return {
     vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
     -- fg = find grep (file contents), not vim's /g flag. Project-wide.
     vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-    -- wfg = word find globally: grep the word under the cursor (old leftover gc)
+    -- wfg = word find globally: grep the word under the cursor
     vim.keymap.set('n', '<leader>wfg', builtin.grep_string, {})
-    -- fb = find buffers (old leftover ef). No preview; compact.
+    -- fb = find buffers. No preview; compact.
     -- Esc (telescope normal mode) then dd deletes the highlighted buffer.
     -- Alt-d (M-d) still works in insert or normal.
     vim.keymap.set('n', '<leader>fb', function()

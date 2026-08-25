@@ -8,9 +8,7 @@
 -- Results are a buffer: edit match lines, :w writes them back to the files.
 -- Then :%s in that buffer + :w is project replace on the search you just ran.
 --
--- Try grug-far later for the same search-then-replace flow (not added yet).
---
--- regex_pattern: query is a regex (same as old init.vim).
+-- regex_pattern: query is a regex.
 -- auto_focus at start: jump into the results when the search finishes.
 -- Don't auto-close when you open a file. compact_winsize only applies if
 -- you switch to compact view (M in the results).
