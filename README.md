@@ -349,4 +349,3 @@ Language servers installed automatically: `lua_ls`, `ruby_lsp`, `ts_ls`, `elixir
   Until then the `<leader>d*` keymaps set breakpoints nothing will ever hit.
 - **Linting.** none-ls runs formatters only; no `diagnostics` sources are registered.
 - **Format on save** is written but commented out at the bottom of `none-ls.lua`.
-- `plugged/` is leftover from the old vim-plug setup and is no longer loaded.
