@@ -14,11 +14,19 @@ return {
   config = function()
     require('nvim-treesitter').install({
       'lua', 'javascript', 'ruby', 'elixir', 'typescript', 'tsx', 'html',
+      'heex', 'eex', 'embedded_template', 'json', 'yaml', 'markdown', 'css',
     })
+
+    -- eruby is the vim filetype; the parser is named embedded_template
+    vim.treesitter.language.register('embedded_template', 'eruby')
 
     -- highlight/indent are no longer plugin modules; Neovim owns them now
     vim.api.nvim_create_autocmd('FileType', {
-      pattern = { 'lua', 'javascript', 'javascriptreact', 'html', 'ruby', 'elixir', 'typescript', 'typescriptreact' },
+      pattern = {
+        'lua', 'javascript', 'javascriptreact', 'html', 'ruby', 'eruby',
+        'elixir', 'heex', 'eex', 'typescript', 'typescriptreact',
+        'json', 'yaml', 'markdown', 'css',
+      },
       callback = function()
         vim.treesitter.start()
         vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
