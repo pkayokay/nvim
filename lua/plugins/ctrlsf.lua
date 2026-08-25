@@ -16,6 +16,10 @@
 -- ctrlsf has no center/float option (only left/right/top/bottom splits).
 -- After it opens the split, we convert that window to a centered float.
 -- Preview stays inside the main window so it does not open a second split.
+--
+-- The query is passed as one :CtrlSF argument (nvim_cmd args), not glued
+-- into vim.cmd("CtrlSF " .. text). Spaces stay in the pattern; | is not
+-- treated as a second Ex command.
 
 local function prompt_search()
   require("float-form").open({
@@ -25,7 +29,8 @@ local function prompt_search()
     on_submit = function(values)
       local text = values[1] or ""
       if text ~= "" then
-        vim.cmd("CtrlSF " .. text)
+        -- args table: the query is one argument (spaces stay; | does not chain)
+        vim.api.nvim_cmd({ cmd = "CtrlSF", args = { text } }, {})
       end
     end,
   })
