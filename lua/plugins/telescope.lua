@@ -2,7 +2,10 @@
 --
 --   telescope.nvim              -- the picker UI itself
 --                               -- <leader>ff files, <leader>fg grep,
---                               -- <leader>wfg word under cursor, <leader>fb buffers
+--                               -- <leader>wfg word under cursor, <leader>fb buffers,
+--                               -- <leader>fo recent files, <leader>fs document
+--                               -- symbols, <leader><leader> resume last picker.
+--                               -- <leader>gr (lsp-config.lua) is lsp_references.
 --   plenary.nvim                -- lua utility library telescope is built on (required)
 --   telescope-fzf-native.nvim   -- compiled C sorter; much faster/better matching than the lua default
 --   telescope-ui-select.nvim    -- makes vim.ui.select prompts (LSP code actions, etc.) render in telescope
@@ -58,6 +61,12 @@ return {
     vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
     -- wfg = word find globally: grep the word under the cursor
     vim.keymap.set('n', '<leader>wfg', builtin.grep_string, {})
+    -- fo = find old: files opened in this (and recent) sessions
+    vim.keymap.set('n', '<leader>fo', builtin.oldfiles, {})
+    -- fs = find symbols in this file (functions, methods, …)
+    vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, {})
+    -- Space Space: reopen the last telescope picker with the same query
+    vim.keymap.set('n', '<leader><leader>', builtin.resume, {})
     -- fb = find buffers. No preview; compact.
     -- Esc (telescope normal mode) then dd deletes the highlighted buffer.
     -- Alt-d (M-d) still works in insert or normal.

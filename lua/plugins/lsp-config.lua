@@ -16,7 +16,7 @@
 --
 --   K           hover docs
 --   <leader>gd  go to definition
---   <leader>gr  list references
+--   <leader>gr  list references (telescope)
 --   <leader>ca  code actions (telescope dropdown)
 --   <leader>rn  rename
 --
@@ -61,7 +61,9 @@ return {
 
       vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
       vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
-      vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
+      vim.keymap.set("n", "<leader>gr", function()
+        require("telescope.builtin").lsp_references()
+      end)
       vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
       vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {})
     end
