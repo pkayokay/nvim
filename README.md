@@ -236,11 +236,28 @@ closed; `q` in the panel also closes it. `?` lists every command.
 | `?` | Help |
 | `q` | Close the panel |
 
-### Find and replace (inside `fr`)
+### gitsigns (gutter only)
 
-One float titled **Find and replace in file**, with boxed **Find** and **Replace**
-fields. Starts in insert on Find. Enter or Tab moves to Replace; Enter there
-runs the substitute. Esc cancels. Then confirm each match (`y` / `n` / `a` / `q`).
+Shows `+` / `~` / `_` in the sign column for unstaged hunks. **No hunk keymaps**
+are wired in this config (the plugin’s suggested `]c` / `[c` / `Space hs` /
+… maps are not enabled). Blame a range with visual <kbd>Ctrl</kbd>+<kbd>b</kbd>
+instead. One-off hunk actions: `:Gitsigns` then Tab-complete (`next_hunk`,
+`stage_hunk`, `preview_hunk`, …).
+
+### Float form (inside `fr` and the `se` query)
+
+Boxed fields from `lua/float-form.lua`. Starts in insert on the first field.
+
+- `Space fr` — **find and replace in the current file** (Find + Replace fields).
+  After submit, confirm each match (`y` / `n` / `a` / `q`).
+- `Space se` — **project search** (one Search field); results open in the
+  ctrlsf panel (keys under **ctrlsf** below).
+
+| Key | Does |
+| --- | --- |
+| <kbd>Enter</kbd> / <kbd>Tab</kbd> | Next field, or submit on the last |
+| <kbd>Shift</kbd>+<kbd>Tab</kbd> | Previous field |
+| <kbd>Esc</kbd> / <kbd>Ctrl</kbd>+<kbd>c</kbd> | Cancel |
 
 ### Git blame float (after visual <kbd>Ctrl</kbd>+<kbd>b</kbd>, pick a line)
 
@@ -252,7 +269,7 @@ Telescope first (keys above). Picking a commit opens a message float.
 
 ### ctrlsf (inside `se` / `st`)
 
-`Space se` is a boxed float (same UI as `fr`) to type the query. Results are a
+`Space se` opens a float-form query (keys under **Float form** above). Results are a
 centered float (ctrlsf opens a split; we convert it). Edit a match line and `:w`
 writes it back to the file. `:%s` in that buffer + `:w` is project replace on
 this search. `Space st` hides/shows the same panel.
@@ -273,8 +290,8 @@ leaves the shell (vim-options); then `Space it` hides the same session.
 ### DAP UI (only while a debug session is running)
 
 Panels open on `Space dc` and close on `Space dx`. No adapter is wired yet, so
-this UI never appears until `dap.adapters` is filled in. Defaults from
-nvim-dap-ui:
+this UI never appears until `dap.adapters` is filled in. Keys below are
+**buffer-local inside nvim-dap-ui panels** (not global):
 
 | Key | Does |
 | --- | --- |
@@ -300,6 +317,7 @@ nvim-dap-ui:
 | --- | --- |
 | `:Lazy` | Plugin manager UI — install, update, check load times |
 | `:Mason` | Browse and install language servers, formatters, linters |
+| `:Gitsigns` | Hunk actions (Tab-complete); no leader maps for these |
 | `:checkhealth` | Diagnose a broken setup (missing binaries, bad config) |
 | `:LspInfo` | Which language servers are attached to this buffer |
 

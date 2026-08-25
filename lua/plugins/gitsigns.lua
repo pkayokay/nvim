@@ -8,6 +8,9 @@
 --
 -- Not the same as lualine's branch/diff counts (that's a summary in the bar)
 -- or visual Ctrl-b blame (that's in vim-options.lua).
+--
+-- Signs only: no on_attach keymaps. Use :Gitsigns for hunk actions, or visual
+-- Ctrl-b for blame. Plugin-suggested ]c / <leader>hs / … are not enabled.
 
 return {
   "lewis6991/gitsigns.nvim",
