@@ -11,6 +11,9 @@ vim.opt.tabstop = 2          -- an existing tab character renders 2 columns wide
 vim.opt.softtabstop = 2      -- Tab/Backspace move by 2 spaces, so they feel like one unit
 vim.opt.shiftwidth = 2       -- auto-indent and the >> / << commands shift by 2
 
+-- Undo survives quit. Neovim writes undofiles under stdpath("state")/undo.
+vim.opt.undofile = true
+
 -- Display
 vim.opt.number = true            -- gutter shows absolute line numbers
 vim.opt.relativenumber = false   -- off: no distance-from-cursor numbers (for 5j / d3k)
@@ -19,6 +22,7 @@ vim.opt.termguicolors = true     -- 24-bit colour; required by most Lua themes
 vim.opt.background = "dark"      -- hint for default highlights; does not paint the UI
 vim.opt.guicursor = "a:hor20-Cursor" -- horizontal bar cursor in every mode
 vim.opt.wrap = false             -- long lines scroll sideways instead of wrapping
+vim.opt.winborder = "rounded"    -- hover, diagnostics, and other stock floats
 
 -- Splits: where they open, how to create them, how to move between them
 vim.opt.splitbelow = true    -- :split opens the new window below, not above
@@ -31,21 +35,28 @@ vim.keymap.set("n", "<C-k>", "<C-w>k") -- up
 vim.keymap.set("n", "<C-l>", "<C-w>l") -- right
 
 -- Scrolling
-vim.opt.scroll = 10          -- Ctrl-d / Ctrl-u jump 10 lines (Neovim may reset this on resize)
+vim.opt.scroll = 10          -- Ctrl-d / Ctrl-u jump 10 lines (Neovim resets this on resize)
 vim.opt.scrolloff = 10       -- keep 10 lines visible above and below the cursor
 vim.opt.sidescrolloff = 10   -- keep 10 columns visible beside the cursor (wrap is off)
+vim.api.nvim_create_autocmd("VimResized", {
+  callback = function()
+    vim.opt.scroll = 10
+  end,
+})
 
 -- Search
 vim.opt.ignorecase = true         -- /foo matches foo, Foo, FOO
 vim.opt.smartcase = true          -- ignorecase unless the search contains a capital
 -- vim.opt.gdefault = true        -- assume /g flag on for :s subtitutions
--- Boxed Find / Replace dialog (same UI as <leader>se). Then :%s/find/replace/gc
--- (confirm each match). Example: "foo foo foo" find foo, replace bar -> "bar bar bar"
+-- Boxed Find / Replace dialog (same UI as <leader>se). Runs :%s/\Vfind/replace/gc
+-- \V = very nomagic: . * [ ] are literal, not regex. Example: "foo foo foo"
+-- find foo, replace bar -> "bar bar bar".
 -- (% = whole file, g = every match on a line, c = confirm).
+-- / in the strings is escaped so it cannot break the :s delimiter.
 vim.keymap.set("n", "<leader>fr", function()
   local target_win = vim.api.nvim_get_current_win()
   require("float-form").open({
-    title = " Find and replace in file (:%s/find/replace/gc) ",
+    title = " Find and replace in file (:%s/\\Vfind/replace/gc) ",
     footer = " Enter next / replace    Esc cancel ",
     fields = { "Find", "Replace" },
     on_submit = function(values)
@@ -58,7 +69,9 @@ vim.keymap.set("n", "<leader>fr", function()
       end
       -- pcall: :s E486 inside vim.schedule dumps a lua traceback instead of
       -- the usual "Pattern not found" line.
-      local ok, err = pcall(vim.cmd, "%s/" .. find .. "/" .. replace .. "/gc")
+      local pat = vim.fn.escape(find, "/\\")
+      local rep = vim.fn.escape(replace, "/\\")
+      local ok, err = pcall(vim.cmd, "%s/\\V" .. pat .. "/" .. rep .. "/gc")
       if not ok then
         vim.notify(tostring(err):match("E%d+:.*") or "Pattern not found", vim.log.levels.WARN)
       end
@@ -69,6 +82,24 @@ end)
 -- Clipboard: yank/delete/put use the OS clipboard. dd is cut; <leader>D is true delete.
 vim.opt.clipboard = "unnamedplus" -- same pasteboard as unnamed on macOS
 vim.keymap.set("n", "<leader>D", '"_dd') -- delete the line without clobbering the yank register
+vim.api.nvim_create_autocmd("TextYankPost", {
+  callback = function()
+    vim.hl.on_yank()
+  end,
+})
+
+-- Reopen a file at the last cursor line. Git commit message buffers stay on line 1.
+vim.api.nvim_create_autocmd("BufReadPost", {
+  callback = function(ev)
+    if vim.bo[ev.buf].filetype == "gitcommit" then
+      return
+    end
+    local mark = vim.api.nvim_buf_get_mark(ev.buf, '"')
+    if mark[1] > 0 and mark[1] <= vim.api.nvim_buf_line_count(ev.buf) then
+      pcall(vim.api.nvim_win_set_cursor, 0, mark)
+    end
+  end,
+})
 
 -- Diagnostics
 -- Print the diagnostic message inline, to the right of the offending line.
