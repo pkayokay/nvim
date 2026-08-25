@@ -7,12 +7,12 @@ as they are ported, so what remains is still todo. Nothing loads it — Neovim r
 
 46 plugins were declared on `main`. Status below.
 
-## Done (19)
+## Done (20)
 
 `hybrid.nvim`, `nvim-cmp`, `cmp-buffer`, `cmp-nvim-lsp`, `cmp-path`, `nvim-lspconfig`,
 `plenary.nvim`, `telescope.nvim`, `vim-afterglow`, `oceanic-next`, `fidget.nvim`,
 `open-browser.vim`, `open-browser-github.vim`, `undoquit.vim`, `clever-f.vim`,
-`ctrlsf.vim`, `vim-wordmotion`, `vim-surround`, `vim-repeat`
+`ctrlsf.vim`, `vim-wordmotion`, `vim-visual-multi`, `vim-surround`, `vim-repeat`
 
 Their leftover `Plug` lines, `colorscheme hybrid`, and the Native LSP/cmp `lua <<EOF`
 block are deleted from `reference/init.vim`. The telescope *config* block stays: the
@@ -70,7 +70,7 @@ Leftover `Plug` lines deleted from `reference/init.vim`. No leftover `g:`.
 `.jsx` is `javascriptreact`; that filetype is in the treesitter autocmd so highlight
 and indent still run after dropping jsx-pretty.
 
-## Not ported yet (3)
+## Not ported yet (2)
 
 Grouped by what they do, with the usual modern equivalent where the original is a
 Vimscript plugin that has one. Plenty of these still work fine under lazy.nvim — being
@@ -78,9 +78,6 @@ Vimscript is not a reason to replace them, only a reason to check.
 
 ### Git
 - `tpope/vim-fugitive` — still the standard, port as-is
-
-### Editing
-- `mg979/vim-visual-multi` — multiple cursors
 
 ### Ruby / Rails
 - `tpope/vim-rails`
@@ -155,6 +152,8 @@ branch; deleted from `reference/init.vim`.
 **Replaced with `lua/plugins/autopairs.lua`:** `nvim-autopairs` instead of delimitMate. Stock defaults plus Ruby/Lua/Elixir `end` (replaces vim-endwise). nvim-cmp `confirm_done` inserts `()` after function/method completions. Leftover `Plug` lines deleted from `reference/init.vim`. No leftover `g:`.
 
 **Added `lua/plugins/autotag.lua`:** `nvim-ts-autotag`. Close (`<div>` then `>` → `<div></div>`) and rename (both ends). `html` parser added in treesitter.lua.
+
+**Ported to `lua/plugins/visual-multi.lua`:** `Ctrl-n` (and `<D-d>` if the terminal sends it) adds the next match of the word under the cursor. `Ctrl-Shift-l` selects every match in normal mode; in visual mode it puts a caret at the end of each selected line. `0` / `I` then go to the start of each cursor's line. `VM_default_mappings` off so Ctrl-Up/Down stay unmapped. Leftover `Plug` line deleted from `reference/init.vim`.
 
 ## Functions (5)
 

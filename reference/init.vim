@@ -3,9 +3,6 @@ call plug#begin('~/.config/nvim/plugged')
   " 👉 Plugins installation
   " --------------------------------------------------
 
-  " Efficiency
-  Plug 'mg979/vim-visual-multi' " Multiple cursors plugin for vim/neovim, for vertical section enter v-block then shift+i insert mode
-
   " Misc
   Plug 'tpope/vim-fugitive' " Git wrapper
 

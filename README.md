@@ -109,6 +109,26 @@ Same first jump as stock Vim. Repeat is remapped; `;` / `,` are unused.
 Stock `w` jumps a whole `getUserName` or `foo_bar`. This stops on each piece.
 `W` / `B` / `E` still skip whitespace-separated WORDs.
 
+### visual-multi (`Ctrl-n` — VS Code Cmd-D)
+
+Adds another cursor on the next copy of the same word. **Normal mode** (Esc
+first). Insert-mode <kbd>Ctrl</kbd>+<kbd>n</kbd> is still nvim-cmp.
+
+| Key | Does | VS Code |
+| --- | --- | --- |
+| <kbd>Ctrl</kbd>+<kbd>n</kbd> | Select this word, then add the next match | <kbd>Cmd</kbd>+<kbd>d</kbd> |
+| <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>l</kbd> | Cursors on every match in the file | <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>l</kbd> |
+| visual <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>l</kbd> | Caret at the **end** of each selected line | cursors at EOL |
+| `0` or `I` | Each cursor to the start of **its** line | Home / <kbd>Cmd</kbd>+<kbd>←</kbd> |
+| `$` or `A` | Each cursor to the end of **its** line | End / <kbd>Cmd</kbd>+<kbd>→</kbd> |
+| visual `\` `c` | Caret on each selected line (same column) | then `0` / `$` |
+| `q` | Skip this match, take the next | <kbd>Cmd</kbd>+<kbd>k</kbd> <kbd>Cmd</kbd>+<kbd>d</kbd> |
+| `c` | Change all cursors | type to replace |
+| <kbd>Esc</kbd> | Leave | <kbd>Esc</kbd> |
+
+<kbd>Cmd</kbd>+<kbd>d</kbd> / <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>l</kbd> are
+mapped too, but most terminals never send them. Use the Ctrl keys.
+
 ### surround (`cs` / `ds` / `ys`)
 
 Stock Vim edits **inside** or **around** a pair. `da"` on `"foo"` deletes the
@@ -298,6 +318,7 @@ lua/plugins/
   undoquit.lua        _u last closed window, _U this tab's closed windows
   clever-f.lua        f/t repeat with highlights (smart_case)
   wordmotion.lua      w/b/e stop on camelCase / snake_case
+  visual-multi.lua    Ctrl-n next match; Ctrl-Shift-l every match / visual EOL carets
   surround.lua        cs/ds/ys change wrappers (quotes, parens)
   autotag.lua         HTML/JSX close and rename paired tags
   autopairs.lua       insert auto-pairs for quotes and brackets
