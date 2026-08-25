@@ -1,11 +1,4 @@
-call plug#begin('~/.config/nvim/plugged')
-  " --------------------------------------------------
-  " 👉 Plugins installation
-  " --------------------------------------------------
-
-  " Misc
-  Plug 'tpope/vim-fugitive' " Git wrapper
-call plug#end()
+" No leftover Plug lines. Ported, replaced, or dropped — see PORTING.md.
 
 " --------------------------------------------------
 " 👉 Notes!

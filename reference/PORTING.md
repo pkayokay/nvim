@@ -57,7 +57,7 @@ Lualine uses `theme = "auto"` (follows the colorscheme) instead of airline `tomo
 ALE leftover (`Plug` line, `g:ale_*`, `SetESLintLinter` / `SetRuboCopLinter`) is deleted
 from `reference/init.vim`. Keep none-ls; lint/format-on-save can be added there later.
 
-## Dropped (5)
+## Dropped (6)
 
 | main | why |
 | --- | --- |
@@ -66,19 +66,15 @@ from `reference/init.vim`. Keep none-ls; lint/format-on-save can be added there 
 | `pangloss/vim-javascript` | treesitter `javascript` parser |
 | `maxmellon/vim-jsx-pretty` | treesitter `javascript` / `tsx` parsers |
 | `tpope/vim-rails` | ruby_lsp `gd`, telescope `ff`, neotest; no `:A` maps were in the old file |
+| `tpope/vim-fugitive` | gitsigns, visual Ctrl-b blame, git in the terminal; no maps in the old file |
 
 Leftover `Plug` lines deleted from `reference/init.vim`. No leftover `g:`.
 `.jsx` is `javascriptreact`; that filetype is in the treesitter autocmd so highlight
 and indent still run after dropping jsx-pretty.
 
-## Not ported yet (1)
+## Not ported yet (0)
 
-Grouped by what they do, with the usual modern equivalent where the original is a
-Vimscript plugin that has one. Plenty of these still work fine under lazy.nvim — being
-Vimscript is not a reason to replace them, only a reason to check.
-
-### Git
-- `tpope/vim-fugitive` — still the standard, port as-is
+All 46 `Plug` lines from `main` are done, replaced, or dropped.
 
 ## How to port one
 
@@ -138,6 +134,11 @@ Later: try `grug-far.nvim` for the same search-then-replace workflow; keep ctrls
 
 **Dropped:** `inoremap dry ...` (Rails system-test snippet). Never existed on the lua
 branch; deleted from `reference/init.vim`.
+
+**Dropped:** `<leader>e` (diagnostic float) and `<leader>q` (diagnostic loclist) from the
+old Native LSP block. Unused on lua; inline `virtual_text` and stock `[d` / `]d` cover it.
+
+**Dropped:** `<leader>nrs` (NERDTree resize). Gone with neo-tree.
 
 **Ported to `lua/plugins/telescope.lua`:** `<leader>wfg` word under cursor, `<leader>fb` buffers (no preview; old leftover `ef`). Vertical centered layout from leftover init.vim, stock 80% × 90% size. Leftover no-preview `ff` dropped (keep current `ff`).
 
