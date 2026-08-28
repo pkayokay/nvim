@@ -10,12 +10,17 @@ file under `lua/plugins/`, each with a comment header explaining what it does.
 3. Launch `nvim` — lazy.nvim bootstraps itself and installs everything on first run
 
 ```sh
-brew install ripgrep   # required by telescope's live_grep
-brew install fd        # faster file finding for telescope
+xcode-select --install              # C compiler: treesitter parsers + telescope-fzf-native
+brew install neovim tree-sitter     # neovim 0.12+; tree-sitter CLI compiles parsers
+brew install ripgrep fd             # telescope live_grep / find_files
+brew install node                   # mason: ts_ls, prettier, tailwindcss (nvm works too)
 ```
 
 Icons need a [Nerd Font](https://www.nerdfonts.com/font-downloads) (JetBrainsMono Nerd
 Font works well) set as your terminal font, otherwise the file tree shows tofu boxes.
+
+If treesitter parsers fail on first boot, run `:checkhealth nvim-treesitter` then
+`:TSUpdate`.
 
 ## Keymaps
 
