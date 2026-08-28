@@ -18,7 +18,7 @@ config cannot compile parsers or run Mason's Node-based tools without them.
 
 ```sh
 xcode-select --install
-brew install mise neovim tree-sitter ripgrep fd
+brew install mise neovim tree-sitter-cli ripgrep fd
 ```
 
 Add mise to your shell (`~/.zshrc`):
@@ -34,13 +34,14 @@ machine (project `.tool-versions` files override these per repo):
 mise use -g node@lts
 mise use -g ruby@latest
 mise use -g elixir@latest
+mise use -g tree-sitter@latest
 ```
 
 | Tool | Source | Why |
 | --- | --- | --- |
 | Xcode CLT | `xcode-select --install` | Compiles treesitter parsers and `telescope-fzf-native` |
 | Neovim 0.12+ | brew | Required by nvim-treesitter (main branch) |
-| tree-sitter CLI | brew | Downloads and builds grammar parsers |
+| tree-sitter CLI | brew (`tree-sitter-cli`) or mise (`mise use -g tree-sitter@latest`) | Downloads and builds grammar parsers |
 | ripgrep / fd | brew | Telescope live grep and file finding |
 | Node | mise (`mise use -g node@lts`) | Mason's `ts_ls`, `prettier`, `tailwindcss` are Node scripts |
 | Ruby | mise (`mise use -g ruby@latest`) | `ruby_lsp` |

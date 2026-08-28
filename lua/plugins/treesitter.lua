@@ -22,7 +22,7 @@ return {
     local function missing_prereqs()
       local missing = {}
       if vim.fn.executable('tree-sitter') == 0 then
-        table.insert(missing, 'tree-sitter CLI (brew install tree-sitter)')
+        table.insert(missing, 'tree-sitter CLI (brew install tree-sitter-cli or mise use -g tree-sitter@latest)')
       end
       if vim.fn.executable('cc') == 0 and vim.fn.executable('clang') == 0 then
         table.insert(missing, 'C compiler (xcode-select --install)')
