@@ -42,7 +42,6 @@ return {
 
       local ts = require('nvim-treesitter')
       ts.install(parsers)
-      -- eex's committed parser.c predates ABI 15; regenerate before compile.
       ts.install({ 'eex' }, { generate = true })
     end
 

@@ -75,8 +75,6 @@ Mason ships a bundled copy as fallback.
 :TSUpdate
 ```
 
-If only `eex` fails: `:TSInstall eex!` (regenerates parser for Neovim's ABI).
-
 ## Keymaps
 
 `<leader>` is <kbd>Space</kbd>, set in `lua/vim-options.lua`. So `<leader>gd` means
