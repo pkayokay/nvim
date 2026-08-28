@@ -18,32 +18,53 @@ config cannot compile parsers or run Mason's Node-based tools without them.
 
 ```sh
 xcode-select --install
-brew install neovim tree-sitter ripgrep fd node
+brew install mise neovim tree-sitter ripgrep fd
 ```
 
-| Tool | Why |
-| --- | --- |
-| Xcode CLT | Compiles treesitter parsers and `telescope-fzf-native` |
-| Neovim 0.12+ | Required by nvim-treesitter (main branch) |
-| tree-sitter CLI | Downloads and builds grammar parsers |
-| ripgrep / fd | Telescope live grep and file finding |
-| Node | Mason's `ts_ls`, `prettier`, `tailwindcss` are Node scripts |
+Add mise to your shell (`~/.zshrc`):
 
-Node via nvm works if it is on your PATH when you launch nvim. GUI terminal apps
-often do not load nvm — `brew install node` is the reliable option.
+```sh
+eval "$(mise activate zsh)"
+```
+
+Install language runtimes globally so Mason and LSPs can find them on a fresh
+machine (project `.tool-versions` files override these per repo):
+
+```sh
+mise use -g node@lts
+mise use -g ruby@latest
+mise use -g elixir@latest
+```
+
+| Tool | Source | Why |
+| --- | --- | --- |
+| Xcode CLT | `xcode-select --install` | Compiles treesitter parsers and `telescope-fzf-native` |
+| Neovim 0.12+ | brew | Required by nvim-treesitter (main branch) |
+| tree-sitter CLI | brew | Downloads and builds grammar parsers |
+| ripgrep / fd | brew | Telescope live grep and file finding |
+| Node | mise (`mise use -g node@lts`) | Mason's `ts_ls`, `prettier`, `tailwindcss` are Node scripts |
+| Ruby | mise (`mise use -g ruby@latest`) | `ruby_lsp` |
+| Elixir | mise (`mise use -g elixir@latest`) | `elixirls`, `mix format` |
+
+Launch nvim from a shell where `mise activate` has run so shims are on PATH.
+GUI terminals that skip your shell profile will not see mise — open nvim from a
+login shell or add the activate line to your terminal app's startup command.
 
 Icons need a [Nerd Font](https://www.nerdfonts.com/font-downloads) (JetBrainsMono Nerd
 Font works well) set as your terminal font, otherwise the file tree shows tofu boxes.
 
-### Language runtimes (when you open a project)
+### Per-project versions
 
-Not needed before first `nvim`, but required for LSP/formatting in real repos:
+In app repos, pin versions with `.tool-versions` (mise reads these automatically):
 
-| Language | Install | Used by |
-| --- | --- | --- |
-| Ruby | `rbenv` / `asdf` / system ruby | `ruby_lsp` |
-| Elixir | `asdf` / `brew install elixir` | `elixirls`, `mix format` |
-| TypeScript | project's `node_modules` (or Mason's bundled copy) | `ts_ls` |
+```
+node 22.0.0
+ruby 3.3.0
+elixir 1.18.0
+```
+
+TypeScript for `ts_ls` comes from the project's `node_modules` when present;
+Mason ships a bundled copy as fallback.
 
 ### Troubleshooting
 

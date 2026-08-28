@@ -33,7 +33,7 @@ return {
     vim.defer_fn(function()
       if vim.fn.executable("node") == 0 then
         vim.notify(
-          "Node is not on PATH. ts_ls, prettier, and tailwindcss need it — brew install node (nvm must be loaded in the shell that launches nvim).",
+          "Node is not on PATH. ts_ls, prettier, and tailwindcss need it — mise use -g node@lts (shell must run mise activate).",
           vim.log.levels.WARN
         )
       end
