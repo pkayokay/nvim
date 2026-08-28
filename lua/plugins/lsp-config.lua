@@ -26,8 +26,19 @@ return {
     "mason-org/mason.nvim",
     lazy = false,
     config = function()
-      require("mason").setup()
-    end
+    require("mason").setup()
+
+    -- Mason's ts_ls, prettier, and tailwindcss are Node scripts; without node on
+    -- PATH they install but fail to start.
+    vim.defer_fn(function()
+      if vim.fn.executable("node") == 0 then
+        vim.notify(
+          "Node is not on PATH. ts_ls, prettier, and tailwindcss need it — brew install node (nvm must be loaded in the shell that launches nvim).",
+          vim.log.levels.WARN
+        )
+      end
+    end, 1000)
+  end
   },
   {
     "mason-org/mason-lspconfig.nvim",

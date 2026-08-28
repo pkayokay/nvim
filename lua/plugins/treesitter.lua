@@ -6,16 +6,48 @@
 -- Pairs with theme.lua: the parser produces @capture groups (@function, @keyword, ...)
 -- and hybrid.nvim supplies the colors for them. Without a parser installed for a
 -- filetype, that buffer silently falls back to Vim's older regex syntax.
+--
+-- Fresh machine: needs tree-sitter CLI + a C compiler before parsers can compile.
+-- See README.md Install.
 return {
   'nvim-treesitter/nvim-treesitter',
   branch = 'main',
   lazy = false,
-  build = ':TSUpdate',
   config = function()
-    require('nvim-treesitter').install({
+    local parsers = {
       'lua', 'javascript', 'ruby', 'elixir', 'typescript', 'tsx', 'html',
-      'heex', 'eex', 'embedded_template', 'json', 'yaml', 'markdown', 'css',
-    })
+      'heex', 'embedded_template', 'json', 'yaml', 'markdown', 'css',
+    }
+
+    local function missing_prereqs()
+      local missing = {}
+      if vim.fn.executable('tree-sitter') == 0 then
+        table.insert(missing, 'tree-sitter CLI (brew install tree-sitter)')
+      end
+      if vim.fn.executable('cc') == 0 and vim.fn.executable('clang') == 0 then
+        table.insert(missing, 'C compiler (xcode-select --install)')
+      end
+      return missing
+    end
+
+    local function install_parsers()
+      local missing = missing_prereqs()
+      if #missing > 0 then
+        vim.notify(
+          'Treesitter parsers not installed:\n- ' .. table.concat(missing, '\n- '),
+          vim.log.levels.WARN
+        )
+        return
+      end
+
+      local ts = require('nvim-treesitter')
+      ts.install(parsers)
+      -- eex's committed parser.c predates ABI 15; regenerate before compile.
+      ts.install({ 'eex' }, { generate = true })
+    end
+
+    -- Defer so lazy/mason can finish booting; install is async either way.
+    vim.defer_fn(install_parsers, 100)
 
     -- eruby is the vim filetype; the parser is named embedded_template
     vim.treesitter.language.register('embedded_template', 'eruby')

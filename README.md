@@ -5,22 +5,56 @@ file under `lua/plugins/`, each with a comment header explaining what it does.
 
 ## Install
 
+Fresh machine setup. **Install the prerequisites before the first `nvim` launch** — the
+config cannot compile parsers or run Mason's Node-based tools without them.
+
 1. Clone this repo to `~/.config/nvim`
-2. Install the external tools below
-3. Launch `nvim` — lazy.nvim bootstraps itself and installs everything on first run
+2. Install prerequisites (below)
+3. Launch `nvim` — lazy.nvim installs plugins, Mason installs language servers,
+   treesitter compiles parsers (first boot can take a minute)
+4. Verify with `:checkhealth nvim-treesitter` and `:checkhealth mason`
+
+### Prerequisites
 
 ```sh
-xcode-select --install              # C compiler: treesitter parsers + telescope-fzf-native
-brew install neovim tree-sitter     # neovim 0.12+; tree-sitter CLI compiles parsers
-brew install ripgrep fd             # telescope live_grep / find_files
-brew install node                   # mason: ts_ls, prettier, tailwindcss (nvm works too)
+xcode-select --install
+brew install neovim tree-sitter ripgrep fd node
 ```
+
+| Tool | Why |
+| --- | --- |
+| Xcode CLT | Compiles treesitter parsers and `telescope-fzf-native` |
+| Neovim 0.12+ | Required by nvim-treesitter (main branch) |
+| tree-sitter CLI | Downloads and builds grammar parsers |
+| ripgrep / fd | Telescope live grep and file finding |
+| Node | Mason's `ts_ls`, `prettier`, `tailwindcss` are Node scripts |
+
+Node via nvm works if it is on your PATH when you launch nvim. GUI terminal apps
+often do not load nvm — `brew install node` is the reliable option.
 
 Icons need a [Nerd Font](https://www.nerdfonts.com/font-downloads) (JetBrainsMono Nerd
 Font works well) set as your terminal font, otherwise the file tree shows tofu boxes.
 
-If treesitter parsers fail on first boot, run `:checkhealth nvim-treesitter` then
-`:TSUpdate`.
+### Language runtimes (when you open a project)
+
+Not needed before first `nvim`, but required for LSP/formatting in real repos:
+
+| Language | Install | Used by |
+| --- | --- | --- |
+| Ruby | `rbenv` / `asdf` / system ruby | `ruby_lsp` |
+| Elixir | `asdf` / `brew install elixir` | `elixirls`, `mix format` |
+| TypeScript | project's `node_modules` (or Mason's bundled copy) | `ts_ls` |
+
+### Troubleshooting
+
+```vim
+:checkhealth nvim-treesitter
+:checkhealth mason
+:Mason
+:TSUpdate
+```
+
+If only `eex` fails: `:TSInstall eex!` (regenerates parser for Neovim's ABI).
 
 ## Keymaps
 
