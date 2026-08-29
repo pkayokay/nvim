@@ -1,7 +1,7 @@
 -- LSP stack: installs language servers/tools and wires up the keymaps to use them.
 --
 --   mason.nvim                 -- pure installer: downloads binaries to mason/bin (:Mason to browse).
---                                 Knows nothing about LSP -- it installs linters and DAP adapters too.
+--                                 Knows nothing about LSP -- it installs linters too.
 --   mason-lspconfig.nvim       -- the bridge. Maps package names to lspconfig names
 --                                 (lua-language-server <-> lua_ls), and with automatic_enable
 --                                 (on by default) calls vim.lsp.enable() for each installed server.

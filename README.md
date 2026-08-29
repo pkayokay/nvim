@@ -133,10 +133,6 @@ diagnostics) are rounded; Ctrl-d / Ctrl-u stay 10 lines after a resize.
 | `gcc` | | Toggle comment on this line | Neovim stock |
 | `gc` | visual, or + motion | Toggle comments | Neovim stock |
 | <kbd>Space</kbd> `gf` | | Format the current file (stylua / prettier / mix / ruby_lsp) | none-ls / LSP |
-| <kbd>Space</kbd> `dt` | | Toggle breakpoint *(needs an adapter)* | nvim-dap |
-| <kbd>Space</kbd> `dc` | | Start / continue debugging *(needs an adapter)* | nvim-dap |
-| <kbd>Space</kbd> `dx` | | Terminate debug session | nvim-dap |
-| <kbd>Space</kbd> `do` | | Step over | nvim-dap |
 
 ### Completion (insert, nvim-cmp)
 
@@ -361,21 +357,6 @@ Float starts in terminal mode, so typed keys go to the shell. <kbd>Esc</kbd>
 leaves the shell (vim-options); then `Space it` hides the same session.
 `Space i1`–`i6` each own a numbered shell.
 
-### DAP UI (only while a debug session is running)
-
-Panels open on `Space dc` and close on `Space dx`. No adapter is wired yet, so
-this UI never appears until `dap.adapters` is filled in. Keys below are
-**buffer-local inside nvim-dap-ui panels** (not global):
-
-| Key | Does |
-| --- | --- |
-| <kbd>Enter</kbd> | Expand the variable / node |
-| `o` | Open |
-| `d` | Remove |
-| `e` | Edit |
-| `t` | Toggle |
-| `q` / <kbd>Esc</kbd> | Close a DAP float |
-
 ## Terms
 
 - **LSP** (Language Server Protocol) — a background process per language that
@@ -424,7 +405,7 @@ lua/plugins/
   none-ls.lua         stylua / prettier / mix; Ruby via ruby_lsp Gemfile auto-detect
   telescope.lua       fuzzy finder (ff / fg / wfg / fb / fo / fs / Space Space resume)
   neo-tree.lua        file tree
-  debugging.lua       nvim-dap and its UI
+  debugging.lua       nvim-dap (disabled until an adapter is wired)
 ```
 
 Language servers installed automatically: `lua_ls`, `ruby_lsp`, `ts_ls`, `elixirls`,
@@ -432,15 +413,14 @@ Language servers installed automatically: `lua_ls`, `ruby_lsp`, `ts_ls`, `elixir
 project `.formatter.exs`). Ruby: whatever is a direct Gemfile dep (`standard`,
 `rubocop`, or `syntax_tree`) — `ruby_lsp` auto-detects it.
 
-## Not set up yet
+After the Install prerequisites, that is the full stack — no extra plugins to wire
+by hand. Debug with `binding.pry` / `IEx.pry` / browser DevTools when you need it.
+DAP lives in `debugging.lua` with `enabled = false` if you want it later.
 
-- **Debug adapters.** nvim-dap is installed but has no adapter, so no debug session can
-  start yet -- `dap.adapters` and `dap.configurations` are both empty. Each language
-  needs its own debugger wired up, in two parts: install the adapter binary (most live
-  in mason: `js-debug-adapter`, `debugpy`, `delve`; Ruby's `rdbg` ships as the `debug`
-  gem instead), then define `dap.adapters.<name>` and `dap.configurations.<filetype>`
-  so nvim-dap knows how to launch it. `jay-babu/mason-nvim-dap.nvim` can do both steps.
-  Until then the `<leader>d*` keymaps set breakpoints nothing will ever hit.
+## Optional
+
+- **nvim-dap.** Parked in `lua/plugins/debugging.lua` (`enabled = false`). Set
+  `enabled = true` and add a language adapter before the `Space d*` keys do anything.
 - **Linting.** none-ls runs formatters only; no `diagnostics` sources are registered.
-  (Ruby linting comes from `ruby_lsp` when the project gem supports it.)
+  (Ruby / Elixir / TS linting already come from `ruby_lsp` / `elixirls` / `ts_ls`.)
 - **Format on save** is written but commented out at the bottom of `none-ls.lua`.

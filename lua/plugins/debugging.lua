@@ -1,5 +1,8 @@
 -- Debugging: step through running code with breakpoints, instead of adding prints.
 --
+-- DISABLED. Prefer binding.pry / IEx.pry / browser DevTools for now. Flip
+-- `enabled` to true and wire a language adapter when you want DAP back.
+--
 --   nvim-dap     -- the debug adapter client. Speaks the Debug Adapter Protocol, but
 --                   ships no adapters: each language needs its own (ruby, node, ...).
 --   nvim-dap-ui  -- panels for scopes, breakpoints, stack frames, watches and the repl.
@@ -19,6 +22,7 @@
 --   <leader>do  step over
 return {
   "mfussenegger/nvim-dap",
+  enabled = false,
   dependencies = {
     "rcarriga/nvim-dap-ui",
     -- Async library nvim-dap-ui depends on; it errors on setup without it.
