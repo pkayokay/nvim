@@ -9,7 +9,7 @@
 --   Y  percent through the file
 --   Z  line:column
 --
--- theme = "auto" follows the colorscheme, so <C-S-n>/<C-S-p> restyle the bar too.
+-- theme = "auto" follows the colorscheme.
 -- path = 1 is a relative path (lua/plugins/lualine.lua).
 -- No tabline.
 

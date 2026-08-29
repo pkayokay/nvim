@@ -4,7 +4,7 @@
 -- highlight/indent -- hence the FileType autocmd below.
 --
 -- Pairs with theme.lua: the parser produces @capture groups (@function, @keyword, ...)
--- and hybrid.nvim supplies the colors for them. Without a parser installed for a
+-- and afterglow-monokai colors them. Without a parser installed for a
 -- filetype, that buffer silently falls back to Vim's older regex syntax.
 --
 -- Fresh machine: needs tree-sitter CLI + a C compiler before parsers can compile.

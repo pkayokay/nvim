@@ -104,8 +104,6 @@ diagnostics) are rounded; Ctrl-d / Ctrl-u stay 10 lines after a resize.
 | <kbd>Space</kbd> `fr` | | Find and replace in file (`:%s/\Vfind/replace/gc`) | vim-options |
 | <kbd>Ctrl</kbd>+<kbd>b</kbd> | visual | Git blame selected lines (telescope dropdown) | vim-options |
 | <kbd>Ctrl</kbd>+<kbd>\</kbd> | visual | Open file / selection on GitHub (`main`) | open-browser |
-| <kbd>Ctrl</kbd>+<kbd>'</kbd> | | Start `:colorscheme` (tab-complete a name) | theme |
-| <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>n</kbd> / <kbd>p</kbd> | | Next / previous colorscheme | theme |
 | <kbd>Space</kbd> `ff` | | Find files by name | telescope |
 | <kbd>_</kbd><kbd>u</kbd> | | Reopen the last closed window | undoquit |
 | <kbd>_</kbd><kbd>U</kbd> | | Reopen closed windows in this tab | undoquit |
@@ -382,8 +380,10 @@ leaves the shell (vim-options); then `Space it` hides the same session.
 init.lua              bootstraps lazy.nvim, then loads the two below
 lua/vim-options.lua   mapleader, undofile, yank flash, last-line restore, rounded floats
 lua/float-form.lua    boxed float form used by <leader>fr and <leader>se
+colors/               afterglow-monokai.lua — local colorscheme (no plugin)
+lua/afterglow-monokai/  lazy bootstrap for the local theme
 lua/plugins/
-  theme.lua           hybrid.nvim (default) plus extra colorschemes and the switcher
+  theme.lua           applies afterglow-monokai at startup
   fidget.lua          LSP progress overlay in the corner
   lualine.lua         statusline (bottom bar)
   gitsigns.lua        git hunk signs in the gutter

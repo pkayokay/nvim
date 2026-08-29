@@ -38,7 +38,7 @@ return {
     vim.keymap.set("x", "<C-S-l>", visual_cursors_eol)
     vim.keymap.set("x", "<D-S-l>", visual_cursors_eol)
 
-    -- Gold caret (hybrid Visual is too faint). Block cursor while VM is on.
+    -- Gold caret. Block cursor while VM is on.
     local gold = { fg = "#1c1c1c", bg = "#f9c269", bold = true }
     local none = { fg = "NONE", bg = "NONE", reverse = false, underline = false, bold = false }
     local saved_search = {}
